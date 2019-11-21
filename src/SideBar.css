@@ -1,0 +1,36 @@
+.menu {
+  font-family: sans-serif;
+}
+
+.menu-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-item a {
+  display: block;
+  padding: .7rem 15px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.menu-item a:hover {
+  color: inherit;
+  text-decoration: none;
+  background-color: #eee;
+}
+
+.menu-item a:focus {
+  text-decoration: none;
+}
+
+.menu-item a:visited {
+  color: inherit;
+}
+
+.active-menu-item {
+  background-color: #e8e8f9;
+}
+
+.hint {
+  padding: .5rem 15px;
+}
