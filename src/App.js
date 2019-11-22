@@ -3,6 +3,8 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar'
 import Register from './components/Register'
+import Messages from './components/Messages'
+import MyStuvv from './components/MyStuvv'
 import './App.css';
 
 function App() {
@@ -22,6 +24,14 @@ function App() {
             exact path="/register"
             // component={Home}
             component={Register}
+          />
+          <Route 
+            exact path="/messages"
+            component={Messages}
+          />
+          <Route
+            exact path="/my_stuvv"
+            component={MyStuvv}
           />
         </Switch>
 

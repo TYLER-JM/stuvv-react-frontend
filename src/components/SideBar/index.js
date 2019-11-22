@@ -7,7 +7,8 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { BrowserRouter as Link } from "react-router-dom";
+// import { BrowserRouter as Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -44,24 +45,27 @@ export default function SideBar() {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-  
-        {['JAMES BOND', 'My Stuvv', 'My Requests', 'Messages', 'Logout'].map((text, index) => (
+        {/* {['JAMES BOND', 'My Stuvv', 'My Requests', 'Messages', 'Logout'].map((text, index) => (
           <ListItem button key={text}>
-            {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
-        ))} 
-{/* 
-        <ListItem button key="Messages"> */}
-          {/* <Link to="/messages">Messages</Link> */}
-        {/* </ListItem> */}
+        ))}  */}
+  
+          <Link to="/messages"><ListItem button key="Messages">Messages</ListItem></Link>
+          <Link to="/my_stuvv"><ListItem button key="My_Stuvv">My Stuvv</ListItem></Link>
+          <Link to="/my_requests"><ListItem button key="My_Requests">My Requests</ListItem></Link>
+          <Link to="/"><ListItem button key="Logout">Logout</ListItem></Link>
+          
+      </List>
+    </div>
+  );
+ 
+     
+         
 
     
   
-      </List>
-     
-    </div>
-  );
 
   return (
     <div>
