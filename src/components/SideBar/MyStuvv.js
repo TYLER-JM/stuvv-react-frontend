@@ -1,5 +1,5 @@
 import React from 'react'
-import CardListItem from "../CardListItem.js"
+import CardList from "../CardList.js"
 import './MyStuvv.scss'
 import { getThemeProps } from '@material-ui/styles';
 
@@ -7,16 +7,6 @@ import { getThemeProps } from '@material-ui/styles';
 export default function MyStuvv() {
 
   const cardData = [
-    {
-      "title": "Tyler's Shoe",
-      "description": "This is a nice shoe",
-      "availability": true,
-    },
-    {
-      "title": "Tyler's Shoe",
-      "description": "This is a nice shoe",
-      "availability": true,
-    },
     {
       "title": "Tyler's Shoe",
       "description": "This is a nice shoe",
@@ -37,18 +27,7 @@ export default function MyStuvv() {
   // )
   
   // const cards = props.cards.map((card) => {
-    const cards = cardData.map((card) => {
   
-  
-  
-    return (
-      <div>
-        <CardListItem
-        title={card.title}
-        description={card.description}
-        availability={card.availability} />
-      </div>
-    ) 
-  })
-  return <ul className="my-stuvv-container">{cards}</ul>
+  // return <ul className="my-stuvv-container">{cards}</ul>
+  return <CardList cardsData={cardData} />
 }

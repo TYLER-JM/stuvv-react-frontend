@@ -20,6 +20,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 
+
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 345,
@@ -46,6 +47,8 @@ const useStyles = makeStyles(theme => ({
 export default function CardListItem(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -69,6 +72,7 @@ export default function CardListItem(props) {
         subheader="September 14, 2016"
       />
       <CardListItemCarousel />
+      {/* <ListingModal show={modalShow} onHide={() => setModalShow(false)} /> */}
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <ThumbUpIcon />
