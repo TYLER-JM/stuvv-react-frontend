@@ -8,12 +8,14 @@ import {
 import SideBar from './SideBar';
 
 export default function Navbar() {
+  // const [session, setSession] = useState(true)
+
   return (
-    // <Router>
       <div>
         <nav className="nav">
               < SideBar />
           <ul className="nav-bar">
+            
             <li>
               <Link to="/register">SignIn</Link>
             </li>
@@ -23,6 +25,5 @@ export default function Navbar() {
           </ul>
         </nav>
       </div>
-    // </Router>
   );
 }
