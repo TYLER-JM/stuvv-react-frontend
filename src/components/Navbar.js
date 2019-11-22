@@ -1,17 +1,17 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button"
+import Drawer from "@material-ui/core/Drawer"
+import "./Navbar.scss"
 
 export default function Navbar() {
+  // const [session, setSession] = useState(true)
+
   return (
-    // <Router>
       <div>
         <nav>
           <ul className="nav-bar">
+            
             <li>
               <Link to="/register">SignIn</Link>
             </li>
@@ -21,6 +21,5 @@ export default function Navbar() {
           </ul>
         </nav>
       </div>
-    // </Router>
   );
 }
