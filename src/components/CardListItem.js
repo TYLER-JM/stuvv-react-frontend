@@ -41,13 +41,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CardListItem() {
+export default function CardListItem(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
 
   return (
     <Card className={classes.card}>
@@ -62,7 +63,7 @@ export default function CardListItem() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Tyler's shoe"
+        title={props.title}
         subheader="September 14, 2016"
       />
       <CardListItemCarousel />
@@ -88,7 +89,7 @@ export default function CardListItem() {
         <CardContent>
           <Typography paragraph>Description:</Typography>
           <Typography paragraph>
-            This is my favourite shoe. Great condition. You'll love it!
+            {props.description}
           </Typography>
         </CardContent>
       </Collapse>

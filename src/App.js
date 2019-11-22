@@ -3,9 +3,12 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar'
 import Register from './components/Register'
-import Messages from './components/Messages'
-import MyStuvv from './components/MyStuvv'
+import Messages from './components/SideBar/Messages'
+import MyStuvv from './components/SideBar/MyStuvv'
 import './App.css';
+import './components/SideBar/MyStuvv.scss'
+
+
 
 function App() {
   return (
@@ -13,7 +16,6 @@ function App() {
     <Router>
       <div>
         <Navbar />
-        <h1>HEY</h1>
         <Switch>
           <Route
             exact path="/"
@@ -31,7 +33,9 @@ function App() {
           />
           <Route
             exact path="/my_stuvv"
-            component={MyStuvv}
+            // component={MyStuvv}
+            render={() => <MyStuvv className="my-stuvv-container" />}
+
           />
         </Switch>
 
