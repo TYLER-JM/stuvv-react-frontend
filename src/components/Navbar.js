@@ -1,15 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button"
-import Drawer from "@material-ui/core/Drawer"
-// import "./Navbar.scss"
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import SideBar from './SideBar';
 
 export default function Navbar() {
   // const [session, setSession] = useState(true)
 
   return (
       <div>
-        <nav>
+        <nav className="nav">
+              < SideBar />
           <ul className="nav-bar">
             
             <li>
