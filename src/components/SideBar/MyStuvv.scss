@@ -1,0 +1,9 @@
+.my-stuvv-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.my-stuvv-container > div {
+  margin: .5rem;
+}
