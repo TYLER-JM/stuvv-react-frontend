@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -12,11 +12,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-// import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PostAddIcon from '@material-ui/icons/PostAdd';
-import Shoe from './shoe.jpg'
+import CardListItemCarousel from './CardListItemCarousel';
+
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -65,16 +65,7 @@ export default function CardListItem() {
         title="Tyler's shoe"
         subheader="September 14, 2016"
       />
-      <CardMedia
-        className={classes.media}
-        image={Shoe}
-        title="A shoe"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This is a very nice shoe. Please rent. 
-        </Typography>
-      </CardContent>
+      <CardListItemCarousel />
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
@@ -95,9 +86,9 @@ export default function CardListItem() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
+          <Typography paragraph>Description:</Typography>
           <Typography paragraph>
-            Hey guys what info can we put down here? Will this dropdown even exist? 
+            This is my favourite shoe. Great condition. You'll love it!
           </Typography>
         </CardContent>
       </Collapse>
