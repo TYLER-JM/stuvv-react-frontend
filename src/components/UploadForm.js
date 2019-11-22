@@ -31,7 +31,7 @@ export default function Form() {
       <input type="file" onChange={event => {
         console.log('event files', event.target.files[0]);
         setImages(event.target.files[0])
-      }} />
+      }} multiple />
       <button onClick={() => sendRequest()}>submit</button>
     </form >
   );
