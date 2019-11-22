@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
+import ListItemText from '@material-ui/core/ListItemText';
 import { BrowserRouter as Link } from "react-router-dom";
 
 
@@ -45,16 +45,16 @@ export default function SideBar() {
     >
       <List>
   
-        {/* {['JAMES BOND', 'My Stuvv', 'My Requests', 'Messages', 'Logout'].map((text, index) => (
+        {['JAMES BOND', 'My Stuvv', 'My Requests', 'Messages', 'Logout'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
             <ListItemText primary={text} />
           </ListItem>
-        ))}  */}
-
-        <ListItem button key="Messages">
-          <Link to="/messages">Messages</Link>
-        </ListItem>
+        ))} 
+{/* 
+        <ListItem button key="Messages"> */}
+          {/* <Link to="/messages">Messages</Link> */}
+        {/* </ListItem> */}
 
     
   
