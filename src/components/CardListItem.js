@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
+// import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
@@ -16,6 +16,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import CardListItemCarousel from './CardListItemCarousel';
+import EditIcon from '@material-ui/icons/Edit';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 
 const useStyles = makeStyles(theme => ({
@@ -69,10 +71,10 @@ export default function CardListItem(props) {
       <CardListItemCarousel />
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <ThumbUpIcon />
         </IconButton>
         <IconButton aria-label="share"> 
-          <PostAddIcon />
+          {window.location.pathname === "/my_stuvv" ? <EditIcon /> : <PostAddIcon />}
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {

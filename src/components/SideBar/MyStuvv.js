@@ -17,16 +17,16 @@ export default function MyStuvv() {
       "description": "This is a nice shoe",
       "availability": true,
     },
-    // {
-    //   "title": "Tyler's Shoe",
-    //   "description": "This is a nice shoe",
-    //   "availability": true,
-    // },
-    // {
-    //   "title": "Tyler's Shoe",
-    //   "description": "This is a nice shoe",
-    //   "availability": true,
-    // },
+    {
+      "title": "Tyler's Shoe",
+      "description": "This is a nice shoe",
+      "availability": true,
+    },
+    {
+      "title": "Tyler's Shoe",
+      "description": "This is a nice shoe",
+      "availability": true,
+    },
   ]
   // return (
   //   <CardListItem
