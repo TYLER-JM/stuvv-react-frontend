@@ -6,12 +6,13 @@ import {
   Link
 } from "react-router-dom";
 import SideBar from './SideBar';
+import "./Navbar.scss";
 
 export default function Navbar() {
   // const [session, setSession] = useState(true)
 
   return (
-      <div>
+      <div className="nav">
         <div>
           < SideBar />
         </div>

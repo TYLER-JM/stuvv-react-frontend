@@ -5,8 +5,9 @@ import Navbar from './components/Navbar'
 import Register from './components/Register'
 import Messages from './components/SideBar/Messages'
 import MyStuvv from './components/SideBar/MyStuvv'
-import './App.css';
+import './App.scss';
 import './components/SideBar/MyStuvv.scss'
+
 
 
 
