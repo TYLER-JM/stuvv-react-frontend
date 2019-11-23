@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CardListItem from "./CardListItem";
 
-export default function CardList({cardsData}) {
+export default function CardList({ cardsData }) {
   const [modalShow, setModalShow] = useState(false);
 
   // const cardData = [
@@ -31,11 +31,11 @@ export default function CardList({cardsData}) {
     return (
       <div>
         <CardListItem
-        title={card.title}
-        description={card.description}
-        availability={card.availability} />
+          title={card.title}
+          description={card.description}
+          availability={card.availability} />
       </div>
-    ) 
+    )
   })
   // return (
   //   <CardListItem
@@ -44,8 +44,8 @@ export default function CardList({cardsData}) {
   //     availability={cardData.availability}
   //    />
   // )
-  
+
   return <ul className="my-stuvv-container">{cards}</ul>
-  
-  
+
+
 }
