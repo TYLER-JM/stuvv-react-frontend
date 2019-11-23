@@ -18,6 +18,7 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import CardListItemCarousel from './CardListItemCarousel';
 import EditIcon from '@material-ui/icons/Edit';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ListingModal from './ListingModal';
 
 
 
@@ -72,13 +73,13 @@ export default function CardListItem(props) {
         subheader="September 14, 2016"
       />
       <CardListItemCarousel />
-      {/* <ListingModal show={modalShow} onHide={() => setModalShow(false)} /> */}
+      <ListingModal show={modalShow} onHide={() => setModalShow(false)} />
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <ThumbUpIcon />
         </IconButton>
         <IconButton aria-label="share"> 
-          {window.location.pathname === "/my_stuvv" ? <EditIcon /> : <PostAddIcon />}
+          {window.location.pathname === "/my_stuvv" ? <EditIcon onClick={() => setModalShow(true)}/> : <PostAddIcon />}
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {

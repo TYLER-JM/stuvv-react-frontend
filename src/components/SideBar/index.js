@@ -9,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 // import { BrowserRouter as Link } from "react-router-dom";
 import { Link  } from "react-router-dom";
+import MenuIcon from '@material-ui/icons/Menu';
 
 
 const useStyles = makeStyles({
@@ -69,7 +70,7 @@ export default function SideBar() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('left', true)}>Open Left</Button>
+      <Button onClick={toggleDrawer('left', true)}><MenuIcon /></Button>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>
