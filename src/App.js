@@ -2,17 +2,18 @@ import React from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar'
-import Register from './components/Register'
+import Register from './components/RegisterModal'
 import Messages from './components/SideBar/Messages'
 import MyStuvv from './components/SideBar/MyStuvv'
 import './App.css';
 import './components/SideBar/MyStuvv.scss'
+import RegisterForm from './components/RegisterForm';
 
 
 
 function App() {
   return (
-    
+
     <Router>
       <div>
         <Navbar />
@@ -25,9 +26,9 @@ function App() {
           <Route
             exact path="/register"
             // component={Home}
-            component={Register}
+            render={() => <RegisterForm />}
           />
-          <Route 
+          <Route
             exact path="/messages"
             component={Messages}
           />
