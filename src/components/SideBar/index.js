@@ -57,6 +57,7 @@ export default function SideBar() {
           <Link to="/my_stuvv"><ListItem button key="My_Stuvv">My Stuvv</ListItem></Link>
           <Link to="/my_requests"><ListItem button key="My_Requests">My Requests</ListItem></Link>
           <Link to="/"><ListItem button key="Logout">Logout</ListItem></Link>
+          <Link to="/build"><ListItem button key="Build">(temp) Build-link</ListItem></Link>
           
       </List>
     </div>
