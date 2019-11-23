@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CardListItem from "./CardListItem";
 
 export default function CardList({ cardsData }) {
-  const [modalShow, setModalShow] = useState(false);
+  // const [modalShow, setModalShow] = useState(false);
 
   // const cardData = [
   //   {
@@ -28,12 +28,16 @@ export default function CardList({ cardsData }) {
   // ]
 
   const cards = cardsData.map((card) => {
+    console.log("CardList cardsData: ", cardsData)
     return (
       <div>
         <CardListItem
           title={card.title}
           description={card.description}
-          availability={card.availability} />
+          availability={card.availability}
+          urls={card.image_urls}
+          price={card.price_per_day / 100}  
+        />
       </div>
     )
   })

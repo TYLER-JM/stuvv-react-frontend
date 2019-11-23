@@ -46,6 +46,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CardListItem(props) {
+  // console.log("CLIprops: ", props)
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [modalShow, setModalShow] = React.useState(false);
@@ -70,9 +71,12 @@ export default function CardListItem(props) {
           </IconButton>
         }
         title={props.title}
-        subheader="September 14, 2016"
+        subheader={`$ ${props.price} per day`}
       />
-      <CardListItemCarousel />
+      {/* <CardListItemCarousel /> */}
+      <CardListItemCarousel 
+        urls={props.urls}
+      />
       <ListingModal show={modalShow} onHide={() => setModalShow(false)} />
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
