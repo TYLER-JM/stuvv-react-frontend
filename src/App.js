@@ -7,6 +7,7 @@ import Messages from './components/SideBar/Messages'
 import MyStuvv from './components/SideBar/MyStuvv'
 import './App.css';
 import './components/SideBar/MyStuvv.scss'
+import BuildForm from './components/Build/BuildForm';
 
 
 
@@ -36,6 +37,10 @@ function App() {
             // component={MyStuvv}
             render={() => <MyStuvv className="my-stuvv-container" />}
 
+          />
+          <Route
+            exact path="/build"
+            render={() => <BuildForm />}
           />
         </Switch>
 
