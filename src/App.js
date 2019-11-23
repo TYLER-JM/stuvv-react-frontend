@@ -2,18 +2,20 @@ import React from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar'
-import Register from './components/Register'
+import Register from './components/RegisterModal'
 import Messages from './components/SideBar/Messages'
 import MyStuvv from './components/SideBar/MyStuvv'
 import './App.scss';
 import './components/SideBar/MyStuvv.scss'
+import RegisterForm from './components/RegisterForm';
+import BuildForm from './components/Build/BuildForm';
 
 
 
 
 function App() {
   return (
-    
+
     <Router>
       <div>
         <Navbar />
@@ -26,9 +28,9 @@ function App() {
           <Route
             exact path="/register"
             // component={Home}
-            component={Register}
+            render={() => <RegisterForm />}
           />
-          <Route 
+          <Route
             exact path="/messages"
             component={Messages}
           />
@@ -37,6 +39,10 @@ function App() {
             // component={MyStuvv}
             render={() => <MyStuvv className="my-stuvv-container" />}
 
+          />
+          <Route
+            exact path="/build"
+            render={() => <BuildForm />}
           />
         </Switch>
 
