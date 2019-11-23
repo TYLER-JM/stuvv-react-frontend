@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 .register-modal {
+  border: none;
+  font-family: "Montserrat", sans-serif;
   * {
     box-sizing: border-box;
   }
@@ -34,9 +36,9 @@
   }
 
   button {
-    border: 2px solid #ff4b2b;
+    border: 2px solid #51ab97;
     border-radius: 30px;
-    background-color: #ff4b2b;
+    background-color: #51ab97;
     color: #ffffff;
     font-size: 12px;
     font-weight: bold;
@@ -149,9 +151,9 @@
   }
 
   .overlay {
-    background: #ff416c;
-    background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    background: #51ab97;
+    background: -webkit-linear-gradient(to right, #51ab97, #51ab97);
+    background: linear-gradient(to right, #51ab97, #51ab97);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -232,7 +234,7 @@
   }
 
   footer i {
-    color: red;
+    color: #51ab97;
   }
 
   footer a {

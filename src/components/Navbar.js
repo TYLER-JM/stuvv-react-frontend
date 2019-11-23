@@ -18,7 +18,6 @@ export default function Navbar() {
       <div>
         < SideBar />
       </div>
-      <Register show={modalShow} onHide={() => setModalShow(false)} />
       {/* <div>
         <Link to="/register">SignIn</Link>
         <Link to="/register">Register</Link>
@@ -29,6 +28,7 @@ export default function Navbar() {
 
       </ul>
 
+      <Register show={modalShow} onHide={() => setModalShow(false)} />
       <i class="fab fa-stumbleupon-circle"></i>
     </nav>
   );
