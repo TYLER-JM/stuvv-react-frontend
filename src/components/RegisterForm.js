@@ -1,24 +1,49 @@
 import React, { useState } from 'react'
-
+import axios from "axios";
 import './RegisterForm.scss'
 
 
 export default function RegisterForm() {
 
   const [css, setCss] = useState("container");
+  const [user, setUser] = useState({});
 
+  const sendRequest = () => {
+    // const data = new FormData();
+    // data.append("user", user)
+
+
+    return axios.post(`http://localhost:3000/users`, { user }).then(resp => console.log("got to the then")).catch(error => console.error())
+  }
 
 
   return (
     <div className={css} id="container">
       <div className="form-container sign-up-container">
-        <form action="#">
+        <form onSubmit={event => event.preventDefault()}>
           <h1>Create Account</h1>
           <br />
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <button>Sign Up</button>
+          <input
+            type="text"
+            placeholder="Fisrt Name"
+            onChange={e => setUser({ first_name: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            onChange={e => setUser({ ...user, last_name: e.target.value })}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={e => setUser({ ...user, email: e.target.value })}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={e => setUser({ ...user, password: e.target.value })}
+          />
+          <button onClick={() => sendRequest()}>Sign Up</button>
         </form>
       </div>
       <div className="form-container sign-in-container">
