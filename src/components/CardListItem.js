@@ -56,6 +56,10 @@ export default function CardListItem(props) {
     setExpanded(!expanded);
   };
 
+  const handlePageChange = () => {
+    window.location.pathname = "/build" 
+  };
+
 
   return (
     <Card className={classes.card}>
@@ -83,7 +87,7 @@ export default function CardListItem(props) {
           <ThumbUpIcon />
         </IconButton>
         <IconButton aria-label="share"> 
-          {window.location.pathname === "/my_stuvv" ? <EditIcon onClick={() => setModalShow(true)}/> : <PostAddIcon />}
+          {window.location.pathname === "/" ? <PostAddIcon onClick={() => setModalShow(true)}/> : <EditIcon onClick={handlePageChange}/>}
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
