@@ -5,8 +5,9 @@
 
 @import "bootstrap/scss/bootstrap";
 
-//fixes the card getting wider when the description is shown
-div.makeStyles-card-65 {
+// fixes the card getting wider when the description is shown
+// this isn't a long term solution
+div.makeStyles-card-200 {
   max-width: 300px;
 }
 
