@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { DateRangeInput } from "@datepicker-react/styled";
 
 
+// used by the textfield
 const useStyles = makeStyles(theme => ({
   root: { 
     textField: {
@@ -13,9 +15,28 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// used by the calender component
+const initialState = {
+  startDate: null,
+  endDate: null,
+  focusedInput: null
+};
+function reducer(state, action) {
+  switch (action.type) {
+    case "focusChange":
+      return { ...state, focusedInput: action.payload };
+    case "dateChange":
+      return action.payload;
+    default:
+      throw new Error();
+  }
+}
+
 export default function RequestForm() {
   const classes = useStyles();
   const [message, setMessage] = useState("")
+  const [state, dispatch] = useReducer(reducer, initialState);
+
 
    //handles the value of the multiline textarea (description)
    const handleMessageChange = event => {
@@ -24,7 +45,17 @@ export default function RequestForm() {
 
   return (
     <div>
-      <h1>REQUEST FORM</h1>
+      <DateRangeInput
+        onDatesChange={data => dispatch({ type: "dateChange", payload: data })}
+        onFocusChange={focusedInput =>
+          dispatch({ type: "focusChange", payload: focusedInput })
+        }
+        startDate={state.startDate} // Date or null
+        endDate={state.endDate} // Date or null
+        focusedInput={state.focusedInput} // START_DATE, END_DATE or null
+        // exactMinBookingDays={3}
+        vertical={false}
+      />
       <TextField
         id="outlined-multiline-static"
         label="Message"
