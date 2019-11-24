@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal"
 import Form from "./UploadForm";
 import UploadForm from "./UploadForm";
 import Button from "react-bootstrap/Button";
+import RequestForm from "./RequestForm";
 
 
 export default function ListingModal(props) {
@@ -19,7 +20,8 @@ export default function ListingModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <UploadForm />
+        <RequestForm />
+        {/* <UploadForm /> */}
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
