@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Carousel from 'react-bootstrap/Carousel'
 import Camera from './camera.jpg'
 import Shoe from './shoe.jpg'
+import './CarouselOverride.scss'
 
 export default function CardListItemCarousel(props) {
   // console.log("CLIC props: ", props)
@@ -14,7 +15,7 @@ export default function CardListItemCarousel(props) {
   };
 
   const images = props.urls.map((img, i) => {
-    console.log(`Carousel loop: ${i}, url: ${img.url}`)
+    // console.log(`Carousel loop: ${i}, url: ${img.url}`)
     return (
       // <li key={i}>
         <Carousel.Item>
