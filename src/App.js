@@ -5,10 +5,11 @@ import Navbar from './components/Navbar'
 import Register from './components/RegisterModal'
 import Messages from './components/SideBar/Messages'
 import MyStuvv from './components/SideBar/MyStuvv'
-import './App.css';
+import './App.scss';
 import './components/SideBar/MyStuvv.scss'
 import RegisterForm from './components/RegisterForm';
 import BuildForm from './components/Build/BuildForm';
+
 
 
 
