@@ -1,11 +1,15 @@
-.v-header{
+*{
+  box-sizing: border-box;
+}
+
+.v-header {
   height: 100vh;
   display: flex;
   align-items: center;
   color: white;
 }
 
-.container{
+.container {
   max-width: 960px;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -22,34 +26,32 @@
   overflow: hidden;
 }
 
-.fullscreen-video-wrap  video{
+.fullscreen-video-wrap video {
   min-width: 100%;
   min-height: 100%;
 }
 
-.header-overlay{
+.header-overlay {
   height: 100vh;
+  width: 100vh;
   position: absolute;
-  width: 100vw;
   top: 0;
   left: 0;
-  opacity: 0.3;
   z-index: 1;
-  background: #225470;
+  opacity: .6;
 }
 
-.header-content{
+.header-content {
   z-index: 2;
 }
 
-
-.header-content .title_logo{
+.header-content h1 {
   font-size: 50px;
   margin-bottom: 0;
-}t
+}
 
 .header-content p {
   font-size: 1.5rem;
   display: block;
-  padding-bottom: 2rem;
+  // padding-bottom: 2rem;
 }

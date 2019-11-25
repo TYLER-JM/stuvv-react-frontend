@@ -2,10 +2,14 @@ import React from 'react'
 import Form from './UploadForm'
 import SideBar from "./SideBar/index"
 import CardList from "./CardList"
-import Jumbotron from 'react-bootstrap/Jumbotron'
+import WelcomeVideo from './WelcomeVideo'
 import Button from 'react-bootstrap/Button'
 import Handshake from './handshake.jpg'
 import Video from './video.mp4'
+import "./Home.scss"
+
+
+
 
 
 
@@ -77,6 +81,7 @@ export default function Home() {
     },
   ]
 
+  // use this if we use a background image > video
   var sectionStyle = {
     width: "100%",
     height: "400px",
@@ -85,9 +90,19 @@ export default function Home() {
 
   return (
     <div>
-      {/* <h1>Welcome to the home page</h1> */}
-      {/* <Jumbotron> */}
-      <Jumbotron  style={{  
+      <WelcomeVideo />
+      < CardList cardsData={cardData} />
+      {/* < SideBar /> */}
+      < CardList cardsData={listings} />
+      < Form />
+    </div>
+  );
+}
+
+
+// not sure if we'll need this later...keep for now
+
+ {/* <Jumbotron  style={{  
         backgroundImage: `url(${Handshake})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
@@ -106,11 +121,6 @@ export default function Home() {
        <p>
          <Button variant="primary">Create A Listing</Button>
        </p>
-      </Jumbotron> 
-      < CardList cardsData={cardData} />
-      {/* < SideBar /> */}
-      < CardList cardsData={listings} />
-      < Form />
-    </div>
-  );
-}
+      </Jumbotron>  */}
+     
+     
