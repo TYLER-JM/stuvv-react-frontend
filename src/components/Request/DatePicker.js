@@ -8,19 +8,27 @@ export default function DatePicker() {
   const [selectedDate, setSelectedDate] = useState(new Date('2019-11-18T00:00:00'));
 
   const hardDates = () => {
-    let d = new Date('2019-11-23 19:48:30.82458')
-    return d.toLocaleDateString()
+    let a = new Date('2019-11-20 19:48:30.82458');
+    let b = new Date('2019-11-24 19:48:30.82458');
+    let c = new Date('2019-11-12 19:48:30.82458');
+    let d = new Date('2019-11-17 19:48:30.82458');
+    return [
+      {"start_date": a.toLocaleDateString(), "end_date": b.toLocaleDateString()},
+      {"start_date": c.toLocaleDateString(), "end_date": d.toLocaleDateString()},
+    ]
   }; 
 
   const handleDateChange = date => {
     setSelectedDate(date);
   };
 
-  const  disableRandomDates = (date) => {
-    // return Math.random() > 0.7;
-    console.log(date)
-    console.log("HARD DATES", hardDates())
-    return date.toLocaleDateString() === hardDates();
+  const  disableDates = (date) => {
+    const dateString = date.toLocaleDateString()
+    for (let req of hardDates()) {
+      if (dateString > req.start_date && dateString < req.end_date) {
+        return true
+      } 
+    }
   };
 
   function disableWeekends(date) {
@@ -31,8 +39,7 @@ export default function DatePicker() {
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">
         <KeyboardDatePicker
-          shouldDisableDate={disableRandomDates}
-          // shouldDisableDate={disableWeekends}
+          shouldDisableDate={disableDates}
           disableToolbar
           variant="inline"
           format="MM/dd/yyyy"
