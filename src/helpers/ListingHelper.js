@@ -6,16 +6,16 @@ export default function ListingHelper() {
 
   useEffect(() => {
     console.log("in the use effect")
-    axios.get("http://localhost:3000/listings")
+    axios.get("http://localhost:3000/listings", { withCredentials: true })
       .then(resp => {
         console.log("resp in HELPER: ", resp)
         setListings(resp.data)
       })
       .catch(error => console.log(error))
 
-      return function cleanup() {
-        console.log("all done");
-      }
+    return function cleanup() {
+      console.log("all done");
+    }
   }, [])
 
 

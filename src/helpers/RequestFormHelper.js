@@ -6,7 +6,7 @@ export default function RequestFormHelper() {
 
   useEffect(() => {
     // console.log("in the Request form use effect...")
-    axios.get("http://localhost:3000/requests/2")
+    axios.get("http://localhost:3000/requests/2", { withCredentials: true })
       .then(resp => {
         // console.log("resp in REQUEST HELPER: ", resp)
         setRequests(resp.data)

@@ -6,17 +6,13 @@ import Alert from 'react-bootstrap/Alert'
 
 export default function RegisterForm() {
 
-  // axios.defaults.xsrfCookieName = "CSRF-TOKEN";
-  // axios.defaults.xsrfHeaderName = "X-CSRF-Token";
-  // axios.defaults.withCredentials = true;
-
   const [css, setCss] = useState("container");
   const [user, setUser] = useState({});
   const [session, setSession] = useState({});
 
   const sendRequestRegister = () => {
     // we need to adjust the response. It already sets the session but maybe responde would be everything from that user...
-    return axios.post(`http://localhost:3000/users`, { user })
+    return axios.post(`http://localhost:3000/users`, { user, withCredentials: true })
       .then(resp => {
         console.log("got to the register")
         // window.location.pathname = "/"
@@ -35,17 +31,12 @@ export default function RegisterForm() {
   const sendRequestLogin = () => {
     console.log("session: ", session)
     // we need to adjust the response. It already sets the session but maybe responde would be everything from that user...
-    return axios.post(`http://localhost:3000/sessions`,{session}, {withCredentials: true}
+    return axios.post(`http://localhost:3000/sessions`, { withCredentials: true, session }
     )
       .then(resp => {
-<<<<<<< HEAD
         console.log(resp.status);
         // window.location.pathname = "/"
         console.log("got to the login");
-=======
-        console.log(resp);
-        // console.log("got to the login");
->>>>>>> tamires/elements-for-session
         // console.log(resp.headers)
       })
       // .then(resp => window.location.pathname = "/")
