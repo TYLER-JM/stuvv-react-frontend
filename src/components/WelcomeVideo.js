@@ -8,13 +8,11 @@ import axios from "axios";
 
 
 
-export default function WelcomeVideo() {
+export default function WelcomeVideo(props) {
 
   const [search, setSearch] = useState("");
 
-  const sendRequest = () => {
-    return axios.post(`http://localhost:3000/search`, { search }).then(resp => console.log("got to the then")).catch(error => console.error())
-  }
+ 
   return (
     <div>
       <header className="v-header container">
@@ -34,7 +32,7 @@ export default function WelcomeVideo() {
               onChange={e => setSearch(e.target.value)}
             >
             </input>
-            <button className="btn btn-light my-2 my-sm-0" type="submit" onClick={() => sendRequest()}>Search</button>
+            <button className="btn btn-light my-2 my-sm-0" type="submit" onClick={() => props.sendRequest(search)}>Search</button>
           </form>
         </div>
 
