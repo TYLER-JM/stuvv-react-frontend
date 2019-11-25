@@ -24,63 +24,63 @@ export default function Home() {
 
   const listings = ListingHelper();
   console.log("listing defined after calling helper", listings)
-  const cardData = [
-    {
-      "title": "Tyler's Shoe",
-      "description": "This is a nice shoe",
-      "availability": true,
-      "image_urls": [
-        {
-          "url": "https://lorempixel.com/300/300/technics"
-        },
-        {
-          "url": "https://lorempixel.com/300/300/technics"
-        },
-      ]
-    },
-    {
-      "title": "Tyler's Shoe",
-      "description": "This is a nice shoe",
-      "availability": true,
-      "image_urls": [
-        {
-          "url": "https://lorempixel.com/300/300/technics"
-        },
-        {
-          "url": "https://lorempixel.com/300/300/technics"
-        },
-      ]
-    },
-    {
-      "title": "Tyler's Shoe",
-      "description": "This is a nice shoe",
-      "availability": true,
-      "image_urls": [
-        {
-          "url": "https://lorempixel.com/300/300/technics"
-        },
-        {
-          "url": "https://lorempixel.com/300/300/technics"
-        },
-        {
-          "url": "https://lorempixel.com/300/300/technics"
-        },
-      ]
-    },
-    {
-      "title": "Tyler's Shoe",
-      "description": "This is a nice shoe",
-      "availability": true,
-      "image_urls": [
-        {
-          "url": "https://lorempixel.com/300/300/technics"
-        },
-        {
-          "url": "https://lorempixel.com/300/300/technics"
-        },
-      ]
-    },
-  ]
+  // const cardData = [
+  //   {
+  //     "title": "Tyler's Shoe",
+  //     "description": "This is a nice shoe",
+  //     "availability": true,
+  //     "image_urls": [
+  //       {
+  //         "url": "https://lorempixel.com/300/300/technics"
+  //       },
+  //       {
+  //         "url": "https://lorempixel.com/300/300/technics"
+  //       },
+  //     ]
+  //   },
+  //   {
+  //     "title": "Tyler's Shoe",
+  //     "description": "This is a nice shoe",
+  //     "availability": true,
+  //     "image_urls": [
+  //       {
+  //         "url": "https://lorempixel.com/300/300/technics"
+  //       },
+  //       {
+  //         "url": "https://lorempixel.com/300/300/technics"
+  //       },
+  //     ]
+  //   },
+  //   {
+  //     "title": "Tyler's Shoe",
+  //     "description": "This is a nice shoe",
+  //     "availability": true,
+  //     "image_urls": [
+  //       {
+  //         "url": "https://lorempixel.com/300/300/technics"
+  //       },
+  //       {
+  //         "url": "https://lorempixel.com/300/300/technics"
+  //       },
+  //       {
+  //         "url": "https://lorempixel.com/300/300/technics"
+  //       },
+  //     ]
+  //   },
+  //   {
+  //     "title": "Tyler's Shoe",
+  //     "description": "This is a nice shoe",
+  //     "availability": true,
+  //     "image_urls": [
+  //       {
+  //         "url": "https://lorempixel.com/300/300/technics"
+  //       },
+  //       {
+  //         "url": "https://lorempixel.com/300/300/technics"
+  //       },
+  //     ]
+  //   },
+  // ]
 
   // use this if we use a background image > video
   var sectionStyle = {
@@ -92,7 +92,7 @@ export default function Home() {
   return (
     <div>
       <WelcomeVideo />
-      < CardList cardsData={cardData} />
+      {/* < CardList cardsData={cardData} /> */}
       {/* < SideBar /> */}
       < CardList cardsData={listings} />
       < Form />

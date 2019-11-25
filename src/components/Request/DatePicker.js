@@ -26,11 +26,13 @@ export default function DatePicker(props) {
   };
 
   const  disableDates = (date) => {
+    //not working properly in chrome yet
     const dateString = date.toLocaleDateString()
     for (let req of requestedDates) {
       // console.log("startDATE: ", req.start_date)
       const startDateString = new Date(req.start_date)
-      if (dateString >= startDateString.toLocaleDateString() && dateString <= req.end_date) {
+      const endDateString = new Date(req.end_date)
+      if (dateString >= startDateString.toLocaleDateString() && dateString <= endDateString.toLocaleDateString()) {
         return true
       } 
     }
