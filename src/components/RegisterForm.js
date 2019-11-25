@@ -6,6 +6,10 @@ import Alert from 'react-bootstrap/Alert'
 
 export default function RegisterForm() {
 
+  // axios.defaults.xsrfCookieName = "CSRF-TOKEN";
+  // axios.defaults.xsrfHeaderName = "X-CSRF-Token";
+  // axios.defaults.withCredentials = true;
+
   const [css, setCss] = useState("container");
   const [user, setUser] = useState({});
   const [session, setSession] = useState({});
@@ -13,7 +17,10 @@ export default function RegisterForm() {
   const sendRequestRegister = () => {
     // we need to adjust the response. It already sets the session but maybe responde would be everything from that user...
     return axios.post(`http://localhost:3000/users`, { user })
-      .then(resp => console.log("got to the register"))
+      .then(resp => {
+        console.log("got to the register")
+        // window.location.pathname = "/"
+      })
       .catch(error => {
         alert("Please try again")
         console.log(error.response.request.response)
@@ -30,9 +37,11 @@ export default function RegisterForm() {
     return axios.post(`http://localhost:3000/sessions`, { session })
       .then(resp => {
         console.log(resp.status);
-        // console.log("got to the login");
+        // window.location.pathname = "/"
+        console.log("got to the login");
         // console.log(resp.headers)
       })
+      // .then(resp => window.location.pathname = "/")
       .catch(error => {
         alert("Please try again")
         console.log(error.response)

@@ -1,0 +1,32 @@
+// copied from node_modules/bootstrap/_caroursel.scss
+// override is not happening
+// had to add div. in order to override
+
+
+@import "bootstrap/scss/bootstrap";
+
+// fixes the card getting wider when the description is shown
+// this isn't a long term solution
+div.makeStyles-card-200 {
+  max-width: 300px;
+}
+
+div.carousel-inner {
+  position: relative;
+  // width: 100%;
+  width: 300px;
+  overflow: hidden;
+  @include clearfix();
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  // width: 100%;
+  width: 300px;
+  height: 300px;
+  margin-right: -100%;
+  backface-visibility: hidden;
+  @include transition($carousel-transition);
+}
