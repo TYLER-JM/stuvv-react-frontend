@@ -7,6 +7,7 @@ import ListingHelper from '../helpers/ListingHelper';
 
 export default function Home() {
 
+
   // get the value from the helper and assign it to cardData
 
   const listings = ListingHelper();
