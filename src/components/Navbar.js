@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import SideBar from './SideBar';
+import "./Navbar.scss";
 import Register from './RegisterModal';
 
 export default function Navbar() {
