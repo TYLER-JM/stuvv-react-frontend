@@ -26,10 +26,12 @@ export default function RegisterForm() {
   }
 
   const sendRequestLogin = () => {
+    console.log("session: ", session)
     // we need to adjust the response. It already sets the session but maybe responde would be everything from that user...
-    return axios.post(`http://localhost:3000/sessions`, { session })
+    return axios.post(`http://localhost:3000/sessions`,{session}, {withCredentials: true}
+    )
       .then(resp => {
-        console.log(resp.status);
+        console.log(resp);
         // console.log("got to the login");
         // console.log(resp.headers)
       })

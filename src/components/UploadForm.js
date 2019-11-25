@@ -90,7 +90,7 @@ export default function Form() {
     data.append("availability", state.checkedA)
     data.append("price_per_day", amount)
 
-    return axios.post(`http://localhost:3000/listings`, data).then(resp => console.log("got to the then")).catch(error => console.error())
+    return axios.post(`http://localhost:3000/listings`, data, {withCredentials: true}).then(resp => console.log("got to the then")).catch(error => console.error())
   }
 
   return (
