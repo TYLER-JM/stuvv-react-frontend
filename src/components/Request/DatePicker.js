@@ -19,20 +19,23 @@ export default function DatePicker(props) {
   //   ]
   // }; 
 
-  const requestedDates = RequestFormHelper();
+  const requestedDates = RequestFormHelper(props.listingId);
 
   const handleDateChange = date => {
     setSelectedDate(date);
   };
 
   const  disableDates = (date) => {
-    //not working properly in chrome yet
-    const dateString = date.toLocaleDateString()
+    // const dateString = date.toLocaleDateString()
+    const dateString = date.getTime()
+    console.log("DATE", dateString)
+
     for (let req of requestedDates) {
-      // console.log("startDATE: ", req.start_date)
+      console.log(`startDATE: ${req.start_date} ENDDATE: ${req.end_date}`)
       const startDateString = new Date(req.start_date)
       const endDateString = new Date(req.end_date)
-      if (dateString >= startDateString.toLocaleDateString() && dateString <= endDateString.toLocaleDateString()) {
+      // if (dateString >= startDateString.toLocaleDateString() && dateString <= endDateString.toLocaleDateString()) {
+      if (dateString >= startDateString.getTime() && dateString <= endDateString.getTime()) {
         return true
       } 
     }
@@ -47,6 +50,19 @@ export default function DatePicker(props) {
       <Grid container justify="space-around">
         <KeyboardDatePicker
           shouldDisableDate={disableDates}
+          margin="normal"
+          id="date-picker-dialog"
+          label="Start Date"
+          format="MM/dd/yyyy"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+
+        {/* <KeyboardDatePicker
+          shouldDisableDate={disableDates}
           disableToolbar
           variant="inline"
           format="MM/dd/yyyy"
@@ -58,7 +74,7 @@ export default function DatePicker(props) {
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
-        />
+        /> */}
         <KeyboardDatePicker
           disableToolbar
           variant="inline"
@@ -72,17 +88,6 @@ export default function DatePicker(props) {
             'aria-label': 'change date',
           }}
         />
-        {/* <KeyboardDatePicker
-          margin="normal"
-          id="date-picker-dialog"
-          label="Date picker dialog"
-          format="MM/dd/yyyy"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        /> */}
       </Grid>
     </MuiPickersUtilsProvider>
   );

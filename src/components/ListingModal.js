@@ -16,11 +16,11 @@ export default function ListingModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Request Stuvv
+          {`Request Stuvv ${props.listingId}`}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <RequestForm />
+        <RequestForm listingId={props.listingId} />
         {/* <UploadForm /> */}
       </Modal.Body>
       <Modal.Footer>
