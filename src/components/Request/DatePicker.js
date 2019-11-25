@@ -29,7 +29,8 @@ export default function DatePicker(props) {
     const dateString = date.toLocaleDateString()
     for (let req of requestedDates) {
       // console.log("startDATE: ", req.start_date)
-      if (dateString >= req.start_date && dateString <= req.end_date) {
+      const startDateString = new Date(req.start_date)
+      if (dateString >= startDateString.toLocaleDateString() && dateString <= req.end_date) {
         return true
       } 
     }
