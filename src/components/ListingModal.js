@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal"
 import Form from "./UploadForm";
 import UploadForm from "./UploadForm";
 import Button from "react-bootstrap/Button";
-import RequestForm from "./RequestForm";
+import RequestForm from "./Request/RequestForm";
 
 
 export default function ListingModal(props) {
@@ -16,7 +16,7 @@ export default function ListingModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Edit
+          Request Stuvv
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
