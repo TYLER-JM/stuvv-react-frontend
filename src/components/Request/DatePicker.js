@@ -3,8 +3,9 @@ import 'date-fns';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import RequestFormHelper from '../../helpers/RequestFormHelper';
 
-export default function DatePicker() {
+export default function DatePicker(props) {
   const [selectedDate, setSelectedDate] = useState(new Date('2019-11-18T00:00:00'));
 
   const hardDates = () => {
@@ -18,14 +19,17 @@ export default function DatePicker() {
     ]
   }; 
 
+  const requestedDates = RequestFormHelper();
+
   const handleDateChange = date => {
     setSelectedDate(date);
   };
 
   const  disableDates = (date) => {
     const dateString = date.toLocaleDateString()
-    for (let req of hardDates()) {
-      if (dateString > req.start_date && dateString < req.end_date) {
+    for (let req of requestedDates) {
+      // console.log("startDATE: ", req.start_date)
+      if (dateString >= req.start_date && dateString <= req.end_date) {
         return true
       } 
     }

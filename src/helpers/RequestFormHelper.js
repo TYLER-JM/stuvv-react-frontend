@@ -5,8 +5,8 @@ export default function RequestFormHelper() {
   const [requests, setRequests] = useState([])
 
   useEffect(() => {
-    console.log("in the use effect")
-    axios.get("http://localhost:3000/requests")
+    console.log("in the Request form use effect...")
+    axios.get("http://localhost:3000/requests/2")
       .then(resp => {
         console.log("resp in REQUEST HELPER: ", resp)
         setRequests(resp.data)
@@ -19,5 +19,5 @@ export default function RequestFormHelper() {
   }, [])
 
 
-  return listings
+  return requests
 }
