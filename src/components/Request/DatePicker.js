@@ -8,16 +8,16 @@ import RequestFormHelper from '../../helpers/RequestFormHelper';
 export default function DatePicker(props) {
   const [selectedDate, setSelectedDate] = useState(new Date('2019-11-18T00:00:00'));
 
-  const hardDates = () => {
-    let a = new Date('2019-11-20 19:48:30.82458');
-    let b = new Date('2019-11-24 19:48:30.82458');
-    let c = new Date('2019-11-12 19:48:30.82458');
-    let d = new Date('2019-11-17 19:48:30.82458');
-    return [
-      {"start_date": a.toLocaleDateString(), "end_date": b.toLocaleDateString()},
-      {"start_date": c.toLocaleDateString(), "end_date": d.toLocaleDateString()},
-    ]
-  }; 
+  // const hardDates = () => {
+  //   let a = new Date('2019-11-20 19:48:30.82458');
+  //   let b = new Date('2019-11-24 19:48:30.82458');
+  //   let c = new Date('2019-11-12 19:48:30.82458');
+  //   let d = new Date('2019-11-17 19:48:30.82458');
+  //   return [
+  //     {"start_date": a.toLocaleDateString(), "end_date": b.toLocaleDateString()},
+  //     {"start_date": c.toLocaleDateString(), "end_date": d.toLocaleDateString()},
+  //   ]
+  // }; 
 
   const requestedDates = RequestFormHelper();
 
@@ -36,9 +36,9 @@ export default function DatePicker(props) {
     }
   };
 
-  function disableWeekends(date) {
-    return date.getDay() === 0 || date.getDay() === 6;
-  }
+  // function disableWeekends(date) {
+  //   return date.getDay() === 0 || date.getDay() === 6;
+  // }
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
