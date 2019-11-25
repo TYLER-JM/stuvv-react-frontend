@@ -23,6 +23,7 @@ export default function Navbar() {
         <Link to="/register">SignIn</Link>
         <Link to="/register">Register</Link>
       </div> */}
+      {if (currentUser)}
       <ul>
         <li onClick={() => setModalShow(true)}>SignIn</li>
         <li onClick={() => setModalShow(true)}>Register</li>
