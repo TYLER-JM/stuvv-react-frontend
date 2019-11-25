@@ -32,6 +32,7 @@ export default function CardList({ cardsData }) {
     return (
       <div>
         <CardListItem
+          listingId={card.id}
           title={card.title}
           description={card.description}
           availability={card.availability}

@@ -46,7 +46,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CardListItem(props) {
-  // console.log("CLIprops: ", props)
+  // props.listingId
+
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [modalShow, setModalShow] = React.useState(false);
