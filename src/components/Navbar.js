@@ -15,7 +15,7 @@ export default function Navbar() {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <nav>
+    <nav className="nav">
       <div>
         < SideBar />
       </div>
@@ -23,14 +23,14 @@ export default function Navbar() {
         <Link to="/register">SignIn</Link>
         <Link to="/register">Register</Link>
       </div> */}
-      <ul>
+      <ul className="ul">
         <li onClick={() => setModalShow(true)}>SignIn</li>
         <li onClick={() => setModalShow(true)}>Register</li>
 
       </ul>
 
       <Register show={modalShow} onHide={() => setModalShow(false)} />
-      <i class="fab fa-stumbleupon-circle"></i>
+      {/* <i class="fab fa-stumbleupon-circle"></i> */}
     </nav>
   );
 }
