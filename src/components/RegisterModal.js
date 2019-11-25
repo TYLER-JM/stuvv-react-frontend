@@ -9,10 +9,10 @@ export default function Register(props) {
       dialogClassName="register-modal"
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
-      centered>
+      centered >
 
 
       <RegisterForm />
-    </Modal>
+    </Modal >
   );
 }
