@@ -1,6 +1,7 @@
 // $body-bg: #000;
 @import "bootstrap/scss/bootstrap";
 
+
 .nav {
   position: relative;
   display: flex;
@@ -8,5 +9,5 @@
   align-items: center;
   justify-content: space-between; // space out brand from logo
   padding: $navbar-padding-y $navbar-padding-x;
-  background: rgba(119, 0, 255, 0.194)
+  background: rgba(119, 0, 255, 0.571)
 }
