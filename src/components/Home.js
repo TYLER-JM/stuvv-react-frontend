@@ -25,7 +25,7 @@ export default function Home() {
 
     console.log("in the use effect")
 
-    axios.get("http://localhost:3000/listings")
+    axios.get("http://localhost:3000/listings", { withCredentials: true })
       .then(resp => {
         console.log("resp in HELPER: ", resp)
         setList(resp.data)
