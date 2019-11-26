@@ -1,8 +1,15 @@
-.header-content {
-  // background-color: white;
-  // opacity: 0.5;
-  // h1 {
-  //   color: white;
-  //   opacity: 1;
-  // }
+.header-content > p {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  padding: 0 5px 0 5px;
+}
+form {
+  input.form-control.mr-sm-2 {
+    width: 550px;
+    border-radius: 30px;
+  }
+
+  .btn.btn-light.my-2.my-sm-0 {
+    border-radius: 30px;
+  }
 }

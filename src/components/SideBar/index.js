@@ -67,11 +67,6 @@ export default function SideBar(props) {
           </ListItem>
         ))}  */}
 
-        <Link to="/messages">
-          <ListItem button key="Messages">
-            Messages
-          </ListItem>
-        </Link>
         <Link to="/my_stuvv">
           <ListItem button key="My_Stuvv">
             My Stuvv
@@ -82,7 +77,21 @@ export default function SideBar(props) {
             My Requests
           </ListItem>
         </Link>
-        {/* <Link to="/"> */}
+        <Link to="/messages">
+          <ListItem button key="Messages">
+            Messages
+          </ListItem>
+        </Link>
+        <Link to="/build">
+          <ListItem button key="Build">
+            (temp) Build-link
+          </ListItem>
+        </Link>
+        <Link to="/">
+          <ListItem button key="Home">
+            Home
+          </ListItem>
+        </Link>
         <span onClick={() => removeSession()}>
           <ListItem
             button
@@ -91,13 +100,6 @@ export default function SideBar(props) {
             Logout
           </ListItem>
         </span>
-        {/* </Link> */}
-
-        <Link to="/build">
-          <ListItem button key="Build">
-            (temp) Build-link
-          </ListItem>
-        </Link>
 
       </List>
     </div>
