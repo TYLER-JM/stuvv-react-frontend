@@ -20,7 +20,7 @@ export default function Navbar(props) {
     return (
       <nav>
         <div>
-          < SideBar user={props.user.name} />
+          < SideBar user={props.user.first_name} />
         </div>
         <i className="fab fa-stumbleupon-circle"></i>
       </nav>)

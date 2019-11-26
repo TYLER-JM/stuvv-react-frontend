@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 // import Video from './video.mp4'
 // import Sample from './sample.MOV'
-import Sample from './Bike.mp4'
+import Sample from './Bike.mp4';
+import "./Welcome.scss"
 // import axios from "axios";
 
 

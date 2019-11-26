@@ -12,7 +12,7 @@ export default function ListingHelper(term = false) {
     console.log("in the use effect")
 
     if (!term) {
-      axios.get("http://localhost:3000/listings")
+      axios.get("http://localhost:3000/listings", { withCredentials: true })
         .then(resp => {
           console.log("resp in HELPER: ", resp)
           setListings(resp.data)

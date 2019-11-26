@@ -10,19 +10,16 @@ import BuildForm from './components/Build/BuildForm';
 import axios from 'axios'
 
 function App() {
-  // { name: "Tamires" }
-  const [currentUser, setCurrentUser] = useState({ name: "Tamires" });
+  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
     axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
       .then((resp) => {
         console.log('GOT RESPONSE', resp)
-        // IF WE GET HERE, WE'RE ALREADY LOGGED IN
-        // setCurrentUser(resp.data)
+        setCurrentUser(resp.data)
       })
       .catch(err => {
         console.log('DIDNT GET RESPONSE')
-        // NOT LOGGED IN
       })
   }, []);
 
@@ -35,7 +32,6 @@ function App() {
         <Switch>
           <Route
             exact path="/"
-            // component={Home}
             render={() => <Home />}
           />
           <Route
@@ -44,7 +40,6 @@ function App() {
           />
           <Route
             exact path="/my_stuvv"
-            // component={MyStuvv}
             render={() => <MyStuvv className="my-stuvv-container" />}
 
           />

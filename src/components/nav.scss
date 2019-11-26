@@ -2,6 +2,7 @@
 
 #root {
   font-family: "Montserrat", sans-serif;
+  background-image: url("https://www.transparenttextures.com/patterns/arches.png");
 
   div > nav {
     position: relative;
@@ -35,10 +36,11 @@
           font-family: "Montserrat", sans-serif;
           color: grey;
           padding: 0;
+        }
+
+        .MuiButtonBase-root:focus {
+          font-family: "Montserrat";
           outline: none;
-          outline: none !important;
-          border: none !important;
-          box-shadow: none;
         }
       }
     }

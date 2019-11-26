@@ -11,8 +11,7 @@ export default function RegisterForm() {
   const [session, setSession] = useState({});
 
   const sendRequestRegister = () => {
-    // we need to adjust the response. It already sets the session but maybe responde would be everything from that user...
-    return axios.post(`http://localhost:3000/users`, { user, withCredentials: true })
+    return axios.post(`http://localhost:3000/users`, { user }, { withCredentials: true })
       .then(resp => {
         console.log("got to the register")
         window.location.pathname = "/"
@@ -20,31 +19,20 @@ export default function RegisterForm() {
       .catch(error => {
         alert("Please try again")
         console.log(error.response.request.response)
-        // if (error.response.status === 400 || error.response.status === 422) {
-        //   return (<Alert variant='warning'>
-        //     error.response.request
-        //   </Alert>)
-        // }
       })
   }
 
   const sendRequestLogin = () => {
 
-    console.log("session: ", session)
-
-    return axios.post(`http://localhost:3000/sessions`, { withCredentials: true, session }
+    return axios.post(`http://localhost:3000/sessions`, { session }, { withCredentials: true }
     )
       .then(resp => {
-        console.log(resp.status);
-        window.location.pathname = "/"
         console.log("got to the login");
-        // console.log(resp.headers)
+        window.location.pathname = "/"
       })
-      // .then(resp => window.location.pathname = "/")
       .catch(error => {
         alert("Please try again")
         console.log(error.response)
-        // console.error();
       })
   }
 

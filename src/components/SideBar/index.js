@@ -9,8 +9,8 @@ import ListItem from '@material-ui/core/ListItem';
 // import ListItemText from '@material-ui/core/ListItemText';
 // import { BrowserRouter as Link } from "react-router-dom";
 import { Link } from "react-router-dom";
-import MenuIcon from '@material-ui/icons/Menu';
 import axios from "axios";
+import "./index.scss";
 
 
 const useStyles = makeStyles({
@@ -54,6 +54,7 @@ export default function SideBar(props) {
   const sideList = side => (
     <div
       className={classes.list}
+      className="sidebar"
       role="presentation"
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
@@ -104,7 +105,7 @@ export default function SideBar(props) {
 
 
   return (
-    <div>
+    <div className="sidebar">
       <Button onClick={toggleDrawer('left', true)}>{props.user}</Button>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
