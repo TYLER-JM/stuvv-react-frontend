@@ -1,25 +1,25 @@
 import React from 'react'
 import CardList from "../CardList.js"
 import './MyStuvv.scss'
-import { getThemeProps } from '@material-ui/styles';
+// import { getThemeProps } from '@material-ui/styles';
 import ListingHelper from '../../helpers/ListingHelper.js';
 
 
 export default function MyStuvv() {
   const listings = ListingHelper()
 
-  const cardData = [
-    {
-      "title": "Tyler's Shoe",
-      "description": "This is a nice shoe",
-      "availability": true,
-    },
-    {
-      "title": "Tyler's Shoe",
-      "description": "This is a nice shoe",
-      "availability": true,
-    },
-  ]
+  // const cardData = [
+  //   {
+  //     "title": "Tyler's Shoe",
+  //     "description": "This is a nice shoe",
+  //     "availability": true,
+  //   },
+  //   {
+  //     "title": "Tyler's Shoe",
+  //     "description": "This is a nice shoe",
+  //     "availability": true,
+  //   },
+  // ]
   // return (
   //   <CardListItem
   //     title={cardData.title}
@@ -27,9 +27,9 @@ export default function MyStuvv() {
   //     availability={cardData.availability}
   //    />
   // )
-  
+
   // const cards = props.cards.map((card) => {
-  
+
   // return <ul className="my-stuvv-container">{cards}</ul>
   return <CardList cardsData={listings} />
 }

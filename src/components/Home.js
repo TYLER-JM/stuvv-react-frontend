@@ -1,8 +1,8 @@
 import React from 'react'
 import Form from './UploadForm'
 import CardList from "./CardList"
-import WelcomeVideo from './WelcomeVideo'
-import Handshake from './handshake.jpg'
+import WelcomeVideo from './Welcome/WelcomeVideo'
+// import Handshake from './handshake.jpg'
 import "./Home.scss"
 import ListingHelper from '../helpers/ListingHelper';
 
@@ -14,70 +14,13 @@ export default function Home() {
 
   const listings = ListingHelper();
   console.log("listing defined after calling helper", listings)
-  // const cardData = [
-  //   {
-  //     "title": "Tyler's Shoe",
-  //     "description": "This is a nice shoe",
-  //     "availability": true,
-  //     "image_urls": [
-  //       {
-  //         "url": "https://lorempixel.com/300/300/technics"
-  //       },
-  //       {
-  //         "url": "https://lorempixel.com/300/300/technics"
-  //       },
-  //     ]
-  //   },
-  //   {
-  //     "title": "Tyler's Shoe",
-  //     "description": "This is a nice shoe",
-  //     "availability": true,
-  //     "image_urls": [
-  //       {
-  //         "url": "https://lorempixel.com/300/300/technics"
-  //       },
-  //       {
-  //         "url": "https://lorempixel.com/300/300/technics"
-  //       },
-  //     ]
-  //   },
-  //   {
-  //     "title": "Tyler's Shoe",
-  //     "description": "This is a nice shoe",
-  //     "availability": true,
-  //     "image_urls": [
-  //       {
-  //         "url": "https://lorempixel.com/300/300/technics"
-  //       },
-  //       {
-  //         "url": "https://lorempixel.com/300/300/technics"
-  //       },
-  //       {
-  //         "url": "https://lorempixel.com/300/300/technics"
-  //       },
-  //     ]
-  //   },
-  //   {
-  //     "title": "Tyler's Shoe",
-  //     "description": "This is a nice shoe",
-  //     "availability": true,
-  //     "image_urls": [
-  //       {
-  //         "url": "https://lorempixel.com/300/300/technics"
-  //       },
-  //       {
-  //         "url": "https://lorempixel.com/300/300/technics"
-  //       },
-  //     ]
-  //   },
-  // ]
-
+  // 
   // use this if we use a background image > video
-  var sectionStyle = {
-    width: "100%",
-    height: "400px",
-    backgroundImage: `url(${Handshake})`
-  };
+  // var sectionStyle = {
+  //   width: "100%",
+  //   height: "400px",
+  //   backgroundImage: `url(${Handshake})`
+  // };
 
   return (
     <div>

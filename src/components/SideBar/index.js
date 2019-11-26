@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+// import ListItemText from '@material-ui/core/ListItemText';
 // import { BrowserRouter as Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
@@ -82,14 +82,14 @@ export default function SideBar() {
           </ListItem>
         </Link>
         {/* <Link to="/"> */}
-        <a onClick={() => removeSession()}>
+        <span onClick={() => removeSession()}>
           <ListItem
             button
             key="Logout"
           >
             Logout
           </ListItem>
-        </a>
+        </span>
         {/* </Link> */}
 
         <Link to="/build">

@@ -1,12 +1,12 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
 import SideBar from './SideBar';
-import "./Navbar.scss";
+import "./nav.scss";
 import Register from './RegisterModal';
 
 export default function Navbar(props) {
@@ -25,7 +25,7 @@ export default function Navbar(props) {
             <li onClick={() => setModalShow(true)}>{props.user.email}</li>
           </ul>
         </div>
-        <i class="fab fa-stumbleupon-circle"></i>
+        <i className="fab fa-stumbleupon-circle"></i>
       </nav>)
 
   } else {
@@ -37,11 +37,9 @@ export default function Navbar(props) {
           <li onClick={() => setModalShow(true)}>Register</li>
         </ul>
         <Register show={modalShow} onHide={() => setModalShow(false)} />
-        <i class="fab fa-stumbleupon-circle"></i>
+        <i className="fab fa-stumbleupon-circle"></i>
       </nav>
     )
   }
 
 }
-
-

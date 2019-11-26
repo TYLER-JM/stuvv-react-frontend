@@ -1,0 +1,35 @@
+@import "bootstrap/scss/bootstrap";
+
+#root > div > nav {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap; // allow us to do the line break for collapsing content
+  align-items: center;
+  justify-content: space-between; // space out brand from logo
+  padding: $navbar-padding-y $navbar-padding-x;
+  background: rgba(123, 122, 124, 0.571);
+  z-index: 2;
+  opacity: 1;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    ul > li {
+      list-style-type: none;
+      text-align: center;
+      font-size: 1.5rem;
+      border: solid;
+      border-color: #215584;
+      border-radius: 40px;
+      padding: 0 20px;
+    }
+  }
+
+  i.fab.fa-stumbleupon-circle {
+    font-size: 3rem;
+    color: #215584;
+    padding-right: 20px;
+  }
+}

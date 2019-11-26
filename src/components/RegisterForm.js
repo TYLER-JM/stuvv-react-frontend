@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import './RegisterForm.scss'
-import Alert from 'react-bootstrap/Alert'
+// import Alert from 'react-bootstrap/Alert'
 
 
 export default function RegisterForm() {
@@ -15,7 +15,7 @@ export default function RegisterForm() {
     return axios.post(`http://localhost:3000/users`, { user, withCredentials: true })
       .then(resp => {
         console.log("got to the register")
-        // window.location.pathname = "/"
+        window.location.pathname = "/"
       })
       .catch(error => {
         alert("Please try again")
@@ -36,7 +36,7 @@ export default function RegisterForm() {
     )
       .then(resp => {
         console.log(resp.status);
-        // window.location.pathname = "/"
+        window.location.pathname = "/"
         console.log("got to the login");
         // console.log(resp.headers)
       })
@@ -93,7 +93,6 @@ export default function RegisterForm() {
             placeholder="Password"
             onChange={e => setSession({ ...session, password: e.target.value })}
           />
-          <a href="#">Forgot your password?</a>
           <button onClick={() => sendRequestLogin()}>Sign In</button>
         </form>
       </div>

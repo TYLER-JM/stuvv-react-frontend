@@ -1,7 +1,8 @@
 import React from "react";
-import Video from './video.mp4'
+// import Video from './video.mp4'
 // import Sample from './sample.MOV'
 import Sample from './samplesample.mp4'
+
 
 
 
