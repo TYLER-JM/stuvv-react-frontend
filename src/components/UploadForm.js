@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -11,6 +11,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import './UploadFormHideInput.scss'
+
 
 
 
@@ -59,6 +60,7 @@ export default function Form() {
     setAmount(event.target.value);
   };
 
+
   // state for the Amount input
   const [amount, setAmount] = useState(0)
 
@@ -74,6 +76,26 @@ export default function Form() {
   //state to handle the upload images and title text field
   const [text, setText] = useState("");
   const [images, setImages] = useState([]);
+  console.log('IMAGES========>>>',images)
+ 
+ // previews users selected images
+  const getImageURL = (file) => {
+    if (!file) return
+    let reader = new FileReader();
+
+    reader.onload = (e) => {
+      document.getElementById("displayImage").src = e.target.result
+
+    }
+    reader.readAsDataURL(file)
+  }
+
+  useEffect(() => {
+    getImageURL(images[0])
+    getImageURL(images[1])
+
+  }, [images])
+  
 
 
   const sendRequest = () => {
@@ -154,6 +176,7 @@ export default function Form() {
             type="file"
             onChange={event => {
               setImages(event.target.files)
+              // console.log(event.target.files[0])
             }}
           />
           <label htmlFor="outlined-button-file">
@@ -164,6 +187,13 @@ export default function Form() {
         </div>
         <Button variant="outlined" onClick={() => sendRequest()}>Submit</Button>
       </FormControl>
+
+      <div>
+        <img id={"displayImage"} className="img"/>
+        <img id={"displayImage2"} className="img"/>
+
+
+      </div>
 
 
       {/* <input type="file" onChange={event => {

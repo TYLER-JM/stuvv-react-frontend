@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Form from './UploadForm'
 import CardList from "./CardList"
-import WelcomeVideo from './WelcomeVideo'
+import WelcomeVideo from './Welcome/WelcomeVideo'
 // import Button from 'react-bootstrap/Button'
 // import Handshake from './handshake.jpg'
 // import Video from './video.mp4'
