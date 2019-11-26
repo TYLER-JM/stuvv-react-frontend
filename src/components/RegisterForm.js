@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import './RegisterForm.scss'
-import Alert from 'react-bootstrap/Alert'
+// import Alert from 'react-bootstrap/Alert'
 
 
 export default function RegisterForm() {
@@ -12,8 +12,11 @@ export default function RegisterForm() {
 
   const sendRequestRegister = () => {
     // we need to adjust the response. It already sets the session but maybe responde would be everything from that user...
-    return axios.post(`http://localhost:3000/users`, { user })
-      .then(resp => console.log("got to the register"))
+    return axios.post(`http://localhost:3000/users`, { user, withCredentials: true })
+      .then(resp => {
+        console.log("got to the register")
+        window.location.pathname = "/"
+      })
       .catch(error => {
         alert("Please try again")
         console.log(error.response.request.response)
@@ -26,15 +29,18 @@ export default function RegisterForm() {
   }
 
   const sendRequestLogin = () => {
+
     console.log("session: ", session)
-    // we need to adjust the response. It already sets the session but maybe responde would be everything from that user...
-    return axios.post(`http://localhost:3000/sessions`,{session}, {withCredentials: true}
+
+    return axios.post(`http://localhost:3000/sessions`, { withCredentials: true, session }
     )
       .then(resp => {
-        console.log(resp);
-        // console.log("got to the login");
+        console.log(resp.status);
+        window.location.pathname = "/"
+        console.log("got to the login");
         // console.log(resp.headers)
       })
+      // .then(resp => window.location.pathname = "/")
       .catch(error => {
         alert("Please try again")
         console.log(error.response)
@@ -87,7 +93,6 @@ export default function RegisterForm() {
             placeholder="Password"
             onChange={e => setSession({ ...session, password: e.target.value })}
           />
-          <a href="#">Forgot your password?</a>
           <button onClick={() => sendRequestLogin()}>Sign In</button>
         </form>
       </div>

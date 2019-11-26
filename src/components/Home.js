@@ -1,11 +1,10 @@
-import React, { useState, useEffect }from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from './UploadForm'
-import SideBar from "./SideBar/index"
 import CardList from "./CardList"
 import WelcomeVideo from './WelcomeVideo'
-import Button from 'react-bootstrap/Button'
-import Handshake from './handshake.jpg'
-import Video from './video.mp4'
+// import Button from 'react-bootstrap/Button'
+// import Handshake from './handshake.jpg'
+// import Video from './video.mp4'
 import axios from 'axios';
 import "./Home.scss"
 
@@ -25,43 +24,43 @@ export default function Home() {
     // setList(ListingHelper());
 
     console.log("in the use effect")
-    
-      axios.get("http://localhost:3000/listings")
-        .then(resp => {
-          console.log("resp in HELPER: ", resp)
-          setList(resp.data)
-          // listings = resp.data
-        })
-        .catch(error => console.log(error))
 
-      return function cleanup() {
-        console.log("all done");
-      }
+    axios.get("http://localhost:3000/listings")
+      .then(resp => {
+        console.log("resp in HELPER: ", resp)
+        setList(resp.data)
+        // listings = resp.data
+      })
+      .catch(error => console.log(error))
+
+    return function cleanup() {
+      console.log("all done");
+    }
 
   }, [])
 
   const sendRequest = (search) => {
-    return axios.post(`http://localhost:3000/search`, { search }, {withCredentials: true})
+    return axios.post(`http://localhost:3000/search`, { search }, { withCredentials: true })
       .then(resp => {
         console.log("RESP in SEARCH: ", resp)
         setList(resp.data)
       })
       .catch(error => console.error())
   }
-  
+
   console.log("listing defined after calling helper", list)
-  
+
 
   // use this if we use a background image > video
-  var sectionStyle = {
-    width: "100%",
-    height: "400px",
-    backgroundImage: `url(${Handshake})`
-  };
+  // var sectionStyle = {
+  //   width: "100%",
+  //   height: "400px",
+  //   backgroundImage: `url(${Handshake})`
+  // };
 
   return (
     <div>
-      <WelcomeVideo  sendRequest={sendRequest}/>
+      <WelcomeVideo sendRequest={sendRequest} />
       {/* < CardList cardsData={cardData} /> */}
       {/* < SideBar /> */}
       {/* < CardList cardsData={listings} /> */}
@@ -74,7 +73,7 @@ export default function Home() {
 
 // not sure if we'll need this later...keep for now
 
- {/* <Jumbotron  style={{  
+{/* <Jumbotron  style={{  
         backgroundImage: `url(${Handshake})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
@@ -94,5 +93,5 @@ export default function Home() {
          <Button variant="primary">Create A Listing</Button>
        </p>
       </Jumbotron>  */}
-     
-     
+
+
