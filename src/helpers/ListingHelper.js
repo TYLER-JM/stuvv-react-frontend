@@ -9,7 +9,6 @@ export default function ListingHelper(term = false) {
   
 
     useEffect(() => {
-      console.log("in the use effect")
 
       if (!term) {
         axios.get("http://localhost:3000/listings", { withCredentials: true })
