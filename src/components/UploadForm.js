@@ -21,16 +21,17 @@ const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
       margin: "3rem",
-      width: "90%",
+      width: "80%",
       display: "flex",
       "justify-content": "center",
     },
     container: {
       display: 'flex',
       flexWrap: 'wrap',
+      "background-color": "yellow",
     },
     margin: {
-      margin: 0,
+      margin: "",
     },  
     textField: {
       marginLeft: theme.spacing(1),
@@ -122,7 +123,7 @@ export default function Form() {
         onSubmit={event => event.preventDefault()}
         className={classes.root} noValidate autoComplete="off"
       >
-          <FormControl component="fieldset">
+          <FormControl className="form-control" component="fieldset">
           <TextField
             id="outlined-basic"
             label="Title"
@@ -176,7 +177,7 @@ export default function Form() {
              {/* <img id={"displayImage2"} className="img"/> */}
             </div>
           </div>
-          <div>
+          <div className='submit'>
           <div aria-label="position" row>
             <FormControlLabel
               value="end"

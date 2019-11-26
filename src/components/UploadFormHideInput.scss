@@ -7,9 +7,21 @@ input#outlined-button-file {
 
 .img {
   max-width: 10rem;
-  // border: 3px solid rgb(138, 68, 138)
+  margin: 1rem;
+  border: 3px solid rgba(108, 108, 108, 0.973)
 }
 
-// .form-container {
-//   // background-color: rebeccapurple
-// }
+.form-container {
+  background-image: url("handshake.jpg");
+  text-align: center;
+  padding-top: 2rem;
+  color: white;
+}
+
+.form-control {
+  background-color: rgba(189, 44, 44, 0.701)
+}
+
+.submit {
+  margin-bottom: 2rem;
+}
