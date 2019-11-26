@@ -22,14 +22,14 @@ function App() {
       .catch(err => {
         console.log('DIDNT GET RESPONSE')
       })
-  }, [currentUser]);
+  }, []);
 
 
   return (
 
     <Router>
       <div>
-        <Navbar user={currentUser} setUser={setCurrentUser} />
+        <Navbar user={currentUser}/>
         <Switch>
           <Route
             exact path="/"
