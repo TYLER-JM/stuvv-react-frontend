@@ -65,7 +65,7 @@ export default function Home() {
       {/* < SideBar /> */}
       {/* < CardList cardsData={listings} /> */}
       < CardList cardsData={list} />
-      < Form />
+      {/* < Form /> */}
     </div>
   );
 }
