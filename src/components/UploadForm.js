@@ -20,8 +20,8 @@ import { blue } from '@material-ui/core/colors';
 const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
-      margin: theme.spacing(1),
-      width: "80%",
+      margin: "3rem",
+      width: "90%",
       display: "flex",
       "justify-content": "center",
     },
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
       flexWrap: 'wrap',
     },
     margin: {
-      margin: theme.spacing(1),
+      margin: 0,
     },  
     textField: {
       marginLeft: theme.spacing(1),
@@ -174,7 +174,7 @@ export default function Form() {
             <div>
              {imageURLs.map(URL => (<img src={URL} className="img" key={URL}/>))}
              {/* <img id={"displayImage2"} className="img"/> */}
-           </div>
+            </div>
           </div>
           <div>
           <div aria-label="position" row>
