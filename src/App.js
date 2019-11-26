@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
       .then((resp) => {
-        console.log('GOT RESPONSE', resp)
+        // console.log('GOT RESPONSE', resp)
         setCurrentUser(resp.data)
       })
       .catch(err => {
@@ -42,7 +42,7 @@ function App() {
           />
           <Route
             exact path="/my_stuvv"
-            render={() => <MyStuvv className="my-stuvv-container" />}
+            render={() => <MyStuvv className="my-stuvv-container" user={currentUser}/>}
 
           />
           <Route
