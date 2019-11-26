@@ -12,7 +12,7 @@ export default function Register(props) {
       centered >
 
 
-      <RegisterForm />
+      <RegisterForm show={props.show} onHide={props.onHide} setUser={props.setUser}/>
     </Modal >
   );
 }
