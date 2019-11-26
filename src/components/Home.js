@@ -1,20 +1,56 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from './UploadForm'
 import CardList from "./CardList"
-import WelcomeVideo from './Welcome/WelcomeVideo'
+import WelcomeVideo from './WelcomeVideo'
+// import Button from 'react-bootstrap/Button'
 // import Handshake from './handshake.jpg'
+// import Video from './video.mp4'
+import axios from 'axios';
 import "./Home.scss"
-import ListingHelper from '../helpers/ListingHelper';
+
+
+
+
+
+
+
+// import ListingHelper from '../helpers/ListingHelper';
 
 
 export default function Home() {
+  const [list, setList] = useState([])
+
+  useEffect(() => {
+    // setList(ListingHelper());
+
+    console.log("in the use effect")
+
+    axios.get("http://localhost:3000/listings")
+      .then(resp => {
+        console.log("resp in HELPER: ", resp)
+        setList(resp.data)
+        // listings = resp.data
+      })
+      .catch(error => console.log(error))
+
+    return function cleanup() {
+      console.log("all done");
+    }
+
+  }, [])
+
+  const sendRequest = (search) => {
+    return axios.post(`http://localhost:3000/search`, { search }, { withCredentials: true })
+      .then(resp => {
+        console.log("RESP in SEARCH: ", resp)
+        setList(resp.data)
+      })
+      .catch(error => console.error())
+  }
+
+  console.log("listing defined after calling helper", list)
 
 
-  // get the value from the helper and assign it to cardData
-
-  const listings = ListingHelper();
-  console.log("listing defined after calling helper", listings)
-  // 
   // use this if we use a background image > video
   // var sectionStyle = {
   //   width: "100%",
@@ -24,10 +60,11 @@ export default function Home() {
 
   return (
     <div>
-      <WelcomeVideo />
+      <WelcomeVideo sendRequest={sendRequest} />
       {/* < CardList cardsData={cardData} /> */}
       {/* < SideBar /> */}
-      < CardList cardsData={listings} />
+      {/* < CardList cardsData={listings} /> */}
+      < CardList cardsData={list} />
       < Form />
     </div>
   );
