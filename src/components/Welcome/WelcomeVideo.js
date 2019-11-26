@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import Video from './video.mp4'
 // import Sample from './sample.MOV'
-import Sample from './samplesample.mp4'
+import Sample from './Bike.mp4'
 // import axios from "axios";
 
 
@@ -21,7 +21,7 @@ export default function WelcomeVideo(props) {
         </div>
         <div className="header-overlay"></div>
         <div className="header-content">
-          <h1>Hello World</h1>
+          <h1><b>Stuvv</b></h1>
           <p>Stuvv allows you to rent your personal belonings</p>
           <form className="form-inline my-2 my-lg-0" onSubmit={event => event.preventDefault()}>
             <input

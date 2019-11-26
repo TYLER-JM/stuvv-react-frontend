@@ -9,10 +9,9 @@ import './components/SideBar/MyStuvv.scss'
 import BuildForm from './components/Build/BuildForm';
 import axios from 'axios'
 
-
-
 function App() {
-  const [currentUser, setCurrentUser] = useState({ email: "t@t.com" });
+  // { name: "Tamires" }
+  const [currentUser, setCurrentUser] = useState({ name: "Tamires" });
 
   useEffect(() => {
     axios.get('http://localhost:3000/profiles/me', { withCredentials: true })

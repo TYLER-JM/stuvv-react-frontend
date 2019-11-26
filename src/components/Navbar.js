@@ -20,10 +20,7 @@ export default function Navbar(props) {
     return (
       <nav>
         <div>
-          < SideBar />
-          <ul>
-            <li onClick={() => setModalShow(true)}>{props.user.email}</li>
-          </ul>
+          < SideBar user={props.user.name} />
         </div>
         <i className="fab fa-stumbleupon-circle"></i>
       </nav>)
@@ -32,10 +29,12 @@ export default function Navbar(props) {
 
     return (
       <nav>
-        <ul>
-          <li onClick={() => setModalShow(true)}>SignIn</li>
-          <li onClick={() => setModalShow(true)}>Register</li>
-        </ul>
+        <div>
+          <div onClick={() => setModalShow(true)}>SignIn</div>
+          <div onClick={() => setModalShow(true)}>Register</div>
+        </div>
+
+
         <Register show={modalShow} onHide={() => setModalShow(false)} />
         <i className="fab fa-stumbleupon-circle"></i>
       </nav>

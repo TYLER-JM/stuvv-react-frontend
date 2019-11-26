@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SideBar() {
+export default function SideBar(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -105,7 +105,7 @@ export default function SideBar() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('left', true)}><MenuIcon /></Button>
+      <Button onClick={toggleDrawer('left', true)}>{props.user}</Button>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>
