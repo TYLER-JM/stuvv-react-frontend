@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Messages from './components/Messages/Messages'
-// import Messages from './components/SideBar/Messages'
 import MyStuvv from './components/SideBar/MyStuvv'
 import './App.scss';
 import './components/SideBar/MyStuvv.scss'
@@ -22,14 +22,14 @@ function App() {
       .catch(err => {
         console.log('DIDNT GET RESPONSE')
       })
-  }, [currentUser]);
+  }, []);
 
 
   return (
 
     <Router>
       <div>
-        <Navbar user={currentUser} setUser={setCurrentUser} />
+        <Navbar user={currentUser} />
         <Switch>
           <Route
             exact path="/"
@@ -38,7 +38,7 @@ function App() {
           <Route
             exact path="/messages"
             // component={Messages}
-            render={() => < Messages/>}
+            render={() => < Messages />}
           />
           <Route
             exact path="/my_stuvv"
@@ -50,7 +50,7 @@ function App() {
             render={() => <BuildForm />}
           />
         </Switch>
-
+        <Footer />
       </div>
     </Router>
   );
