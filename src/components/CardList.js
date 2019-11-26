@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CardListItem from "./CardListItem";
 
 export default function CardList({ cardsData }) {
@@ -27,10 +27,10 @@ export default function CardList({ cardsData }) {
   //   },
   // ]
 
-  const cards = cardsData.map((card) => {
+  const cards = cardsData.map((card, i) => {
     // console.log("CardList cardsData: ", cardsData)
     return (
-      <div>
+      <div key={i}>
         <CardListItem
           listingId={card.id}
           title={card.title}

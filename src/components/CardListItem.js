@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-// import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
@@ -11,7 +10,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PostAddIcon from '@material-ui/icons/PostAdd';
@@ -58,7 +56,7 @@ export default function CardListItem(props) {
   };
 
   const handlePageChange = () => {
-    window.location.pathname = "/build" 
+    window.location.pathname = "/build"
   };
 
 
@@ -79,7 +77,7 @@ export default function CardListItem(props) {
         subheader={`$ ${props.price} per day`}
       />
       {/* <CardListItemCarousel /> */}
-      <CardListItemCarousel 
+      <CardListItemCarousel
         urls={props.urls}
       />
       <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingId={props.listingId}/>
@@ -87,9 +85,19 @@ export default function CardListItem(props) {
         <IconButton aria-label="add to favorites">
           <ThumbUpIcon />
         </IconButton>
-        <IconButton aria-label="share"> 
-          {window.location.pathname === "/" ? <PostAddIcon onClick={() => setModalShow(true)}/> : <EditIcon onClick={handlePageChange}/>}
-        </IconButton>
+        {/* <IconButton aria-label="share">  */}
+        {window.location.pathname === "/" ?
+          <IconButton
+            aria-label="share"
+            onClick={() => setModalShow(true)}>
+            <PostAddIcon />
+          </IconButton> :
+          <IconButton
+            aria-label="share"
+            onClick={handlePageChange}>
+            <EditIcon />
+          </IconButton  >}
+        {/* </IconButton> */}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,

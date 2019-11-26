@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import './RegisterForm.scss'
-import Alert from 'react-bootstrap/Alert'
+// import Alert from 'react-bootstrap/Alert'
 
 
 export default function RegisterForm(props) {
@@ -11,44 +11,28 @@ export default function RegisterForm(props) {
   const [session, setSession] = useState({});
 
   const sendRequestRegister = () => {
-    // we need to adjust the response. It already sets the session but maybe responde would be everything from that user...
-    return axios.post(`http://localhost:3000/users`, { user, withCredentials: true })
+    return axios.post(`http://localhost:3000/users`, { user }, { withCredentials: true })
       .then(resp => {
         console.log("got to the register")
-        // window.location.pathname = "/"
+        window.location.pathname = "/"
       })
       .catch(error => {
         alert("Please try again")
         console.log(error.response.request.response)
-        // if (error.response.status === 400 || error.response.status === 422) {
-        //   return (<Alert variant='warning'>
-        //     error.response.request
-        //   </Alert>)
-        // }
       })
   }
 
   const sendRequestLogin = () => {
 
-    console.log("session: ", session)
-
-    return axios.post(`http://localhost:3000/sessions`, { withCredentials: true, session }
+    return axios.post(`http://localhost:3000/sessions`, { session }, { withCredentials: true }
     )
       .then(resp => {
-        console.log(resp.status);
-        // window.location.pathname = "/"
         console.log("got to the login");
-        props.onHide()
-        console.log("RESP", resp)
-        // props.setUser(resp.data)
-        //to the setcurrentuser
-        // console.log(resp.headers)
+        window.location.pathname = "/"
       })
-      // .then(resp => window.location.pathname = "/")
       .catch(error => {
         alert("Please try again")
         console.log(error.response)
-        // console.error();
       })
   }
 
@@ -97,7 +81,6 @@ export default function RegisterForm(props) {
             placeholder="Password"
             onChange={e => setSession({ ...session, password: e.target.value })}
           />
-          <a href="#">Forgot your password?</a>
           <button onClick={() => sendRequestLogin()}>Sign In</button>
         </form>
       </div>

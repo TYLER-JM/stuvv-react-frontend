@@ -1,9 +1,10 @@
-import React, { useState, useEffect }from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from './UploadForm'
 import CardList from "./CardList"
-import WelcomeVideo from './WelcomeVideo'
-import Handshake from './handshake.jpg'
-import Video from './video.mp4'
+import WelcomeVideo from './Welcome/WelcomeVideo'
+// import Button from 'react-bootstrap/Button'
+// import Handshake from './handshake.jpg'
+// import Video from './video.mp4'
 import axios from 'axios';
 import "./Home.scss"
 
@@ -21,23 +22,25 @@ export default function Home() {
 
   useEffect(() => {
     // setList(ListingHelper());
-    
-      axios.get("http://localhost:3000/listings")
-        .then(resp => {
-          // console.log("resp in HELPER: ", resp)
-          setList(resp.data)
-          // listings = resp.data
-        })
-        .catch(error => console.log(error))
 
-      return function cleanup() {
-        console.log("all done");
-      }
+    console.log("in the use effect")
+
+    axios.get("http://localhost:3000/listings", { withCredentials: true })
+      .then(resp => {
+        console.log("resp in HELPER: ", resp)
+        setList(resp.data)
+        // listings = resp.data
+      })
+      .catch(error => console.log(error))
+
+    return function cleanup() {
+      console.log("all done");
+    }
 
   }, [])
 
   const sendRequest = (search) => {
-    return axios.post(`http://localhost:3000/search`, { search }, {withCredentials: true})
+    return axios.post(`http://localhost:3000/search`, { search }, { withCredentials: true })
       .then(resp => {
         console.log("RESP in SEARCH: ", resp)
         setList(resp.data)
@@ -49,20 +52,20 @@ export default function Home() {
   
 
   // use this if we use a background image > video
-  var sectionStyle = {
-    width: "100%",
-    height: "400px",
-    backgroundImage: `url(${Handshake})`
-  };
+  // var sectionStyle = {
+  //   width: "100%",
+  //   height: "400px",
+  //   backgroundImage: `url(${Handshake})`
+  // };
 
   return (
     <div>
-      <WelcomeVideo  sendRequest={sendRequest}/>
+      <WelcomeVideo sendRequest={sendRequest} />
       {/* < CardList cardsData={cardData} /> */}
       {/* < SideBar /> */}
       {/* < CardList cardsData={listings} /> */}
       < CardList cardsData={list} />
-      < Form />
+      {/* < Form /> */}
     </div>
   );
 }

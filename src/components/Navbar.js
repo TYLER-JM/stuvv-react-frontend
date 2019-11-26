@@ -1,12 +1,12 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
 import SideBar from './SideBar';
-import "./Navbar.scss";
+import "./nav.scss";
 import Register from './RegisterModal';
 
 export default function Navbar(props) {
@@ -20,28 +20,25 @@ export default function Navbar(props) {
     return (
       <nav>
         <div>
-          < SideBar />
-          <ul>
-            <li onClick={() => setModalShow(true)}>{props.user.email}</li>
-          </ul>
+          < SideBar user={props.user.first_name} />
         </div>
-        <i class="fab fa-stumbleupon-circle"></i>
+        <i className="fab fa-stumbleupon-circle"></i>
       </nav>)
 
   } else {
 
     return (
       <nav>
-        <ul>
-          <li onClick={() => setModalShow(true)}>SignIn</li>
-          <li onClick={() => setModalShow(true)}>Register</li>
-        </ul>
+        <div>
+          <div onClick={() => setModalShow(true)}>SignIn</div>
+          <div onClick={() => setModalShow(true)}>Register</div>
+        </div>
+
+
         <Register show={modalShow} onHide={() => setModalShow(false)} />
-        <i class="fab fa-stumbleupon-circle"></i>
+        <i className="fab fa-stumbleupon-circle"></i>
       </nav>
     )
   }
 
 }
-
-
