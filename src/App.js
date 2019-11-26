@@ -3,7 +3,7 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar'
 import Register from './components/RegisterModal'
-import Messages from './components/SideBar/Messages'
+import Messages from './components/Messages/Messages'
 import MyStuvv from './components/SideBar/MyStuvv'
 import './App.scss';
 import './components/SideBar/MyStuvv.scss'
@@ -14,7 +14,9 @@ import axios from 'axios'
 
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({
+    email: "x@x.x"
+  });
 
   useEffect(() => {
     return axios.get('http://localhost:3000/profiles/me'/* , { withCredentials: true } */)
@@ -43,7 +45,8 @@ function App() {
           />
           <Route
             exact path="/messages"
-            component={Messages}
+            // component={Messages}
+            render={() => < Messages/>}
           />
           <Route
             exact path="/my_stuvv"
