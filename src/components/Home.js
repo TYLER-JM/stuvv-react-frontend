@@ -21,12 +21,10 @@ export default function Home() {
 
   useEffect(() => {
     // setList(ListingHelper());
-
-    console.log("in the use effect")
     
       axios.get("http://localhost:3000/listings")
         .then(resp => {
-          console.log("resp in HELPER: ", resp)
+          // console.log("resp in HELPER: ", resp)
           setList(resp.data)
           // listings = resp.data
         })
@@ -47,7 +45,7 @@ export default function Home() {
       .catch(error => console.error())
   }
   
-  console.log("listing defined after calling helper", list)
+  // console.log("list defined after calling helper", list)
   
 
   // use this if we use a background image > video

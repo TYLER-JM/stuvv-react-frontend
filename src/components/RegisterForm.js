@@ -4,7 +4,7 @@ import './RegisterForm.scss'
 import Alert from 'react-bootstrap/Alert'
 
 
-export default function RegisterForm() {
+export default function RegisterForm(props) {
 
   const [css, setCss] = useState("container");
   const [user, setUser] = useState({});
@@ -38,6 +38,10 @@ export default function RegisterForm() {
         console.log(resp.status);
         // window.location.pathname = "/"
         console.log("got to the login");
+        props.onHide()
+        console.log("RESP", resp)
+        // props.setUser(resp.data)
+        //to the setcurrentuser
         // console.log(resp.headers)
       })
       // .then(resp => window.location.pathname = "/")

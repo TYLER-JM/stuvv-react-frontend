@@ -17,7 +17,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    return axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
+    return axios.get('http://localhost:3000/profiles/me'/* , { withCredentials: true } */)
       .then((resp) => {
         console.log('GOT RESPONSE', resp)
         // IF WE GET HERE, WE'RE ALREADY LOGGED IN
@@ -27,14 +27,14 @@ function App() {
         console.log('DIDNT GET RESPONSE')
         // NOT LOGGED IN
       })
-  }, []);
+  }, [currentUser]);
 
 
   return (
 
     <Router>
       <div>
-        <Navbar user={currentUser} />
+        <Navbar user={currentUser} setUser={setCurrentUser} />
         <Switch>
           <Route
             exact path="/"
