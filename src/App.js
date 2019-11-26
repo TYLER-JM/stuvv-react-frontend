@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar'
-import Messages from './components/SideBar/Messages'
+import Messages from './components/Messages/Messages'
+// import Messages from './components/SideBar/Messages'
 import MyStuvv from './components/SideBar/MyStuvv'
 import './App.scss';
 import './components/SideBar/MyStuvv.scss'
