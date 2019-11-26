@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Carousel from 'react-bootstrap/Carousel'
-import Camera from './camera.jpg'
-import Shoe from './shoe.jpg'
+// import Camera from './camera.jpg'
+// import Shoe from './shoe.jpg'
 import './CarouselOverride.scss'
 
 export default function CardListItemCarousel(props) {
@@ -18,13 +18,13 @@ export default function CardListItemCarousel(props) {
     // console.log(`Carousel loop: ${i}, url: ${img.url}`)
     return (
       // <li key={i}>
-        <Carousel.Item>
-          <img 
-            className="d-block w-100"
-            src={img.url}
-            alt={`listing ${i+1}`}
-          />
-        </Carousel.Item>
+      <Carousel.Item key={i}>
+        <img
+          className="d-block w-100"
+          src={img.url}
+          alt={`listing ${i + 1}`}
+        />
+      </Carousel.Item>
       // </li>
     )
   })
@@ -32,7 +32,7 @@ export default function CardListItemCarousel(props) {
   return (
     <Carousel activeIndex={index} direction={direction} onSelect={handleSelect} interval={null}>
       {/* <ul> */}
-        {images}
+      {images}
       {/* </ul> */}
       {/* <Carousel.Item>
         <img

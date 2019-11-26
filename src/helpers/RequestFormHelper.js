@@ -5,17 +5,17 @@ export default function RequestFormHelper() {
   const [requests, setRequests] = useState([])
 
   useEffect(() => {
-    console.log("in the Request form use effect...")
-    axios.get("http://localhost:3000/requests/2")
+    // console.log("in the Request form use effect...")
+    axios.get("http://localhost:3000/requests/2", { withCredentials: true })
       .then(resp => {
-        console.log("resp in REQUEST HELPER: ", resp)
+        // console.log("resp in REQUEST HELPER: ", resp)
         setRequests(resp.data)
       })
       .catch(error => console.log(error))
 
-      return function cleanup() {
-        console.log("all done");
-      }
+    return function cleanup() {
+      console.log("all done");
+    }
   }, [])
 
 

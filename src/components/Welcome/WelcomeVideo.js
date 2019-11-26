@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Video from './video.mp4'
+import React from "react";
+// import Video from './video.mp4'
 // import Sample from './sample.MOV'
 import Sample from './samplesample.mp4'
 import axios from "axios";
@@ -12,7 +12,7 @@ export default function WelcomeVideo(props) {
 
   const [search, setSearch] = useState("");
 
- 
+
   return (
     <div>
       <header className="v-header container">

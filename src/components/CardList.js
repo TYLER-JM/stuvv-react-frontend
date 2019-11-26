@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CardListItem from "./CardListItem";
 
 export default function CardList({ cardsData }) {
@@ -27,17 +27,17 @@ export default function CardList({ cardsData }) {
   //   },
   // ]
 
-  const cards = cardsData.map((card) => {
-    console.log("CardList cardsData: ", cardsData)
+  const cards = cardsData.map((card, i) => {
+    // console.log("CardList cardsData: ", cardsData)
     return (
-      <div>
+      <div key={i}>
         <CardListItem
           listingId={card.id}
           title={card.title}
           description={card.description}
           availability={card.availability}
           urls={card.image_urls}
-          price={card.price_per_day / 100}  
+          price={card.price_per_day / 100}
         />
       </div>
     )
