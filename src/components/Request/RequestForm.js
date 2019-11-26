@@ -34,7 +34,7 @@ function reducer(state, action) {
   }
 }
 
-export default function RequestForm() {
+export default function RequestForm(props) {
   const classes = useStyles();
   const [message, setMessage] = useState("")
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -47,7 +47,7 @@ export default function RequestForm() {
 
   return (
     <div>
-      <DatePicker userId={1}/>
+      <DatePicker listingId={props.listingId}/>
       <TextField
         id="outlined-multiline-static"
         label="Message"

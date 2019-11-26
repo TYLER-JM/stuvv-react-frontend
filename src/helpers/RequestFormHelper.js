@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 
-export default function RequestFormHelper() {
+export default function RequestFormHelper(listingId) {
   const [requests, setRequests] = useState([])
 
   useEffect(() => {
-    // console.log("in the Request form use effect...")
-    axios.get("http://localhost:3000/requests/2", { withCredentials: true })
+    console.log("in the Request form use effect...")
+    axios.get(`http://localhost:3000/requests/${listingId}`, { withCredentials: true })
       .then(resp => {
         // console.log("resp in REQUEST HELPER: ", resp)
         setRequests(resp.data)

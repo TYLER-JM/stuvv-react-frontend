@@ -154,6 +154,7 @@ export default function Form() {
             type="file"
             onChange={event => {
               setImages(event.target.files)
+              console.log("files:, ", event.target.files)
             }}
           />
           <label htmlFor="outlined-button-file">
