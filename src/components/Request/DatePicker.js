@@ -6,7 +6,8 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import RequestFormHelper from '../../helpers/RequestFormHelper';
 
 export default function DatePicker(props) {
-  const [selectedDate, setSelectedDate] = useState(new Date('2019-11-18T00:00:00'));
+  const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
+  const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
 
   // const hardDates = () => {
   //   let a = new Date('2019-11-20 19:48:30.82458');
@@ -21,17 +22,18 @@ export default function DatePicker(props) {
 
   const requestedDates = RequestFormHelper(props.listingId);
 
-  const handleDateChange = date => {
-    setSelectedDate(date);
+  const handleStartDateChange = date => {
+    setSelectedStartDate(date);
+  };
+  const handleEndDateChange = date => {
+    setSelectedEndDate(date);
   };
 
   const  disableDates = (date) => {
     // const dateString = date.toLocaleDateString()
     const dateString = date.getTime()
-    console.log("DATE", dateString)
 
     for (let req of requestedDates) {
-      console.log(`startDATE: ${req.start_date} ENDDATE: ${req.end_date}`)
       const startDateString = new Date(req.start_date)
       const endDateString = new Date(req.end_date)
       // if (dateString >= startDateString.toLocaleDateString() && dateString <= endDateString.toLocaleDateString()) {
@@ -39,6 +41,29 @@ export default function DatePicker(props) {
         return true
       } 
     }
+  };
+
+  const disableEndDates = (date) => {
+    let startDateTime = new Date(selectedStartDate)
+    if (date.getTime() < startDateTime.getTime()) {
+      return true
+    }
+    for (let req of requestedDates) {
+      let startDateString = new Date(req.start_date)
+      if (date.getTime() > startDateString.getTime()) {
+        return true
+      }
+    }
+
+
+    // for (let req of requestedDates) {
+    //   const startDateString = new Date(req.start_date)
+    //   const endDateString = new Date(req.end_date)
+    //   // if (dateString >= startDateString.toLocaleDateString() && dateString <= endDateString.toLocaleDateString()) {
+    //   if (date.getTime() >= startDateString.getTime() && date.getTime() <= endDateString.getTime()) {
+    //     return true
+    //   } 
+    // }
   };
 
   // function disableWeekends(date) {
@@ -50,40 +75,30 @@ export default function DatePicker(props) {
       <Grid container justify="space-around">
         <KeyboardDatePicker
           shouldDisableDate={disableDates}
-          margin="normal"
-          id="date-picker-dialog"
-          label="Start Date"
-          format="MM/dd/yyyy"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-
-        {/* <KeyboardDatePicker
-          shouldDisableDate={disableDates}
+          autoOk={true}
           disableToolbar
           variant="inline"
           format="MM/dd/yyyy"
           margin="normal"
           id="date-picker-inline"
           label="Start Date"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={selectedStartDate}
+          onChange={handleStartDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
-        /> */}
+        />
         <KeyboardDatePicker
+          shouldDisableDate={disableEndDates}
+          autoOk={true}
           disableToolbar
           variant="inline"
           format="MM/dd/yyyy"
           margin="normal"
           id="date-picker-inline"
           label="End Date"
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={selectedEndDate}
+          onChange={handleEndDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
