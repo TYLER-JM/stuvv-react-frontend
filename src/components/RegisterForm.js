@@ -29,8 +29,9 @@ export default function RegisterForm() {
   }
 
   const sendRequestLogin = () => {
+
     console.log("session: ", session)
-    // we need to adjust the response. It already sets the session but maybe responde would be everything from that user...
+
     return axios.post(`http://localhost:3000/sessions`, { withCredentials: true, session }
     )
       .then(resp => {

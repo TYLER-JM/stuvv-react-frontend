@@ -1,19 +1,9 @@
 import React from 'react'
 import Form from './UploadForm'
-import SideBar from "./SideBar/index"
 import CardList from "./CardList"
 import WelcomeVideo from './WelcomeVideo'
-import Button from 'react-bootstrap/Button'
 import Handshake from './handshake.jpg'
-import Video from './video.mp4'
 import "./Home.scss"
-
-
-
-
-
-
-
 import ListingHelper from '../helpers/ListingHelper';
 
 
@@ -103,7 +93,7 @@ export default function Home() {
 
 // not sure if we'll need this later...keep for now
 
- {/* <Jumbotron  style={{  
+{/* <Jumbotron  style={{  
         backgroundImage: `url(${Handshake})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
@@ -123,5 +113,5 @@ export default function Home() {
          <Button variant="primary">Create A Listing</Button>
        </p>
       </Jumbotron>  */}
-     
-     
+
+

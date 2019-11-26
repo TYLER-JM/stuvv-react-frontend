@@ -17,35 +17,29 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
+    return axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
       .then((resp) => {
         console.log('GOT RESPONSE', resp)
         // IF WE GET HERE, WE'RE ALREADY LOGGED IN
         setCurrentUser(resp.data)
       })
       .catch(err => {
+        console.log('DIDNT GET RESPONSE')
         // NOT LOGGED IN
       })
   }, []);
-
-  const isLoggedIn
 
 
   return (
 
     <Router>
       <div>
-        <Navbar />
+        <Navbar user={currentUser} />
         <Switch>
           <Route
             exact path="/"
             // component={Home}
             render={() => <Home />}
-          />
-          <Route
-            exact path="/register"
-            // component={Home}
-            render={() => <RegisterForm />}
           />
           <Route
             exact path="/messages"
