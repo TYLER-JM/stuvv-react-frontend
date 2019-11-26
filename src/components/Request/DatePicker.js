@@ -30,27 +30,24 @@ export default function DatePicker(props) {
   };
 
   const  disableDates = (date) => {
-    // const dateString = date.toLocaleDateString()
-    const dateString = date.getTime()
 
     for (let req of requestedDates) {
-      const startDateString = new Date(req.start_date)
-      const endDateString = new Date(req.end_date)
-      // if (dateString >= startDateString.toLocaleDateString() && dateString <= endDateString.toLocaleDateString()) {
-      if (dateString >= startDateString.getTime() && dateString <= endDateString.getTime()) {
+      const reqStartDate = new Date(req.start_date)
+      const reqEndDate = new Date(req.end_date)
+      if (date.getTime() >= reqStartDate.getTime() && date.getTime() <= reqEndDate.getTime()) {
         return true
       } 
     }
   };
 
   const disableEndDates = (date) => {
-    let startDateTime = new Date(selectedStartDate)
-    if (date.getTime() < startDateTime.getTime()) {
+    let startDate = new Date(selectedStartDate)
+    if (date.getTime() < startDate.getTime()) {
       return true
     }
     for (let req of requestedDates) {
-      let startDateString = new Date(req.start_date)
-      if (date.getTime() > startDateString.getTime()) {
+      let reqStartDate = new Date(req.start_date)
+      if (date.getTime() > reqStartDate.getTime() && startDate.getTime() < reqStartDate.getTime()) {
         return true
       }
     }
