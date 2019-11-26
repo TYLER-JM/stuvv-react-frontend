@@ -4,7 +4,7 @@ import './RegisterForm.scss'
 // import Alert from 'react-bootstrap/Alert'
 
 
-export default function RegisterForm() {
+export default function RegisterForm(props) {
 
   const [css, setCss] = useState("container");
   const [user, setUser] = useState({});

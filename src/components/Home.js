@@ -47,9 +47,9 @@ export default function Home() {
       })
       .catch(error => console.error())
   }
-
-  console.log("listing defined after calling helper", list)
-
+  
+  // console.log("list defined after calling helper", list)
+  
 
   // use this if we use a background image > video
   // var sectionStyle = {
