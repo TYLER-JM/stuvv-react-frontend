@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
     '& > *': {
       margin: theme.spacing(1),
       width: "80%",
+      display: "flex",
       "justify-content": "center",
     },
     container: {
@@ -95,12 +96,10 @@ export default function Form() {
   
   
     useEffect(() => {
-      
       setImageURLs([])
       images.forEach(getImageURL);
     }, [images])
-    
-  
+      
     const sendRequest = () => {
       const data = new FormData();
       // console.log(images[0].name)
@@ -171,10 +170,14 @@ export default function Form() {
               <Button variant="outlined" component="span">
                 Add Images
               </Button>
-            {/* <p>{`${images.length} images uploaded!`}</p> */}
             </label>
+            <div>
+             {imageURLs.map(URL => (<img src={URL} className="img" key={URL}/>))}
+             {/* <img id={"displayImage2"} className="img"/> */}
+           </div>
           </div>
-          <FormGroup aria-label="position" row>
+          <div>
+          <div aria-label="position" row>
             <FormControlLabel
               value="end"
               control={<Switch
@@ -186,17 +189,10 @@ export default function Form() {
               label="Available?"
               labelPlacement="start"
             />
-          </FormGroup>
-          <Button variant="outlined" onClick={() => sendRequest()}>Submit</Button>
+          </div>
+          <Button variant="outlined" onClick={() => sendRequest()}>Submit</Button></div>
         </FormControl>
-  
-        <div>
-          {imageURLs.map(URL => (<img src={URL} className="img" key={URL}/>))}
-          
-  
-          {/* <img id={"displayImage2"} className="img"/> */}
-        </div>
-  
+     
         {/* <input type="file" onChange={event => {
           setImages(event.target.files)
         }} multiple /> */}
@@ -205,6 +201,10 @@ export default function Form() {
       </form >
     );
   }
+    
+  
+  
+  
  
   
   
