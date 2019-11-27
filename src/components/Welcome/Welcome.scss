@@ -3,13 +3,15 @@
   border-radius: 30px;
   padding: 0 5px 0 5px;
 }
-form {
+form.form-inline.my-2.my-lg-0 {
   input.form-control.mr-sm-2 {
     width: 550px;
     border-radius: 30px;
+    background-color: white;
   }
 
   .btn.btn-light.my-2.my-sm-0 {
     border-radius: 30px;
   }
 }
+

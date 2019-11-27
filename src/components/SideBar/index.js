@@ -49,8 +49,7 @@ export default function SideBar(props) {
 
   const sideList = side => (
     <div
-      className={classes.list}
-      className="sidebar"
+      className={`${classes.list} sidebar`}
       role="presentation"
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
@@ -89,6 +88,13 @@ export default function SideBar(props) {
             Logout
           </ListItem>
         </span>
+        {/* </Link> */}
+
+        <Link to="/build">
+          <ListItem button key="Build">
+            (temp) Build-link
+          </ListItem>
+        </Link>
 
       </List>
     </div>

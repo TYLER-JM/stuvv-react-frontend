@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Form from './UploadForm'
+// import Form from './UploadForm'
 import CardList from "./CardList"
 import WelcomeVideo from './Welcome/WelcomeVideo'
 // import Button from 'react-bootstrap/Button'
@@ -8,13 +8,6 @@ import WelcomeVideo from './Welcome/WelcomeVideo'
 import axios from 'axios';
 import "./Home.scss"
 
-
-
-
-
-
-
-// import ListingHelper from '../helpers/ListingHelper';
 
 
 export default function Home() {
@@ -46,9 +39,9 @@ export default function Home() {
       })
       .catch(error => console.error())
   }
-  
+
   // console.log("list defined after calling helper", list)
-  
+
 
   // use this if we use a background image > video
   // var sectionStyle = {

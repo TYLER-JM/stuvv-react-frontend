@@ -1,11 +1,74 @@
 //this only hides the 'browse' button and the
 //title of the files that get uploaded
 
+.MuiOutlinedInput-multiline {
+  padding: 18.5px 14px;
+}
+
 input#outlined-button-file {
   display: none;
 }
 
 .img {
   max-width: 10rem;
-  // border: 3px solid rgb(138, 68, 138)
+  margin: 1rem;
+  border: 3px solid #E5A74F
+}
+
+.form-container {
+  background-image:url(./build.jpg);
+  // height: 10rem;
+  text-align: center;
+  padding-top: 2rem;
+  color: white;
+  background-position: bottom;
+  
+}
+
+
+.form-control {
+  background-color: rgba(189, 44, 44, 0.701)
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.submit button {
+  margin-left: 2rem;
+  background-color: #E5A74F
+}
+
+
+
+.MuiButton-label {
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  // background-color: #E5A74F;
+}
+
+.build-form-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image:url(./build.jpg);
+  background-position: 25% 75%;
+  width: 100%;
+  height: 20rem;
+  color: white;
+  font-weight: 800;
+  font-size: 3rem;
+  background-size: 100%;
+  background-position: bottom;
+  opacity: .85;
+}
+
+.MuiButton-outlined {
+  background-color: #E5A74F;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  padding: 5px 15px;
 }

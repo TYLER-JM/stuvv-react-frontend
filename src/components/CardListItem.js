@@ -9,7 +9,6 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PostAddIcon from '@material-ui/icons/PostAdd';
@@ -39,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: "#215584",
   },
 }));
 
@@ -65,7 +64,7 @@ export default function CardListItem(props) {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            {props.user}
           </Avatar>
         }
         action={
@@ -80,7 +79,7 @@ export default function CardListItem(props) {
       <CardListItemCarousel
         urls={props.urls}
       />
-      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingId={props.listingId}/>
+      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingId={props.listingId} />
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <ThumbUpIcon />

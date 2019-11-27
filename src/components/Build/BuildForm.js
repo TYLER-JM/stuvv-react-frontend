@@ -1,14 +1,17 @@
 import React from 'react'
 import UploadForm from '../UploadForm'
+import '../UploadFormHideInput.scss'
 
 
-export default function BuildForm() {
+export default function BuildForm(props) {
 
   return (
     <div>
-      <h2>WELCOME TO THE BUILD FORM</h2>
-      
-      <UploadForm />
+      <div className="build-form-banner">
+        Build your listing
+      </div>
+        <UploadForm />
     </div>
   );
 }
+      
