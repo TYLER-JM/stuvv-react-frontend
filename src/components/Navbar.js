@@ -29,7 +29,7 @@ export default function Navbar(props) {
   console.log("PROPS USER ISSSSSSS", props.user)
   //props.user === currentUser
   // console.log("PROPS USER ISSSSSSS", currentUser)
-  if (props.user) {
+  if (props.user.id) {
 
     return (
       <nav>
