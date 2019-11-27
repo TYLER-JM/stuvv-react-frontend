@@ -37,8 +37,19 @@ const useStyles = makeStyles(theme => ({
 export default function RequestForm(props) {
   const classes = useStyles();
   const [message, setMessage] = useState("")
+  const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
+  const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
   // const [state, dispatch] = useReducer(reducer, initialState);
 
+  const sendRequest = () => {
+   const data = {
+      listing_id: props.listingId,
+      user_id: props.userId,
+      start_date: selectedStartDate,
+      end_date: selectedEndDate
+    }
+    console.log("DATA TO SEND ALONG: ", data)
+  };
 
   //handles the value of the multiline textarea (description)
   const handleMessageChange = event => {
@@ -47,7 +58,13 @@ export default function RequestForm(props) {
 
   return (
     <div>
-      <DatePicker listingId={props.listingId}/>
+      <DatePicker 
+        listingId={props.listingId}
+        selectedStartDate={selectedStartDate}
+        setSelectedStartDate={setSelectedStartDate}
+        selectedEndDate={selectedEndDate}
+        setSelectedEndDate={setSelectedEndDate}
+      />
       <TextField
         id="outlined-multiline-static"
         label="Message"
@@ -61,6 +78,8 @@ export default function RequestForm(props) {
         value={message}
         onChange={handleMessageChange}
       />
+      <button onClick={() => sendRequest()}>SEND REQUEST</button>
+
     </div>
   );
 };

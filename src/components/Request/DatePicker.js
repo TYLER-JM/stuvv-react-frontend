@@ -5,9 +5,10 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import RequestFormHelper from '../../helpers/RequestFormHelper';
 
-export default function DatePicker(props) {
-  const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
-  const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
+// export default function DatePicker(props) {
+export default function DatePicker({ listingId, selectedStartDate, setSelectedStartDate, selectedEndDate, setSelectedEndDate}) {
+  // const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
+  // const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
 
   // const hardDates = () => {
   //   let a = new Date('2019-11-20 19:48:30.82458');
@@ -20,7 +21,8 @@ export default function DatePicker(props) {
   //   ]
   // }; 
 
-  const requestedDates = RequestFormHelper(props.listingId);
+  const requestedDates = RequestFormHelper(listingId);
+  // const requestedDates = RequestFormHelper(props.listingId);
 
   const handleStartDateChange = date => {
     setSelectedStartDate(date);
