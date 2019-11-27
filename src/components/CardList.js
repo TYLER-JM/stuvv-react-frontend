@@ -1,5 +1,6 @@
 import React from "react";
 import CardListItem from "./CardListItem";
+import CardBlank from "./CardBlank";
 
 export default function CardList({ cardsData }) {
   // const [modalShow, setModalShow] = useState(false);
@@ -38,6 +39,7 @@ export default function CardList({ cardsData }) {
           availability={card.availability}
           urls={card.image_urls}
           price={card.price_per_day / 100}
+          user={card.user_id}
         />
       </div>
     )
@@ -50,7 +52,11 @@ export default function CardList({ cardsData }) {
   //    />
   // )
 
-  return <ul className="my-stuvv-container">{cards}</ul>
-
+  return (
+    <ul className="my-stuvv-container">
+      {window.location.pathname === "/my_stuvv" ? <CardBlank /> : null}
+      {cards}
+    </ul>
+  )
 
 }
