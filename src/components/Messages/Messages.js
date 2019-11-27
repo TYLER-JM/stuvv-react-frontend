@@ -5,6 +5,11 @@ import MessageList from './MessageList'
 
 export default function Messages(props) {
   const [messages, setMessages] = useState([])
+  // const [single, setSingle] = useState({
+  //   sender: props.userId,
+  //   content: "",
+  //   sent: new Date()
+  // })
   // const [conversation, setConversation] = useState({})
   useEffect(() => {
     //param === to_user_id
@@ -21,7 +26,15 @@ export default function Messages(props) {
       }
   },[]);
 
-  // resp.data[0].conversation
+  // const sendMessage = function() {
+  //   // event.preventDefault();
+  //   useEffect(() => {
+  //     //send the single state as the data
+  //     axios.put(`http://localhost:3000/messages/`)
+  //   },[]);
+
+  // }
+
 
   const conversations = messages.map((conversation, i) => {
     return (
@@ -34,8 +47,8 @@ export default function Messages(props) {
     <ul>
       {conversations}
     </ul>
-
-    {/* <button onClick={() => setChange(2)}>GET MESSAGES</button> */}
+    {/* <input type="text" onChange={e => setSingle({...single, content: e.target.value})}/> */}
+    {/* <button onClick={() => sendMessage()}></button> */}
     </>
   );
 }
