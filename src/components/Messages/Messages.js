@@ -14,17 +14,17 @@ export default function Messages(props) {
   useEffect(() => {
     //param === to_user_id
     // axios.get("http://localhost:3000/messages/5", { withCredentials: true})
-    axios.get(`http://localhost:3000/messages/${props.userId}`, { withCredentials: true})
+    axios.get(`http://localhost:3000/messages/${props.userId}`, { withCredentials: true })
       .then(resp => {
         console.log("GOT SOMETHING FOR MESSAGES: ", resp.data);
         setMessages(resp.data)
       })
       .catch(error => console.log(error))
 
-      return function cleanup() {
-        console.log("all done");
-      }
-  },[]);
+    return function cleanup() {
+      console.log("all done");
+    }
+  }, []);
 
   // const sendMessage = function() {
   //   // event.preventDefault();
@@ -38,17 +38,17 @@ export default function Messages(props) {
 
   const conversations = messages.map((conversation, i) => {
     return (
-        <MessageList key={i} conversationObject={conversation} />
+      <MessageList key={i} conversationObject={conversation} userId={props.userId} />
     )
   })
   return (
     <>
-    <h1>Messages go here!</h1>
-    <ul>
-      {conversations}
-    </ul>
-    {/* <input type="text" onChange={e => setSingle({...single, content: e.target.value})}/> */}
-    {/* <button onClick={() => sendMessage()}></button> */}
+      <h1>Messages go here!</h1>
+      <ul>
+        {conversations}
+      </ul>
+      {/* <input type="text" onChange={e => setSingle({...single, content: e.target.value})}/> */}
+      {/* <button onClick={() => sendMessage()}></button> */}
     </>
   );
 }
