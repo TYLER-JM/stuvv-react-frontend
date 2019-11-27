@@ -11,7 +11,7 @@ import BuildForm from './components/Build/BuildForm';
 import axios from 'axios'
 
 function App() {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({});
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -26,6 +26,7 @@ function App() {
 
         console.log('GOT RESPONSE FROM PROFILES/ME', resp)
         setCurrentUser(resp.data)
+        console.log("RESPONSE DATA:", resp.data)
         
       })
       .catch(err => {
