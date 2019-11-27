@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 
 // import { DateRangeInput } from "@datepicker-react/styled";
 import DatePicker from './DatePicker';
+import axios from 'axios';
 
 
 // used by the textfield
@@ -48,6 +49,12 @@ export default function RequestForm(props) {
       start_date: selectedStartDate,
       end_date: selectedEndDate
     }
+
+    axios.post("http://localhost:3000/requests", data, {withCredentials: true})
+      .then(resp => {
+        console.log("RESPONSE IS: ", resp)
+      })
+      .catch(error => console.log("error is: ", error))
     console.log("DATA TO SEND ALONG: ", data)
   };
 
