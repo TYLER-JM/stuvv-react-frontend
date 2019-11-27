@@ -47,7 +47,7 @@ function App() {
           <Route
             exact path="/messages"
             // component={Messages}
-            render={() => < Messages user={currentUser.id}/>}
+            render={() => < Messages userId={currentUser.id}/>}
           />
           <Route
             exact path="/my_stuvv"
@@ -57,6 +57,7 @@ function App() {
           <Route
             exact path="/build"
             render={() => <BuildForm userId={currentUser.id}/>}
+            // render={() => <BuildForm />}
           />
         </Switch>
 

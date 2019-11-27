@@ -3,11 +3,13 @@ import MessagesHelper from '../../helpers/MessagesHelper';
 import axios from 'axios'
 import MessageList from './MessageList'
 
-export default function Messages() {
+export default function Messages(props) {
   const [messages, setMessages] = useState([])
   // const [conversation, setConversation] = useState({})
   useEffect(() => {
-    axios.get("http://localhost:3000/messages/5", { withCredentials: true})
+    //param === to_user_id
+    // axios.get("http://localhost:3000/messages/5", { withCredentials: true})
+    axios.get(`http://localhost:3000/messages/${props.userId}`, { withCredentials: true})
       .then(resp => {
         console.log("GOT SOMETHING FOR MESSAGES: ", resp.data);
         setMessages(resp.data)
