@@ -56,7 +56,7 @@ function App() {
           />
           <Route
             exact path="/build"
-            render={() => <BuildForm />}
+            render={() => <BuildForm userId={currentUser.id}/>}
           />
         </Switch>
         <Footer />
