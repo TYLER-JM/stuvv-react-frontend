@@ -2,7 +2,8 @@ import React from "react";
 import CardListItem from "./CardListItem";
 import CardBlank from "./CardBlank";
 
-export default function CardList({ cardsData }) {
+// export default function CardList({ cardsData}) {
+export default function CardList(props) {
   // const [modalShow, setModalShow] = useState(false);
 
   // const cardData = [
@@ -28,7 +29,7 @@ export default function CardList({ cardsData }) {
   //   },
   // ]
 
-  const cards = cardsData.map((card, i) => {
+  const cards = props.cardsData.map((card, i) => {
     // console.log("CardList cardsData: ", cardsData)
     return (
       <div key={i}>
@@ -40,6 +41,7 @@ export default function CardList({ cardsData }) {
           urls={card.image_urls}
           price={card.price_per_day / 100}
           user={card.user_id}
+          userId={props.userId}
         />
       </div>
     )
