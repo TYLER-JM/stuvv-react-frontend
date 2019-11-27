@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import UploadForm from '../UploadForm'
 import '../UploadFormHideInput.scss'
 
 
 export default function BuildForm(props) {
 
+  // useEffect(() => {
+
+  // }, [])
   return (
     <div>
       <div className="build-form-banner">

@@ -10,7 +10,7 @@ import "./nav.scss";
 import Register from './RegisterModal';
 
 export default function Navbar(props) {
-  // const [session, setSession] = useState(true)
+  // const [user, setUser] = useState(props.user)
 
   const [modalShow, setModalShow] = React.useState(false);
 
