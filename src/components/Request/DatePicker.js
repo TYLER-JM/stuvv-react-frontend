@@ -47,7 +47,7 @@ export default function DatePicker(props) {
     }
     for (let req of requestedDates) {
       let reqStartDate = new Date(req.start_date)
-      if (date.getTime() > reqStartDate.getTime() && startDate.getTime() < reqStartDate.getTime()) {
+      if (date.getTime() >= reqStartDate.getTime() && startDate.getTime() <= reqStartDate.getTime()) {
         return true
       }
     }
