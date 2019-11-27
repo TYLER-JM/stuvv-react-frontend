@@ -7,16 +7,16 @@
   // background-image: url("https://www.transparenttextures.com/patterns/arches.png");
 
   div > nav {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-wrap: wrap; // allow us to do the line break for collapsing content
     align-items: center;
     justify-content: space-between; // space out brand from logo
     padding: $navbar-padding-y $navbar-padding-x;
     // background: rgba(123, 122, 124, 0.571);
-    background: transparent;
+    // background-color: transparent;
     z-index: 2;
-    opacity: 1;
+    width: 100%;
 
     div {
       display: flex;

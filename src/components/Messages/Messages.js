@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import MessagesHelper from '../../helpers/MessagesHelper';
 import axios from 'axios'
 import MessageList from './MessageList'
+import './Messages.scss'
 
 export default function Messages(props) {
   const [messages, setMessages] = useState([])
@@ -42,13 +43,16 @@ export default function Messages(props) {
     )
   })
   return (
-    <>
-      <h1>Messages go here!</h1>
-      <ul>
-        {conversations}
-      </ul>
-      {/* <input type="text" onChange={e => setSingle({...single, content: e.target.value})}/> */}
-      {/* <button onClick={() => sendMessage()}></button> */}
-    </>
+    <div>
+      <div className="messagesBanner">
+        Messages
+      </div>
+    <ul>
+      {conversations}
+    </ul>
+   
+
+    {/* <button onClick={() => setChange(2)}>GET MESSAGES</button> */}
+    </div>
   );
 }

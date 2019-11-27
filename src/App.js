@@ -9,24 +9,33 @@ import './App.scss';
 import './components/SideBar/MyStuvv.scss'
 import BuildForm from './components/Build/BuildForm';
 import axios from 'axios'
+import MyRequests from './components/MyRequests/MyRequests'
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [list, setList] = useState([])
+  const [list, setList] = useState([]);
+  const [request, setRequest] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
       .then((resp) => {
+        setCurrentUser(resp.data)
+        
         axios.get(`http://localhost:3000/userslistings/${resp.data.id}`, { withCredentials: true })
-          .then(resp => {
+          .then((resp) => {
             console.log("users listings: ", resp.data)
             console.log("logged in as: ", resp.data.user_id)
             setList(resp.data)
           })
 
-        console.log('GOT RESPONSE FROM PROFILES/ME', resp)
-        setCurrentUser(resp.data)
-
+        axios.get(`http://localhost:3000/usersrequests/${resp.data.id}`, { withCredentials: true})
+          .then((resp) => {
+            console.log('Fetching users requests', resp.data)
+            setRequest(resp.data)
+          })
+          .catch(err => {
+            console.log('SORRY!', err)
+          })
       })
       .catch(err => {
         console.log('GOT TO THE PROFILES/ME CATCH', err)
@@ -58,6 +67,10 @@ function App() {
             exact path="/build"
             render={() => <BuildForm userId={currentUser.id} />}
           // render={() => <BuildForm />}
+          />
+          <Route
+            exact path="/my_requests"
+            render={() => <MyRequests className="my-stuvv-container" request={request} />}
           />
         </Switch>
         <Footer />
