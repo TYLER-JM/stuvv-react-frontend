@@ -45,7 +45,7 @@ export default function RequestForm(props) {
   const sendRequest = () => {
    const data = {
       listing_id: props.listingId,
-      user_id: props.userId,
+      user_id: props.userid,
       start_date: selectedStartDate,
       end_date: selectedEndDate
     }

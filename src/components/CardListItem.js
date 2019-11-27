@@ -52,7 +52,7 @@ export default function CardListItem(props) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-    console.log("inside CLI props.userID: ", props.userId)
+    console.log("inside CLI props.userID: ", props.userid)
   };
 
   const handlePageChange = () => {
@@ -80,7 +80,7 @@ export default function CardListItem(props) {
       <CardListItemCarousel
         urls={props.urls}
       />
-      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingId={props.listingId} userId={props.userId}/>
+      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingId={props.listingId} userid={props.userid}/>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <ThumbUpIcon />

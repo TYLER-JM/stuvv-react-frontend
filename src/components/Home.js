@@ -56,7 +56,7 @@ export default function Home(props) {
       {/* < CardList cardsData={cardData} /> */}
       {/* < SideBar /> */}
       {/* < CardList cardsData={listings} /> */}
-      < CardList cardsData={list} userId={props.userId}/>
+      < CardList cardsData={list} userid={props.userid}/>
       {/* < Form /> */}
     </div>
   );

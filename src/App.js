@@ -45,7 +45,7 @@ console.log(currentUser.id);
         <Switch>
           <Route
             exact path="/"
-            render={() => <Home userId={currentUser.id}/>}
+            render={() => <Home userid={currentUser.id}/>}
           />
           <Route
             exact path="/messages"
@@ -54,7 +54,7 @@ console.log(currentUser.id);
           />
           <Route
             exact path="/my_stuvv"
-            render={() => <MyStuvv className="my-stuvv-container" list={list} userId={currentUser.id}/>}
+            render={() => <MyStuvv className="my-stuvv-container" list={list} userid={currentUser.id}/>}
 
           />
           <Route

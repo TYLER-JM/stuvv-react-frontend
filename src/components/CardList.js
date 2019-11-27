@@ -41,7 +41,7 @@ export default function CardList(props) {
           urls={card.image_urls}
           price={card.price_per_day / 100}
           user={card.user_id}
-          userId={props.userId}
+          userid={props.userid}
         />
       </div>
     )
