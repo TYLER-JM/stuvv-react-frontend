@@ -49,8 +49,7 @@ export default function SideBar(props) {
 
   const sideList = side => (
     <div
-      className={classes.list}
-      className="sidebar"
+      className={`${classes.list} sidebar`}
       role="presentation"
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
