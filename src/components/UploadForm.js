@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Form() {
+export default function Form(props) {
 
   const classes = useStyles();
 
@@ -93,29 +93,30 @@ export default function Form() {
     }
     reader.readAsDataURL(file)
   }
-
-
-  useEffect(() => {
-    setImageURLs([])
-    images.forEach(getImageURL);
-  }, [images])
-
-  const sendRequest = () => {
-    const data = new FormData();
-    // console.log(images[0].name)
-
-    for (let img of images) {
-      data.append("pics[]", img, img.name)
+  
+  
+    useEffect(() => {
+      setImageURLs([])
+      images.forEach(getImageURL);
+    }, [images])
+      
+    const sendRequest = () => {
+      const data = new FormData();
+      // console.log(images[0].name)
+  
+      for (let img of images) {
+        data.append("pics[]", img, img.name)
+      }
+      data.append("title", text);
+      data.append("user_id", props.userId);
+      //adding the description to the data sent out
+      data.append("description", value)
+      data.append("availability", state.checkedA)
+      data.append("price_per_day", amount)
+  
+      return axios.post(`http://localhost:3000/listings`, data, {withCredentials: true}).then(resp => console.log("got to the then")).catch(error => console.error())
     }
-    data.append("title", text);
-    data.append("user_id", 4);
-    //adding the description to the data sent out
-    data.append("description", value)
-    data.append("availability", state.checkedA)
-    data.append("price_per_day", amount)
-
-    return axios.post(`http://localhost:3000/listings`, data, { withCredentials: true }).then(resp => console.log("got to the then")).catch(error => console.error())
-  }
+    
 
   return (
     <form

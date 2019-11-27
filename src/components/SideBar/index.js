@@ -3,11 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-// import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import { BrowserRouter as Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./index.scss";
@@ -60,13 +56,11 @@ export default function SideBar(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        {/* {['JAMES BOND', 'My Stuvv', 'My Requests', 'Messages', 'Logout'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+        <Link to="/">
+          <ListItem button key="Home">
+            Home
           </ListItem>
-        ))}  */}
-
+        </Link>
         <Link to="/my_stuvv">
           <ListItem button key="My_Stuvv">
             My Stuvv
@@ -85,11 +79,6 @@ export default function SideBar(props) {
         <Link to="/build">
           <ListItem button key="Build">
             (temp) Build-link
-          </ListItem>
-        </Link>
-        <Link to="/">
-          <ListItem button key="Home">
-            Home
           </ListItem>
         </Link>
         <span onClick={() => removeSession()}>
