@@ -10,7 +10,7 @@ export default function BuildForm(props) {
       <div className="build-form-banner">
         Build your listing
       </div>
-        <UploadForm />
+        <UploadForm userId={props.userId}/>
     </div>
   );
 }
