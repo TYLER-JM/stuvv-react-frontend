@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import MessagesHelper from '../../helpers/MessagesHelper';
 import axios from 'axios'
 import MessageList from './MessageList'
+import './Messages.scss'
 
 export default function Messages() {
   const [messages, setMessages] = useState([])
@@ -27,13 +28,16 @@ export default function Messages() {
     )
   })
   return (
-    <>
-    <h1>Messages go here!</h1>
-    <ul>
+    <div>
+      <div className="messagesBanner">
+        Messages
+      </div>
+    {/* <ul>
       {conversations}
-    </ul>
+    </ul> */}
+   
 
     {/* <button onClick={() => setChange(2)}>GET MESSAGES</button> */}
-    </>
+    </div>
   );
 }

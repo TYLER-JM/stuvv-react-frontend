@@ -9,6 +9,7 @@ import './App.scss';
 import './components/SideBar/MyStuvv.scss'
 import BuildForm from './components/Build/BuildForm';
 import axios from 'axios'
+import MyRequests from './components/MyRequests/MyRequests'
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
@@ -47,7 +48,9 @@ function App() {
           <Route
             exact path="/messages"
             // component={Messages}
-            render={() => < Messages user={currentUser.id}/>}
+            // render={() => < Messages user={currentUser.id}/>}
+            render={() => < Messages />}
+
           />
           <Route
             exact path="/my_stuvv"
@@ -57,6 +60,10 @@ function App() {
           <Route
             exact path="/build"
             render={() => <BuildForm userId={currentUser.id}/>}
+          />
+          <Route
+            exact path="/my_requests"
+            render={() => <MyRequests />}
           />
         </Switch>
 

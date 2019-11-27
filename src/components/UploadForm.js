@@ -14,6 +14,7 @@ import './UploadFormHideInput.scss'
 // import { blue } from '@material-ui/core/colors';
 // import { withStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
+import SavingModal from './SavingModal'
 
 
 const useStyles = makeStyles(theme => ({
@@ -47,6 +48,7 @@ export default function Form(props) {
 
   const classes = useStyles();
 
+  const [modalShow, setModalShow] = React.useState(false);
 
   //handles the check/uncheck value of the Switch (Availability)
   const handleChange = name => event => {
@@ -114,7 +116,13 @@ export default function Form(props) {
       data.append("availability", state.checkedA)
       data.append("price_per_day", amount)
   
-      return axios.post(`http://localhost:3000/listings`, data, {withCredentials: true}).then(resp => console.log("got to the then")).catch(error => console.error())
+      return axios.post(`http://localhost:3000/listings`, data, {withCredentials: true})
+            .then(resp => {
+              console.log("got to the then")
+              setTimeout(() => {
+                window.location.pathname = "/my_stuvv"}, 6000)})
+            .catch(error => console.error())
+      
     }
   
     return (
@@ -190,9 +198,18 @@ export default function Form(props) {
               labelPlacement="start"
             />
           </div>
-          <Link to="/my_stuvv">
-           <Button variant="outlined" onClick={() => sendRequest()}>Submit</Button>
-          </Link>
+           <Button 
+             variant="outlined" 
+             onClick={() => { 
+             sendRequest()
+             setModalShow(true)}}>
+               Submit
+           </Button>
+
+            <SavingModal
+              show={modalShow}
+              onHide={() => setModalShow(false)}
+            />
           </div>
         </FormControl>
      
