@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -10,11 +11,24 @@ import "./nav.scss";
 import Register from './RegisterModal';
 
 export default function Navbar(props) {
-  // const [session, setSession] = useState(true)
+  // const [user, setUser] = useState(props.user)
 
+  // const [currentUser, setCurrentUser] = useState();
   const [modalShow, setModalShow] = React.useState(false);
 
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
+  //     .then((resp) => {
+  //       setCurrentUser(resp.data)
+  //     })
+  //     .catch(err => console.log("error:", err));
+  // }, [])
+
+
   console.log("PROPS USER ISSSSSSS", props.user)
+  //props.user === currentUser
+  // console.log("PROPS USER ISSSSSSS", currentUser)
   if (props.user) {
 
     return (

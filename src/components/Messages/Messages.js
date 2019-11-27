@@ -4,27 +4,42 @@ import axios from 'axios'
 import MessageList from './MessageList'
 import './Messages.scss'
 
-export default function Messages() {
+export default function Messages(props) {
   const [messages, setMessages] = useState([])
+  // const [single, setSingle] = useState({
+  //   sender: props.userId,
+  //   content: "",
+  //   sent: new Date()
+  // })
   // const [conversation, setConversation] = useState({})
   useEffect(() => {
-    axios.get("http://localhost:3000/messages/5", { withCredentials: true})
+    //param === to_user_id
+    // axios.get("http://localhost:3000/messages/5", { withCredentials: true})
+    axios.get(`http://localhost:3000/messages/${props.userId}`, { withCredentials: true })
       .then(resp => {
         console.log("GOT SOMETHING FOR MESSAGES: ", resp.data);
         setMessages(resp.data)
       })
       .catch(error => console.log(error))
 
-      return function cleanup() {
-        console.log("all done");
-      }
-  },[]);
+    return function cleanup() {
+      console.log("all done");
+    }
+  }, []);
 
-  // resp.data[0].conversation
+  // const sendMessage = function() {
+  //   // event.preventDefault();
+  //   useEffect(() => {
+  //     //send the single state as the data
+  //     axios.put(`http://localhost:3000/messages/`)
+  //   },[]);
+
+  // }
+
 
   const conversations = messages.map((conversation, i) => {
     return (
-        <MessageList key={i} conversationObject={conversation} />
+      <MessageList key={i} conversationObject={conversation} userId={props.userId} />
     )
   })
   return (
@@ -32,9 +47,9 @@ export default function Messages() {
       <div className="messagesBanner">
         Messages
       </div>
-    {/* <ul>
+    <ul>
       {conversations}
-    </ul> */}
+    </ul>
    
 
     {/* <button onClick={() => setChange(2)}>GET MESSAGES</button> */}
