@@ -27,7 +27,6 @@ export default function Home() {
 
     axios.get("http://localhost:3000/listings", { withCredentials: true })
       .then(resp => {
-        console.log("resp in HELPER: ", resp)
         setList(resp.data)
         // listings = resp.data
       })

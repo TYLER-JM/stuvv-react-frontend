@@ -167,7 +167,7 @@ export default function Form() {
               }}
             />
             <label htmlFor="outlined-button-file">
-              <Button variant="outlined" component="span">
+              <Button variant="outlined">
                 Add Images
               </Button>
             </label>

@@ -6,10 +6,12 @@ import '../UploadFormHideInput.scss'
 export default function BuildForm() {
 
   return (
-    <div className="form-container">
-      <h2>WELCOME TO THE BUILD FORM</h2>
-      
-      <UploadForm />
+    <div>
+      <div className="build-form-banner">
+        Build your listing
+      </div>
+        <UploadForm />
     </div>
   );
 }
+      

@@ -3,11 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-// import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import { BrowserRouter as Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./index.scss";
@@ -60,16 +56,9 @@ export default function SideBar(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        {/* {['JAMES BOND', 'My Stuvv', 'My Requests', 'Messages', 'Logout'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}  */}
-
-        <Link to="/messages">
-          <ListItem button key="Messages">
-            Messages
+        <Link to="/">
+          <ListItem button key="Home">
+            Home
           </ListItem>
         </Link>
         <Link to="/my_stuvv">
@@ -82,7 +71,16 @@ export default function SideBar(props) {
             My Requests
           </ListItem>
         </Link>
-        {/* <Link to="/"> */}
+        <Link to="/messages">
+          <ListItem button key="Messages">
+            Messages
+          </ListItem>
+        </Link>
+        <Link to="/build">
+          <ListItem button key="Build">
+            (temp) Build-link
+          </ListItem>
+        </Link>
         <span onClick={() => removeSession()}>
           <ListItem
             button
