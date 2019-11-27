@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Form() {
+export default function Form(props) {
 
   const classes = useStyles();
 
@@ -108,7 +108,7 @@ export default function Form() {
         data.append("pics[]", img, img.name)
       }
       data.append("title", text);
-      data.append("user_id", 4);
+      data.append("user_id", props.userId);
       //adding the description to the data sent out
       data.append("description", value)
       data.append("availability", state.checkedA)
