@@ -62,7 +62,7 @@ function App() {
           />
           <Route
             exact path="/my_requests"
-            render={() => <MyRequests />}
+            render={() => <MyRequests className="my-stuvv-container" list={list} />}
           />
         </Switch>
 
