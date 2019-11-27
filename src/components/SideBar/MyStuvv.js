@@ -49,7 +49,7 @@ export default function MyStuvv(props) {
     <div className="banner">
       My Stuvv
    </div>
-    <CardList cardsData={props.list} />
+    <CardList cardsData={props.list} userId={props.userId}/>
   </div>
   )
   
