@@ -21,12 +21,14 @@ function App() {
         .then(resp => {
           console.log("users listings: ", resp.data)
           console.log("logged in as: ", resp.data.user_id)
+          // console.log("logged in as: ", resp.data.id)
           setList(resp.data)
         })
 
         console.log('GOT RESPONSE FROM PROFILES/ME', resp)
         setCurrentUser(resp.data)
         console.log("RESPONSE DATA:", resp.data)
+
         
       })
       .catch(err => {
@@ -34,7 +36,7 @@ function App() {
       })
   }, []);
 
-
+console.log(currentUser.id);
   return (
 
     <Router>
@@ -43,7 +45,7 @@ function App() {
         <Switch>
           <Route
             exact path="/"
-            render={() => <Home />}
+            render={() => <Home userId={currentUser.id}/>}
           />
           <Route
             exact path="/messages"
@@ -52,7 +54,7 @@ function App() {
           />
           <Route
             exact path="/my_stuvv"
-            render={() => <MyStuvv className="my-stuvv-container" list={list}/>}
+            render={() => <MyStuvv className="my-stuvv-container" list={list} userId={currentUser.id}/>}
 
           />
           <Route
