@@ -3,7 +3,7 @@ import UploadForm from '../UploadForm'
 import '../UploadFormHideInput.scss'
 
 
-export default function BuildForm() {
+export default function BuildForm(props) {
 
   return (
     <div>

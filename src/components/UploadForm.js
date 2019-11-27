@@ -12,7 +12,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import './UploadFormHideInput.scss'
 // import { blue } from '@material-ui/core/colors';
-import { withStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 
 
@@ -43,11 +43,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Form() {
+export default function Form(props) {
 
   const classes = useStyles();
 
-  
+
   //handles the check/uncheck value of the Switch (Availability)
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
@@ -59,7 +59,7 @@ export default function Form() {
   };
 
   //handle the dollar amount from the amount input
-  const handleAmount =  event => {
+  const handleAmount = event => {
     setAmount(event.target.value);
   };
 
@@ -84,9 +84,9 @@ export default function Form() {
   // previews users selected images
   const getImageURL = (file) => {
     if (!file) return
-    
+
     let reader = new FileReader();
-    
+
     reader.onload = (event) => {
       // document.getElementById("displayImage0").src = event.target.result
       setImageURLs((URLs) => [...URLs, event.target.result])
@@ -108,7 +108,7 @@ export default function Form() {
         data.append("pics[]", img, img.name)
       }
       data.append("title", text);
-      data.append("user_id", 4);
+      data.append("user_id", props.userId);
       //adding the description to the data sent out
       data.append("description", value)
       data.append("availability", state.checkedA)
@@ -152,40 +152,40 @@ export default function Form() {
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
             labelWidth={60}
           />
-          </FormControl>
-            
-          <div className={classes.root}>
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="outlined-button-file"
-              multiple
-              type="file"
-              onChange={event => {
-                setImages((prev) => [...prev, ...event.target.files])
-                // setImages(event.target.files)
-              }}
-            />
-            <label htmlFor="outlined-button-file">
-              <Button variant="outlined">
-                Add Images
+        </FormControl>
+
+        <div className={classes.root}>
+          <input
+            accept="image/*"
+            className={classes.input}
+            id="outlined-button-file"
+            multiple
+            type="file"
+            onChange={event => {
+              setImages((prev) => [...prev, ...event.target.files])
+              // setImages(event.target.files)
+            }}
+          />
+          <label htmlFor="outlined-button-file">
+            <Button variant="outlined" component="span">
+              Add Images
               </Button>
-            </label>
-            <div>
-             {imageURLs.map(URL => (<img src={URL} className="img" key={URL}/>))}
-             {/* <img id={"displayImage2"} className="img"/> */}
-            </div>
+          </label>
+          <div>
+            {imageURLs.map(URL => (<img src={URL} className="img" key={URL} alt="preview" />))}
+            {/* <img id={"displayImage2"} className="img"/> */}
           </div>
-          <div className='submit'>
+        </div>
+        <div>
           <div aria-label="position" row>
             <FormControlLabel
               value="end"
               control={<Switch
-                  color="primary"
-                  checked={state.checkedA}
-                  onChange={handleChange('checkedA')}
-                  value="checkedA"
-                />}
+                color="primary"
+                checked={state.checkedA}
+                onChange={handleChange('checkedA')}
+                value="checkedA"
+              />}
               label="Available?"
               labelPlacement="start"
             />
@@ -199,23 +199,23 @@ export default function Form() {
         {/* <input type="file" onChange={event => {
           setImages(event.target.files)
         }} multiple /> */}
-  
-        {/* <button onClick={() => sendRequest()}> submit</button> */}
-      </form >
-    );
-  }
-    
-  
-  
-  
- 
-  
-  
+
+      {/* <button onClick={() => sendRequest()}> submit</button> */}
+    </form >
+  );
+}
 
 
 
-  
-  
+
+
+
+
+
+
+
+
+
 
 
 
