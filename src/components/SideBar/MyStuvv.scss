@@ -7,3 +7,20 @@
 .my-stuvv-container > div {
   margin: .5rem;
 }
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image:url(./junk.jpg);
+  background-position: 25% 75%;
+  width: 100%;
+  height: 20rem;
+  color: white;
+  font-weight: 800;
+  font-size: 3rem;
+  background-size: 100%;
+  background-position: bottom;
+  opacity: .85;
+  
+}

@@ -8,15 +8,19 @@ input#outlined-button-file {
 .img {
   max-width: 10rem;
   margin: 1rem;
-  border: 3px solid rgba(108, 108, 108, 0.973)
+  border: 3px solid #E5A74F
 }
 
 .form-container {
-  background-image: url("handshake.jpg");
+  background-image:url(./build.jpg);
+  height: 10rem;
   text-align: center;
   padding-top: 2rem;
   color: white;
+  background-position: bottom;
+  
 }
+
 
 .form-control {
   background-color: rgba(189, 44, 44, 0.701)
@@ -24,4 +28,14 @@ input#outlined-button-file {
 
 .submit {
   margin-bottom: 2rem;
+}
+
+
+
+.MuiButton-label {
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  // background-color: #E5A74F;
 }

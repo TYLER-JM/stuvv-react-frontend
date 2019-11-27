@@ -3,7 +3,7 @@ import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
-import FormGroup from '@material-ui/core/FormGroup';
+// import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
@@ -11,17 +11,16 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import './UploadFormHideInput.scss'
-import { blue } from '@material-ui/core/colors';
-
-
-
+// import { blue } from '@material-ui/core/colors';
+import { withStyles } from '@material-ui/core/styles';
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
-      margin: "3rem",
-      width: "80%",
+      margin: "1rem auto",
+      width: "60%",
       display: "flex",
       "justify-content": "center",
     },
@@ -31,7 +30,7 @@ const useStyles = makeStyles(theme => ({
       "background-color": "yellow",
     },
     margin: {
-      margin: "",
+      margin: "none",
     },  
     textField: {
       marginLeft: theme.spacing(1),
@@ -191,7 +190,10 @@ export default function Form() {
               labelPlacement="start"
             />
           </div>
-          <Button variant="outlined" onClick={() => sendRequest()}>Submit</Button></div>
+          <Link to="/my_stuvv">
+           <Button variant="outlined" onClick={() => sendRequest()}>Submit</Button>
+          </Link>
+          </div>
         </FormControl>
      
         {/* <input type="file" onChange={event => {

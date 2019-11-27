@@ -31,5 +31,13 @@ export default function MyStuvv() {
   // const cards = props.cards.map((card) => {
 
   // return <ul className="my-stuvv-container">{cards}</ul>
-  return <CardList cardsData={listings} />
+  return (
+  <div>
+    <div className="banner">
+      My Stuvv
+   </div>
+    <CardList cardsData={listings} />
+  </div>
+  )
+  
 }
