@@ -12,15 +12,24 @@ import axios from 'axios'
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
+  const [list, setList] = useState([])
 
   useEffect(() => {
     axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
       .then((resp) => {
-        // console.log('GOT RESPONSE', resp)
+        axios.get(`http://localhost:3000/userslistings/${resp.data.id}`, {withCredentials: true })
+        .then(resp => {
+          console.log("users listings: ", resp.data)
+          console.log("logged in as: ", resp.data.user_id)
+          setList(resp.data)
+        })
+
+        console.log('GOT RESPONSE FROM PROFILES/ME', resp)
         setCurrentUser(resp.data)
+        
       })
       .catch(err => {
-        console.log('DIDNT GET RESPONSE')
+        console.log('GOT TO THE PROFILES/ME CATCH', err)
       })
   }, []);
 
@@ -38,11 +47,11 @@ function App() {
           <Route
             exact path="/messages"
             // component={Messages}
-            render={() => < Messages/>}
+            render={() => < Messages user={currentUser.id}/>}
           />
           <Route
             exact path="/my_stuvv"
-            render={() => <MyStuvv className="my-stuvv-container" user={currentUser}/>}
+            render={() => <MyStuvv className="my-stuvv-container" list={list}/>}
 
           />
           <Route
