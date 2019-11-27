@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 export default function MessageList(props) {
-  console.log("the conversation inside the ML TYPE", JSON.parse(props.conversationObject.conversation))
+  // console.log("the conversation inside the ML TYPE", JSON.parse(props.conversationObject.conversation))
 
   const [message, setMessage] = useState([])
 
