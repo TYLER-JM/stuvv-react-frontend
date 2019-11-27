@@ -1,9 +1,11 @@
 @import "bootstrap/scss/bootstrap";
+// body {
+//   height: 100%;
 
 #root {
   font-family: "Montserrat", sans-serif;
   // background-image: url("https://www.transparenttextures.com/patterns/arches.png");
-  
+
   div > nav {
     position: relative;
     display: flex;
@@ -25,30 +27,42 @@
         list-style-type: none;
         text-align: center;
         font-size: 1.2rem;
-        background-color: #215584;
+        background-color: #7ecbba;
+        // background-color: #215584;
         border-radius: 40px;
         padding: 0 20px 3px 20px;
         cursor: pointer;
         color: grey;
         margin: 10px;
-
-        .MuiButton-label {
-          font-family: "Montserrat", sans-serif;
-          color: grey;
-          padding: 0;
+        &:hover {
+          background-color: #51ab97;
         }
 
-        .MuiButtonBase-root:focus {
-          font-family: "Montserrat";
+        .MuiButtonBase-root {
           outline: none;
+          font-family: "Montserrat";
+          &:hover {
+            background-color: #51ab97;
+          }
+          .MuiButton-label {
+            font-family: "Montserrat", sans-serif;
+            color: rgb(109, 109, 109);
+            padding: 0;
+          }
         }
       }
     }
 
     i.fab.fa-stumbleupon-circle {
       font-size: 3rem;
-      color: #215584;
+      color: #7ecbba;
+      // color: #215584;
       padding-right: 20px;
+      cursor: pointer;
+      &:hover {
+        color: #51ab97;
+      }
     }
   }
 }
+// }
