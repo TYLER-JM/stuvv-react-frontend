@@ -14,6 +14,8 @@ export default function SavingModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       className="modal-content"
+      // dialogClassName="spinning"
+
     >
         Posting your Stuvv!
         <Spinner animation="border" variant="warning" />
