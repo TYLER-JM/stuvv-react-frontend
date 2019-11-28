@@ -8,7 +8,7 @@ export default function MessagesSideBar(props) {
   }
   
   return (
-    <div onClick={(event) => displayConversation(event)}>
+    <div className="side-bar-user" onClick={(event) => displayConversation(event)}>
       {props.sentBy}
     </div>
   )
