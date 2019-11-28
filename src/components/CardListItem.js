@@ -82,9 +82,9 @@ export default function CardListItem(props) {
       />
       <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingId={props.listingId} user={props.user} listingOwner={props.owner} />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        {/* <IconButton aria-label="add to favorites">
           <ThumbUpIcon />
-        </IconButton>
+        </IconButton> */}
         {/* <IconButton aria-label="share">  */}
         {window.location.pathname === "/" ?
           <IconButton
