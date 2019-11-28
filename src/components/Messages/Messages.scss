@@ -28,14 +28,21 @@
 .message-list-body {
   background-color: burlywood;
   width: 100%;
+  margin: 2rem;
   // display: none;
 }
 
 .side-bar-body {
   background-color: blanchedalmond;
-  width: 30%;
+  width: 50%;
   height: 100%;
   cursor: pointer;
+}
+
+.side-bar-user {
+  padding: .2rem;
+  margin: .5rem;
+  font-size: 1.4rem;
 }
 
 .message-list-item {

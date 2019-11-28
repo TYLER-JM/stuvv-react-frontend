@@ -1,15 +1,15 @@
 import React from 'react';
 
 export default function MessagesSideBar(props) {
-  
+
   const displayConversation = (event) => {
-    props.setConvo(Number(event.target.innerHTML))
+    props.setConvo(event.target.innerHTML)
     console.log("convo=====", props.convo)
   }
-  
+
   return (
-    <div onClick={(event) => displayConversation(event)}>
-      {props.sentBy}
+    <div className="side-bar-user" onClick={(event) => displayConversation(event)}>
+      {props.sentBy.first_name}
     </div>
   )
 }

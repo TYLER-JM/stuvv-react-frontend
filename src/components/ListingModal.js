@@ -18,12 +18,12 @@ export default function ListingModal(props) {
 
     >
       {/* <Modal.Header closeButton> */}
-        <Modal.Title id="contained-modal-title-vcenter">
-          {`Request Stuvv ${props.listingId}`}
-        </Modal.Title>
+      <Modal.Title id="contained-modal-title-vcenter">
+        {`Request Stuvv ${props.listingId}`}
+      </Modal.Title>
       {/* </Modal.Header> */}
       <Modal.Body>
-        <RequestForm listingId={props.listingId} userid={props.userid} listingOwner={props.listingOwner}/>
+        <RequestForm listingId={props.listingId} user={props.user} listingOwner={props.listingOwner} />
         {/* <UploadForm /> */}
       </Modal.Body>
       <Modal.Footer>

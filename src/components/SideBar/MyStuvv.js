@@ -8,7 +8,7 @@ import Axios from 'axios';
 
 export default function MyStuvv(props) {
   // const listings = ListingHelper()
-
+  console.log("from mystuvv.js", props.user)
   // const [list, setList] = useState([])
 
   // useEffect(() => {
@@ -45,12 +45,12 @@ export default function MyStuvv(props) {
 
   // return <ul className="my-stuvv-container">{cards}</ul>
   return (
-  <div>
-    <div className="banner">
-      My Stuvv
+    <div>
+      <div className="banner">
+        My Stuvv
    </div>
-    <CardList cardsData={props.list} userid={props.userid}/>
-  </div>
+      <CardList cardsData={props.list} user={props.user} />
+    </div>
   )
-  
+
 }
