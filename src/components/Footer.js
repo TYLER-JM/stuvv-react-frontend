@@ -1,4 +1,5 @@
 import React from "react";
+import { Z_FIXED } from "zlib";
 
 const style = {
   "background-color": "#51AB97",
@@ -11,6 +12,8 @@ const style = {
   margin: 0,
   "padding-top": "25px",
   "text-align": "center",
+  // "position": "fixed",
+  bottom: "0",
 }
 
 const aStyle = {

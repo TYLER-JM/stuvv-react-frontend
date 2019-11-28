@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import MessageListItem from './MessageListItem';
 import axios from 'axios';
 import classNames from 'classnames';
+import './Messages.scss'
 
 
 export default function MessageList(props) {
@@ -15,7 +16,7 @@ export default function MessageList(props) {
     //send the single state as the data
     axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(message) }, { withCredential: true })
       .then(resp => {
-        console.log("got a response after updating the conversation");
+        console.log("got a response after updating the conversation", props);
       })
       .catch(err => {
         console.log("error is: ", err);
@@ -36,6 +37,7 @@ export default function MessageList(props) {
       {/* <p>{props.conversationObject.id}</p> */}
       {bubbles}
       {/* <input type="text" onChange={e => setSingle([single[single], content: e.target.value ])} /> */}
+      <div className="input-submit">
       <input type="text" onChange={e => setMessage([...parsedConvo,
       {
         sender: props.userId.toString(), //current logged in user
@@ -44,6 +46,7 @@ export default function MessageList(props) {
       }]
       )} />
       <button onClick={() => sendMessage()}>SEND!</button>
+      </div>
     </li>
 
   );
