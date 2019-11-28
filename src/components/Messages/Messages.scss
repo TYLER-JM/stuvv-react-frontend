@@ -19,3 +19,35 @@
   // opacity: .70;
   
 }
+
+.messages-container {
+  display: flex;
+  justify-content: row;
+}
+
+.message-list-body {
+  background-color: burlywood;
+  width: 100%;
+  // display: none;
+}
+
+.side-bar-body {
+  background-color: blanchedalmond;
+  width: 30%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.message-list-item {
+  background-color: transparent;
+  border: 1px solid purple;
+}
+
+.message-list li {
+  background-color: white;
+  list-style-type: none;
+}
+
+.hidden {
+  display: none;
+}
