@@ -126,6 +126,7 @@ export default function Form(props) {
     }
   
     return (
+     <div className="test">
       <form 
         onSubmit={event => event.preventDefault()}
         className={classes.root} noValidate autoComplete="off"
@@ -184,7 +185,7 @@ export default function Form(props) {
             {/* <img id={"displayImage2"} className="img"/> */}
           </div>
         </div>
-        <div>
+        <div className="submit">
           <div aria-label="position" row>
             <FormControlLabel
               value="end"
@@ -210,7 +211,7 @@ export default function Form(props) {
               show={modalShow}
               onHide={() => setModalShow(false)}
             />
-          </div>
+        </div>
         </FormControl>
      
         {/* <input type="file" onChange={event => {
@@ -219,6 +220,7 @@ export default function Form(props) {
 
       {/* <button onClick={() => sendRequest()}> submit</button> */}
     </form >
+    </div>
   );
 }
 

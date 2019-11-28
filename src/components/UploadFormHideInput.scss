@@ -25,7 +25,7 @@ input#outlined-button-file {
 }
 
 .form-control {
-  background-color: rgba(189, 44, 44, 0.701);
+  background-color: white;
 }
 
 .submit {
@@ -36,7 +36,9 @@ input#outlined-button-file {
 
 .submit button {
   margin-left: 2rem;
-  background-color: #e5a74f;
+  background-color: rgb(81, 171, 151);
+  color: white;
+  border: none;
 }
 
 .MuiButton-label {
@@ -72,4 +74,10 @@ input#outlined-button-file {
   background-color: #e5a74f;
   border: 1px solid rgba(0, 0, 0, 0.23);
   padding: 5px 15px;
+}
+
+.test {
+  // background-color: blue;
+  height: 700px;
+  padding-top: 1rem;
 }

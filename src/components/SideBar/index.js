@@ -75,6 +75,11 @@ export default function SideBar(props) {
             Messages
           </ListItem>
         </Link>
+        <Link to="/build">
+          <ListItem button key="Build">
+            Build Your Listing
+          </ListItem>
+        </Link>
         <span onClick={() => removeSession()}>
           <ListItem
             button
@@ -83,11 +88,6 @@ export default function SideBar(props) {
             Logout
           </ListItem>
         </span>
-        {/* <Link to="/build">
-          <ListItem button key="Build">
-            (temp) Build-link
-          </ListItem>
-        </Link> */}
 
       </List>
     </div>
