@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
-// import Form from './UploadForm'
 import CardList from "./CardList"
 import WelcomeVideo from './Welcome/WelcomeVideo'
-// import Button from 'react-bootstrap/Button'
-// import Handshake from './handshake.jpg'
-// import Video from './video.mp4'
 import axios from 'axios';
 import "./Home.scss"
 
@@ -53,11 +49,7 @@ export default function Home(props) {
   return (
     <div>
       <WelcomeVideo sendRequest={sendRequest} />
-      {/* < CardList cardsData={cardData} /> */}
-      {/* < SideBar /> */}
-      {/* < CardList cardsData={listings} /> */}
-      < CardList cardsData={list} userid={props.userid}/>
-      {/* < Form /> */}
+      < CardList cardsData={list} user={props.user} />
     </div>
   );
 }
