@@ -1,0 +1,15 @@
+.modal-content {
+  font-size: xx-large;
+  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: transparent;
+  background-clip: padding-box;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  color: white;
+}
