@@ -33,6 +33,10 @@ export default function DatePicker({ listingId, selectedStartDate, setSelectedSt
 
   const  disableDates = (date) => {
 
+    if (date.getTime() < Date.now()) {
+      return true;
+    }
+
     for (let req of requestedDates) {
       const reqStartDate = new Date(req.start_date)
       const reqEndDate = new Date(req.end_date)
@@ -44,7 +48,7 @@ export default function DatePicker({ listingId, selectedStartDate, setSelectedSt
 
   const disableEndDates = (date) => {
     let startDate = new Date(selectedStartDate)
-    if (date.getTime() < startDate.getTime()) {
+    if (date.getTime() < startDate.getTime() || date.getTime() < Date.now()) {
       return true
     }
     for (let req of requestedDates) {
