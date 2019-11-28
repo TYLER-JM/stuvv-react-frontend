@@ -16,6 +16,8 @@ import CardListItemCarousel from './CardListItemCarousel';
 import EditIcon from '@material-ui/icons/Edit';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ListingModal from './ListingModal';
+import { Link } from "react-router-dom";
+
 
 
 
@@ -56,7 +58,13 @@ export default function CardListItem(props) {
   };
 
   const handlePageChange = () => {
-    window.location.pathname = "/build"
+    // window.location.pathname = "/build"
+    props.setBuildState({
+      description: props.description,
+      price: props.price,
+      title: props.title,
+    })
+    console.log("from cardListItem", props.price)
   };
 
 
@@ -92,11 +100,17 @@ export default function CardListItem(props) {
             onClick={() => setModalShow(true)}>
             <PostAddIcon />
           </IconButton> :
+          
+          <Link to="/build">
           <IconButton
             aria-label="share"
             onClick={handlePageChange}>
             <EditIcon />
-          </IconButton  >}
+          </IconButton  >
+          </Link>
+        }
+
+
         {/* </IconButton> */}
         <IconButton
           className={clsx(classes.expand, {

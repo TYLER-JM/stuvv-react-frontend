@@ -43,6 +43,7 @@ export default function CardList(props) {
           price={card.price_per_day / 100}
           owner={card.user_id}
           user={props.user}
+          setBuildState={props.setBuildState}
         />
       </div>
     )
