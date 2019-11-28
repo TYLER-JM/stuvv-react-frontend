@@ -25,7 +25,7 @@ export default function Messages(props) {
     return function cleanup() {
       console.log("all done");
     }
-  }, []);
+  }, [props.userId]);
 
   // const sendMessage = function() {
   //   // event.preventDefault();
