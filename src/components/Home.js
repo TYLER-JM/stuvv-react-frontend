@@ -10,7 +10,7 @@ import "./Home.scss"
 
 
 
-export default function Home() {
+export default function Home(props) {
   const [list, setList] = useState([])
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Home() {
       {/* < CardList cardsData={cardData} /> */}
       {/* < SideBar /> */}
       {/* < CardList cardsData={listings} /> */}
-      < CardList cardsData={list} />
+      < CardList cardsData={list} userid={props.userid}/>
       {/* < Form /> */}
     </div>
   );

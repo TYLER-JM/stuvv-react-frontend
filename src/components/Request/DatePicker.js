@@ -5,9 +5,10 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import RequestFormHelper from '../../helpers/RequestFormHelper';
 
-export default function DatePicker(props) {
-  const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
-  const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
+// export default function DatePicker(props) {
+export default function DatePicker({ listingId, selectedStartDate, setSelectedStartDate, selectedEndDate, setSelectedEndDate}) {
+  // const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
+  // const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
 
   // const hardDates = () => {
   //   let a = new Date('2019-11-20 19:48:30.82458');
@@ -20,7 +21,8 @@ export default function DatePicker(props) {
   //   ]
   // }; 
 
-  const requestedDates = RequestFormHelper(props.listingId);
+  const requestedDates = RequestFormHelper(listingId);
+  // const requestedDates = RequestFormHelper(props.listingId);
 
   const handleStartDateChange = date => {
     setSelectedStartDate(date);
@@ -30,6 +32,10 @@ export default function DatePicker(props) {
   };
 
   const  disableDates = (date) => {
+
+    if (date.getTime() < Date.now()) {
+      return true;
+    }
 
     for (let req of requestedDates) {
       const reqStartDate = new Date(req.start_date)
@@ -42,12 +48,12 @@ export default function DatePicker(props) {
 
   const disableEndDates = (date) => {
     let startDate = new Date(selectedStartDate)
-    if (date.getTime() < startDate.getTime()) {
+    if (date.getTime() < startDate.getTime() || date.getTime() < Date.now()) {
       return true
     }
     for (let req of requestedDates) {
       let reqStartDate = new Date(req.start_date)
-      if (date.getTime() > reqStartDate.getTime() && startDate.getTime() < reqStartDate.getTime()) {
+      if (date.getTime() >= reqStartDate.getTime() && startDate.getTime() <= reqStartDate.getTime()) {
         return true
       }
     }
