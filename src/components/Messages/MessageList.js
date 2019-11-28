@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import MessageListItem from './MessageListItem';
 import axios from 'axios';
 import classNames from 'classnames';

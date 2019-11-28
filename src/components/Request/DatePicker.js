@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
@@ -6,7 +6,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import RequestFormHelper from '../../helpers/RequestFormHelper';
 
 // export default function DatePicker(props) {
-export default function DatePicker({ listingId, selectedStartDate, setSelectedStartDate, selectedEndDate, setSelectedEndDate}) {
+export default function DatePicker({ listingId, selectedStartDate, setSelectedStartDate, selectedEndDate, setSelectedEndDate }) {
   // const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
   // const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
 
@@ -31,7 +31,7 @@ export default function DatePicker({ listingId, selectedStartDate, setSelectedSt
     setSelectedEndDate(date);
   };
 
-  const  disableDates = (date) => {
+  const disableDates = (date) => {
 
     if (date.getTime() < Date.now()) {
       return true;
@@ -42,7 +42,7 @@ export default function DatePicker({ listingId, selectedStartDate, setSelectedSt
       const reqEndDate = new Date(req.end_date)
       if (date.getTime() >= reqStartDate.getTime() && date.getTime() <= reqEndDate.getTime()) {
         return true
-      } 
+      }
     }
   };
 
