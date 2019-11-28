@@ -58,6 +58,28 @@ export default function RequestForm(props) {
     console.log("DATA TO SEND ALONG: ", data)
   };
 
+  const sendQuestion = () => {
+    const toBeStringified = [
+      {
+        sender: props.userid,
+        content: message,
+        sent: new Date()
+      }
+    ] 
+    const fullMessage = {
+      conversation: JSON.stringify(toBeStringified),
+      from_user_id: props.userid,
+      to_user_id: props.listingOwner
+    }
+    axios.post("http://localhost:3000/messages", { message: fullMessage }, {withCredentials: true})
+      .then(resp => {
+        console.log("RESPONSE FROM Send QUESTION: ", resp)
+      })
+      .catch(err => console.log("error: ", err))
+    // console.log("message is: ", message)
+    // console.log("listingOWner: ", props.listingOwner)
+  }
+
   //handles the value of the multiline textarea (description)
   const handleMessageChange = event => {
     setMessage(event.target.value);
@@ -86,6 +108,7 @@ export default function RequestForm(props) {
         onChange={handleMessageChange}
       />
       <button onClick={() => sendRequest()}>SEND REQUEST</button>
+      <button onClick={() => sendQuestion()}>SEND QUESTION</button>
 
     </div>
   );
