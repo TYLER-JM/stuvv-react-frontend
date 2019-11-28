@@ -20,7 +20,7 @@ export default function BuildForm(props) {
       <div className="build-form-banner">
         Build your listing
       </div>
-        <UploadForm userId={props.userId}/>
+      <UploadForm userId={props.userId}/>
         {/* <UploadForm userId={currentUser.id}/> */}
     </div>
   );

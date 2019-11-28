@@ -2,17 +2,15 @@ import React from "react";
 
 const style = {
   "background-color": "#51AB97",
-  // opacity: 0.3,
   color: "#4f4f4f",
   "font-weigth": "bold",
   height: "70px",
   width: "100%",
   "font-align": "center",
-  position: "absolute",
+  // position: "absolute",
   margin: 0,
-  // left: 0,
-  // right: 0,
-  "padding-top": "25px"
+  "padding-top": "25px",
+  "text-align": "center",
 }
 
 const aStyle = {
@@ -21,9 +19,7 @@ const aStyle = {
 
 export default function Footer() {
   return (
-    <div className="footer-copyright text-center py-3">
-      <br />
-      <br />
+    <div>
       <footer style={style}>
         &copy; {new Date().getFullYear()} Copyright:
         <a href="https://github.com/JOadelic" style={aStyle}> Jordan Owens </a> *
