@@ -47,9 +47,13 @@ export default function Messages(props) {
       <div className="messagesBanner">
         Messages
       </div>
-    <ul>
-      {conversations}
-    </ul>
+
+      <div>
+        <ul>
+          {conversations}
+        </ul>
+      </div>
+
    
 
     {/* <button onClick={() => setChange(2)}>GET MESSAGES</button> */}
