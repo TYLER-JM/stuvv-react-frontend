@@ -23,7 +23,7 @@ export default function ListingModal(props) {
         </Modal.Title>
       {/* </Modal.Header> */}
       <Modal.Body>
-        <RequestForm listingId={props.listingId} userid={props.userid}/>
+        <RequestForm listingId={props.listingId} userid={props.userid} listingOwner={props.listingOwner}/>
         {/* <UploadForm /> */}
       </Modal.Body>
       <Modal.Footer>
