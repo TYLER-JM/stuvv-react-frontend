@@ -6,7 +6,7 @@ import Register from './RegisterModal';
 export default function Navbar(props) {
   const [modalShow, setModalShow] = React.useState(false);
 
-  console.log("PROPS USER ISSSSSSS", props.user)
+  // console.log("PROPS USER ISSSSSSS", props.user)
   if (props.user.id) {
 
     return (
