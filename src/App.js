@@ -20,6 +20,8 @@ function App() {
     axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
       .then((resp) => {
         setCurrentUser(resp.data)
+        console.log("RESPONSE DATA:", resp.data)
+
         
         axios.get(`http://localhost:3000/userslistings/${resp.data.id}`, { withCredentials: true })
           .then((resp) => {
@@ -42,7 +44,7 @@ function App() {
       })
   }, []);
 
-
+console.log(currentUser.id);
   return (
 
     <Router>
@@ -51,7 +53,7 @@ function App() {
         <Switch>
           <Route
             exact path="/"
-            render={() => <Home />}
+            render={() => <Home userid={currentUser.id}/>}
           />
           <Route
             exact path="/messages"
@@ -60,7 +62,7 @@ function App() {
           />
           <Route
             exact path="/my_stuvv"
-            render={() => <MyStuvv className="my-stuvv-container" list={list} />}
+            render={() => <MyStuvv className="my-stuvv-container" list={list} userid={currentUser.id}/>}
 
           />
           <Route
