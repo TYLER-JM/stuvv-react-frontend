@@ -53,6 +53,7 @@ export default function RequestForm(props) {
     axios.post("http://localhost:3000/requests", data, {withCredentials: true})
       .then(resp => {
         console.log("RESPONSE IS: ", resp)
+        sendQuestion();
       })
       .catch(error => console.log("error is: ", error))
     console.log("DATA TO SEND ALONG: ", data)
@@ -107,7 +108,7 @@ export default function RequestForm(props) {
         value={message}
         onChange={handleMessageChange}
       />
-      <button onClick={() => sendRequest()}>SEND REQUEST</button>
+      <button onClick={() => sendRequest()}>SEND REQUEST and MESSAGE</button>
       <button onClick={() => sendQuestion()}>SEND QUESTION</button>
 
     </div>
