@@ -9,7 +9,7 @@ import './Messages.scss';
 
 export default function Messages(props) {
   const [messages, setMessages] = useState([]);
-  const [convo, setConvo]= useState(0);
+  const [convo, setConvo] = useState(0);
 
   // const [single, setSingle] = useState({
   //   sender: props.userId,
@@ -20,7 +20,7 @@ export default function Messages(props) {
   useEffect(() => {
     //param === to_user_id
     // axios.get("http://localhost:3000/messages/5", { withCredentials: true})
-    axios.get(`http://localhost:3000/messages/${props.userId}`, { withCredentials: true })
+    axios.get(`http://localhost:3000/messages/${props.user.id}`, { withCredentials: true })
       .then(resp => {
         console.log("GOT SOMETHING FOR MESSAGES: ", resp.data);
         setMessages(resp.data)
@@ -30,7 +30,7 @@ export default function Messages(props) {
     return function cleanup() {
       console.log("all done");
     }
-  }, [props.userId]);
+  }, [props.user.id]);
 
   // const sendMessage = function() {
   //   // event.preventDefault();
@@ -44,22 +44,22 @@ export default function Messages(props) {
 
   const conversations = messages.map((conversation, i) => {
     return (
-      <MessageList key={i} conversationObject={conversation} sentBy={conversation.from_user_id} convo={convo} userId={props.userId} />
+      <MessageList key={i} conversationObject={conversation} sentBy={conversation.from_user} convo={convo} user={props.user} />
     )
   })
 
   const names = messages.map((conversation, i) => {
     return (
-      <MessagesSideBar key={i} sentBy={conversation.from_user_id} setConvo={setConvo} convo={convo} />
+      <MessagesSideBar key={i} sentBy={conversation.from_user} setConvo={setConvo} convo={convo} />
     )
-  } )
+  })
   return (
     <div>
       <div className="messagesBanner">
         Messages
       </div>
       <div className="messages-container">
-        <div  className="side-bar-body">
+        <div className="side-bar-body">
           {/* <MessagesSideBar /> */}
           {names}
 
@@ -71,9 +71,9 @@ export default function Messages(props) {
         </div>
       </div>
 
-   
 
-    {/* <button onClick={() => setChange(2)}>GET MESSAGES</button> */}
+
+      {/* <button onClick={() => setChange(2)}>GET MESSAGES</button> */}
     </div>
   );
 }

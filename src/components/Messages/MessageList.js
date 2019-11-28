@@ -27,18 +27,18 @@ export default function MessageList(props) {
 
   const bubbles = parsedConvo.map((msg, i) => {
     return (
-      <MessageListItem key={i} messageObject={msg} />
+      <MessageListItem key={i} messageObject={msg} user={props.user} />
     )
   })
 
   return (
-    <li className={classNames({"hidden": props.sentBy !== props.convo})}>
+    <li className={classNames({ "hidden": props.sentBy.first_name !== props.convo })}>
       {/* <p>{props.conversationObject.id}</p> */}
       {bubbles}
       {/* <input type="text" onChange={e => setSingle([single[single], content: e.target.value ])} /> */}
       <input type="text" onChange={e => setMessage([...parsedConvo,
       {
-        sender: props.userId.toString(), //current logged in user
+        sender: props.user.first_name, //current logged in user
         content: e.target.value,
         sent: new Date()
       }]

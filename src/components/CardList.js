@@ -5,6 +5,7 @@ import CardBlank from "./CardBlank";
 // export default function CardList({ cardsData}) {
 export default function CardList(props) {
   // const [modalShow, setModalShow] = useState(false);
+  console.log("from cardlist.js", props.user)
 
   // const cardData = [
   //   {
@@ -40,8 +41,8 @@ export default function CardList(props) {
           availability={card.availability}
           urls={card.image_urls}
           price={card.price_per_day / 100}
-          user={card.user_id}
-          userid={props.userid}
+          owner={card.user_id}
+          user={props.user}
         />
       </div>
     )

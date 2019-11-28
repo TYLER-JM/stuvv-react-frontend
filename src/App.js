@@ -22,7 +22,7 @@ function App() {
         setCurrentUser(resp.data)
         console.log("RESPONSE DATA:", resp.data)
 
-        
+
         axios.get(`http://localhost:3000/userslistings/${resp.data.id}`, { withCredentials: true })
           .then((resp) => {
             console.log("users listings: ", resp.data)
@@ -30,7 +30,7 @@ function App() {
             setList(resp.data)
           })
 
-        axios.get(`http://localhost:3000/usersrequests/${resp.data.id}`, { withCredentials: true})
+        axios.get(`http://localhost:3000/usersrequests/${resp.data.id}`, { withCredentials: true })
           .then((resp) => {
             console.log('Fetching users requests', resp.data)
             setRequest(resp.data)
@@ -44,7 +44,7 @@ function App() {
       })
   }, []);
 
-console.log(currentUser.id);
+  console.log("from the App.js file", currentUser.id);
   return (
 
     <Router>
@@ -53,16 +53,16 @@ console.log(currentUser.id);
         <Switch>
           <Route
             exact path="/"
-            render={() => <Home userid={currentUser.id}/>}
+            render={() => <Home userid={currentUser.id} />}
           />
           <Route
             exact path="/messages"
             // component={Messages}
-            render={() => < Messages userId={currentUser.id} />}
+            render={() => < Messages user={currentUser} />}
           />
           <Route
             exact path="/my_stuvv"
-            render={() => <MyStuvv className="my-stuvv-container" list={list} userid={currentUser.id}/>}
+            render={() => <MyStuvv className="my-stuvv-container" list={list} user={currentUser} />}
 
           />
           <Route
