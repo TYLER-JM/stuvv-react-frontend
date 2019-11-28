@@ -15,7 +15,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [list, setList] = useState([]);
   const [request, setRequest] = useState([]);
-  const [buildState, setBuildState] = useState({description: null, price: null, title: null});
+  const [buildState, setBuildState] = useState({});
+  // const [buildState, setBuildState] = useState({description: null, price: null, title: null, id: null});
 
   useEffect(() => {
 

@@ -40,7 +40,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Form(props) {
-
   const classes = useStyles();
 
   const [modalShow, setModalShow] = React.useState(false);
@@ -72,6 +71,9 @@ export default function Form(props) {
 
   //state for the textarea
   const [value, setValue] = useState("");
+  // if (props.buildState.description) {
+  //   setValue(props.buildState.description)
+  // }
 
   //state to handle the upload images and title text field
   const [text, setText] = useState("");
@@ -111,15 +113,25 @@ export default function Form(props) {
     data.append("availability", state.checkedA)
     data.append("price_per_day", amount)
 
-    return axios.post(`http://localhost:3000/listings`, data, { withCredentials: true })
+    if (!props.buildState.description) {
+      return axios.post(`http://localhost:3000/listings`, data, { withCredentials: true })
       .then(resp => {
         console.log("got to the then")
         setTimeout(() => {
           window.location.pathname = "/my_stuvv"
-        }, 6000)
+        }, 1000)
       })
       .catch(error => console.error())
-
+    } else {
+      return axios.put(`http://localhost:3000/listings/${props.buildState.id}`, data, { withCredentials: true })
+      .then(resp => {
+        console.log("got to the then")
+        setTimeout(() => {
+          window.location.pathname = "/my_stuvv"
+        }, 1000)
+      })
+      .catch(error => console.error())
+    }
   }
 
   return (
@@ -131,13 +143,14 @@ export default function Form(props) {
         <FormControl className="form-control" component="fieldset">
           <TextField
             id="outlined-basic"
-            label="Title"
+            label="title"
             variant="outlined"
+            value={text || props.buildState.title}
             onChange={event => setText(event.target.value)}
           />
           <TextField
             id="outlined-multiline-static"
-            label="Description"
+            label="description"
             multiline
             rows="4"
             // defaultValue="Default Value"
@@ -145,7 +158,8 @@ export default function Form(props) {
             margin="normal"
             variant="outlined"
             placeholder="enter description"
-            value={value}
+            // value={value}
+            value={ value || props.buildState.description}
             onChange={handleValueChange}
           />
           <FormControl fullWidth className={classes.margin} variant="outlined">
@@ -153,7 +167,7 @@ export default function Form(props) {
             <OutlinedInput
               id="outlined-adornment-amount"
               type="number"
-              value={amount}
+              value={amount ||props.buildState.price}
               onChange={handleAmount}
               startAdornment={<InputAdornment position="start">$</InputAdornment>}
               labelWidth={60}
@@ -174,7 +188,7 @@ export default function Form(props) {
             />
             <label htmlFor="outlined-button-file">
               <Button variant="outlined" component="span">
-                Add Images
+                {props.buildState.title ? "Add More Images" : "Add Images"}
               </Button>
             </label>
             <div>
@@ -202,7 +216,7 @@ export default function Form(props) {
                 sendRequest()
                 setModalShow(true)
               }}>
-              Submit
+                {props.buildState.title ? "Submit Changes" : "Submit"}
            </Button>
 
             <SavingModal

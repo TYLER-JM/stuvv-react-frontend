@@ -54,7 +54,7 @@ export default function CardListItem(props) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-    console.log("inside CLI props.userID: ", props.user.id)
+    // console.log("inside CLI props.userID: ", props.user.id)
   };
 
   const handlePageChange = () => {
@@ -63,6 +63,7 @@ export default function CardListItem(props) {
       description: props.description,
       price: props.price,
       title: props.title,
+      id: props.listingId,
     })
     console.log("from cardListItem", props.price)
   };

@@ -3,7 +3,7 @@ import CardListItem from "./CardListItem";
 import CardBlank from "./CardBlank";
 
 export default function CardList(props) {
-  console.log("from cardlist.js", props.user)
+  // console.log("from cardlist.js", props.user)
 
   const cards = props.cardsData.map((card, i) => {
     // console.log("CardList cardsData: ", cardsData)
