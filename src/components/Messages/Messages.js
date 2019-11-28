@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import MessagesHelper from '../../helpers/MessagesHelper';
 import axios from 'axios'
-import MessageList from './MessageList'
-import './Messages.scss'
+import MessageList from './MessageList';
+import MessagesSideBar from './MessagesSideBar';
+import classNames from 'classnames';
+import './Messages.scss';
+
 
 export default function Messages(props) {
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState([]);
+  const [convo, setConvo]= useState(0);
+
   // const [single, setSingle] = useState({
   //   sender: props.userId,
   //   content: "",
@@ -25,7 +30,7 @@ export default function Messages(props) {
     return function cleanup() {
       console.log("all done");
     }
-  }, []);
+  }, [props.userId]);
 
   // const sendMessage = function() {
   //   // event.preventDefault();
@@ -39,17 +44,33 @@ export default function Messages(props) {
 
   const conversations = messages.map((conversation, i) => {
     return (
-      <MessageList key={i} conversationObject={conversation} userId={props.userId} />
+      <MessageList key={i} conversationObject={conversation} sentBy={conversation.from_user_id} convo={convo} userId={props.userId} />
     )
   })
+
+  const names = messages.map((conversation, i) => {
+    return (
+      <MessagesSideBar key={i} sentBy={conversation.from_user_id} setConvo={setConvo} convo={convo} />
+    )
+  } )
   return (
     <div>
       <div className="messagesBanner">
         Messages
       </div>
-    <ul>
-      {conversations}
-    </ul>
+      <div className="messages-container">
+        <div  className="side-bar-body">
+          {/* <MessagesSideBar /> */}
+          {names}
+
+        </div>
+        <div className="message-list-body">
+          <ul className="message-list">
+            {conversations}
+          </ul>
+        </div>
+      </div>
+
    
 
     {/* <button onClick={() => setChange(2)}>GET MESSAGES</button> */}

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import MessageListItem from './MessageListItem';
 import axios from 'axios';
+import classNames from 'classnames';
 
 
 export default function MessageList(props) {
   // console.log("the conversation inside the ML TYPE", JSON.parse(props.conversationObject.conversation))
 
-  const [message, setMessage] = useState([])
+  const [message, setMessage] = useState([]);
 
   const sendMessage = function () {
     // event.preventDefault();
@@ -24,20 +25,20 @@ export default function MessageList(props) {
   }
   const parsedConvo = JSON.parse(props.conversationObject.conversation)
 
-  const messages = parsedConvo.map((msg, i) => {
+  const bubbles = parsedConvo.map((msg, i) => {
     return (
       <MessageListItem key={i} messageObject={msg} />
     )
   })
 
   return (
-    <li>
-      <p>{props.conversationObject.id}</p>
-      {messages}
+    <li className={classNames({"hidden": props.sentBy !== props.convo})}>
+      {/* <p>{props.conversationObject.id}</p> */}
+      {bubbles}
       {/* <input type="text" onChange={e => setSingle([single[single], content: e.target.value ])} /> */}
       <input type="text" onChange={e => setMessage([...parsedConvo,
       {
-        sender: props.userId.toString(),
+        sender: props.userId.toString(), //current logged in user
         content: e.target.value,
         sent: new Date()
       }]
