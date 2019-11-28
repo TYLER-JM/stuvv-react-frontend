@@ -1,7 +1,5 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal"
-// import Form from "./UploadForm";
-// import UploadForm from "./UploadForm";
 import Button from "react-bootstrap/Button";
 import RequestForm from "./Request/RequestForm";
 import './ListingModal.scss'

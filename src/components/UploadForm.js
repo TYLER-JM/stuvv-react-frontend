@@ -3,17 +3,12 @@ import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
-// import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import './UploadFormHideInput.scss'
-// import { blue } from '@material-ui/core/colors';
-// import { withStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
 import SavingModal from './SavingModal'
 
 
@@ -32,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
     margin: {
       margin: "none",
-    },  
+    },
     textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
@@ -95,43 +90,45 @@ export default function Form(props) {
     }
     reader.readAsDataURL(file)
   }
-  
-  
-    useEffect(() => {
-      setImageURLs([])
-      images.forEach(getImageURL);
-    }, [images])
-      
-    const sendRequest = () => {
-      const data = new FormData();
-      // console.log(images[0].name)
-  
-      for (let img of images) {
-        data.append("pics[]", img, img.name)
-      }
-      data.append("title", text);
-      data.append("user_id", props.userId);
-      //adding the description to the data sent out
-      data.append("description", value)
-      data.append("availability", state.checkedA)
-      data.append("price_per_day", amount)
-  
-      return axios.post(`http://localhost:3000/listings`, data, {withCredentials: true})
-            .then(resp => {
-              console.log("got to the then")
-              setTimeout(() => {
-                window.location.pathname = "/my_stuvv"}, 6000)})
-            .catch(error => console.error())
-      
+
+
+  useEffect(() => {
+    setImageURLs([])
+    images.forEach(getImageURL);
+  }, [images])
+
+  const sendRequest = () => {
+    const data = new FormData();
+    // console.log(images[0].name)
+
+    for (let img of images) {
+      data.append("pics[]", img, img.name)
     }
-  
-    return (
-     <div className="test">
-      <form 
+    data.append("title", text);
+    data.append("user_id", props.user.id);
+    //adding the description to the data sent out
+    data.append("description", value)
+    data.append("availability", state.checkedA)
+    data.append("price_per_day", amount)
+
+    return axios.post(`http://localhost:3000/listings`, data, { withCredentials: true })
+      .then(resp => {
+        console.log("got to the then")
+        setTimeout(() => {
+          window.location.pathname = "/my_stuvv"
+        }, 6000)
+      })
+      .catch(error => console.error())
+
+  }
+
+  return (
+    <div className="test">
+      <form
         onSubmit={event => event.preventDefault()}
         className={classes.root} noValidate autoComplete="off"
       >
-          <FormControl className="form-control" component="fieldset">
+        <FormControl className="form-control" component="fieldset">
           <TextField
             id="outlined-basic"
             label="Title"
@@ -152,74 +149,75 @@ export default function Form(props) {
             onChange={handleValueChange}
           />
           <FormControl fullWidth className={classes.margin} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-amount">Cost/Day</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-amount"
-            type="number"
-            value={amount}
-            onChange={handleAmount}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            labelWidth={60}
-          />
-        </FormControl>
-
-        <div className={classes.root}>
-          <input
-            accept="image/*"
-            className={classes.input}
-            id="outlined-button-file"
-            multiple
-            type="file"
-            onChange={event => {
-              setImages((prev) => [...prev, ...event.target.files])
-              // setImages(event.target.files)
-            }}
-          />
-          <label htmlFor="outlined-button-file">
-            <Button variant="outlined" component="span">
-              Add Images
-              </Button>
-          </label>
-          <div>
-            {imageURLs.map(URL => (<img src={URL} className="img" key={URL} alt="preview" />))}
-            {/* <img id={"displayImage2"} className="img"/> */}
-          </div>
-        </div>
-        <div className="submit">
-          <div aria-label="position" row>
-            <FormControlLabel
-              value="end"
-              control={<Switch
-                color="primary"
-                checked={state.checkedA}
-                onChange={handleChange('checkedA')}
-                value="checkedA"
-              />}
-              label="Available?"
-              labelPlacement="start"
+            <InputLabel htmlFor="outlined-adornment-amount">Cost/Day</InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-amount"
+              type="number"
+              value={amount}
+              onChange={handleAmount}
+              startAdornment={<InputAdornment position="start">$</InputAdornment>}
+              labelWidth={60}
             />
+          </FormControl>
+
+          <div className={classes.root}>
+            <input
+              accept="image/*"
+              className={classes.input}
+              id="outlined-button-file"
+              multiple
+              type="file"
+              onChange={event => {
+                setImages((prev) => [...prev, ...event.target.files])
+                // setImages(event.target.files)
+              }}
+            />
+            <label htmlFor="outlined-button-file">
+              <Button variant="outlined" component="span">
+                Add Images
+              </Button>
+            </label>
+            <div>
+              {imageURLs.map(URL => (<img src={URL} className="img" key={URL} alt="preview" />))}
+              {/* <img id={"displayImage2"} className="img"/> */}
+            </div>
           </div>
-           <Button 
-             variant="outlined" 
-             onClick={() => { 
-             sendRequest()
-             setModalShow(true)}}>
-               Submit
+          <div className="submit">
+            <div aria-label="position" row>
+              <FormControlLabel
+                value="end"
+                control={<Switch
+                  color="primary"
+                  checked={state.checkedA}
+                  onChange={handleChange('checkedA')}
+                  value="checkedA"
+                />}
+                label="Available?"
+                labelPlacement="start"
+              />
+            </div>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                sendRequest()
+                setModalShow(true)
+              }}>
+              Submit
            </Button>
 
             <SavingModal
               show={modalShow}
               onHide={() => setModalShow(false)}
             />
-        </div>
+          </div>
         </FormControl>
-     
+
         {/* <input type="file" onChange={event => {
           setImages(event.target.files)
         }} multiple /> */}
 
-      {/* <button onClick={() => sendRequest()}> submit</button> */}
-    </form >
+        {/* <button onClick={() => sendRequest()}> submit</button> */}
+      </form >
     </div>
   );
 }

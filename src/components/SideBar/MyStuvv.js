@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import CardList from "../CardList.js"
 import './MyStuvv.scss'
-// import { getThemeProps } from '@material-ui/styles';
-import ListingHelper from '../../helpers/ListingHelper.js';
-import Axios from 'axios';
-
 
 export default function MyStuvv(props) {
   // const listings = ListingHelper()
