@@ -7,7 +7,6 @@ import CardList from "../CardList.js"
 
 export default function MyRequests(props) {
 
-
   return (
     <div>
       <div className="requests-banner">My Requests</div>
