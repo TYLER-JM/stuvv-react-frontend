@@ -18,7 +18,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import ListingModal from './Request/ListingModal';
 import { Link } from "react-router-dom";
 import axios from "axios"
-
+import "./CardListItem.scss"
 
 
 const useStyles = makeStyles(theme => ({
@@ -114,47 +114,49 @@ export default function CardListItem(props) {
 
 
   return (
-    <Card className={classes.card}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {props.owner}
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
+    <div className="card-list-item">
+      <Card className={classes.card}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="recipe" className={classes.avatar}>
+              {props.owner}
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title={props.title}
+          subheader={`$ ${props.price} per day`}
+        />
+        {/* <CardListItemCarousel /> */}
+        <CardListItemCarousel
+          urls={props.urls}
+        />
+        <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingowner={props.owner} />
+        <CardActions disableSpacing>
+          {buttons()}
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
           </IconButton>
-        }
-        title={props.title}
-        subheader={`$ ${props.price} per day`}
-      />
-      {/* <CardListItemCarousel /> */}
-      <CardListItemCarousel
-        urls={props.urls}
-      />
-      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingowner={props.owner} />
-      <CardActions disableSpacing>
-        {buttons()}
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Description:</Typography>
-          <Typography paragraph>
-            {props.description}
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Description:</Typography>
+            <Typography paragraph>
+              {props.description}
+            </Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
+    </div>
   );
 }

@@ -36,16 +36,6 @@ export default function Home(props) {
       .catch(error => console.error())
   }
 
-  // console.log("list defined after calling helper", list)
-
-
-  // use this if we use a background image > video
-  // var sectionStyle = {
-  //   width: "100%",
-  //   height: "400px",
-  //   backgroundImage: `url(${Handshake})`
-  // };
-
   return (
     <div>
       <WelcomeVideo sendRequest={sendRequest} />
@@ -53,9 +43,6 @@ export default function Home(props) {
     </div>
   );
 }
-
-
-// not sure if we'll need this later...keep for now
 
 {/* <Jumbotron  style={{  
         backgroundImage: `url(${Handshake})`,

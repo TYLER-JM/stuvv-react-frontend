@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -15,6 +15,7 @@
   padding-right: 1rem;
   margin: auto;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .fullscreen-video-wrap {
@@ -38,7 +39,7 @@
   top: 0;
   left: 0;
   z-index: 1;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .header-content {
