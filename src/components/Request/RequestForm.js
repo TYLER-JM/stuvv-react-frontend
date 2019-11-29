@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
-// import { DateRangeInput } from "@datepicker-react/styled";
 import DatePicker from './DatePicker';
 import axios from 'axios';
 
@@ -87,7 +85,7 @@ export default function RequestForm(props) {
   };
 
   return (
-    <div>
+    <div className="request-box">
       <DatePicker
         listingId={props.listingId}
         selectedStartDate={selectedStartDate}

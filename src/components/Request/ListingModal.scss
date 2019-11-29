@@ -1,0 +1,52 @@
+.listing-modal {
+  background-color: white;
+  font-family: "Montserrat", sans-serif;
+  background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+  // color: #215584;
+  div.modal-content {
+    // background-color: red;
+    div.modal-title.h4 {
+      font-size: 1.5rem;
+      color: #215584;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 40px;
+      background-color: rgba(51, 148, 126, 0.3å);
+    }
+    div.modal-body {
+      div.request-box {
+        // background-color: lightblue;
+        font-weight: lighter;
+        div.MuiFormControl-root.MuiTextField-root.MuiFormControl-marginNormal {
+          width: 70%;
+          padding: 20px;
+          background-color: white;
+        }
+        button {
+          font-size: 1rem;
+          background-color: #215584;
+          color: white;
+          border-radius: 30px;
+        }
+      }
+    }
+    div.modal-footer {
+      button {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  // div {
+
+  // border: none;
+  // color: rgb(75, 74, 74);
+
+  // div.MuiFormControl-root.MuiTextField-root.MuiFormControl-marginNormal {
+  //   color: purple;
+
+  //   button {
+  //     border: solid;
+  //   }
+  // }
+  // }
+}

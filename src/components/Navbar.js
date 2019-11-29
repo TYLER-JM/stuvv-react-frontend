@@ -1,7 +1,7 @@
 import React from 'react';
 import SideBar from './SideBar';
 import "./nav.scss";
-import Register from './RegisterModal';
+import Register from './Login/RegisterModal';
 
 export default function Navbar(props) {
   const [modalShow, setModalShow] = React.useState(false);

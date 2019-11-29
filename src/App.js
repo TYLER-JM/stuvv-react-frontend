@@ -17,6 +17,7 @@ function App() {
   const [request, setRequest] = useState([]);
 
   useEffect(() => {
+
     axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
       .then((resp) => {
         setCurrentUser(resp.data)
@@ -44,41 +45,44 @@ function App() {
       })
   }, []);
 
-  console.log("from the App.js file", currentUser.id);
-  return (
+  // console.log("from the App.js file", currentUser.id);
+  if (!currentUser && !list && !request) { return (<h1>Loading...</h1>); } else {
+    return (
 
-    <Router>
-      <div>
-        <Navbar user={currentUser} />
-        <Switch>
-          <Route
-            exact path="/"
-            render={() => <Home userid={currentUser.id} />}
-          />
-          <Route
-            exact path="/messages"
-            // component={Messages}
-            render={() => < Messages user={currentUser} />}
-          />
-          <Route
-            exact path="/my_stuvv"
-            render={() => <MyStuvv className="my-stuvv-container" list={list} user={currentUser} />}
+      <Router>
+        <div>
+          <Navbar user={currentUser} />
+          <Switch>
+            <Route
+              exact path="/"
+              render={() => <Home user={currentUser} />}
+            />
+            <Route
+              exact path="/messages"
+              // component={Messages}
+              render={() => < Messages user={currentUser} />}
+            />
+            <Route
+              exact path="/my_stuvv"
+              render={() => <MyStuvv className="my-stuvv-container" list={list} user={currentUser} />}
 
-          />
-          <Route
-            exact path="/build"
-            render={() => <BuildForm userId={currentUser.id} />}
-          // render={() => <BuildForm />}
-          />
-          <Route
-            exact path="/my_requests"
-            render={() => <MyRequests className="my-stuvv-container" request={request} />}
-          />
-        </Switch>
-        <Footer />
-      </div>
-    </Router>
-  );
+            />
+            <Route
+              exact path="/build"
+              render={() => <BuildForm user={currentUser} />}
+            // render={() => <BuildForm />}
+            />
+            <Route
+              exact path="/my_requests"
+              render={() => <MyRequests className="my-stuvv-container" request={request} user={currentUser} />}
+            />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    );
+
+  }
 }
 
 export default App;

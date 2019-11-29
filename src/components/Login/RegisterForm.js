@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import './RegisterForm.scss'
-import Alert from 'react-bootstrap/Alert'
-
 
 export default function RegisterForm(props) {
 
@@ -11,7 +9,7 @@ export default function RegisterForm(props) {
   const [session, setSession] = useState({});
 
 
-  
+
 
   const sendRequestRegister = () => {
     return axios.post(`http://localhost:3000/users`, { user }, { withCredentials: true })
