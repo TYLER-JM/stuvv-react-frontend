@@ -130,7 +130,7 @@ export default function CardListItem(props) {
           </IconButton>
         }
         title={props.title}
-        subheader={`$ ${props.price} per day`}
+        subheader={`$ ${Math.round(props.price)} per day`}
       />
       {/* <CardListItemCarousel /> */}
       <CardListItemCarousel
