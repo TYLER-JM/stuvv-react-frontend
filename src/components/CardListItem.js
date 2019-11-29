@@ -18,6 +18,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import ListingModal from './Request/ListingModal';
 import { Link } from "react-router-dom";
 import axios from "axios"
+// import classNames from 'classnames';
+
 
 
 
@@ -81,7 +83,7 @@ export default function CardListItem(props) {
   };
 
   const buttons = () => {
-    if (window.location.pathname === "/my_stuvv") {
+    if (props.user.id === props.owner) {
       return (
         <Fragment>
           <Link to="/build">
@@ -114,7 +116,8 @@ export default function CardListItem(props) {
 
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} >
+    {/* <Card className={classNames({classes.card: true})}> */}
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
@@ -127,7 +130,7 @@ export default function CardListItem(props) {
           </IconButton>
         }
         title={props.title}
-        subheader={`$ ${props.price} per day`}
+        subheader={`$ ${Math.round(props.price)} per day`}
       />
       {/* <CardListItemCarousel /> */}
       <CardListItemCarousel

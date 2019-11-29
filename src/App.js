@@ -57,7 +57,7 @@ function App() {
           <Switch>
             <Route
               exact path="/"
-              render={() => <Home user={currentUser} />}
+              render={() => <Home user={currentUser} setBuildState={setBuildState}/>}
             />
             <Route
               exact path="/messages"

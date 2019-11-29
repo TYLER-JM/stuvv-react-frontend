@@ -8,7 +8,7 @@ export default function CardList(props) {
   const cards = props.cardsData.map((card, i) => {
     // console.log("CardList cardsData: ", cardsData)
     return (
-      <div key={i}>
+      <div key={i} id="search-results">
         <CardListItem
           listingid={card.id}
           title={card.title}

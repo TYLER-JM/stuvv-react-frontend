@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -9,6 +9,9 @@ import Button from '@material-ui/core/Button';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
+
+import Slider from '@material-ui/core/Slider';
+
 import SavingModal from './SavingModal'
 
 
@@ -39,6 +42,36 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const PrettoSlider = withStyles({
+  root: {
+    color: '#52af77',
+    height: 8,
+  },
+  thumb: {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    marginTop: -8,
+    marginLeft: -12,
+    '&:focus,&:hover,&$active': {
+      boxShadow: 'inherit',
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: 'calc(-50% + 4px)',
+  },
+  track: {
+    height: 8,
+    borderRadius: 4,
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4,
+  },
+})(Slider);
+
 export default function Form(props) {
   const classes = useStyles();
 
@@ -61,7 +94,8 @@ export default function Form(props) {
 
 
   // state for the Amount input
-  const [amount, setAmount] = useState(0)
+  // const [amount, setAmount] = useState(0)
+  const [amount, setAmount] = useState(props.buildState.price || 0)
 
   //state for the Switch (Availability)
   const [state, setState] = useState({
@@ -70,24 +104,21 @@ export default function Form(props) {
   });
 
   //state for the textarea
-  const [value, setValue] = useState("");
-  // if (props.buildState.description) {
-  //   setValue(props.buildState.description)
-  // }
+  // const [value, setValue] = useState("");
+  const [value, setValue] = useState(props.buildState.description || "");
 
   //state to handle the upload images and title text field
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
+  const [text, setText] = useState(props.buildState.title || "");
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
 
-  // previews users selected images
   const getImageURL = (file) => {
     if (!file) return
 
     let reader = new FileReader();
 
     reader.onload = (event) => {
-      // document.getElementById("displayImage0").src = event.target.result
       setImageURLs((URLs) => [...URLs, event.target.result])
     }
     reader.readAsDataURL(file)
@@ -101,14 +132,12 @@ export default function Form(props) {
 
   const sendRequest = () => {
     const data = new FormData();
-    // console.log(images[0].name)
 
     for (let img of images) {
       data.append("pics[]", img, img.name)
     }
     data.append("title", text);
     data.append("user_id", props.user.id);
-    //adding the description to the data sent out
     data.append("description", value)
     data.append("availability", state.checkedA)
     data.append("price_per_day", amount)
@@ -146,7 +175,7 @@ export default function Form(props) {
             id="outlined-basic"
             label="title"
             variant="outlined"
-            value={text || props.buildState.title}
+            value={text}
             onChange={event => setText(event.target.value)}
           />
           <TextField
@@ -154,21 +183,20 @@ export default function Form(props) {
             label="description"
             multiline
             rows="4"
-            // defaultValue="Default Value"
             className={classes.textField}
             margin="normal"
             variant="outlined"
             placeholder="enter description"
-            // value={value}
-            value={ value || props.buildState.description}
+            value={value}
             onChange={handleValueChange}
           />
           <FormControl fullWidth className={classes.margin} variant="outlined">
             <InputLabel htmlFor="outlined-adornment-amount">Cost/Day</InputLabel>
             <OutlinedInput
               id="outlined-adornment-amount"
-              type="number"
-              value={amount ||props.buildState.price}
+              inputProps={{step: 1, type: "number"}}
+              // value={amount ||props.buildState.price}
+              value={amount}
               onChange={handleAmount}
               startAdornment={<InputAdornment position="start">$</InputAdornment>}
               labelWidth={60}
