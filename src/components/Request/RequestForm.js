@@ -58,7 +58,7 @@ export default function RequestForm(props) {
         
         setTimeout(() => {
           window.location.pathname = "/"
-        }, 1000)
+        }, 500)
       })
       .catch(error => console.log("error is: ", error))
     console.log("DATA TO SEND ALONG: ", data)
@@ -118,8 +118,8 @@ export default function RequestForm(props) {
       <div>
         <button onClick={() => sendQuestion()}>Send a message</button>
         <button onClick={() => {
-            // sendRequest()
-            setModalShow(true)
+            sendRequest()
+            // setModalShow(true)
           }}>Request to book</button>
       </div>
 
