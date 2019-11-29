@@ -8,7 +8,7 @@ import './Messages.scss';
 export default function Messages(props) {
   const [messages, setMessages] = useState([]);
   const [convo, setConvo] = useState(0);
-  const [display, setDisplay] = useState("inbound");
+  // const [display, setDisplay] = useState("inbound");
 
   // const [single, setSingle] = useState({
   //   sender: props.userId,
@@ -20,18 +20,20 @@ export default function Messages(props) {
   // let display = "inbound";
 
   // useEffect(() => {
-  function fetchMessages() {
+  function fetchMessages(display) {
 
     if (display === "inbound") {
-      axios.get(`http://localhost:3000/messages/inbound/${props.user.id}`, { withCredentials: true })
+      return axios.get(`http://localhost:3000/messages/inbound/${props.user.id}`, { withCredentials: true })
         .then(resp => {
           console.log("GOT INBOUND MESSAGES: ", resp.data);
           setMessages(resp.data)
         })
         .catch(error => console.log(error))
 
-    } else {
-      axios.get(`http://localhost:3000/messages/outbound/${props.user.id}`, { withCredentials: true })
+    }
+
+    if (display === "outbound") {
+      return axios.get(`http://localhost:3000/messages/outbound/${props.user.id}`, { withCredentials: true })
         .then(resp => {
           console.log("GOT OUTBOUND MESSAGES: ", resp.data);
           setMessages(resp.data)
@@ -45,7 +47,6 @@ export default function Messages(props) {
   }
   // }, [props.user.id]);
 
-  fetchMessages()
 
   // const sendMessage = function() {
   //   // event.preventDefault();
@@ -76,12 +77,12 @@ export default function Messages(props) {
       <div className="messages-container">
         <div className="tab">
           <span onClick={() => {
-            setDisplay("inbound")
-            fetchMessages()
+            // setDisplay("inbound")
+            fetchMessages("inbound")
           }}>inbound</span>
           <span onClick={() => {
-            setDisplay("outbound")
-            fetchMessages()
+            // setDisplay("outbound")
+            fetchMessages("outbound")
           }}>outbound</span>
         </div>
         <div className="side-bar-body">
