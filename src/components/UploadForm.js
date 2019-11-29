@@ -61,7 +61,8 @@ export default function Form(props) {
 
 
   // state for the Amount input
-  const [amount, setAmount] = useState(0)
+  // const [amount, setAmount] = useState(0)
+  const [amount, setAmount] = useState(props.buildState.price || 0)
 
   //state for the Switch (Availability)
   const [state, setState] = useState({
@@ -70,13 +71,12 @@ export default function Form(props) {
   });
 
   //state for the textarea
-  const [value, setValue] = useState("");
-  // if (props.buildState.description) {
-  //   setValue(props.buildState.description)
-  // }
+  // const [value, setValue] = useState("");
+  const [value, setValue] = useState(props.buildState.description || "");
 
   //state to handle the upload images and title text field
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
+  const [text, setText] = useState(props.buildState.title || "");
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
 
@@ -146,7 +146,8 @@ export default function Form(props) {
             id="outlined-basic"
             label="title"
             variant="outlined"
-            value={text || props.buildState.title}
+            // value={text || props.buildState.title}
+            value={text}
             onChange={event => setText(event.target.value)}
           />
           <TextField
@@ -160,7 +161,8 @@ export default function Form(props) {
             variant="outlined"
             placeholder="enter description"
             // value={value}
-            value={ value || props.buildState.description}
+            // value={ value || props.buildState.description }
+            value={value}
             onChange={handleValueChange}
           />
           <FormControl fullWidth className={classes.margin} variant="outlined">
@@ -168,7 +170,8 @@ export default function Form(props) {
             <OutlinedInput
               id="outlined-adornment-amount"
               type="number"
-              value={amount ||props.buildState.price}
+              // value={amount ||props.buildState.price}
+              value={amount}
               onChange={handleAmount}
               startAdornment={<InputAdornment position="start">$</InputAdornment>}
               labelWidth={60}
