@@ -4,13 +4,14 @@ import '../UploadFormHideInput.scss'
 
 
 export default function BuildForm(props) {
-
   return (
     <div>
       <div className="build-form-banner">
         Build your listing
       </div>
-      <UploadForm user={props.user} />
+      {/* <UploadForm userId={props.userId} buildState={props.buildState}/> */}
+
+      <UploadForm user={props.user} buildState={props.buildState} />
     </div>
   );
 }
