@@ -2,11 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(messages.jpg);
   background-position: 25% 75%;
   width: 100%;
@@ -17,7 +13,6 @@
   background-size: 100%;
   background-position: bottom;
   // opacity: .70;
-  
 }
 
 .messages-container {
@@ -32,6 +27,17 @@
   // display: none;
 }
 
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  span {
+    border: solid;
+    cursor: pointer;
+  }
+}
+
 .side-bar-body {
   background-color: blanchedalmond;
   width: 50%;
@@ -40,8 +46,8 @@
 }
 
 .side-bar-user {
-  padding: .2rem;
-  margin: .5rem;
+  padding: 0.2rem;
+  margin: 0.5rem;
   font-size: 1.4rem;
 }
 
