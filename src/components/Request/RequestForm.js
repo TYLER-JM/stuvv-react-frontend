@@ -42,7 +42,7 @@ export default function RequestForm(props) {
 
   const sendRequest = () => {
     const data = {
-      listing_id: props.listingId,
+      listing_id: props.listingid,
       user_id: props.user.id,
       start_date: selectedStartDate,
       end_date: selectedEndDate
@@ -87,7 +87,7 @@ export default function RequestForm(props) {
   return (
     <div className="request-box">
       <DatePicker
-        listingId={props.listingId}
+        listingid={props.listingid}
         selectedStartDate={selectedStartDate}
         setSelectedStartDate={setSelectedStartDate}
         selectedEndDate={selectedEndDate}
@@ -106,8 +106,8 @@ export default function RequestForm(props) {
         value={message}
         onChange={handleMessageChange}
       />
-      <button onClick={() => sendRequest()}>Send a message</button>
-      <button onClick={() => sendQuestion()}>Request to book</button>
+      <button onClick={() => sendQuestion()}>Send a message</button>
+      <button onClick={() => sendRequest()}>Request to book</button>
 
     </div>
   );
