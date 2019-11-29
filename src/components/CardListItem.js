@@ -81,7 +81,7 @@ export default function CardListItem(props) {
   };
 
   const buttons = () => {
-    if (window.location.pathname === "/my_stuvv") {
+    if (props.user.id === props.owner) {
       return (
         <Fragment>
           <Link to="/build">
@@ -130,7 +130,6 @@ export default function CardListItem(props) {
           title={props.title}
           subheader={`$ ${props.price} per day`}
         />
-        {/* <CardListItemCarousel /> */}
         <CardListItemCarousel
           urls={props.urls}
         />

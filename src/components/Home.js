@@ -32,6 +32,7 @@ export default function Home(props) {
       .then(resp => {
         console.log("RESP in SEARCH: ", resp)
         setList(resp.data)
+        window.location.hash = "search-results"
       })
       .catch(error => console.error())
   }
@@ -39,7 +40,7 @@ export default function Home(props) {
   return (
     <div>
       <WelcomeVideo sendRequest={sendRequest} />
-      < CardList cardsData={list} user={props.user} />
+        <CardList cardsData={list} user={props.user} setBuildState={props.setBuildState}/>
     </div>
   );
 }
