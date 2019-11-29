@@ -19,6 +19,7 @@ export default function CardList(props) {
           owner={card.user_id}
           user={props.user}
           setBuildState={props.setBuildState}
+          setList={props.setList}
         />
       </div>
     )

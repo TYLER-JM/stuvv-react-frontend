@@ -45,7 +45,7 @@ export default function MyStuvv(props) {
       <div className="banner">
         My Stuvv
    </div>
-      <CardList cardsData={props.list} user={props.user} setBuildState={props.setBuildState} />
+      <CardList cardsData={props.list} user={props.user} setBuildState={props.setBuildState} setList={props.setList} />
     </div>
   )
 

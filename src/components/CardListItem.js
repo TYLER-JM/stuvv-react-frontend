@@ -72,6 +72,10 @@ export default function CardListItem(props) {
     axios.delete(`http://localhost:3000/listings/${props.listingid}`, { withCredentials: true })
       .then((resp) => {
         console.log("After delete action: ", resp.data)
+        axios.get(`http://localhost:3000/userslistings/${props.user.id}`, { withCredentials: true })
+          .then((resp) => {
+            props.setList(resp.data)
+          })
       })
 
   };
@@ -110,7 +114,10 @@ export default function CardListItem(props) {
             </Link>
             <IconButton
               aria-label="add to favorites"
-              onClick={handleDeleteListing}
+              onClick={() => {
+                if (window.confirm('Are you sure you wish to delete this item?')) handleDeleteListing()
+              }
+              }
             >
               <DeleteIcon />
             </IconButton>
