@@ -154,6 +154,10 @@ export default function CardListItem(props) {
             <Typography paragraph>
               {props.description}
             </Typography>
+            <Typography paragraph>Owned By:</Typography>
+            <Typography paragraph>
+              {props.user.first_name}
+            </Typography>
           </CardContent>
         </Collapse>
       </Card>
