@@ -15,6 +15,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [list, setList] = useState([]);
   const [request, setRequest] = useState([]);
+  const [buildState, setBuildState] = useState({});
+  // const [buildState, setBuildState] = useState({description: null, price: null, title: null, id: null});
 
   useEffect(() => {
 
@@ -64,12 +66,12 @@ function App() {
             />
             <Route
               exact path="/my_stuvv"
-              render={() => <MyStuvv className="my-stuvv-container" list={list} user={currentUser} />}
+              render={() => <MyStuvv className="my-stuvv-container" list={list} user={currentUser} setBuildState={setBuildState} />}
 
             />
             <Route
               exact path="/build"
-              render={() => <BuildForm user={currentUser} />}
+              render={() => <BuildForm user={currentUser} buildState={buildState} />}
             // render={() => <BuildForm />}
             />
             <Route

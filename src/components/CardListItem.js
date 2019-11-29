@@ -14,8 +14,10 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import CardListItemCarousel from './CardListItemCarousel';
 import EditIcon from '@material-ui/icons/Edit';
-// import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ListingModal from './Request/ListingModal';
+import { Link } from "react-router-dom";
+
 
 
 
@@ -52,11 +54,18 @@ export default function CardListItem(props) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-    console.log("inside CLI props.userID: ", props.user.id)
+    // console.log("inside CLI props.userID: ", props.user.id)
   };
 
   const handlePageChange = () => {
-    window.location.pathname = "/build"
+    // window.location.pathname = "/build"
+    props.setBuildState({
+      description: props.description,
+      price: props.price,
+      title: props.title,
+      id: props.listingId,
+    })
+    console.log("from cardListItem", props.price)
   };
 
 
@@ -92,11 +101,17 @@ export default function CardListItem(props) {
             onClick={() => setModalShow(true)}>
             <PostAddIcon />
           </IconButton> :
+          
+          <Link to="/build">
           <IconButton
             aria-label="share"
             onClick={handlePageChange}>
             <EditIcon />
-          </IconButton  >}
+          </IconButton  >
+          </Link>
+        }
+
+
         {/* </IconButton> */}
         <IconButton
           className={clsx(classes.expand, {
