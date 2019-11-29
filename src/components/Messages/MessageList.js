@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react'
 import MessageListItem from './MessageListItem';
 import axios from 'axios';
 import classNames from 'classnames';
+import './Messages.scss'
 
 
 export default function MessageList(props) {
-
-  // const [conversation, setConversation] = useState([]);
+  console.log("the unique identifier: ", props.uniqueid)
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
-  // const [message, setMessage] = useState({});
   const [message, setMessage] = useState("");
-  // const [refresh, setRefresh] = useState([]);
 
   const reset = (e) => {
     setMessage("")
@@ -18,24 +16,15 @@ export default function MessageList(props) {
   }
 
   const sendMessage = function (e) {
-    //send the single state as the data
-    // setRefresh(message[message.length - 1])
-
-    // setConversation((prev) => [...prev, message])
     setConversation((prev) => [...prev, {
       sender: props.user.first_name,
       content: message,
       send: new Date()
     }])
-    console.log("CONVO:", conversation)
     reset(e)
-
-    // axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(message) }, { withCredential: true })
   }
-  // const parsedConvo = JSON.parse(props.conversationObject.conversation)
 
   useEffect(() => {
-
     axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(conversation) }, { withCredential: true })
     .then(resp => {
       console.log("got a response after updating the conversation");
@@ -43,12 +32,9 @@ export default function MessageList(props) {
       .catch(err => {
         console.log("error is: ", err);
       })
-
   }, [conversation])
 
 
-
-  // const bubbles = parsedConvo.map((msg, i) => {
     const bubbles = conversation.map((msg, i) => {
     return (
       <MessageListItem key={i} messageObject={msg} user={props.user} />
@@ -56,31 +42,12 @@ export default function MessageList(props) {
   })
 
   return (
-    <li className={classNames({ "hidden": props.sentBy.first_name !== props.convo })}>
-      {/* <p>{props.conversationObject.id}</p> */}
+    <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
       {bubbles}
-      {/* in case we want live messages
-      <div className="message-list-item">
-        <span>{refresh.sender} says: </span>
-        <span>{refresh.content}</span>
-      </div> */}
-
-      {/* <input type="text" onChange={e => setMessage([...parsedConvo,
-      {
-        sender: props.user.first_name, //current logged in user
-        content: e.target.value,
-        sent: new Date()
-      }]
-      )} /> */}
-
-      {/* <input id="emptyMe" type="text" onChange={e => setMessage({
-        sender: props.user.first_name,
-        content: e.target.value,
-        send: new Date()
-      })} /> */}
-      <input id="emptyMe" type="text" value={message} onChange={e => setMessage(e.target.value)} />
-      <button onClick={(e) => sendMessage(e)}>SEND!</button>
+      <div className="search-input">
+        <input id="emptyMe" type="text" value={message} onChange={e => setMessage(e.target.value)} />
+        <button onClick={(e) => sendMessage(e)}>SEND!</button>
+      </div>
     </li>
-
   );
 }

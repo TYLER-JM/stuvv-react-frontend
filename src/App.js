@@ -61,18 +61,17 @@ function App() {
             />
             <Route
               exact path="/messages"
-              // component={Messages}
               render={() => < Messages user={currentUser} />}
             />
             <Route
               exact path="/my_stuvv"
-              render={() => <MyStuvv className="my-stuvv-container" list={list} user={currentUser} setBuildState={setBuildState} />}
+              render={() => <MyStuvv className="my-stuvv-container" list={list} user={currentUser} setBuildState={setBuildState} setList={setList} />}
 
             />
             <Route
               exact path="/build"
               render={() => <BuildForm user={currentUser} buildState={buildState} />}
-            // render={() => <BuildForm />}
+
             />
             <Route
               exact path="/my_requests"

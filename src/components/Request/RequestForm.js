@@ -3,7 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from './DatePicker';
 import axios from 'axios';
-import SavingModal from '../SavingModal'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import Spinner from 'react-bootstrap/Spinner'
+import './ListingModal.scss'
+
+
+
+
+
+
 
 
 // used by the textfield
@@ -43,28 +52,28 @@ export default function RequestForm(props) {
   const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
   // const [state, dispatch] = useReducer(reducer, initialState);
 
-  const sendRequest = () => {
-    const data = {
-      listing_id: props.listingid,
-      user_id: props.user.id,
-      start_date: selectedStartDate,
-      end_date: selectedEndDate
-    }
+  // const sendRequest = () => {
+  //   const data = {
+  //     listing_id: props.listingid,
+  //     user_id: props.user.id,
+  //     start_date: selectedStartDate,
+  //     end_date: selectedEndDate
+  //   }
 
-    axios.post("http://localhost:3000/requests", data, { withCredentials: true })
-      .then(resp => {
-        console.log("RESPONSE IS: ", resp)
-        sendQuestion();
+  //   axios.post("http://localhost:3000/requests", data, { withCredentials: true })
+  //     .then(resp => {
+  //       console.log("RESPONSE IS: ", resp)
+  //       sendQuestion();
         
-        setTimeout(() => {
-          window.location.pathname = "/"
-        }, 500)
-      })
-      .catch(error => console.log("error is: ", error))
-    console.log("DATA TO SEND ALONG: ", data)
-  };
+  //       setTimeout(() => {
+  //         window.location.pathname = "/"
+  //       }, 500)
+  //     })
+  //     .catch(error => console.log("error is: ", error))
+  //   console.log("DATA TO SEND ALONG: ", data)
+  // };
 
-  const sendQuestion = () => {
+  const sendQuestionAndRequest = () => {
     const toBeStringified = [
       {
         sender: props.user.first_name,
@@ -77,9 +86,29 @@ export default function RequestForm(props) {
       from_user_id: props.user.id,
       to_user_id: props.listingowner
     }
+    let request = {
+      listing_id: props.listingid,
+      user_id: props.user.id,
+      start_date: selectedStartDate,
+      end_date: selectedEndDate,
+      message_id: null
+    }
+
     axios.post("http://localhost:3000/messages", { message: fullMessage }, { withCredentials: true })
       .then(resp => {
-        console.log("RESPONSE FROM Send QUESTION: ", resp)
+        request.message_id = resp.data.id
+        console.log("RESPONSE FROM Send QUESTION: ", resp.data)
+        axios.post("http://localhost:3000/requests", request, { withCredentials: true })
+          .then(resp => {
+            console.log("request that was sent: ", request)
+            console.log("saved request after message...", resp)
+
+            setTimeout(() => {
+                window.location.pathname = "/"
+              }, 500)
+          })
+          .catch(err => console.log("error: ", err))
+
       })
       .catch(err => console.log("error: ", err))
     // console.log("message is: ", message)
@@ -90,6 +119,15 @@ export default function RequestForm(props) {
   const handleMessageChange = event => {
     setMessage(event.target.value);
   };
+
+  const popover = (
+    <Popover className="popover-header">
+      <Popover.Title as="h3">Requesting your booking!</Popover.Title>
+      <Popover.Content>
+          <Spinner animation="border" variant="warning" />
+      </Popover.Content>
+    </Popover>
+  );
 
   return (
     <div className="request-box">
@@ -115,18 +153,19 @@ export default function RequestForm(props) {
         onChange={handleMessageChange}
       />
       </div>
-      <div>
-        <button onClick={() => sendQuestion()}>Send a message</button>
+      <div className="request-button-div">
+        {/* <button onClick={() => sendQuestion()}>Send a message</button> */}
+        <OverlayTrigger trigger="click" placement="right" overlay={popover} className="popover-body">
         <button onClick={() => {
-            sendRequest()
+            // sendRequest()
+            setTimeout(() => {
+              sendQuestionAndRequest()}, 500)
             // setModalShow(true)
           }}>Request to book</button>
+        </OverlayTrigger>
       </div>
 
-      <SavingModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+    
 
     </div>
   );

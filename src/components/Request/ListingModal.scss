@@ -68,7 +68,24 @@
   // }
 }
 
-.message-box {
+.popover-body {
   text-align: center;
   width: 100%;
+  background-color: bisque
+}
+
+.popover-header {
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  background-color: red;
+  border-bottom: 1px solid #ebebeb;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+  z-index: 2;
+}
+
+.request-button-div {
+  text-align: center;
+  
 }

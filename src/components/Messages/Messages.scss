@@ -48,7 +48,7 @@
 .side-bar-body {
   background-color: #19836b;
   width: 50%;
-  height: 100%;
+  // height: 100%;
   cursor: pointer;
 }
 
@@ -73,4 +73,28 @@
 
 .hidden {
   display: none;
+}
+
+.search-input {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1.5rem;
+}
+
+.input-field {
+  width: 60%;
+}
+
+.button {
+  outline: none;
+  font-family: "Montserrat";
+  height: 2rem;
+  width: 6rem;
+  background-color: #84aacc;
+  color: white;
+  font-weight: 600;
+  &:hover {
+    background-color: #51ab97;
+  }
 }
