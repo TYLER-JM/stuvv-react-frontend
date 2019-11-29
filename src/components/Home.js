@@ -50,9 +50,7 @@ export default function Home(props) {
   return (
     <div>
       <WelcomeVideo sendRequest={sendRequest} />
-      <div id="search-results">
         <CardList cardsData={list} user={props.user} setBuildState={props.setBuildState}/>
-      </div>
     </div>
   );
 }
