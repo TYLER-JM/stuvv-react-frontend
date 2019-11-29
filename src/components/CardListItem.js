@@ -63,9 +63,9 @@ export default function CardListItem(props) {
       description: props.description,
       price: props.price,
       title: props.title,
-      id: props.listingId,
+      id: props.listingid,
     })
-    console.log("from cardListItem", props.price)
+    // console.log("from cardListItem", props.price, props.listingid)
   };
 
 
