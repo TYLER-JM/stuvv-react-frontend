@@ -3,7 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from './DatePicker';
 import axios from 'axios';
-import SavingModal from '../SavingModal'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import Spinner from 'react-bootstrap/Spinner'
+import './ListingModal.scss'
+
+
+
+
+
+
 
 
 // used by the textfield
@@ -91,6 +100,15 @@ export default function RequestForm(props) {
     setMessage(event.target.value);
   };
 
+  const popover = (
+    <Popover className="popover-header">
+      <Popover.Title as="h3">Requesting your booking!</Popover.Title>
+      <Popover.Content>
+          <Spinner animation="border" variant="warning" />
+      </Popover.Content>
+    </Popover>
+  );
+
   return (
     <div className="request-box">
       <DatePicker
@@ -117,16 +135,16 @@ export default function RequestForm(props) {
       </div>
       <div>
         <button onClick={() => sendQuestion()}>Send a message</button>
+        <OverlayTrigger trigger="click" placement="right" overlay={popover} className="popover-body">
         <button onClick={() => {
-            // sendRequest()
-            setModalShow(true)
+            setTimeout(() => {
+              sendRequest()}, 1000)
+            // setModalShow(true)
           }}>Request to book</button>
+        </OverlayTrigger>
       </div>
 
-      <SavingModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+    
 
     </div>
   );

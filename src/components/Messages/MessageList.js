@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import MessageListItem from './MessageListItem';
 import axios from 'axios';
 import classNames from 'classnames';
+import './Messages.scss'
 
 
 export default function MessageList(props) {
@@ -78,8 +79,10 @@ export default function MessageList(props) {
         content: e.target.value,
         send: new Date()
       })} /> */}
-      <input id="emptyMe" type="text" value={message} onChange={e => setMessage(e.target.value)} />
-      <button onClick={(e) => sendMessage(e)}>SEND!</button>
+      <div className="search-input">
+        <input className="input-field" id="emptyMe" type="text" value={message} onChange={e => setMessage(e.target.value)} />
+        <button className="button" onClick={(e) => sendMessage(e)}>SEND</button>
+      </div>
     </li>
 
   );
