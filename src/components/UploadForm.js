@@ -133,6 +133,7 @@ export default function Form(props) {
       .catch(error => console.error())
     }
   }
+  console.log("found buildState ", props.buildState)
 
   return (
     <div className="test">
