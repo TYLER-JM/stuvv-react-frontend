@@ -14,8 +14,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import CardListItemCarousel from './CardListItemCarousel';
 import EditIcon from '@material-ui/icons/Edit';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import ListingModal from './ListingModal';
+// import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ListingModal from './Request/ListingModal';
 
 
 
