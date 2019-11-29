@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CardListItem(props) {
-  // props.listingId
+  // props.listingid
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -63,9 +63,9 @@ export default function CardListItem(props) {
       description: props.description,
       price: props.price,
       title: props.title,
-      id: props.listingId,
+      id: props.listingid,
     })
-    console.log("from cardListItem", props.price)
+    // console.log("from cardListItem", props.price, props.listingid)
   };
 
 
@@ -89,7 +89,7 @@ export default function CardListItem(props) {
       <CardListItemCarousel
         urls={props.urls}
       />
-      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingId={props.listingId} user={props.user} listingOwner={props.owner} />
+      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingowner={props.owner} />
       <CardActions disableSpacing>
         {/* <IconButton aria-label="add to favorites">
           <ThumbUpIcon />

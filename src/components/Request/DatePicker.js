@@ -6,7 +6,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import RequestFormHelper from '../../helpers/RequestFormHelper';
 
 // export default function DatePicker(props) {
-export default function DatePicker({ listingId, selectedStartDate, setSelectedStartDate, selectedEndDate, setSelectedEndDate }) {
+export default function DatePicker({ listingid, selectedStartDate, setSelectedStartDate, selectedEndDate, setSelectedEndDate }) {
   // const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
   // const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
 
@@ -21,8 +21,8 @@ export default function DatePicker({ listingId, selectedStartDate, setSelectedSt
   //   ]
   // }; 
 
-  const requestedDates = RequestFormHelper(listingId);
-  // const requestedDates = RequestFormHelper(props.listingId);
+  const requestedDates = RequestFormHelper(listingid);
+  // const requestedDates = RequestFormHelper(props.listingid);
 
   const handleStartDateChange = date => {
     setSelectedStartDate(date);

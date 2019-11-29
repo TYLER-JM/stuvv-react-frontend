@@ -1,35 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MessageListItem from './MessageListItem';
 import axios from 'axios';
 import classNames from 'classnames';
 
 
 export default function MessageList(props) {
-  // console.log("the conversation inside the ML TYPE", JSON.parse(props.conversationObject.conversation))
 
-  const [message, setMessage] = useState([]);
-  const [refresh, setRefresh] = useState([]);
+  // const [conversation, setConversation] = useState([]);
+  const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
+  // const [message, setMessage] = useState({});
+  const [message, setMessage] = useState("");
+  // const [refresh, setRefresh] = useState([]);
 
-  const sendMessage = function () {
-    // event.preventDefault();
-    // useEffect(() => {
+  const reset = (e) => {
+    setMessage("")
+    e.target.previousSibling.focus()
+  }
+
+  const sendMessage = function (e) {
     //send the single state as the data
-    setRefresh(message[message.length - 1])
+    // setRefresh(message[message.length - 1])
 
-    axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(message) }, { withCredential: true })
-      .then(resp => {
-        console.log("got a response after updating the conversation");
+    // setConversation((prev) => [...prev, message])
+    setConversation((prev) => [...prev, {
+      sender: props.user.first_name,
+      content: message,
+      send: new Date()
+    }])
+    console.log("CONVO:", conversation)
+    reset(e)
+
+    // axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(message) }, { withCredential: true })
+  }
+  // const parsedConvo = JSON.parse(props.conversationObject.conversation)
+
+  useEffect(() => {
+
+    axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(conversation) }, { withCredential: true })
+    .then(resp => {
+      console.log("got a response after updating the conversation");
       })
       .catch(err => {
         console.log("error is: ", err);
       })
-    // },[]);
 
-  }
-  const parsedConvo = JSON.parse(props.conversationObject.conversation)
-  // setMessage(parsedConvo)
-  const bubbles = parsedConvo.map((msg, i) => {
-    // const bubbles = message.map((msg, i) => {
+  }, [conversation])
+
+
+
+  // const bubbles = parsedConvo.map((msg, i) => {
+    const bubbles = conversation.map((msg, i) => {
     return (
       <MessageListItem key={i} messageObject={msg} user={props.user} />
     )
@@ -45,14 +65,21 @@ export default function MessageList(props) {
         <span>{refresh.content}</span>
       </div> */}
 
-      <input type="text" onChange={e => setMessage([...parsedConvo,
+      {/* <input type="text" onChange={e => setMessage([...parsedConvo,
       {
         sender: props.user.first_name, //current logged in user
         content: e.target.value,
         sent: new Date()
       }]
-      )} />
-      <button onClick={() => sendMessage()}>SEND!</button>
+      )} /> */}
+
+      {/* <input id="emptyMe" type="text" onChange={e => setMessage({
+        sender: props.user.first_name,
+        content: e.target.value,
+        send: new Date()
+      })} /> */}
+      <input id="emptyMe" type="text" value={message} onChange={e => setMessage(e.target.value)} />
+      <button onClick={(e) => sendMessage(e)}>SEND!</button>
     </li>
 
   );

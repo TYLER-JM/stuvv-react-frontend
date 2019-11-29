@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from './DatePicker';
 import axios from 'axios';
+import SavingModal from '../SavingModal'
 
 
 // used by the textfield
@@ -34,6 +35,8 @@ const useStyles = makeStyles(theme => ({
 // }
 
 export default function RequestForm(props) {
+  const [modalShow, setModalShow] = useState(false);
+
   const classes = useStyles();
   const [message, setMessage] = useState("")
   const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
@@ -42,7 +45,7 @@ export default function RequestForm(props) {
 
   const sendRequest = () => {
     const data = {
-      listing_id: props.listingId,
+      listing_id: props.listingid,
       user_id: props.user.id,
       start_date: selectedStartDate,
       end_date: selectedEndDate
@@ -52,6 +55,10 @@ export default function RequestForm(props) {
       .then(resp => {
         console.log("RESPONSE IS: ", resp)
         sendQuestion();
+        
+        setTimeout(() => {
+          window.location.pathname = "/"
+        }, 500)
       })
       .catch(error => console.log("error is: ", error))
     console.log("DATA TO SEND ALONG: ", data)
@@ -68,7 +75,7 @@ export default function RequestForm(props) {
     const fullMessage = {
       conversation: JSON.stringify(toBeStringified),
       from_user_id: props.user.id,
-      to_user_id: props.listingOwner
+      to_user_id: props.listingowner
     }
     axios.post("http://localhost:3000/messages", { message: fullMessage }, { withCredentials: true })
       .then(resp => {
@@ -76,7 +83,7 @@ export default function RequestForm(props) {
       })
       .catch(err => console.log("error: ", err))
     // console.log("message is: ", message)
-    // console.log("listingOWner: ", props.listingOwner)
+    // console.log("listingowner: ", props.listingowner)
   }
 
   //handles the value of the multiline textarea (description)
@@ -87,12 +94,13 @@ export default function RequestForm(props) {
   return (
     <div className="request-box">
       <DatePicker
-        listingId={props.listingId}
+        listingid={props.listingid}
         selectedStartDate={selectedStartDate}
         setSelectedStartDate={setSelectedStartDate}
         selectedEndDate={selectedEndDate}
         setSelectedEndDate={setSelectedEndDate}
       />
+      <div className="message-box">
       <TextField
         id="outlined-multiline-static"
         label="Message"
@@ -106,8 +114,19 @@ export default function RequestForm(props) {
         value={message}
         onChange={handleMessageChange}
       />
-      <button onClick={() => sendRequest()}>Send a message</button>
-      <button onClick={() => sendQuestion()}>Request to book</button>
+      </div>
+      <div>
+        <button onClick={() => sendQuestion()}>Send a message</button>
+        <button onClick={() => {
+            sendRequest()
+            // setModalShow(true)
+          }}>Request to book</button>
+      </div>
+
+      <SavingModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
 
     </div>
   );

@@ -17,11 +17,11 @@ export default function ListingModal(props) {
     >
       {/* <Modal.Header closeButton> */}
       <Modal.Title id="contained-modal-title-vcenter">
-        {`Submit a request for ${props.listingId}`}
+        {`Submit a request for ${props.listingid}`}
       </Modal.Title>
       {/* </Modal.Header> */}
       <Modal.Body>
-        <RequestForm listingId={props.listingId} user={props.user} listingOwner={props.listingOwner} />
+        <RequestForm listingid={props.listingid} user={props.user} listingowner={props.listingowner} />
         {/* <UploadForm /> */}
       </Modal.Body>
       {/* <Modal.Footer>

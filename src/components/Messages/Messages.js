@@ -8,6 +8,7 @@ import './Messages.scss';
 export default function Messages(props) {
   const [messages, setMessages] = useState([]);
   const [convo, setConvo] = useState(0);
+  // const [display, setDisplay] = useState("inbound");
 
   // const [single, setSingle] = useState({
   //   sender: props.userId,
@@ -15,20 +16,37 @@ export default function Messages(props) {
   //   sent: new Date()
   // })
   // const [conversation, setConversation] = useState({})
-  useEffect(() => {
-    //param === to_user_id
-    // axios.get("http://localhost:3000/messages/5", { withCredentials: true})
-    axios.get(`http://localhost:3000/messages/${props.user.id}`, { withCredentials: true })
-      .then(resp => {
-        console.log("GOT SOMETHING FOR MESSAGES: ", resp.data);
-        setMessages(resp.data)
-      })
-      .catch(error => console.log(error))
 
-    return function cleanup() {
-      console.log("all done");
+  // let display = "inbound";
+
+  // useEffect(() => {
+  function fetchMessages(display) {
+
+    if (display === "inbound") {
+      return axios.get(`http://localhost:3000/messages/inbound/${props.user.id}`, { withCredentials: true })
+        .then(resp => {
+          console.log("GOT INBOUND MESSAGES: ", resp.data);
+          setMessages(resp.data)
+        })
+        .catch(error => console.log(error))
+
     }
-  }, [props.user.id]);
+
+    if (display === "outbound") {
+      return axios.get(`http://localhost:3000/messages/outbound/${props.user.id}`, { withCredentials: true })
+        .then(resp => {
+          console.log("GOT OUTBOUND MESSAGES: ", resp.data);
+          setMessages(resp.data)
+        })
+        .catch(error => console.log(error))
+    }
+
+    // return function cleanup() {
+    //   console.log("all done");
+    // }
+  }
+  // }, [props.user.id]);
+
 
   // const sendMessage = function() {
   //   // event.preventDefault();
@@ -57,6 +75,16 @@ export default function Messages(props) {
         Messages
       </div>
       <div className="messages-container">
+        <div className="tab">
+          <span onClick={() => {
+            // setDisplay("inbound")
+            fetchMessages("inbound")
+          }}>inbound</span>
+          <span onClick={() => {
+            // setDisplay("outbound")
+            fetchMessages("outbound")
+          }}>outbound</span>
+        </div>
         <div className="side-bar-body">
           {/* <MessagesSideBar /> */}
           {names}

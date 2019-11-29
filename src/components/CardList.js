@@ -10,7 +10,7 @@ export default function CardList(props) {
     return (
       <div key={i}>
         <CardListItem
-          listingId={card.id}
+          listingid={card.id}
           title={card.title}
           description={card.description}
           availability={card.availability}

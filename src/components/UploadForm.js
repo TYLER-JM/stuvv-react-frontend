@@ -133,6 +133,7 @@ export default function Form(props) {
       .catch(error => console.error())
     }
   }
+  console.log("found buildState ", props.buildState)
 
   return (
     <div className="test">
@@ -216,7 +217,7 @@ export default function Form(props) {
                 sendRequest()
                 setModalShow(true)
               }}>
-                {props.buildState.title ? "Submit Changes" : "Submit"}
+                {props.buildState.id ? "Submit Changes" : "Submit"}
            </Button>
 
             <SavingModal
