@@ -9,10 +9,10 @@ export default function MyStuvv(props) {
 
   if (props.user.id) {
     return (
-      <div>
+      <div className="myStuvv">
         <div className="banner">
           My Stuvv
-   </div>
+        </div>
         <CardList cardsData={props.list} user={props.user} setBuildState={props.setBuildState} setList={props.setList} />
       </div>
     )

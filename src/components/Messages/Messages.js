@@ -91,7 +91,7 @@ export default function Messages(props) {
 
   if (props.user.id) {
     return (
-      <div>
+      <div className="messages">
         <div className="messagesBanner">
           Messages
         </div>

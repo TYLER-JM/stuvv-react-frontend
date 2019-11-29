@@ -8,10 +8,9 @@ import Register from '../Login/RegisterModal';
 export default function MyRequests(props) {
   if (props.user.id) {
     return (
-      <div>
+      <div className="requests">
         <div className="requests-banner">My Requests</div>
         <CardList cardsData={props.request} user={props.user} />
-
       </div>
     )
   } else {
