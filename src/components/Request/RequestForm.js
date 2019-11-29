@@ -100,6 +100,7 @@ export default function RequestForm(props) {
         selectedEndDate={selectedEndDate}
         setSelectedEndDate={setSelectedEndDate}
       />
+      <div className="message-box">
       <TextField
         id="outlined-multiline-static"
         label="Message"
@@ -113,11 +114,14 @@ export default function RequestForm(props) {
         value={message}
         onChange={handleMessageChange}
       />
-      <button onClick={() => sendQuestion()}>Send a message</button>
-      <button onClick={() => {
-          sendRequest()
-          // setModalShow(true)
-        }}>Request to book</button>
+      </div>
+      <div>
+        <button onClick={() => sendQuestion()}>Send a message</button>
+        <button onClick={() => {
+            // sendRequest()
+            setModalShow(true)
+          }}>Request to book</button>
+      </div>
 
       <SavingModal
         show={modalShow}
