@@ -17,12 +17,13 @@ function App() {
   const [request, setRequest] = useState([]);
 
   useEffect(() => {
+
     axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
       .then((resp) => {
         setCurrentUser(resp.data)
         console.log("RESPONSE DATA:", resp.data)
 
-        
+
         axios.get(`http://localhost:3000/userslistings/${resp.data.id}`, { withCredentials: true })
           .then((resp) => {
             console.log("users listings: ", resp.data)
@@ -30,7 +31,7 @@ function App() {
             setList(resp.data)
           })
 
-        axios.get(`http://localhost:3000/usersrequests/${resp.data.id}`, { withCredentials: true})
+        axios.get(`http://localhost:3000/usersrequests/${resp.data.id}`, { withCredentials: true })
           .then((resp) => {
             console.log('Fetching users requests', resp.data)
             setRequest(resp.data)
@@ -44,41 +45,44 @@ function App() {
       })
   }, []);
 
-console.log(currentUser.id);
-  return (
+  // console.log("from the App.js file", currentUser.id);
+  if (!currentUser && !list && !request) { return (<h1>Loading...</h1>); } else {
+    return (
 
-    <Router>
-      <div>
-        <Navbar user={currentUser} />
-        <Switch>
-          <Route
-            exact path="/"
-            render={() => <Home userid={currentUser.id}/>}
-          />
-          <Route
-            exact path="/messages"
-            // component={Messages}
-            render={() => < Messages userId={currentUser.id} />}
-          />
-          <Route
-            exact path="/my_stuvv"
-            render={() => <MyStuvv className="my-stuvv-container" list={list} userid={currentUser.id}/>}
+      <Router>
+        <div>
+          <Navbar user={currentUser} />
+          <Switch>
+            <Route
+              exact path="/"
+              render={() => <Home user={currentUser} />}
+            />
+            <Route
+              exact path="/messages"
+              // component={Messages}
+              render={() => < Messages user={currentUser} />}
+            />
+            <Route
+              exact path="/my_stuvv"
+              render={() => <MyStuvv className="my-stuvv-container" list={list} user={currentUser} />}
 
-          />
-          <Route
-            exact path="/build"
-            render={() => <BuildForm userId={currentUser.id} />}
-          // render={() => <BuildForm />}
-          />
-          <Route
-            exact path="/my_requests"
-            render={() => <MyRequests className="my-stuvv-container" request={request} />}
-          />
-        </Switch>
-        <Footer />
-      </div>
-    </Router>
-  );
+            />
+            <Route
+              exact path="/build"
+              render={() => <BuildForm user={currentUser} />}
+            // render={() => <BuildForm />}
+            />
+            <Route
+              exact path="/my_requests"
+              render={() => <MyRequests className="my-stuvv-container" request={request} user={currentUser} />}
+            />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    );
+
+  }
 }
 
 export default App;

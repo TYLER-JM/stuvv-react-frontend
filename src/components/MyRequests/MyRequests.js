@@ -6,12 +6,12 @@ import CardList from "../CardList.js"
 
 
 export default function MyRequests(props) {
-  
-  
+
+
   return (
     <div>
       <div className="requests-banner">My Requests</div>
-    <CardList cardsData={props.request} />
+      <CardList cardsData={props.request} user={props.user} />
 
     </div>
   )

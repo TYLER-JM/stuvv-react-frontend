@@ -14,8 +14,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import CardListItemCarousel from './CardListItemCarousel';
 import EditIcon from '@material-ui/icons/Edit';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import ListingModal from './ListingModal';
+// import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ListingModal from './Request/ListingModal';
 
 
 
@@ -52,7 +52,7 @@ export default function CardListItem(props) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-    console.log("inside CLI props.userID: ", props.userid)
+    console.log("inside CLI props.userID: ", props.user.id)
   };
 
   const handlePageChange = () => {
@@ -65,7 +65,7 @@ export default function CardListItem(props) {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            {props.user}
+            {props.owner}
           </Avatar>
         }
         action={
@@ -80,11 +80,11 @@ export default function CardListItem(props) {
       <CardListItemCarousel
         urls={props.urls}
       />
-      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingId={props.listingId} userid={props.userid} listingOwner={props.user}/>
+      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingId={props.listingId} user={props.user} listingOwner={props.owner} />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        {/* <IconButton aria-label="add to favorites">
           <ThumbUpIcon />
-        </IconButton>
+        </IconButton> */}
         {/* <IconButton aria-label="share">  */}
         {window.location.pathname === "/" ?
           <IconButton

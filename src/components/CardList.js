@@ -2,32 +2,8 @@ import React from "react";
 import CardListItem from "./CardListItem";
 import CardBlank from "./CardBlank";
 
-// export default function CardList({ cardsData}) {
 export default function CardList(props) {
-  // const [modalShow, setModalShow] = useState(false);
-
-  // const cardData = [
-  //   {
-  //     "title": "Tyler's Shoe",
-  //     "description": "This is a nice shoe",
-  //     "availability": true,
-  //   },
-  //   {
-  //     "title": "Tyler's Shoe",
-  //     "description": "This is a nice shoe",
-  //     "availability": true,
-  //   },
-  //   {
-  //     "title": "Tyler's Shoe",
-  //     "description": "This is a nice shoe",
-  //     "availability": true,
-  //   },
-  //   {
-  //     "title": "Tyler's Shoe",
-  //     "description": "This is a nice shoe",
-  //     "availability": true,
-  //   },
-  // ]
+  console.log("from cardlist.js", props.user)
 
   const cards = props.cardsData.map((card, i) => {
     // console.log("CardList cardsData: ", cardsData)
@@ -40,19 +16,12 @@ export default function CardList(props) {
           availability={card.availability}
           urls={card.image_urls}
           price={card.price_per_day / 100}
-          user={card.user_id}
-          userid={props.userid}
+          owner={card.user_id}
+          user={props.user}
         />
       </div>
     )
   })
-  // return (
-  //   <CardListItem
-  //     title={cardData.title}
-  //     description={cardData.description}
-  //     availability={cardData.availability}
-  //    />
-  // )
 
   return (
     <ul className="my-stuvv-container">

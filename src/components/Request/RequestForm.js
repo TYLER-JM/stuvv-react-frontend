@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
-// import { DateRangeInput } from "@datepicker-react/styled";
 import DatePicker from './DatePicker';
 import axios from 'axios';
 
@@ -43,14 +41,14 @@ export default function RequestForm(props) {
   // const [state, dispatch] = useReducer(reducer, initialState);
 
   const sendRequest = () => {
-   const data = {
+    const data = {
       listing_id: props.listingId,
-      user_id: props.userid,
+      user_id: props.user.id,
       start_date: selectedStartDate,
       end_date: selectedEndDate
     }
 
-    axios.post("http://localhost:3000/requests", data, {withCredentials: true})
+    axios.post("http://localhost:3000/requests", data, { withCredentials: true })
       .then(resp => {
         console.log("RESPONSE IS: ", resp)
         sendQuestion();
@@ -62,17 +60,17 @@ export default function RequestForm(props) {
   const sendQuestion = () => {
     const toBeStringified = [
       {
-        sender: props.userid,
+        sender: props.user.first_name,
         content: message,
         sent: new Date()
       }
-    ] 
+    ]
     const fullMessage = {
       conversation: JSON.stringify(toBeStringified),
-      from_user_id: props.userid,
+      from_user_id: props.user.id,
       to_user_id: props.listingOwner
     }
-    axios.post("http://localhost:3000/messages", { message: fullMessage }, {withCredentials: true})
+    axios.post("http://localhost:3000/messages", { message: fullMessage }, { withCredentials: true })
       .then(resp => {
         console.log("RESPONSE FROM Send QUESTION: ", resp)
       })
@@ -87,8 +85,8 @@ export default function RequestForm(props) {
   };
 
   return (
-    <div>
-      <DatePicker 
+    <div className="request-box">
+      <DatePicker
         listingId={props.listingId}
         selectedStartDate={selectedStartDate}
         setSelectedStartDate={setSelectedStartDate}
@@ -108,8 +106,8 @@ export default function RequestForm(props) {
         value={message}
         onChange={handleMessageChange}
       />
-      <button onClick={() => sendRequest()}>SEND REQUEST and MESSAGE</button>
-      <button onClick={() => sendQuestion()}>SEND QUESTION</button>
+      <button onClick={() => sendRequest()}>Send a message</button>
+      <button onClick={() => sendQuestion()}>Request to book</button>
 
     </div>
   );
