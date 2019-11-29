@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from './DatePicker';
 import axios from 'axios';
-// import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
 import Spinner from 'react-bootstrap/Spinner'
 import './ListingModal.scss'
@@ -102,6 +102,10 @@ export default function RequestForm(props) {
           .then(resp => {
             console.log("request that was sent: ", request)
             console.log("saved request after message...", resp)
+
+            setTimeout(() => {
+                window.location.pathname = "/"
+              }, 500)
           })
           .catch(err => console.log("error: ", err))
 
@@ -149,16 +153,16 @@ export default function RequestForm(props) {
         onChange={handleMessageChange}
       />
       </div>
-      <div>
+      <div className="request-button-div">
         {/* <button onClick={() => sendQuestion()}>Send a message</button> */}
-        {/* <OverlayTrigger trigger="click" placement="right" overlay={popover} className="popover-body"> */}
+        <OverlayTrigger trigger="click" placement="right" overlay={popover} className="popover-body">
         <button onClick={() => {
             // sendRequest()
             setTimeout(() => {
               sendQuestionAndRequest()}, 500)
             // setModalShow(true)
           }}>Request to book</button>
-        {/* </OverlayTrigger> */}
+        </OverlayTrigger>
       </div>
 
     
