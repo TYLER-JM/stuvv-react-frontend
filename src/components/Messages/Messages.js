@@ -3,11 +3,15 @@ import axios from 'axios'
 import MessageList from './MessageList';
 import MessagesSideBar from './MessagesSideBar';
 import './Messages.scss';
+import classNames from 'classnames';
+
 
 
 export default function Messages(props) {
   const [messages, setMessages] = useState([]);
   const [convo, setConvo] = useState(0);
+
+  const [cssStyle , setCssStyle] = useState();
   // const [display, setDisplay] = useState("inbound");
 
   // const [single, setSingle] = useState({
@@ -17,13 +21,18 @@ export default function Messages(props) {
   // })
   // const [conversation, setConversation] = useState({})
 
-  // let display = "inbound";
+  const handleClick = function(event) {
+    setCssStyle(event.target.innerHTML);
+    console.log("style now:", cssStyle);
+  }
+
+  // let displayStyle;
 
   // useEffect(() => {
-  function fetchMessages(display) {
-    // console.log("display state now: ", display)
+  function fetchMessages(message) {
+    // console.log("message state now: ", message)
 
-    if (display === "inbound") {
+    if (message === "inbound") {
       return axios.get(`http://localhost:3000/messages/inbound/${props.user.id}`, { withCredentials: true })
         .then(resp => {
           console.log("GOT INBOUND MESSAGES: ", resp.data);
@@ -33,7 +42,7 @@ export default function Messages(props) {
 
     }
 
-    if (display === "outbound") {
+    if (message === "outbound") {
       return axios.get(`http://localhost:3000/messages/outbound/${props.user.id}`, { withCredentials: true })
         .then(resp => {
           console.log("GOT OUTBOUND MESSAGES: ", resp.data);
@@ -74,6 +83,8 @@ export default function Messages(props) {
     )
   })
 
+
+
   const names = messages.map((conversation, i) => {
     return (
       <MessagesSideBar 
@@ -93,17 +104,30 @@ export default function Messages(props) {
         Messages
       </div>
       <div className="messages-container">
+        <div className="names-container">
         <div className="tab">
-          <span onClick={() => {
+          <span onClick={(e) => {
+            handleClick(e)
+            // displayStyle = true;
+            // console.log("DISPLAY inbound!!!", displayStyle)
             fetchMessages("inbound")
           }}>inbound</span>
-          <span onClick={() => {
+          <span onClick={(e) => {
+            handleClick(e)
+            //  displayStyle = false;
+            // console.log("DISPLAY outbound!!!", displayStyle)
+
             fetchMessages("outbound")
           }}>outbound</span>
         </div>
-        <div className="side-bar-body">
+        {/* //////////////////////////SIDE BAR BODY/////////////////////////////////////// */}
+        {/* <div className={displayStyle ? "side-bar-body-inbound" : "side-bar-body-outbound"}>  */}
+        <div className={cssStyle === "inbound" ? "side-bar-body-inbound" : "side-bar-body-outbound"}> 
+        {/* <li className={classNames({ "hidden": props.uniqueid !== props.convo })}> */}
+
           {names}
 
+        </div>
         </div>
         <div className="message-list-body">
           <ul className="message-list">
