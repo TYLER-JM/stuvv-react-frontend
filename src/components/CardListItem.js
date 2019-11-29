@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -12,12 +12,12 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import DeleteIcon from '@material-ui/icons/Delete';
 import CardListItemCarousel from './CardListItemCarousel';
 import EditIcon from '@material-ui/icons/Edit';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ListingModal from './Request/ListingModal';
 import { Link } from "react-router-dom";
-
+import axios from "axios"
 
 
 
@@ -68,6 +68,14 @@ export default function CardListItem(props) {
     // console.log("from cardListItem", props.price, props.listingid)
   };
 
+  const handleDeleteListing = () => {
+    axios.delete(`http://localhost:3000/listings/${props.listingid}`, { withCredentials: true })
+      .then((resp) => {
+        console.log("After delete action: ", resp.data)
+      })
+
+  };
+
 
   return (
     <Card className={classes.card}>
@@ -91,28 +99,31 @@ export default function CardListItem(props) {
       />
       <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingowner={props.owner} />
       <CardActions disableSpacing>
-        {/* <IconButton aria-label="add to favorites">
-          <ThumbUpIcon />
-        </IconButton> */}
-        {/* <IconButton aria-label="share">  */}
-        {window.location.pathname === "/" ?
+        {window.location.pathname === "/my_stuvv" ?
+          <Fragment>
+            <Link to="/build">
+              <IconButton
+                aria-label="share"
+                onClick={handlePageChange}>
+                <EditIcon />
+              </IconButton  >
+            </Link>
+            <IconButton
+              aria-label="add to favorites"
+              onClick={handleDeleteListing}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Fragment>
+          :
           <IconButton
             aria-label="share"
             onClick={() => setModalShow(true)}>
             <PostAddIcon />
-          </IconButton> :
-          
-          <Link to="/build">
-          <IconButton
-            aria-label="share"
-            onClick={handlePageChange}>
-            <EditIcon />
-          </IconButton  >
-          </Link>
+          </IconButton>
+
         }
 
-
-        {/* </IconButton> */}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
