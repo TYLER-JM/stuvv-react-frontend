@@ -57,6 +57,7 @@ export default function MessageList(props) {
 
   return (
     <li className={classNames({ "hidden": props.sentBy.first_name !== props.convo })}>
+      <span>{props.conversationObject.listing.title}</span>
       {/* <p>{props.conversationObject.id}</p> */}
       {bubbles}
       {/* in case we want live messages

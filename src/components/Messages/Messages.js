@@ -61,7 +61,14 @@ export default function Messages(props) {
 
   const conversations = messages.map((conversation, i) => {
     return (
-      <MessageList key={i} conversationObject={conversation} sentBy={conversation.from_user} convo={convo} user={props.user} />
+      <MessageList 
+        key={i} 
+        conversationObject={conversation} 
+        // listingObject={conversation.listing}
+        sentBy={conversation.from_user} 
+        convo={convo} 
+        user={props.user} 
+      />
     )
   })
 
