@@ -93,6 +93,7 @@ export default function RequestForm(props) {
         selectedEndDate={selectedEndDate}
         setSelectedEndDate={setSelectedEndDate}
       />
+      <div className="message-box">
       <TextField
         id="outlined-multiline-static"
         label="Message"
@@ -106,9 +107,11 @@ export default function RequestForm(props) {
         value={message}
         onChange={handleMessageChange}
       />
-      <button onClick={() => sendRequest()}>Send a message</button>
-      <button onClick={() => sendQuestion()}>Request to book</button>
-
+      </div>
+      <div>
+        <button onClick={() => sendRequest()}>Send a message</button>
+        <button onClick={() => sendQuestion()}>Request to book</button>
+      </div>
     </div>
   );
 };

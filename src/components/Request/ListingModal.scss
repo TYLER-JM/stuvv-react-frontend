@@ -17,8 +17,8 @@
       div.request-box {
         // background-color: lightblue;
         font-weight: lighter;
-        // display: flex;
-        // flex-direction: column;
+        display: flex;
+        flex-direction: column;
         // align-self: center;
 
         div.MuiFormControl-root.MuiTextField-root.MuiFormControl-marginNormal {
@@ -37,7 +37,7 @@
         }
 
         div.MuiFormControl-root.MuiTextField-root.MuiFormControl-marginNormal {
-          width: 70%;
+          width: 100%;
           background-color: white;
         }
         button {
@@ -51,6 +51,8 @@
       }
     }
   }
+
+
   // div {
 
   // border: none;
@@ -64,4 +66,9 @@
   //   }
   // }
   // }
+}
+
+.message-box {
+  text-align: center;
+  width: 100%;
 }

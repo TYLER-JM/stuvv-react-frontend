@@ -26,7 +26,8 @@
 }
 
 .message-list-body {
-  background-color: burlywood;
+  background-color: rgba(255, 255, 255, 0.3);
+  // background-color: burlywood;
   width: 100%;
   margin: 2rem;
   // display: none;
@@ -46,13 +47,16 @@
 }
 
 .message-list-item {
-  background-color: transparent;
-  border: 1px solid purple;
+  // background-color: rgba(255, 255, 255, 0.3);
+  // background-color: transparent;
+  margin: 1rem;
+  // border: 3px solid grey;
 }
 
 .message-list li {
   background-color: white;
   list-style-type: none;
+  border: 5px solid burlywood;
 }
 
 .hidden {
