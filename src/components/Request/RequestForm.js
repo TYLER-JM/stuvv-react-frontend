@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from './DatePicker';
 import axios from 'axios';
+import SavingModal from '../SavingModal'
 
 
 // used by the textfield
@@ -34,6 +35,8 @@ const useStyles = makeStyles(theme => ({
 // }
 
 export default function RequestForm(props) {
+  const [modalShow, setModalShow] = useState(false);
+
   const classes = useStyles();
   const [message, setMessage] = useState("")
   const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
@@ -52,6 +55,10 @@ export default function RequestForm(props) {
       .then(resp => {
         console.log("RESPONSE IS: ", resp)
         sendQuestion();
+        
+        setTimeout(() => {
+          window.location.pathname = "/"
+        }, 1000)
       })
       .catch(error => console.log("error is: ", error))
     console.log("DATA TO SEND ALONG: ", data)
@@ -107,7 +114,15 @@ export default function RequestForm(props) {
         onChange={handleMessageChange}
       />
       <button onClick={() => sendQuestion()}>Send a message</button>
-      <button onClick={() => sendRequest()}>Request to book</button>
+      <button onClick={() => {
+          sendRequest()
+          // setModalShow(true)
+        }}>Request to book</button>
+
+      <SavingModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
 
     </div>
   );
