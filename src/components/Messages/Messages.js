@@ -20,7 +20,7 @@ export default function Messages(props) {
   // let display = "inbound";
 
   // useEffect(() => {
-  function fetchEmail() {
+  function fetchMessages() {
 
     if (display === "inbound") {
       axios.get(`http://localhost:3000/messages/inbound/${props.user.id}`, { withCredentials: true })
@@ -45,7 +45,7 @@ export default function Messages(props) {
   }
   // }, [props.user.id]);
 
-  fetchEmail()
+  fetchMessages()
 
   // const sendMessage = function() {
   //   // event.preventDefault();
@@ -77,11 +77,11 @@ export default function Messages(props) {
         <div className="tab">
           <span onClick={() => {
             setDisplay("inbound")
-            fetchEmail()
+            fetchMessages()
           }}>inbound</span>
           <span onClick={() => {
             setDisplay("outbound")
-            fetchEmail()
+            fetchMessages()
           }}>outbound</span>
         </div>
         <div className="side-bar-body">
