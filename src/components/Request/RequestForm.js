@@ -85,7 +85,7 @@ export default function RequestForm(props) {
   };
 
   return (
-    <div>
+    <div className="request-box">
       <DatePicker
         listingId={props.listingId}
         selectedStartDate={selectedStartDate}
@@ -106,8 +106,8 @@ export default function RequestForm(props) {
         value={message}
         onChange={handleMessageChange}
       />
-      <button onClick={() => sendRequest()}>SEND REQUEST and MESSAGE</button>
-      <button onClick={() => sendQuestion()}>SEND QUESTION</button>
+      <button onClick={() => sendRequest()}>Send a message</button>
+      <button onClick={() => sendQuestion()}>Request to book</button>
 
     </div>
   );

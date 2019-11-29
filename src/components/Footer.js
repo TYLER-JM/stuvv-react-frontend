@@ -1,16 +1,16 @@
 import React from "react";
 
 const style = {
-  "background-color": "#51AB97",
+  backgroundColor: "#51AB97",
   color: "#4f4f4f",
-  "font-weigth": "bold",
+  fontWeigth: "bold",
   height: "70px",
   width: "100%",
-  "font-align": "center",
+  fontAlign: "center",
   // position: "absolute",
   margin: 0,
-  "padding-top": "25px",
-  "text-align": "center",
+  paddingTop: "25px",
+  textAlign: "center",
 }
 
 const aStyle = {

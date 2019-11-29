@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import MessagesHelper from '../../helpers/MessagesHelper';
 import axios from 'axios'
 import MessageList from './MessageList';
 import MessagesSideBar from './MessagesSideBar';
-import classNames from 'classnames';
 import './Messages.scss';
 
 
