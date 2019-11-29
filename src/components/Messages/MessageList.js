@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import MessageListItem from './MessageListItem';
 import axios from 'axios';
 import classNames from 'classnames';
+import './Messages.scss'
 
 
 export default function MessageList(props) {
@@ -42,11 +43,11 @@ export default function MessageList(props) {
 
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
-      <span>{props.conversationObject.listing.title}</span>
       {bubbles}
-
-      <input id="emptyMe" type="text" value={message} onChange={e => setMessage(e.target.value)} />
-      <button onClick={(e) => sendMessage(e)}>SEND!</button>
+      <div className="search-input">
+        <input id="emptyMe" type="text" value={message} onChange={e => setMessage(e.target.value)} />
+        <button onClick={(e) => sendMessage(e)}>SEND!</button>
+      </div>
     </li>
   );
 }
