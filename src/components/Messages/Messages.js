@@ -68,6 +68,8 @@ export default function Messages(props) {
         sentBy={conversation.from_user} 
         convo={convo} 
         user={props.user} 
+        // uniqueid={`${conversation.listing.title}${conversation.to_user.first_name}${conversation.from_user.first_name}`}
+        uniqueid={`convo${i}`}
       />
     )
   })
@@ -82,6 +84,7 @@ export default function Messages(props) {
         listingObject={conversation.listing} 
         user={props.user}
         toUser={conversation.to_user}
+        uniqueid={`convo${i}`}
       />
     )
   })

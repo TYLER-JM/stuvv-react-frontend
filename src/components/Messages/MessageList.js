@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 
 export default function MessageList(props) {
-
+  console.log("the unique identifier: ", props.uniqueid)
   // const [conversation, setConversation] = useState([]);
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
   // const [message, setMessage] = useState({});
@@ -56,7 +56,8 @@ export default function MessageList(props) {
   })
 
   return (
-    <li className={classNames({ "hidden": props.sentBy.first_name !== props.convo })}>
+    // <li className={classNames({ "hidden": props.sentBy.first_name !== props.convo })}>
+    <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
       <span>{props.conversationObject.listing.title}</span>
       {/* <p>{props.conversationObject.id}</p> */}
       {bubbles}
