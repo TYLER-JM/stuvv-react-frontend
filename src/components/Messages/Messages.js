@@ -21,6 +21,7 @@ export default function Messages(props) {
 
   // useEffect(() => {
   function fetchMessages(display) {
+    // console.log("display state now: ", display)
 
     if (display === "inbound") {
       return axios.get(`http://localhost:3000/messages/inbound/${props.user.id}`, { withCredentials: true })
@@ -66,7 +67,15 @@ export default function Messages(props) {
 
   const names = messages.map((conversation, i) => {
     return (
-      <MessagesSideBar key={i} sentBy={conversation.from_user} setConvo={setConvo} convo={convo} />
+      // <MessagesSideBar key={i} sentBy={conversation.from_user} setConvo={setConvo} convo={convo} />
+      <MessagesSideBar 
+        key={i} 
+        sentBy={conversation.from_user} 
+        setConvo={setConvo} convo={convo} 
+        listingObject={conversation.listing} 
+        user={props.user}
+        toUser={conversation.to_user}
+      />
     )
   })
   return (
@@ -78,10 +87,12 @@ export default function Messages(props) {
         <div className="tab">
           <span onClick={() => {
             // setDisplay("inbound")
+            // fetchMessages(display)
             fetchMessages("inbound")
           }}>inbound</span>
           <span onClick={() => {
             // setDisplay("outbound")
+            // fetchMessages(display)
             fetchMessages("outbound")
           }}>outbound</span>
         </div>
