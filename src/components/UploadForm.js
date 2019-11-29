@@ -217,7 +217,7 @@ export default function Form(props) {
                 sendRequest()
                 setModalShow(true)
               }}>
-                {props.buildState.title ? "Submit Changes" : "Submit"}
+                {props.buildState.id ? "Submit Changes" : "Submit"}
            </Button>
 
             <SavingModal
