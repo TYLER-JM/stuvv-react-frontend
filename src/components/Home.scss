@@ -15,7 +15,6 @@
   padding-right: 1rem;
   margin: auto;
   text-align: center;
-  margin-bottom: 50px;
 }
 
 .fullscreen-video-wrap {
@@ -55,4 +54,18 @@
   font-size: 1.5rem;
   display: block;
   // padding-bottom: 2rem;
+}
+
+.my-stuvv-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  min-height: 85vh;
+}
+
+.my-stuvv-container > div {
+  // margin: 2rem;
+  margin: 2%;
 }

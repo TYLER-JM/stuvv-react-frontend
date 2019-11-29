@@ -10,7 +10,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: 300
+    width: "300px",
+    height: "400px",
   },
   div: {
     height: "300px",
@@ -42,28 +43,30 @@ export default function CardBlank(props) {
   };
 
   return (
-    <Card className={classes.card}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            New
+    <div className="card-list-item">
+      <Card className={classes.card}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="recipe" className={classes.avatar}>
+              New
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Add a new Product"
-        subheader="Price per day"
-      />
-      <div className={classes.div}>
-        <i class="fas fa-plus-circle"
-          onClick={handlePageChange}
-          className={classes.img}
-        >
-        </i>
-      </div>
-    </Card>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title="Add a new Product"
+          subheader="Price per day"
+        />
+        <div className={classes.div}>
+          <i class="fas fa-plus-circle"
+            onClick={handlePageChange}
+            className={classes.img}
+          >
+          </i>
+        </div>
+      </Card>
+    </div>
   );
 }

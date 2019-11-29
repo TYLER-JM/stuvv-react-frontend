@@ -114,9 +114,6 @@ export default function Messages(props) {
             </ul>
           </div>
         </div>
-
-
-
         {/* <button onClick={() => setChange(2)}>GET MESSAGES</button> */}
       </div>
     );

@@ -1,17 +1,19 @@
-.myStuvv {
-  min-height: 100vh;
-}
-
-.my-stuvv-container {
+.card-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   width: 80%;
   margin: auto;
+  min-height: 85vh;
+  margin-top: 50px;
 }
 
-.my-stuvv-container > div {
-  margin: 0.5rem;
+.card-container > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 2%;
 }
 
 .banner {
