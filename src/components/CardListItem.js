@@ -80,6 +80,38 @@ export default function CardListItem(props) {
 
   };
 
+  const buttons = () => {
+    if (window.location.pathname === "/my_stuvv") {
+      return (
+        <Fragment>
+          <Link to="/build">
+            <IconButton
+              aria-label="share"
+              onClick={handlePageChange}>
+              <EditIcon />
+            </IconButton  >
+          </Link>
+          <IconButton
+            aria-label="add to favorites"
+            onClick={() => {
+              if (window.confirm('Are you sure you wish to delete this item?')) handleDeleteListing()
+            }
+            }
+          >
+            <DeleteIcon />
+          </IconButton>
+        </Fragment>)
+    } else if (window.location.pathname === "/") {
+      return (<IconButton
+        aria-label="share"
+        onClick={() => setModalShow(true)}>
+        <PostAddIcon />
+      </IconButton>)
+    } else {
+      return null
+    }
+  }
+
 
   return (
     <Card className={classes.card}>
@@ -103,34 +135,7 @@ export default function CardListItem(props) {
       />
       <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingowner={props.owner} />
       <CardActions disableSpacing>
-        {window.location.pathname === "/my_stuvv" ?
-          <Fragment>
-            <Link to="/build">
-              <IconButton
-                aria-label="share"
-                onClick={handlePageChange}>
-                <EditIcon />
-              </IconButton  >
-            </Link>
-            <IconButton
-              aria-label="add to favorites"
-              onClick={() => {
-                if (window.confirm('Are you sure you wish to delete this item?')) handleDeleteListing()
-              }
-              }
-            >
-              <DeleteIcon />
-            </IconButton>
-          </Fragment>
-          :
-          <IconButton
-            aria-label="share"
-            onClick={() => setModalShow(true)}>
-            <PostAddIcon />
-          </IconButton>
-
-        }
-
+        {buttons()}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
