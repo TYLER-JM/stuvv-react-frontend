@@ -49,7 +49,7 @@ export default function Home(props) {
   return (
     <div>
       <WelcomeVideo sendRequest={sendRequest} />
-      < CardList cardsData={list} user={props.user} />
+      < CardList cardsData={list} user={props.user} setBuildState={props.setBuildState}/>
     </div>
   );
 }
