@@ -106,25 +106,25 @@ export default function Messages(props) {
       <div className="messages-container">
         <div className="names-container">
         <div className="tab">
-          <span onClick={(e) => {
+          <div className="inbound" onClick={(e) => {
             handleClick(e)
             // displayStyle = true;
             // console.log("DISPLAY inbound!!!", displayStyle)
             fetchMessages("inbound")
-          }}>inbound</span>
-          <span onClick={(e) => {
+          }}>inbound</div>
+          <div className="outbound" onClick={(e) => {
             handleClick(e)
             //  displayStyle = false;
             // console.log("DISPLAY outbound!!!", displayStyle)
 
             fetchMessages("outbound")
-          }}>outbound</span>
+          }}>outbound</div>
         </div>
         {/* //////////////////////////SIDE BAR BODY/////////////////////////////////////// */}
         {/* <div className={displayStyle ? "side-bar-body-inbound" : "side-bar-body-outbound"}>  */}
         <div className={cssStyle === "inbound" ? "side-bar-body-inbound" : "side-bar-body-outbound"}> 
         {/* <li className={classNames({ "hidden": props.uniqueid !== props.convo })}> */}
-
+        
           {names}
 
         </div>
