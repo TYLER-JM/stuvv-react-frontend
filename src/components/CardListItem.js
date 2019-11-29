@@ -80,7 +80,7 @@ export default function CardListItem(props) {
       <CardListItemCarousel
         urls={props.urls}
       />
-      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingOwner={props.owner} />
+      <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingowner={props.owner} />
       <CardActions disableSpacing>
         {/* <IconButton aria-label="add to favorites">
           <ThumbUpIcon />

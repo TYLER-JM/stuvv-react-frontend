@@ -68,7 +68,7 @@ export default function RequestForm(props) {
     const fullMessage = {
       conversation: JSON.stringify(toBeStringified),
       from_user_id: props.user.id,
-      to_user_id: props.listingOwner
+      to_user_id: props.listingowner
     }
     axios.post("http://localhost:3000/messages", { message: fullMessage }, { withCredentials: true })
       .then(resp => {
@@ -76,7 +76,7 @@ export default function RequestForm(props) {
       })
       .catch(err => console.log("error: ", err))
     // console.log("message is: ", message)
-    // console.log("listingOWner: ", props.listingOwner)
+    // console.log("listingowner: ", props.listingowner)
   }
 
   //handles the value of the multiline textarea (description)
