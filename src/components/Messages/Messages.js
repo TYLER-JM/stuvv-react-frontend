@@ -68,13 +68,14 @@ export default function Messages(props) {
         sentBy={conversation.from_user} 
         convo={convo} 
         user={props.user} 
+        // uniqueid={`${conversation.listing.title}${conversation.to_user.first_name}${conversation.from_user.first_name}`}
+        uniqueid={`convo${i}`}
       />
     )
   })
 
   const names = messages.map((conversation, i) => {
     return (
-      // <MessagesSideBar key={i} sentBy={conversation.from_user} setConvo={setConvo} convo={convo} />
       <MessagesSideBar 
         key={i} 
         sentBy={conversation.from_user} 
@@ -82,6 +83,7 @@ export default function Messages(props) {
         listingObject={conversation.listing} 
         user={props.user}
         toUser={conversation.to_user}
+        uniqueid={`convo${i}`}
       />
     )
   })
@@ -93,18 +95,13 @@ export default function Messages(props) {
       <div className="messages-container">
         <div className="tab">
           <span onClick={() => {
-            // setDisplay("inbound")
-            // fetchMessages(display)
             fetchMessages("inbound")
           }}>inbound</span>
           <span onClick={() => {
-            // setDisplay("outbound")
-            // fetchMessages(display)
             fetchMessages("outbound")
           }}>outbound</span>
         </div>
         <div className="side-bar-body">
-          {/* <MessagesSideBar /> */}
           {names}
 
         </div>

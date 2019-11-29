@@ -7,7 +7,7 @@ export default function MessageListItem(props) {
 
   return (
       <div className="message-list-item">
-        <span>{`${props.messageObject.sender} says: `}</span>
+        <span><strong>{`${props.messageObject.sender} says: `}</strong></span>
         <span>{props.messageObject.content}</span>
       </div>
   );

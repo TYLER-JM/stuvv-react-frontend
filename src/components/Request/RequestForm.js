@@ -3,7 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from './DatePicker';
 import axios from 'axios';
-import SavingModal from '../SavingModal'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import Spinner from 'react-bootstrap/Spinner'
+import './ListingModal.scss'
+
+
+
+
+
+
 
 
 // used by the textfield
@@ -93,6 +102,10 @@ export default function RequestForm(props) {
           .then(resp => {
             console.log("request that was sent: ", request)
             console.log("saved request after message...", resp)
+
+            setTimeout(() => {
+                window.location.pathname = "/"
+              }, 500)
           })
           .catch(err => console.log("error: ", err))
 
@@ -106,6 +119,15 @@ export default function RequestForm(props) {
   const handleMessageChange = event => {
     setMessage(event.target.value);
   };
+
+  const popover = (
+    <Popover className="popover-header">
+      <Popover.Title as="h3">Requesting your booking!</Popover.Title>
+      <Popover.Content>
+          <Spinner animation="border" variant="warning" />
+      </Popover.Content>
+    </Popover>
+  );
 
   return (
     <div className="request-box">
@@ -131,19 +153,19 @@ export default function RequestForm(props) {
         onChange={handleMessageChange}
       />
       </div>
-      <div>
+      <div className="request-button-div">
         {/* <button onClick={() => sendQuestion()}>Send a message</button> */}
+        <OverlayTrigger trigger="click" placement="right" overlay={popover} className="popover-body">
         <button onClick={() => {
             // sendRequest()
-            sendQuestionAndRequest()
+            setTimeout(() => {
+              sendQuestionAndRequest()}, 500)
             // setModalShow(true)
           }}>Request to book</button>
+        </OverlayTrigger>
       </div>
 
-      <SavingModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+    
 
     </div>
   );
