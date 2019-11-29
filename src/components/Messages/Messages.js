@@ -76,7 +76,6 @@ export default function Messages(props) {
 
   const names = messages.map((conversation, i) => {
     return (
-      // <MessagesSideBar key={i} sentBy={conversation.from_user} setConvo={setConvo} convo={convo} />
       <MessagesSideBar 
         key={i} 
         sentBy={conversation.from_user} 
@@ -96,18 +95,13 @@ export default function Messages(props) {
       <div className="messages-container">
         <div className="tab">
           <span onClick={() => {
-            // setDisplay("inbound")
-            // fetchMessages(display)
             fetchMessages("inbound")
           }}>inbound</span>
           <span onClick={() => {
-            // setDisplay("outbound")
-            // fetchMessages(display)
             fetchMessages("outbound")
           }}>outbound</span>
         </div>
         <div className="side-bar-body">
-          {/* <MessagesSideBar /> */}
           {names}
 
         </div>
