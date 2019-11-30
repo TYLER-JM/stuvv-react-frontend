@@ -33,12 +33,13 @@
 
 .header-overlay {
   height: 100vh;
-  width: 100vh;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  background: #84aacc;
   z-index: 1;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 .header-content {

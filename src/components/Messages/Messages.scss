@@ -40,14 +40,15 @@
 }
 
 .inbound {
-  // border: solid;
   border-color: lightgrey;
   text-align: center;
   width: 100%;
   height: 3rem;
   cursor: pointer;
   background-color: burlywood;
-  // padding: auto;
+  padding: .5rem;
+  color: white;
+  font-size: 1.5rem;
 }
 
 .outbound {
@@ -58,31 +59,31 @@
   height: 3rem;
   cursor: pointer;
   background-color: #84aacc;
-  // padding: auto;
+  padding: .5rem;
+  color: white;
+  font-size: 1.5rem;
 }
 
 .side-bar-body-inbound {
   background-color: burlywood;
-  width: 100%;
   min-height: 400px;
-  max-height: 500px;
+  max-height: 100px;
   overflow: scroll;
   cursor: pointer;
 
   div {
     background-color: rgba(255, 255, 255, 0.7);
-    margin: .5rem;
+    margin: .3rem;
     border-radius: .3rem;
+
     div {
       margin: 0;
       border-radius: .3rem .3rem 0 0;
       padding-left: .5rem;
-
     }
   }
   div:hover {
     background-color: rgba(255, 255, 255, 1.2);
-    margin: .5rem;
   }
 }
 
@@ -97,6 +98,12 @@
     background-color: rgba(255, 255, 255, 0.7);
     margin: .3rem;
     border-radius: .3rem;
+
+    div {
+      margin: 0;
+      border-radius: .3rem .3rem 0 0;
+      padding-left: .5rem;
+    }
   }
   div:hover {
     background-color: rgba(255, 255, 255, 1.2);

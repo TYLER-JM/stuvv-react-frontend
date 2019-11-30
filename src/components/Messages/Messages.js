@@ -86,7 +86,9 @@ export default function Messages(props) {
             </div>
           </div>
           <div className="message-list-body">
-            <ul className="message-list">
+            {/* <ul className="message-list"> */}
+            <ul className={cssStyle === "inbound" ? "message-list-inbound" : "message-list-outbound"}>
+
               {conversations}
             </ul>
           </div>

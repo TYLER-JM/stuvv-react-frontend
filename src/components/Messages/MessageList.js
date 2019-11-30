@@ -46,7 +46,7 @@ export default function MessageList(props) {
       {bubbles}
       <div className="search-input">
         <input className="input-field" type="text" value={message} onChange={e => setMessage(e.target.value)} />
-        <button className="button" onClick={(e) => sendMessage(e)}>SEND!</button>
+        <button className="button" onClick={(e) => sendMessage(e)}>SEND</button>
       </div>
     </li>
   );
