@@ -217,7 +217,7 @@ export default function Form(props) {
               />
               <label htmlFor="outlined-button-file">
                 <Button variant="outlined" component="span">
-                  {props.buildState.title ? "Add More Images" : "Add Images"}
+                  {props.buildState.id ? "Add More Images" : "Add Images"}
                 </Button>
               </label>
               <div>

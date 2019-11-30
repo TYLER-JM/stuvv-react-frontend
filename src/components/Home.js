@@ -32,7 +32,7 @@ export default function Home(props) {
       .then(resp => {
         console.log("RESP in SEARCH: ", resp)
         setList(resp.data)
-        window.location.hash = "search-results"
+        window.scrollBy(0, window.innerHeight);
       })
       .catch(error => console.error())
   }
@@ -40,9 +40,9 @@ export default function Home(props) {
   return (
     <div>
       <WelcomeVideo sendRequest={sendRequest} />
-      <div id="search-results">
-        <CardList cardsData={list} user={props.user} setBuildState={props.setBuildState} />
-      </div>
+      {/* <div id="search-results"> */}
+      <CardList cardsData={list} user={props.user} setBuildState={props.setBuildState} />
+      {/* </div> */}
     </div>
   );
 }
