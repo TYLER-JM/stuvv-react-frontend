@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import MessageList from './MessageList';
 import MessagesSideBar from './MessagesSideBar';
@@ -11,7 +11,7 @@ export default function Messages(props) {
   const [messages, setMessages] = useState([]);
   const [convo, setConvo] = useState(0);
 
-  const [cssStyle , setCssStyle] = useState();
+  const [cssStyle , setCssStyle] = useState("");
   // const [display, setDisplay] = useState("inbound");
 
   // const [single, setSingle] = useState({
@@ -20,6 +20,11 @@ export default function Messages(props) {
   //   sent: new Date()
   // })
   // const [conversation, setConversation] = useState({})
+
+  // useEffect(() => {
+  //   fetchMessages("inbound")
+  //   console.log("USE EFFECT", useEffect)
+  // },[])
 
   const handleClick = function(event) {
     setCssStyle(event.target.innerHTML);
@@ -111,14 +116,15 @@ export default function Messages(props) {
             // displayStyle = true;
             // console.log("DISPLAY inbound!!!", displayStyle)
             fetchMessages("inbound")
-          }}>inbound</div>
+          }}><strong>inbound</strong></div>
           <div className="outbound" onClick={(e) => {
             handleClick(e)
             //  displayStyle = false;
             // console.log("DISPLAY outbound!!!", displayStyle)
 
             fetchMessages("outbound")
-          }}>outbound</div>
+          }}><strong>outbound</strong></div>
+          
         </div>
         {/* //////////////////////////SIDE BAR BODY/////////////////////////////////////// */}
         {/* <div className={displayStyle ? "side-bar-body-inbound" : "side-bar-body-outbound"}>  */}
@@ -130,7 +136,7 @@ export default function Messages(props) {
         </div>
         </div>
         <div className="message-list-body">
-          <ul className="message-list">
+          <ul className={cssStyle === "inbound" ? "message-list-inbound" : "message-list-outbound"}>
             {conversations}
           </ul>
         </div>

@@ -45,8 +45,8 @@ export default function MessageList(props) {
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
       {bubbles}
       <div className="search-input">
-        <input id="emptyMe" type="text" value={message} onChange={e => setMessage(e.target.value)} />
-        <button onClick={(e) => sendMessage(e)}>SEND!</button>
+        <input className="input-field" type="text" value={message} onChange={e => setMessage(e.target.value)} />
+        <button className="button" onClick={(e) => sendMessage(e)}>SEND!</button>
       </div>
     </li>
   );
