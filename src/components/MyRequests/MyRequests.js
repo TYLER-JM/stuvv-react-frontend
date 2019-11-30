@@ -2,6 +2,7 @@ import React from 'react';
 import './Myrequests.scss'
 import CardList from "../CardList.js"
 import Register from '../Login/RegisterModal';
+import RequestList from './RequestList';
 
 
 
@@ -10,7 +11,8 @@ export default function MyRequests(props) {
     return (
       <div className="requests">
         <div className="requests-banner">My Requests</div>
-        <CardList cardsData={props.request} user={props.user} />
+        {/* <CardList cardsData={props.request} user={props.user} /> */}
+        <RequestList requests={props.request} user={props.user} />
       </div>
     )
   } else {
