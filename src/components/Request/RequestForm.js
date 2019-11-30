@@ -48,8 +48,9 @@ export default function RequestForm(props) {
 
   const classes = useStyles();
   const [message, setMessage] = useState("")
-  const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
-  const [selectedEndDate, setSelectedEndDate] = useState(new Date('2019-11-18T00:00:00'));
+  const [selectedStartDate, setSelectedStartDate] = useState(new Date);
+  // const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
+  const [selectedEndDate, setSelectedEndDate] = useState(new Date);
   // const [state, dispatch] = useReducer(reducer, initialState);
 
   // const sendRequest = () => {
