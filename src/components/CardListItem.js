@@ -17,6 +17,7 @@ import CardListItemCarousel from './CardListItemCarousel';
 import EditIcon from '@material-ui/icons/Edit';
 import ListingModal from './Request/ListingModal';
 import { Link } from "react-router-dom";
+import Register from './Login/RegisterModal';
 import axios from "axios"
 import "./CardListItem.scss"
 
@@ -104,7 +105,15 @@ export default function CardListItem(props) {
     } else if (window.location.pathname === "/") {
       return (<IconButton
         aria-label="share"
-        onClick={() => setModalShow(true)}>
+        onClick={() => {
+          if (props.user.id) {
+            setModalShow(true)
+          }
+          // } else {
+          //   return (<Register show="true" onHide={() => window.location.pathname = "/"} />)
+          // }
+        }
+        }>
         <PostAddIcon />
       </IconButton>)
     } else {

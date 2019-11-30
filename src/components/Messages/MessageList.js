@@ -30,13 +30,13 @@ export default function MessageList(props) {
   const handleAccept = function () {
     return axios.patch(`http://localhost:3000/requests/${props.conversationObject.request.id}`, { request: { approved: true } }, { withCredentials: true })
       .then(resp => {
-        console.log("GOT OUTBOUND MESSAGES: ", resp.data);
-        setAccept(null)
+        console.log("Patch was done and this is now approved: ", resp.data);
+        setAcceptButtons(null)
       })
       .catch(error => console.log(error))
   }
 
-  const [accept, setAccept] = useState((<div className="buttons-message">
+  const [acceptButtons, setAcceptButtons] = useState((<div className="buttons-message">
     <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
     <Button variant="outline-secondary">Decline</Button>
   </div>));
@@ -61,7 +61,7 @@ export default function MessageList(props) {
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
       {bubbles}
-      {!props.conversationObject.request.approved ? accept : null}
+      {props.tabSelected === "inbound" ? !props.conversationObject.request.approved ? acceptButtons : null : null}
       {/* {!props.conversationObject.request.approved ? (<div className="buttons-message">
         <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
         <Button variant="outline-secondary">Decline</Button>

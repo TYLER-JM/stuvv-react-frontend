@@ -44,6 +44,7 @@ export default function Messages(props) {
         convo={convo}
         user={props.user}
         uniqueid={`convo${i}`}
+        tabSelected={cssStyle}
       />
     )
   })
