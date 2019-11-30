@@ -12,10 +12,6 @@ export default function MessageList(props) {
 
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
   const [message, setMessage] = useState("");
-  // const [accept, setAccept] = useState((<div className="buttons-message">
-  //   <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
-  //   <Button variant="outline-secondary">Decline</Button>
-  // </div>));
 
   const reset = (e) => {
     setMessage("")
@@ -35,11 +31,15 @@ export default function MessageList(props) {
     return axios.patch(`http://localhost:3000/requests/${props.conversationObject.request.id}`, { request: { approved: true } }, { withCredentials: true })
       .then(resp => {
         console.log("GOT OUTBOUND MESSAGES: ", resp.data);
-        // setAccept(resp.data)
+        setAccept(null)
       })
       .catch(error => console.log(error))
   }
 
+  const [accept, setAccept] = useState((<div className="buttons-message">
+    <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
+    <Button variant="outline-secondary">Decline</Button>
+  </div>));
 
   useEffect(() => {
     axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(conversation) }, { withCredential: true })
@@ -61,10 +61,11 @@ export default function MessageList(props) {
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
       {bubbles}
-      {!props.conversationObject.request.approved ? (<div className="buttons-message">
+      {!props.conversationObject.request.approved ? accept : null}
+      {/* {!props.conversationObject.request.approved ? (<div className="buttons-message">
         <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
         <Button variant="outline-secondary">Decline</Button>
-      </div>) : null}
+      </div>) : null} */}
 
       <div className="search-input">
         <input className="input-field" type="text" value={message} onChange={e => setMessage(e.target.value)} />
