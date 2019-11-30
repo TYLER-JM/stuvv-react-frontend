@@ -128,12 +128,19 @@
   background-color: white;
   list-style-type: none;
   border: 5px solid burlywood;
+  overflow: scroll;
+  min-height: 430px;
+  max-height: 100px;
 }
 
 .message-list-outbound li {
   background-color: white;
   list-style-type: none;
   border: 5px solid #84aacc;
+  position: relative;
+  overflow: scroll;
+  min-height: 430px;
+  max-height: 100px;
 }
 
 .hidden {
@@ -145,6 +152,10 @@
   justify-content: center;
   width: 100%;
   margin: 1.5rem;
+  //////////////////////////////// change these to fix search bar to bottom of message list...not sure how
+  // bottom: 10px;
+  // position: sticky;
+  // background-color: blue;
 }
 
 .input-field {
