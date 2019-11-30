@@ -27,9 +27,9 @@ export default function MessageList(props) {
     reset(e)
   }
 
-  const handleAccept = function () {
+  const handleAccept = function (status) {
 
-    return axios.put(`http://localhost:3000/requests/${props.conversationObject.request.id}`, { request: true }, { withCredentials: true })
+    return axios.put(`http://localhost:3000/requests/${props.conversationObject.request.id}`, { request: status }, { withCredentials: true })
       .then(resp => {
         console.log("Patch was done and this is now approved: ", resp.data);
         setAcceptButtons(null)
@@ -37,8 +37,8 @@ export default function MessageList(props) {
       .catch(error => console.log(error))
   }
   const [acceptButtons, setAcceptButtons] = useState((<div className="buttons-message">
-    <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
-    <Button variant="outline-secondary">Decline</Button>
+    <Button variant="outline-success" onClick={() => handleAccept(1)}>Accept</Button>
+    <Button variant="outline-secondary" onClick={() => handleAccept(-1)}>Decline</Button>
   </div>));
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function MessageList(props) {
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
       {bubbles}
-      {props.tabSelected === "my stuvv" ? props.conversationObject.request.approved ? null : acceptButtons : null}
+      {props.tabSelected === "my stuvv" ? props.conversationObject.request.approved === 0 ? acceptButtons : null : null}
       {/* {!props.conversationObject.request.approved ? (
         <div className="buttons-message">
         <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
