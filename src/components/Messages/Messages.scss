@@ -74,18 +74,17 @@
 
   div {
     background-color: rgba(255, 255, 255, 0.7);
-    margin: .5rem;
-    border-radius: .3rem;
+    margin: 0.5rem;
+    border-radius: 0.3rem;
     div {
       margin: 0;
-      border-radius: .3rem .3rem 0 0;
-      padding-left: .5rem;
-
+      border-radius: 0.3rem 0.3rem 0 0;
+      padding-left: 0.5rem;
     }
   }
   div:hover {
     background-color: rgba(255, 255, 255, 1.2);
-    margin: .5rem;
+    margin: 0.5rem;
   }
 }
 
@@ -98,8 +97,8 @@
 
   div {
     background-color: rgba(255, 255, 255, 0.7);
-    margin: .3rem;
-    border-radius: .3rem;
+    margin: 0.3rem;
+    border-radius: 0.3rem;
   }
   div:hover {
     background-color: rgba(255, 255, 255, 1.2);
@@ -147,7 +146,7 @@
   width: 60%;
 }
 
-.button {
+.send {
   outline: none;
   font-family: "Montserrat";
   height: 2rem;
@@ -160,6 +159,12 @@
   }
 }
 
-// .convo {
-//   background-color: rgba(255, 255, 255, 0.3)
-// }
+.buttons-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  button.btn {
+    margin: 0 20px 0 20px;
+  }
+}
