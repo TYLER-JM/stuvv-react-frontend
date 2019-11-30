@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -38,7 +38,7 @@
   top: 0;
   left: 0;
   z-index: 1;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .header-content {
@@ -54,4 +54,18 @@
   font-size: 1.5rem;
   display: block;
   // padding-bottom: 2rem;
+}
+
+.my-stuvv-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  min-height: 85vh;
+}
+
+.my-stuvv-container > div {
+  // margin: 2rem;
+  margin: 2%;
 }

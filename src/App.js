@@ -57,7 +57,7 @@ function App() {
           <Switch>
             <Route
               exact path="/"
-              render={() => <Home user={currentUser} />}
+              render={() => <Home user={currentUser} setBuildState={setBuildState} />}
             />
             <Route
               exact path="/messages"
@@ -65,7 +65,7 @@ function App() {
             />
             <Route
               exact path="/my_stuvv"
-              render={() => <MyStuvv className="my-stuvv-container" list={list} user={currentUser} setBuildState={setBuildState} setList={setList} />}
+              render={() => <MyStuvv className="my-stuvv-1container" list={list} user={currentUser} setBuildState={setBuildState} setList={setList} />}
 
             />
             <Route
