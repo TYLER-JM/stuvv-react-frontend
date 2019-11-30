@@ -2,11 +2,14 @@ import React from 'react'
 import CardList from "../CardList.js"
 import './MyStuvv.scss'
 import Register from '../Login/RegisterModal';
+import SavingModal from '../SavingModal'
+
 
 export default function MyStuvv(props) {
 
   console.log("from mystuvv.js", props.user)
 
+  // setTimeout(() => {
   if (props.user.id) {
     return (
       <div className="myStuvv">
@@ -18,7 +21,12 @@ export default function MyStuvv(props) {
     )
   } else {
     return (<Register show="true" onHide={() => window.location.pathname = "/"} />)
+    // return (<SavingModal
+    //   show="true"
+    //   onHide={() => window.location.pathname = "/"}
+    // />)
 
   }
+  // }, 400)
 
 }
