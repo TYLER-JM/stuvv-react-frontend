@@ -9,6 +9,7 @@ const style = {
   fontAlign: "center",
   // position: "absolute",
   margin: 0,
+  marginTop: "50px",
   paddingTop: "25px",
   textAlign: "center",
 }

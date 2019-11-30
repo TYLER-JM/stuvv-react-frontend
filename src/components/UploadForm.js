@@ -13,6 +13,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Slider from '@material-ui/core/Slider';
 
 import SavingModal from './SavingModal'
+import Register from './Login/RegisterModal';
 
 
 const useStyles = makeStyles(theme => ({
@@ -144,125 +145,128 @@ export default function Form(props) {
 
     if (!props.buildState.id) {
       return axios.post(`http://localhost:3000/listings`, data, { withCredentials: true })
-      .then(resp => {
-        console.log("got to the then")
-        setTimeout(() => {
-          window.location.pathname = "/my_stuvv"
-        }, 1000)
-      })
-      .catch(error => console.error())
+        .then(resp => {
+          console.log("got to the then")
+          setTimeout(() => {
+            window.location.pathname = "/my_stuvv"
+          }, 1000)
+        })
+        .catch(error => console.error())
     } else {
       return axios.put(`http://localhost:3000/listings/${props.buildState.id}`, data, { withCredentials: true })
-      .then(resp => {
-        console.log("got to the then")
-        setTimeout(() => {
-          window.location.pathname = "/my_stuvv"
-        }, 1000)
-      })
-      .catch(error => console.error())
+        .then(resp => {
+          console.log("got to the then")
+          setTimeout(() => {
+            window.location.pathname = "/my_stuvv"
+          }, 1000)
+        })
+        .catch(error => console.error())
     }
   }
   console.log("found buildState ", props.buildState)
-
-  return (
-    <div className="test">
-      <form
-        onSubmit={event => event.preventDefault()}
-        className={classes.root} noValidate autoComplete="off"
-      >
-        <FormControl className="form-control" component="fieldset">
-          <TextField
-            id="outlined-basic"
-            label="title"
-            variant="outlined"
-            value={text}
-            onChange={event => setText(event.target.value)}
-          />
-          <TextField
-            id="outlined-multiline-static"
-            label="description"
-            multiline
-            rows="4"
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            placeholder="enter description"
-            value={value}
-            onChange={handleValueChange}
-          />
-          <FormControl fullWidth className={classes.margin} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-amount">Cost/Day</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-amount"
-              inputProps={{step: 1, type: "number"}}
-              // value={amount ||props.buildState.price}
-              value={amount}
-              onChange={handleAmount}
-              startAdornment={<InputAdornment position="start">$</InputAdornment>}
-              labelWidth={60}
+  if (props.user.id) {
+    return (
+      <div className="test">
+        <form
+          onSubmit={event => event.preventDefault()}
+          className={classes.root} noValidate autoComplete="off"
+        >
+          <FormControl className="form-control" component="fieldset">
+            <TextField
+              id="outlined-basic"
+              label="title"
+              variant="outlined"
+              value={text}
+              onChange={event => setText(event.target.value)}
             />
-          </FormControl>
-
-          <div className={classes.root}>
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="outlined-button-file"
-              multiple
-              type="file"
-              onChange={event => {
-                setImages((prev) => [...prev, ...event.target.files])
-                // setImages(event.target.files)
-              }}
+            <TextField
+              id="outlined-multiline-static"
+              label="description"
+              multiline
+              rows="4"
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              placeholder="enter description"
+              value={value}
+              onChange={handleValueChange}
             />
-            <label htmlFor="outlined-button-file">
-              <Button variant="outlined" component="span">
-                {props.buildState.title ? "Add More Images" : "Add Images"}
-              </Button>
-            </label>
-            <div>
-              {imageURLs.map(URL => (<img src={URL} className="img" key={URL} alt="preview" />))}
-              {/* <img id={"displayImage2"} className="img"/> */}
+            <FormControl fullWidth className={classes.margin} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-amount">Cost/Day</InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-amount"
+                inputProps={{ step: 1, type: "number" }}
+                value={amount}
+                onChange={handleAmount}
+                startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                labelWidth={60}
+              />
+            </FormControl>
+
+            <div className={classes.root}>
+              <input
+                accept="image/*"
+                className={classes.input}
+                id="outlined-button-file"
+                multiple
+                type="file"
+                onChange={event => {
+                  setImages((prev) => [...prev, ...event.target.files])
+                  // setImages(event.target.files)
+                }}
+              />
+              <label htmlFor="outlined-button-file">
+                <Button variant="outlined" component="span">
+                  {props.buildState.id ? "Add More Images" : "Add Images"}
+                </Button>
+              </label>
+              <div>
+                {imageURLs.map(URL => (<img src={URL} className="img" key={URL} alt="preview" />))}
+                {/* <img id={"displayImage2"} className="img"/> */}
+              </div>
             </div>
-          </div>
-          <div className="submit">
-            <div aria-label="position" row>
-              <FormControlLabel
-                value="end"
-                control={<Switch
-                  color="primary"
-                  checked={state.checkedA}
-                  onChange={handleChange('checkedA')}
-                  value="checkedA"
-                />}
-                label="Available?"
-                labelPlacement="start"
+            <div className="submit">
+              <div aria-label="position" row>
+                <FormControlLabel
+                  value="end"
+                  control={<Switch
+                    color="primary"
+                    checked={state.checkedA}
+                    onChange={handleChange('checkedA')}
+                    value="checkedA"
+                  />}
+                  label="Available?"
+                  labelPlacement="start"
+                />
+              </div>
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  sendRequest()
+                  setModalShow(true)
+                }}>
+                {props.buildState.id ? "Submit Changes" : "Submit"}
+              </Button>
+
+              <SavingModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
               />
             </div>
-            <Button
-              variant="outlined"
-              onClick={() => {
-                sendRequest()
-                setModalShow(true)
-              }}>
-                {props.buildState.id ? "Submit Changes" : "Submit"}
-           </Button>
+          </FormControl>
 
-            <SavingModal
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-            />
-          </div>
-        </FormControl>
-
-        {/* <input type="file" onChange={event => {
+          {/* <input type="file" onChange={event => {
           setImages(event.target.files)
         }} multiple /> */}
 
-        {/* <button onClick={() => sendRequest()}> submit</button> */}
-      </form >
-    </div>
-  );
+          {/* <button onClick={() => sendRequest()}> submit</button> */}
+        </form >
+      </div>
+    );
+  } else {
+    return (<Register show="true" onHide={() => window.location.pathname = "/"} />)
+
+  }
 }
 
 

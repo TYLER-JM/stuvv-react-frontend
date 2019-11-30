@@ -8,7 +8,7 @@ export default function CardList(props) {
   const cards = props.cardsData.map((card, i) => {
     // console.log("CardList cardsData: ", cardsData)
     return (
-      <div key={i} id="search-results">
+      <div key={i}>
         <CardListItem
           listingid={card.id}
           title={card.title}
@@ -16,7 +16,8 @@ export default function CardList(props) {
           availability={card.availability}
           urls={card.image_urls}
           price={card.price_per_day / 100}
-          owner={card.user_id}
+          // owner={card.user_id}
+          owner={card.user}
           user={props.user}
           setBuildState={props.setBuildState}
           setList={props.setList}
@@ -26,10 +27,11 @@ export default function CardList(props) {
   })
 
   return (
-    <ul className="my-stuvv-container">
+    // <div className="my-stuvv-container">
+    <div className="card-container">
       {window.location.pathname === "/my_stuvv" ? <CardBlank /> : null}
       {cards}
-    </ul>
+    </div>
   )
 
 }

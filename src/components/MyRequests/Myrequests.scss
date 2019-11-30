@@ -2,11 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url(requests.jpg);
   // background-position: 25% 75%;
   width: 100%;
@@ -17,5 +13,8 @@
   background-size: 100%;
   background-position: top;
   // opacity: .70;
-  
+}
+
+.requests {
+  min-height: 85vh;
 }

@@ -32,31 +32,20 @@ export default function Home(props) {
       .then(resp => {
         console.log("RESP in SEARCH: ", resp)
         setList(resp.data)
-        window.location.hash = "search-results"
+        window.scrollBy(0, window.innerHeight);
       })
       .catch(error => console.error())
   }
 
-  // console.log("list defined after calling helper", list)
-
-
-  // use this if we use a background image > video
-  // var sectionStyle = {
-  //   width: "100%",
-  //   height: "400px",
-  //   backgroundImage: `url(${Handshake})`
-  // };
-
   return (
     <div>
       <WelcomeVideo sendRequest={sendRequest} />
-        <CardList cardsData={list} user={props.user} setBuildState={props.setBuildState}/>
+      {/* <div id="search-results"> */}
+      <CardList cardsData={list} user={props.user} setBuildState={props.setBuildState} />
+      {/* </div> */}
     </div>
   );
 }
-
-
-// not sure if we'll need this later...keep for now
 
 {/* <Jumbotron  style={{  
         backgroundImage: `url(${Handshake})`,
