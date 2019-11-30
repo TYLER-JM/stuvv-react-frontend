@@ -64,7 +64,7 @@ export default function RequestForm(props) {
   //     .then(resp => {
   //       console.log("RESPONSE IS: ", resp)
   //       sendQuestion();
-        
+
   //       setTimeout(() => {
   //         window.location.pathname = "/"
   //       }, 500)
@@ -104,8 +104,8 @@ export default function RequestForm(props) {
             console.log("saved request after message...", resp)
 
             setTimeout(() => {
-                window.location.pathname = "/"
-              }, 500)
+              window.location.pathname = "/"
+            }, 500)
           })
           .catch(err => console.log("error: ", err))
 
@@ -124,7 +124,7 @@ export default function RequestForm(props) {
     <Popover className="popover-header">
       <Popover.Title as="h3">Requesting your booking!</Popover.Title>
       <Popover.Content>
-          <Spinner animation="border" variant="warning" />
+        <Spinner animation="border" variant="warning" />
       </Popover.Content>
     </Popover>
   );
@@ -139,33 +139,34 @@ export default function RequestForm(props) {
         setSelectedEndDate={setSelectedEndDate}
       />
       <div className="message-box">
-      <TextField
-        id="outlined-multiline-static"
-        label="Message"
-        multiline
-        rows="4"
-        // defaultValue="Default Value"
-        className={classes.textField}
-        margin="normal"
-        variant="outlined"
-        placeholder="enter description"
-        value={message}
-        onChange={handleMessageChange}
-      />
+        <TextField
+          id="outlined-multiline-static"
+          label="Message"
+          multiline
+          rows="4"
+          // defaultValue="Default Value"
+          className={classes.textField}
+          margin="normal"
+          variant="outlined"
+          placeholder="enter description"
+          value={message}
+          onChange={handleMessageChange}
+        />
       </div>
       <div className="request-button-div">
         {/* <button onClick={() => sendQuestion()}>Send a message</button> */}
         <OverlayTrigger trigger="click" placement="right" overlay={popover} className="popover-body">
-        <button onClick={() => {
+          <button onClick={() => {
             // sendRequest()
-            // setTimeout(() => {
-            //   sendQuestionAndRequest()}, 500)
-            // setModalShow(true)
+            setTimeout(() => {
+              sendQuestionAndRequest()
+            }, 500)
+            setModalShow(true)
           }}>Request to book</button>
         </OverlayTrigger>
       </div>
 
-    
+
 
     </div>
   );
