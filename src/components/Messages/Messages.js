@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import MessageList from './MessageList';
 import MessagesSideBar from './MessagesSideBar';
@@ -62,8 +62,13 @@ export default function Messages(props) {
     )
   })
 
+  useEffect(() => {
+    fetchMessages("outbound")
+  }, [props]);
 
   if (props.user.id) {
+    // fetchMessages("outbound")
+
     return (
       <div className="messages">
         <div className="messagesBanner">
@@ -75,13 +80,13 @@ export default function Messages(props) {
               <div className="inbound" onClick={(e) => {
                 handleClick(e)
                 fetchMessages("inbound")
-              }}>inbound</div>
+              }}>my stuvv</div>
               <div className="outbound" onClick={(e) => {
                 handleClick(e)
                 fetchMessages("outbound")
-              }}>outbound</div>
+              }}>requests</div>
             </div>
-            <div className={cssStyle === "inbound" ? "side-bar-body-inbound" : "side-bar-body-outbound"}>
+            <div className={cssStyle === "my stuvv" ? "side-bar-body-inbound" : "side-bar-body-outbound"}>
               {names}
             </div>
           </div>
