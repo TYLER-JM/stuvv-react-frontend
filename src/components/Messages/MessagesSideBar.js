@@ -8,19 +8,19 @@ export default function MessagesSideBar(props) {
 
   return (
     <div id={props.uniqueid} onClick={(event) => displayConversation(event)}>
-    <div >
-    {props.listingObject.title}
-    </div>
+      <div >
+        About: {props.listingObject.title}
+      </div>
 
-    
+
       {props.user.id !== props.sentBy.id ?
         <p id="convo-list-names-incoming" className="side-bar-user">
-          <span>{props.sentBy.first_name}</span>
-          <span>{props.user.first_name}</span>
+          <span>From: {props.sentBy.first_name}</span>
+          {/* <span>{props.user.first_name}</span> */}
         </p> :
         <p id="convo-list-names-outgoing" className="side-bar-user">
-          <span>{props.sentBy.first_name}</span>
-          <span>{props.toUser.first_name}</span>
+          {/* <span>{props.sentBy.first_name}</span> */}
+          <span>To: {props.toUser.first_name}</span>
         </p>
       }
     </div>

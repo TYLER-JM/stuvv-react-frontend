@@ -28,7 +28,7 @@ export default function MessageList(props) {
   }
 
   const handleAccept = function () {
-    return axios.patch(`http://localhost:3000/requests/${props.conversationObject.request.id}`, { request: { approved: true } }, { withCredentials: true })
+    return axios.put(`http://localhost:3000/requests/${props.conversationObject.request.id}`, { request: { approved: true } }, { withCredentials: true })
       .then(resp => {
         console.log("Patch was done and this is now approved: ", resp.data);
         setAcceptButtons(null)
@@ -61,11 +61,13 @@ export default function MessageList(props) {
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
       {bubbles}
-      {props.tabSelected === "inbound" ? !props.conversationObject.request.approved ? acceptButtons : null : null}
-      {/* {!props.conversationObject.request.approved ? (<div className="buttons-message">
+      {props.tabSelected === "my stuvv" ? !props.conversationObject.request.approved ? acceptButtons : null : null}
+      {/* {!props.conversationObject.request.approved ? (
+        <div className="buttons-message">
         <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
         <Button variant="outline-secondary">Decline</Button>
-      </div>) : null} */}
+      </div>
+      ) : null} */}
 
       <div className="search-input">
         <input className="input-field" type="text" value={message} onChange={e => setMessage(e.target.value)} />

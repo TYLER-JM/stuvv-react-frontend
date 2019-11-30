@@ -158,8 +158,8 @@ export default function RequestForm(props) {
         <OverlayTrigger trigger="click" placement="right" overlay={popover} className="popover-body">
         <button onClick={() => {
             // sendRequest()
-            setTimeout(() => {
-              sendQuestionAndRequest()}, 500)
+            // setTimeout(() => {
+            //   sendQuestionAndRequest()}, 500)
             // setModalShow(true)
           }}>Request to book</button>
         </OverlayTrigger>
