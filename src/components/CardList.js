@@ -16,7 +16,8 @@ export default function CardList(props) {
           availability={card.availability}
           urls={card.image_urls}
           price={card.price_per_day / 100}
-          owner={card.user_id}
+          // owner={card.user_id}
+          owner={card.user}
           user={props.user}
           setBuildState={props.setBuildState}
           setList={props.setList}

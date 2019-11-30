@@ -81,7 +81,7 @@ export default function CardListItem(props) {
   };
 
   const buttons = () => {
-    if (props.user.id === props.owner) {
+    if (props.user.id === props.owner.id) {
       return (
         <Fragment>
           <Link to="/build">
@@ -119,7 +119,7 @@ export default function CardListItem(props) {
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              {props.owner}
+              {props.owner.id}
             </Avatar>
           }
           action={
@@ -134,7 +134,7 @@ export default function CardListItem(props) {
         <CardListItemCarousel
           urls={props.urls}
         />
-        <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingowner={props.owner} />
+        <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingowner={props.owner.id} />
         <CardActions disableSpacing>
           {buttons()}
           <IconButton
@@ -156,7 +156,7 @@ export default function CardListItem(props) {
             </Typography>
             <Typography paragraph>Owned By:</Typography>
             <Typography paragraph>
-              {props.user.first_name}
+              {props.owner.first_name}
             </Typography>
           </CardContent>
         </Collapse>
