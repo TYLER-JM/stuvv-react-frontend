@@ -74,14 +74,14 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        {/* <TableCell padding="checkbox">
-          <Checkbox
+        <TableCell padding="checkbox">
+          {/* <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{ 'aria-label': 'select all desserts' }}
-          />
-        </TableCell> */}
+          /> */}
+        </TableCell>
         {headCells.map(headCell => (
           <TableCell
             key={headCell.id}
