@@ -15,7 +15,7 @@ export default function MyStuvv(props) {
   setTimeout(() => {
     setLoading(false)
     setRegister(true)
-  }, 500)
+  }, 700)
 
 
   if (props.user.id) {

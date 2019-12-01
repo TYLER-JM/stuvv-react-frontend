@@ -12,7 +12,7 @@ export default function BuildForm(props) {
   setTimeout(() => {
     setLoading(false)
     setRegister(true)
-  }, 500)
+  }, 700)
 
   if (props.user.id) {
     return (
