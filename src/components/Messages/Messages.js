@@ -87,13 +87,13 @@ export default function Messages(props) {
                 fetchMessages("outbound")
               }}>My requests</div>
             </div>
-            <div className={cssStyle === "my stuvv" ? "side-bar-body-inbound" : "side-bar-body-outbound"}>
+            <div className={cssStyle === "My stuvv" ? "side-bar-body-inbound" : "side-bar-body-outbound"}>
               {names}
             </div>
           </div>
           <div className="message-list-body">
             {/* <ul className="message-list"> */}
-            <ul className={cssStyle === "my stuvv" ? "message-list-inbound" : "message-list-outbound"}>
+            <ul className={cssStyle === "My stuvv" ? "message-list-inbound" : "message-list-outbound"}>
 
               {conversations}
             </ul>

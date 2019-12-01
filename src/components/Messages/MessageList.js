@@ -61,7 +61,7 @@ export default function MessageList(props) {
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
       {bubbles}
-      {props.tabSelected === "my stuvv" ? props.conversationObject.request.approved === 0 ? acceptButtons : null : null}
+      {props.tabSelected === "My stuvv" ? props.conversationObject.request.approved === 0 ? acceptButtons : null : null}
       {/* {!props.conversationObject.request.approved ? (
         <div className="buttons-message">
         <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
