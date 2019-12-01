@@ -251,6 +251,7 @@ export default function Form(props) {
               <SavingModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
+                line="Posting your Stuvv!"
               />
             </div>
           </FormControl>

@@ -10,11 +10,11 @@ import SavingModal from '../SavingModal'
 export default function MyStuvv(props) {
 
   const [loading, setLoading] = useState(true)
-  const [inAsec, setInAsec] = useState(false)
+  const [register, setRegister] = useState(false)
 
   setTimeout(() => {
     setLoading(false)
-    setInAsec(true)
+    setRegister(true)
   }, 500)
 
 
@@ -34,8 +34,9 @@ export default function MyStuvv(props) {
         <SavingModal
           show={loading}
           onHide={() => window.location.pathname = "/"}
+          line="loading"
         />
-        <Register show={inAsec} onHide={() => window.location.pathname = "/"} />
+        <Register show={register} onHide={() => window.location.pathname = "/"} />
 
       </Fragment>
     )

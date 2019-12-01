@@ -17,7 +17,7 @@ export default function SavingModal(props) {
     // dialogClassName="spinning"
 
     >
-      Posting your Stuvv!
+      {props.line}
       <Spinner animation="border" variant="warning" />
 
     </Modal>
