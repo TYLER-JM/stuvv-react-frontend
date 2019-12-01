@@ -74,14 +74,14 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        {/* <TableCell padding="checkbox">
-          <Checkbox
+        <TableCell padding="checkbox">
+          {/* <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{ 'aria-label': 'select all desserts' }}
-          />
-        </TableCell> */}
+          /> */}
+        </TableCell>
         {headCells.map(headCell => (
           <TableCell
             key={headCell.id}
@@ -126,13 +126,13 @@ const useToolbarStyles = makeStyles(theme => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
+        color: theme.palette.secondary.main,
+        backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+      }
       : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.secondary.dark,
+      },
   title: {
     flex: '1 1 100%',
   },
@@ -149,7 +149,7 @@ const EnhancedTableToolbar = props => {
       })}
     >
       <Typography className={classes.title} variant="h6" id="tableTitle">
-          Requests
+        Requests
         </Typography>
     </Toolbar>
   );
@@ -205,8 +205,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnhancedTable(props) {
   console.log("the users REQUESTS", props.requests)
-// const rows = props.requests
-const rows = getRequestListItems(props.requests)
+  // const rows = props.requests
+  const rows = getRequestListItems(props.requests)
 
   const classes = useStyles();
   const [order, setOrder] = useState('asc');
@@ -302,7 +302,7 @@ const rows = getRequestListItems(props.requests)
                       tabIndex={-1}
                       key={row.title}
                       selected={isItemSelected}
-                      
+
                     >
                       <TableCell padding="checkbox">
                         {/* <Checkbox
@@ -312,7 +312,7 @@ const rows = getRequestListItems(props.requests)
                         <Tooltip title="Delete">
                           <IconButton aria-label="delete">
                             {/* <DeleteIcon requestid={row.requestId} onClick={() => console.log("you clicked the trash")}/> */}
-                            <DeleteIcon value={row.requestId} onClick={() => deleteRequest(row.requestId)}/>
+                            <DeleteIcon value={row.requestId} onClick={() => deleteRequest(row.requestId)} />
                           </IconButton>
                         </Tooltip>
                       </TableCell>

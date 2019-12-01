@@ -1,3 +1,5 @@
+@import "bootstrap/scss/bootstrap";
+
 .listing-modal {
   background-color: white;
   font-family: "Montserrat", sans-serif;
@@ -71,7 +73,7 @@
 .popover-body {
   text-align: center;
   width: 100%;
-  background-color: bisque
+  background-color: transparent;
 }
 
 .popover-header {
@@ -80,12 +82,16 @@
   font-size: 1rem;
   background-color: red;
   border-bottom: 1px solid #ebebeb;
-  border-top-left-radius: calc(0.3rem - 1px);
-  border-top-right-radius: calc(0.3rem - 1px);
+  // border-top-left-radius: calc(0.3rem - 1px);
+  // border-top-right-radius: calc(0.3rem - 1px);
   z-index: 2;
 }
 
 .request-button-div {
   text-align: center;
   
+  div {
+    background-color: yellow;
+  }
 }
+

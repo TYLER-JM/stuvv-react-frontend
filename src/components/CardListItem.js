@@ -72,10 +72,20 @@ export default function CardListItem(props) {
     axios.delete(`http://localhost:3000/listings/${props.listingid}`, { withCredentials: true })
       .then((resp) => {
         console.log("After delete action: ", resp.data)
-        axios.get(`http://localhost:3000/userslistings/${props.user.id}`, { withCredentials: true })
-          .then((resp) => {
-            props.setList(resp.data)
-          })
+        if (window.location.pathname === "/my_stuvv") {
+          axios.get(`http://localhost:3000/userslistings/${props.user.id}`, { withCredentials: true })
+            .then((resp) => {
+              props.setList(resp.data)
+              // return window.location = window.location.href
+            })
+        }
+        if (window.location.pathname === "/") {
+          axios.get("http://localhost:3000/listings", { withCredentials: true })
+            .then((resp) => {
+              props.setList(resp.data)
+              // return window.location = window.location.href
+            })
+        }
       })
 
   };
@@ -94,7 +104,8 @@ export default function CardListItem(props) {
           <IconButton
             aria-label="add to favorites"
             onClick={() => {
-              if (window.confirm('Are you sure you wish to delete this item?')) handleDeleteListing()
+              if (window.confirm('Are you sure you wish to delete this item?'))
+                handleDeleteListing()
             }
             }
           >
@@ -104,7 +115,15 @@ export default function CardListItem(props) {
     } else if (window.location.pathname === "/") {
       return (<IconButton
         aria-label="share"
-        onClick={() => setModalShow(true)}>
+        onClick={() => {
+          if (props.user.id) {
+            setModalShow(true)
+          }
+          // } else {
+          //   return (<Register show="true" onHide={() => window.location.pathname = "/"} />)
+          // }
+        }
+        }>
         <PostAddIcon />
       </IconButton>)
     } else {
