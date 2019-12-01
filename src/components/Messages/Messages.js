@@ -81,11 +81,11 @@ export default function Messages(props) {
               <div className="inbound" onClick={(e) => {
                 handleClick(e)
                 fetchMessages("inbound")
-              }}>my stuvv</div>
+              }}>My stuvv</div>
               <div className="outbound" onClick={(e) => {
                 handleClick(e)
                 fetchMessages("outbound")
-              }}>requests</div>
+              }}>My requests</div>
             </div>
             <div className={cssStyle === "my stuvv" ? "side-bar-body-inbound" : "side-bar-body-outbound"}>
               {names}
