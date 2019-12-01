@@ -8,7 +8,7 @@ export default function CardListItemCarousel(props) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(null);
   const [modalShow, setModalShow] = useState(false);
-  const [img, setImg] = useState([]);
+  const [img, setImg] = useState(props.urls);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -21,10 +21,10 @@ export default function CardListItemCarousel(props) {
       // <div>
       <Carousel.Item
         key={i}
-        onClick={(e) => {
-          setModalShow(true)
-          setImg(e.target.src)
-        }}
+      // onClick={(e) => {
+      // setModalShow(true)
+      // setImg(e.target.src)
+      // }}
       >
         <img
           className="d-block w-100"
@@ -38,17 +38,17 @@ export default function CardListItemCarousel(props) {
   })
 
   return (
-    <Fragment>
-      <Carousel activeIndex={index} direction={direction} onSelect={handleSelect} interval={null}>
-        {images}
+    // <Fragment>
+    <Carousel activeIndex={index} direction={direction} onSelect={handleSelect} interval={null}>
+      {images}
 
-      </Carousel>
-      <ImageModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        url={img}
-      />
-    </Fragment>
+    </Carousel>
+    // {/* <ImageModal
+    // show={modalShow}
+    // onHide={() => setModalShow(false)}
+    // urls={img}
+    //>
+    // </Fragment> */}
   );
 }
 

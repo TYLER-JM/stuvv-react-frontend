@@ -7,48 +7,49 @@ import Carousel from 'react-bootstrap/Carousel'
 
 
 export default function ImageModal(props) {
-  // const [index, setIndex] = useState(0);
-  // const [direction, setDirection] = useState(null);
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(null);
 
-  // const handleSelect = (selectedIndex, e) => {
-  //   setIndex(selectedIndex);
-  //   setDirection(e.direction);
-  // };
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+    setDirection(e.direction);
+  };
 
-  // const images = props.urls.map((img, i) => {
-  //   return (
+  const images = props.urls.map((img, i) => {
+    return (
 
-  // <Carousel.Item
-  //   key={i}
-  // >
-  // <img
-  //   className="d-block w-100"
-  //   src={img.url}
-  //   alt={`listing ${i + 1}`}
-  // />
-
-  //{/* </Carousel.Item> */}
-  //   )
-  // })
+      <Carousel.Item
+        key={i}
+      >
+        <img
+          src={img.url}
+          alt={`listing ${i + 1}`}
+        />
+        {/* <Carousel.Caption>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption> */}
+      </Carousel.Item>
+    )
+  })
 
   return (
     <Modal
       {...props}
-      size="sm"
-      aria-labelledby="example-modal-sizes-title-sm"
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
       centered
     // dialogClassName="spinning"
     >
-      {/* <Carousel activeIndex={index} direction={direction} onSelect={handleSelect} interval={null}> */}
-      {/* {images} */}
-      <img
-        // className="d-block w-100"
+      <Carousel activeIndex={index} direction={direction} onSelect={handleSelect} interval={null}>
+        {/* <Carousel> */}
+        {images}
+      </Carousel>
+
+      {/* <img
         src={props.url}
         alt={`zoom`}
-      />
-      {/* </Carousel> */}
-
-      <div>Description</div>
+      /> */}
+      {/* <div>Description</div> */}
 
     </Modal>
   );
