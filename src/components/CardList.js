@@ -15,7 +15,7 @@ export default function CardList(props) {
           description={card.description}
           availability={card.availability}
           urls={card.image_urls}
-          price={card.price_per_day / 100}
+          price={Math.round(card.price_per_day / 100)}
           // owner={card.user_id}
           owner={card.user}
           user={props.user}
