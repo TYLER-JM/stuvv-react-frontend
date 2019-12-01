@@ -151,6 +151,7 @@ export default function CardListItem(props) {
         />
         <CardListItemCarousel
           urls={props.urls}
+          description={props.description}
         />
         <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} title={props.title} user={props.user} listingowner={props.owner.id} />
         <CardActions disableSpacing>

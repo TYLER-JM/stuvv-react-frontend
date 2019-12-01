@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from "react-bootstrap/Modal"
 import Carousel from 'react-bootstrap/Carousel'
-// import './SavingModal.scss'
+import './ImageModal.scss'
 
 
 
@@ -38,18 +38,13 @@ export default function ImageModal(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-    // dialogClassName="spinning"
+      dialogClassName="zooming"
     >
-      <Carousel activeIndex={index} direction={direction} onSelect={handleSelect} interval={null}>
+      <Carousel activeIndex={index} direction={direction} onSelect={handleSelect} interval={null} className="images">
         {/* <Carousel> */}
         {images}
       </Carousel>
-
-      {/* <img
-        src={props.url}
-        alt={`zoom`}
-      /> */}
-      {/* <div>Description</div> */}
+      {props.description}
 
     </Modal>
   );
