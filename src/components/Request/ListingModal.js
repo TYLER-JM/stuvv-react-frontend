@@ -17,7 +17,7 @@ export default function ListingModal(props) {
     >
       {/* <Modal.Header closeButton> */}
       <Modal.Title id="contained-modal-title-vcenter">
-        {`Submit a request for ${props.listingid}`}
+        {`Submit a request for ${props.title}`}
       </Modal.Title>
       {/* </Modal.Header> */}
       <Modal.Body>

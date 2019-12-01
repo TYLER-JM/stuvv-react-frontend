@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import MessageListItem from './MessageListItem';
 import axios from 'axios';
 import classNames from 'classnames';
@@ -12,6 +12,7 @@ export default function MessageList(props) {
 
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
   const [message, setMessage] = useState("");
+  // const [confirmation, setConfirmation] = useState("this is validate state");
 
   const reset = (e) => {
     setMessage("")
@@ -28,18 +29,36 @@ export default function MessageList(props) {
   }
 
   const handleAccept = function (status) {
-
+    // console.log(confirmation)
+    // console.log(setConfirmation("does setValidade works?"))
+    // console.log(confirmation)
     return axios.put(`http://localhost:3000/requests/${props.conversationObject.request.id}`, { request: status }, { withCredentials: true })
       .then(resp => {
         console.log("Patch was done and this is now approved: ", resp.data);
-        setAcceptButtons(null)
+
+        setTimeout(() => {
+          setAcceptButtons(null)
+        }, 1000)
       })
       .catch(error => console.log(error))
   }
-  const [acceptButtons, setAcceptButtons] = useState((<div className="buttons-message">
-    <Button variant="outline-success" onClick={() => handleAccept(1)}>Accept</Button>
-    <Button variant="outline-secondary" onClick={() => handleAccept(-1)}>Decline</Button>
-  </div>));
+  const [acceptButtons, setAcceptButtons] = useState((
+    <Fragment>
+      {/* {confirmation} */}
+      <div className="buttons-message">
+        <Button
+          variant="outline-success"
+          onClick={() => {
+            // setConfirmation("This request has been validated");
+            handleAccept(1);
+          }}
+        >
+          Accept
+        </Button>
+        <Button variant="outline-secondary" onClick={() => handleAccept(-1)}>Decline</Button>
+      </div>
+    </Fragment>
+  ));
 
   useEffect(() => {
     axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(conversation) }, { withCredential: true })
@@ -58,16 +77,17 @@ export default function MessageList(props) {
     )
   })
 
+  const startDate = new Date(props.conversationObject.request.start_date).toUTCString()
+  const endDate = new Date(props.conversationObject.request.end_date).toUTCString()
+
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
+
+      interested in book for {startDate.slice(0, 16)} until {endDate.slice(0, 16)}
+
       {bubbles}
+
       {props.tabSelected === "My stuvv" ? props.conversationObject.request.approved === 0 ? acceptButtons : null : null}
-      {/* {!props.conversationObject.request.approved ? (
-        <div className="buttons-message">
-        <Button variant="outline-success" onClick={handleAccept}>Accept</Button>
-        <Button variant="outline-secondary">Decline</Button>
-      </div>
-      ) : null} */}
 
       <div className="search-input">
         <input className="input-field" type="text" value={message} onChange={e => setMessage(e.target.value)} />
