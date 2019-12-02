@@ -10,7 +10,7 @@ import SavingModal from '../SavingModal'
 export default function Messages(props) {
   const [messages, setMessages] = useState([]);
   const [convo, setConvo] = useState(0);
-  const [cssStyle, setCssStyle] = useState();
+  const [cssStyle, setCssStyle] = useState("");
   const [loading, setLoading] = useState(true)
   const [register, setRegister] = useState(false)
   console.log("Message state is", messages)

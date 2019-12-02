@@ -3,33 +3,53 @@
 .listing-modal {
   background-color: white;
   font-family: "Montserrat", sans-serif;
-  background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+  // background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+  // background-color: red;
+  width: 50% !important;
+  height: 50% !important;
+  border-radius: 2% !important;
+
+  
   div.modal-content {
-    // background-color: red;
-    margin: 0;
-    div.modal-title.h4 {
-      font-size: 1.5rem;
-      color: #215584;
-      font-weight: bold;
-      padding: 10px;
-      border-radius: 40px;
-      background-color: rgba(51, 148, 126, 0.3å);
-    }
+    margin: none;
+    height: 100%;
+    width: 100%;
+    
+    // div.modal-title.h4 {
+    //   font-size: 1.5rem;
+    //   color: #215584;
+    //   font-weight: bold;
+    //   padding: 10px;
+    //   text-align: center;
+    //   padding: 2rem;
+    //   width: 100%;
+    //   height: 100%;
+    //   background-color: #FFD79E;
+    // }
     div.modal-body {
+      width: 100%;
+      height: 80%;
+      background-color: #aedbd486;
+      border-radius: 2% !important;
+      background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+      box-shadow: 5px 10px 18px #2a2a2a;
+
+
+
       div.request-box {
+        // background-color: rgba(255, 255, 255, 0.3);
         // background-color: lightblue;
         font-weight: lighter;
         display: flex;
         flex-direction: column;
-        // align-self: center;
-
+        // padding: 1rem;
         div.MuiFormControl-root.MuiTextField-root.MuiFormControl-marginNormal {
           width: 50%;
           background-color: white;
-          // margin:auto
+          padding: .3px;
 
           label {
-            padding: 0px;
+            padding: .3px;
           }
           div.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl.MuiInputBase-adornedEnd {
             button {
@@ -43,12 +63,12 @@
           background-color: white;
         }
         button {
-          font-size: 1rem;
+          font-size: 2rem;
           background-color: #215584;
           color: white;
           border-radius: 30px;
-          margin: 40px;
-          padding: 5px;
+          margin: 1rem;
+          padding: .5rem;
         }
       }
     }
@@ -68,6 +88,32 @@
   //   }
   // }
   // }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 80% !important;
+  overflow: hidden;
+  outline: 0;
+  padding: 1rem;
+  margin-top:5%;
+}
+
+.modal-title {
+  // background-color: #FFD79E;
+  width: 100% !important;
+  height: 8rem;
+  text-align: center;
+  font-size: 2rem;
+  padding: 2rem;
+  background-image: url("./calendar.jpg");
+  background-size: 80%;
+  background-position: center;
 }
 
 .popover-body {
