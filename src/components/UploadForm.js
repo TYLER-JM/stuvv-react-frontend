@@ -14,7 +14,7 @@ import Slider from '@material-ui/core/Slider';
 
 import SavingModal from './SavingModal'
 import Register from './Login/RegisterModal';
-import { validate } from '@babel/types';
+// import { validate } from '@babel/types';
 
 
 const useStyles = makeStyles(theme => ({
@@ -90,30 +90,22 @@ export default function Form(props) {
     setValue(event.target.value);
   };
 
-  //handle the dollar amount from the amount input
-  const handleAmount = event => {
-    setAmount(event.target.value);
-  };
-
-  // const validate = () => {
-  //   amount.includes()
-  // }
-
   // state for the Amount input
-  // const [amount, setAmount] = useState(0)
   const [amount, setAmount] = useState(props.buildState.price || 0)
+  const handleAmount = event => {
+    const currentValue = event.target.value;
+    setAmount(parseInt(currentValue))
 
+  }
   //state for the Switch (Availability)
   const [state, setState] = useState(
     props.buildState.availability
   );
 
   //state for the textarea
-  // const [value, setValue] = useState("");
   const [value, setValue] = useState(props.buildState.description || "");
 
   //state to handle the upload images and title text field
-  // const [text, setText] = useState("");
   const [text, setText] = useState(props.buildState.title || "");
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
@@ -136,6 +128,7 @@ export default function Form(props) {
   }, [images])
 
   const sendRequest = () => {
+
     const data = new FormData();
 
     for (let img of images) {
@@ -150,7 +143,6 @@ export default function Form(props) {
     if (!props.buildState.id) {
       return axios.post(`http://localhost:3000/listings`, data, { withCredentials: true })
         .then(resp => {
-          console.log("got to the then")
           setTimeout(() => {
             window.location.pathname = "/my_stuvv"
           }, 1000)
@@ -159,15 +151,15 @@ export default function Form(props) {
     } else {
       return axios.put(`http://localhost:3000/listings/${props.buildState.id}`, data, { withCredentials: true })
         .then(resp => {
-          console.log("got to the then")
           setTimeout(() => {
             window.location.pathname = "/my_stuvv"
           }, 1000)
         })
         .catch(error => console.error())
     }
+    // }
   }
-  console.log("found buildState ", props.buildState)
+
   if (props.user.id) {
     return (
       <div className="test">
@@ -201,11 +193,10 @@ export default function Form(props) {
                 id="outlined-adornment-amount"
                 inputProps={{ step: 1, type: "number" }}
                 value={amount}
-                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                placeholder="only round values"
                 onChange={handleAmount}
                 startAdornment={<InputAdornment position="start">$</InputAdornment>}
                 labelWidth={60}
-                // type="number"
                 required
               />
             </FormControl>
