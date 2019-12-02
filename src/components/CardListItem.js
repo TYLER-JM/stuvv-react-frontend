@@ -147,12 +147,13 @@ export default function CardListItem(props) {
             </IconButton>
           }
           title={props.title}
-          subheader={`$ ${props.price} per day`}
+          subheader={`$${props.price} per day`}
         />
         <CardListItemCarousel
           urls={props.urls}
+          description={props.description}
         />
-        <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} user={props.user} listingowner={props.owner.id} />
+        <ListingModal show={modalShow} onHide={() => setModalShow(false)} listingid={props.listingid} title={props.title} user={props.user} listingowner={props.owner.id} />
         <CardActions disableSpacing>
           {buttons()}
           <IconButton

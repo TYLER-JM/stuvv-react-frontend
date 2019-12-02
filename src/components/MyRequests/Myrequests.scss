@@ -19,12 +19,15 @@
   min-height: 85vh;
 }
 
-.request-list {
-  width: 100vw;
-  list-style-type: none;
+.custom-height-spinner {
+  height: 22px;
+  width: 22px;
+  color: black;
+}
 
- th {
-   text-align: center
- }
-
+.fa-times-circle {
+  color: red; 
+}
+.fa-check-circle {
+  color: green;
 }

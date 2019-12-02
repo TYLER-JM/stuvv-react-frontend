@@ -1,9 +1,10 @@
 export default function getRequestListItems(requests) {
 
-  function createData(title, status, owner, startDate, endDate, cost, requestId) {
-    return { title, status, owner, startDate, endDate, cost, requestId };
+  function createData(title, status, owner, startDate, endDate, cost, requestId, rowIndex) {
+    return { title, status, owner, startDate, endDate, cost, requestId, rowIndex };
   }
   let requestObjects = [];
+  let indexOfRow = 0
 
   requests.forEach(request => {
     const readableStartDate = new Date(request.start_date)
@@ -14,15 +15,17 @@ export default function getRequestListItems(requests) {
     requestObjects.push(createData(
         request.listing.title,
         // request.listing.description,
-        "Pending...",
+        request.approved,
         request.listing_owner.first_name,
         readableStartDate.toDateString(),
         readableEndDate.toDateString(),
         // `$${Math.round(request.listing.price_per_day / 100)}`,
         `$${totalCost}`,
-        request.id
+        request.id,
+        indexOfRow
       )
     )
+    indexOfRow++;
   })
   return requestObjects;
 }

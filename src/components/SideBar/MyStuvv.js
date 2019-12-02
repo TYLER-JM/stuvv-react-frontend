@@ -1,15 +1,23 @@
-import React from 'react'
+import React, { Fragment, useState } from 'react'
 import CardList from "../CardList.js"
 import './MyStuvv.scss'
 import Register from '../Login/RegisterModal';
 import SavingModal from '../SavingModal'
 
 
+
+
 export default function MyStuvv(props) {
 
-  console.log("from mystuvv.js", props.user)
+  const [loading, setLoading] = useState(true)
+  const [register, setRegister] = useState(false)
 
-  // setTimeout(() => {
+  setTimeout(() => {
+    setLoading(false)
+    setRegister(true)
+  }, 700)
+
+
   if (props.user.id) {
     return (
       <div className="myStuvv">
@@ -20,13 +28,17 @@ export default function MyStuvv(props) {
       </div>
     )
   } else {
-    return (<Register show="true" onHide={() => window.location.pathname = "/"} />)
-    // return (<SavingModal
-    //   show="true"
-    //   onHide={() => window.location.pathname = "/"}
-    // />)
+    return (
+      <Fragment>
 
+        <SavingModal
+          show={loading}
+          onHide={() => window.location.pathname = "/"}
+          line="loading"
+        />
+        <Register show={register} onHide={() => window.location.pathname = "/"} />
+
+      </Fragment>
+    )
   }
-  // }, 400)
-
 }

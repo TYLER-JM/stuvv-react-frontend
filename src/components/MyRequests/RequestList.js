@@ -16,9 +16,15 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Icon from '@material-ui/core/Icon';
+import Spinner from 'react-bootstrap/Spinner'
 import FilterListIcon from '@material-ui/icons/FilterList';
 import getRequestListItems from './requestListItems'
+import classNames from 'classnames';
 import axios from 'axios';
+import MyRequests from './MyRequests'
+import { Link } from 'react-router-dom';
+
 
 // function createData(name, calories, fat, carbs, protein) {
 //   return { name, calories, fat, carbs, protein };
@@ -205,16 +211,34 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnhancedTable(props) {
   console.log("the users REQUESTS", props.requests)
-  // const rows = props.requests
-  const rows = getRequestListItems(props.requests)
+  // let rows = getRequestListItems(props.requests)
+
+
+  function deleteRequest(id, index) {
+    console.log("trash requestid: ", id)
+  
+    axios.delete(`http://localhost:3000/requests/${id}`, { withCredentials: true })
+      .then(resp => {
+        console.log("we got a good response: ", resp);
+        let copyRows = [...rows];
+        copyRows.splice(index, 1);
+        setRows(copyRows)
+      })
+      .catch(err => console.log("thats a no-go: ", err))
+  }
 
   const classes = useStyles();
+  const [rows, setRows] = useState([])
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('startDate');
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
-  const [dense, setDense] = useState(false);
+  // const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  useEffect(() => {
+    setRows(getRequestListItems(props.requests))
+  }, [props.requests])
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === 'desc';
@@ -222,14 +246,14 @@ export default function EnhancedTable(props) {
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = event => {
-    if (event.target.checked) {
-      const newSelecteds = rows.map(n => n.title);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
+  // const handleSelectAllClick = event => {
+  //   if (event.target.checked) {
+  //     const newSelecteds = rows.map(n => n.title);
+  //     setSelected(newSelecteds);
+  //     return;
+  //   }
+  //   setSelected([]);
+  // };
 
   const handleClick = (event, title) => {
     const selectedIndex = selected.indexOf(title);
@@ -274,7 +298,7 @@ export default function EnhancedTable(props) {
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
-            size={dense ? 'small' : 'medium'}
+            // size={dense ? 'small' : 'medium'}
             aria-label="enhanced table"
           >
             <EnhancedTableHead
@@ -282,7 +306,7 @@ export default function EnhancedTable(props) {
               numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
+              // onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
@@ -293,10 +317,25 @@ export default function EnhancedTable(props) {
                   const isItemSelected = isSelected(row.title);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
+                  console.log("can we see the value of rows.status...", row.status)
+                  console.log("can we see the value of rows.rowIndex...", index)
+                  const showStatus = () => {
+                    if (row.status === 0) {
+                      return (<Spinner animation="border" className="custom-height-spinner"/>)
+                    } else {
+                      return (
+                        <Icon className={classNames("fa", {
+                          "fa-check-circle": row.status > 0,
+                          "fa-times-circle": row.status < 0
+                        })}/>
+                      )
+                    }
+                  }
+
                   return (
                     <TableRow
                       hover
-                      onClick={event => handleClick(event, row.title)}
+                      // onClick={event => handleClick(event, row.title)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -312,14 +351,15 @@ export default function EnhancedTable(props) {
                         <Tooltip title="Delete">
                           <IconButton aria-label="delete">
                             {/* <DeleteIcon requestid={row.requestId} onClick={() => console.log("you clicked the trash")}/> */}
-                            <DeleteIcon value={row.requestId} onClick={() => deleteRequest(row.requestId)} />
+                            <DeleteIcon value={row.requestId} onClick={() => deleteRequest(row.requestId, row.rowIndex)} />
                           </IconButton>
                         </Tooltip>
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.title}
                       </TableCell>
-                      <TableCell align="right">{row.status}</TableCell>
+                      {/* <TableCell align="right">{row.status}</TableCell> */}
+                      <TableCell align="right"><Link to="/messages">{showStatus()}</Link></TableCell>
                       <TableCell align="right">{row.owner}</TableCell>
                       <TableCell align="right">{row.startDate}</TableCell>
                       <TableCell align="right">{row.endDate}</TableCell>
@@ -328,8 +368,8 @@ export default function EnhancedTable(props) {
                   );
                 })}
               {emptyRows > 0 && (
-                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                  <TableCell colSpan={6} />
+                <TableRow style={{ height: 53 * emptyRows }}>
+                  <TableCell colSpan={7} />
                 </TableRow>
               )}
             </TableBody>

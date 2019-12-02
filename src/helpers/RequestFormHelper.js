@@ -6,7 +6,8 @@ export default function RequestFormHelper(listingId) {
 
   useEffect(() => {
     console.log("in the Request form use effect...")
-    axios.get(`http://localhost:3000/requests/${listingId}`, { withCredentials: true })
+    // axios.get(`http://localhost:3000/requests/${listingId}`, { withCredentials: true })
+    axios.get(`http://localhost:3000/requests/approved/${listingId}`, { withCredentials: true })
       .then(resp => {
         // console.log("resp in REQUEST HELPER: ", resp)
         setRequests(resp.data)
