@@ -110,7 +110,12 @@ export default function MessageList(props) {
 
   const bubbles = conversation.map((msg, i) => {
     return (
-      <MessageListItem key={i} messageObject={msg} user={props.user} />
+      <MessageListItem
+        key={i}
+        messageObject={msg}
+        user={props.user}
+        cssStyle={props.cssStyle}
+      />
     )
   })
 
@@ -118,9 +123,9 @@ export default function MessageList(props) {
   const endDate = new Date(props.conversationObject.request.end_date).toUTCString()
 
   return (
+
     <li className={classNames("single-conversation", { "hidden": props.uniqueid !== props.convo })}>
 
-      {title}{startDate.slice(0, 16)} until {endDate.slice(0, 16)}
 
       {bubbles}
 
@@ -130,6 +135,7 @@ export default function MessageList(props) {
       <div className="search-input">
         <input className="input-field" type="text" value={message} onChange={e => setMessage(e.target.value)} />
         <button className="send" onClick={(e) => sendMessage(e)}>SEND!</button>
+        <div className="booking-info">{title}{startDate.slice(0, 16)} until {endDate.slice(0, 16)}</div> 
       </div>
     </li>
   );

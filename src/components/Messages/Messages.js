@@ -61,6 +61,7 @@ export default function Messages(props) {
         user={props.user}
         uniqueid={`convo${i}${inOrOut}`}
         tabSelected={cssStyle}
+        cssStyle={cssStyle}
       />
     )
   })
@@ -71,7 +72,8 @@ export default function Messages(props) {
       <MessagesSideBar
         key={i}
         sentBy={conversation.from_user}
-        setConvo={setConvo} convo={convo}
+        setConvo={setConvo}
+        convo={convo}
         listingObject={conversation.listing}
         user={props.user}
         toUser={conversation.to_user}

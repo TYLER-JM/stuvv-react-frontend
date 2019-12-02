@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import classNames from 'classnames';
 
 export default function MessagesSideBar(props) {
 
@@ -7,7 +8,8 @@ export default function MessagesSideBar(props) {
   }
 
   return (
-    <div id={props.uniqueid} onClick={(event) => displayConversation(event)}>
+    // <div id={props.uniqueid} className="selected-conversation" onClick={(event) => displayConversation(event)}>
+    <div id={props.uniqueid} className={classNames({"selected-conversation": props.convo === props.uniqueid})} onClick={(event) => displayConversation(event)}>
       <div >
         About: {props.listingObject.title}
       </div>
