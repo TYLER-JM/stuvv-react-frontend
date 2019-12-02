@@ -1,0 +1,43 @@
+@import "bootstrap/scss/bootstrap";
+
+
+.body {
+  display: flex;
+  background-color: white;
+  height: 8rem;
+  width: 30rem;
+  margin-top:10rem;
+  flex-direction: column;
+  // border-radius: 3%;
+}
+
+.title {
+  background-color: #7ecbba;
+  padding: .5rem;
+  text-align: center;
+}
+
+.buttons {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    .button{
+      margin: 0 1.5rem 0 1.5rem;
+      background-color: transparent;
+      color: #E5A74F;
+      cursor: pointer;
+    }
+}
+
+.MuiSvgIcon-root {
+  color: grey;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  user-select: none;
+}
