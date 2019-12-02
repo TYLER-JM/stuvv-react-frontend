@@ -8,7 +8,7 @@ form.form-inline.my-2.my-lg-0 {
     width: 500px;
     border-radius: 30px;
     background-color: white;
-    margin: 0 0 0 1rem;
+    // margin: 0 0 0 1rem;
   }
 
   .btn.btn-light.my-2.my-sm-0 {
@@ -20,7 +20,7 @@ form.form-inline.my-2.my-lg-0 {
   }
 }
 
-.MuiSvgIcon-root {
+.MuiSvgIcon-root.refresh{
   fill: currentColor;
   width: 1em;
   height: 1em;
@@ -30,4 +30,5 @@ form.form-inline.my-2.my-lg-0 {
   flex-shrink: 0;
   user-select: none;
   color: white;
+  ;
 }

@@ -44,7 +44,7 @@ export default function WelcomeVideo(props) {
                 props.sendRequest()
                 setSearch("")
               }}>
-                <CachedIcon/>
+                <CachedIcon className="refresh"/>
             </button>
           </form>
         </div>
