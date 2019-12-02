@@ -14,16 +14,14 @@ export default function MessageList(props) {
   console.log("the unique identifier: ", props.uniqueid)
 
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
-  // const [conversation, setConversation] = useState([]);
   const [message, setMessage] = useState("");
-
 
   const [confirmation, setConfirmation] = useState("");
   const [title, setTitle] = useState(props.conversationObject.request.approved !== 0 ? props.conversationObject.request.approved === 1 ? "Booked for " : "Declined for " : "Interested in booking for ");
 
   useEffect(() => {
     setConversation(JSON.parse(props.conversationObject.conversation))
-  },[props.conversationObject.conversation])
+  }, [props.conversationObject.conversation])
 
   const reset = (e) => {
     setMessage("")

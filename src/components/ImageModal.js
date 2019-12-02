@@ -44,7 +44,7 @@ export default function ImageModal(props) {
         {/* <Carousel> */}
         {images}
       </Carousel>
-      {props.description}
+      {/* {props.description} */}
 
     </Modal>
   );

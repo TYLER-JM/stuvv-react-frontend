@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Sample from './stuvvWelcomeVideo.mov';
 import "./Welcome.scss"
 // import axios from "axios";
+import CachedIcon from '@material-ui/icons/Cached';
 
 
 
@@ -12,7 +13,7 @@ import "./Welcome.scss"
 export default function WelcomeVideo(props) {
 
   const [search, setSearch] = useState("");
-
+  console.log("THIS IS SEARCH===", search)
 
   return (
     <div>
@@ -31,9 +32,20 @@ export default function WelcomeVideo(props) {
               placeholder="Search"
               aria-label="Search"
               onChange={e => setSearch(e.target.value)}
+              value={search}
             >
             </input>
             <button className="btn btn-light my-2 my-sm-0" type="submit" onClick={() => props.sendRequest(search)}>Search</button>
+            {/* <button className="btn btn-light my-2 my-sm-0" type="submit" onClick={() => window.location.reload(false)}>Refresh</button> */}
+            <button 
+              className="btn btn-light my-2 my-sm-0" 
+              type="submit" 
+              onClick={() => {
+                props.sendRequest()
+                setSearch("")
+              }}>
+                <CachedIcon className="refresh"/>
+            </button>
           </form>
         </div>
 

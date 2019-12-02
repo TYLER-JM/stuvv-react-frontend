@@ -14,6 +14,7 @@ import Slider from '@material-ui/core/Slider';
 
 import SavingModal from './SavingModal'
 import Register from './Login/RegisterModal';
+// import { validate } from '@babel/types';
 
 
 const useStyles = makeStyles(theme => ({
@@ -74,13 +75,14 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 export default function Form(props) {
+
   const classes = useStyles();
 
   const [modalShow, setModalShow] = React.useState(false);
 
   //handles the check/uncheck value of the Switch (Availability)
-  const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
+  const handleChange = event => {
+    setState(event.target.checked);
   };
 
   //handles the value of the multiline textarea (description)
@@ -88,28 +90,22 @@ export default function Form(props) {
     setValue(event.target.value);
   };
 
-  //handle the dollar amount from the amount input
-  const handleAmount = event => {
-    setAmount(event.target.value);
-  };
-
-
   // state for the Amount input
-  // const [amount, setAmount] = useState(0)
   const [amount, setAmount] = useState(props.buildState.price || 0)
+  const handleAmount = event => {
+    const currentValue = event.target.value;
+    setAmount(parseInt(currentValue))
 
+  }
   //state for the Switch (Availability)
-  const [state, setState] = useState({
-    checkedA: true,
-    checkedB: true,
-  });
+  const [state, setState] = useState(
+    props.buildState.availability
+  );
 
   //state for the textarea
-  // const [value, setValue] = useState("");
   const [value, setValue] = useState(props.buildState.description || "");
 
   //state to handle the upload images and title text field
-  // const [text, setText] = useState("");
   const [text, setText] = useState(props.buildState.title || "");
   const [images, setImages] = useState([]);
   const [imageURLs, setImageURLs] = useState([]);
@@ -132,6 +128,7 @@ export default function Form(props) {
   }, [images])
 
   const sendRequest = () => {
+
     const data = new FormData();
 
     for (let img of images) {
@@ -140,13 +137,12 @@ export default function Form(props) {
     data.append("title", text);
     data.append("user_id", props.user.id);
     data.append("description", value)
-    data.append("availability", state.checkedA)
+    data.append("availability", state)
     data.append("price_per_day", amount)
 
     if (!props.buildState.id) {
       return axios.post(`http://localhost:3000/listings`, data, { withCredentials: true })
         .then(resp => {
-          console.log("got to the then")
           setTimeout(() => {
             window.location.pathname = "/my_stuvv"
           }, 1000)
@@ -155,15 +151,15 @@ export default function Form(props) {
     } else {
       return axios.put(`http://localhost:3000/listings/${props.buildState.id}`, data, { withCredentials: true })
         .then(resp => {
-          console.log("got to the then")
           setTimeout(() => {
             window.location.pathname = "/my_stuvv"
           }, 1000)
         })
         .catch(error => console.error())
     }
+    // }
   }
-  console.log("found buildState ", props.buildState)
+
   if (props.user.id) {
     return (
       <div className="test">
@@ -197,9 +193,11 @@ export default function Form(props) {
                 id="outlined-adornment-amount"
                 inputProps={{ step: 1, type: "number" }}
                 value={amount}
+                placeholder="only round values"
                 onChange={handleAmount}
                 startAdornment={<InputAdornment position="start">$</InputAdornment>}
                 labelWidth={60}
+                required
               />
             </FormControl>
 
@@ -212,7 +210,6 @@ export default function Form(props) {
                 type="file"
                 onChange={event => {
                   setImages((prev) => [...prev, ...event.target.files])
-                  // setImages(event.target.files)
                 }}
               />
               <label htmlFor="outlined-button-file">
@@ -222,7 +219,6 @@ export default function Form(props) {
               </label>
               <div>
                 {imageURLs.map(URL => (<img src={URL} className="img" key={URL} alt="preview" />))}
-                {/* <img id={"displayImage2"} className="img"/> */}
               </div>
             </div>
             <div className="submit">
@@ -231,9 +227,9 @@ export default function Form(props) {
                   value="end"
                   control={<Switch
                     color="primary"
-                    checked={state.checkedA}
-                    onChange={handleChange('checkedA')}
-                    value="checkedA"
+                    checked={state}
+                    onChange={e => handleChange(e)}
+                    value={state}
                   />}
                   label="Available?"
                   labelPlacement="start"
@@ -242,11 +238,21 @@ export default function Form(props) {
               <Button
                 variant="outlined"
                 onClick={() => {
+                  // validate()
                   sendRequest()
                   setModalShow(true)
                 }}>
                 {props.buildState.id ? "Submit Changes" : "Submit"}
               </Button>
+              {props.buildState.id ?
+                <Button
+                  className="nevermind"
+                  variant="secondary"
+                  onClick={() => {
+                    window.location.pathname = "/my_stuvv"
+                  }}>
+                  Nevermind
+                </Button> : null}
 
               <SavingModal
                 show={modalShow}
