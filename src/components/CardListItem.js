@@ -138,7 +138,7 @@ export default function CardListItem(props) {
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              {props.owner.id}
+              {props.owner.first_name[0]}{props.owner.last_name[0]}
             </Avatar>
           }
           action={
