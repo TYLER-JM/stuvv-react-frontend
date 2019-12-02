@@ -4,6 +4,14 @@
 
 @import "bootstrap/scss/bootstrap";
 
+//new rules, trying to show the prev/next arrows more prominently
+
+span.carousel-control-prev-icon, span.carousel-control-next-icon {
+  background-color: #b8d1e7; 
+  opacity: .5;
+  height: 40px;
+  border-radius: 10px;
+}
 // fixes the card getting wider when the description is shown
 // this isn't a long term solution
 div.makeStyles-card-56 {
