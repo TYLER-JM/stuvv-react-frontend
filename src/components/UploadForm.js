@@ -74,6 +74,7 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 export default function Form(props) {
+
   const classes = useStyles();
 
   const [modalShow, setModalShow] = React.useState(false);
