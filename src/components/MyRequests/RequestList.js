@@ -220,7 +220,7 @@ export default function EnhancedTable(props) {
 
   function deleteRequest(id, index) {
     console.log("trash requestid: ", id)
-  
+
     axios.delete(`http://localhost:3000/requests/${id}`, { withCredentials: true })
       .then(resp => {
         console.log("we got a good response: ", resp);
@@ -326,16 +326,14 @@ export default function EnhancedTable(props) {
                   console.log("can we see the value of rows.status...", row.status)
                   console.log("can we see the value of rows.rowIndex...", index)
                   const showStatus = () => {
-                    if (row.status === 0) {
-                      return (<Spinner animation="border" className="custom-height-spinner"/>)
-                    } else {
-                      return (
-                        <Icon className={classNames("fa", {
-                          "fa-check-circle": row.status > 0,
-                          "fa-times-circle": row.status < 0
-                        })}/>
-                      )
-                    }
+                    return (
+                      <Icon className={classNames("fa", {
+                        "fa-ellipsis-h": row.status === 0,
+                        "fa-check-circle": row.status > 0,
+                        "fa-times-circle": row.status < 0
+                      })} />
+                    )
+
                   }
 
                   return (
