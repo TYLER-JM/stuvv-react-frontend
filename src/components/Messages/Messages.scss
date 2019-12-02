@@ -142,7 +142,10 @@
   min-height: 430px;
   max-height: 100px;
 }
-
+.single-conversation {
+  position: relative;
+  height: 100%;
+}
 .hidden {
   display: none;
 }
@@ -156,18 +159,20 @@ div.processing {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 1.5rem;
+  padding:5px;
+  // margin: 1.5rem;
   //////////////////////////////// change these to fix search bar to bottom of message list...not sure how
-  // bottom: 10px;
-  // position: sticky;
-  // background-color: blue;
+  bottom: 0px;
+  position: sticky;
+  background-color: white;
 }
 
 .input-field {
-  width: 60%;
+  width: 70%;
 }
 
 .send {
+  width: 30%;
   outline: none;
   font-family: "Montserrat";
   height: 2rem;
