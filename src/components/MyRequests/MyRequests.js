@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import './Myrequests.scss'
-import CardList from "../CardList.js"
+// import CardList from "../CardList.js"
+import SavingModal from '../SavingModal'
 import Register from '../Login/RegisterModal';
 import RequestList from './RequestList';
-import getRequestListItems from './requestListItems'
+// import getRequestListItems from './requestListItems'
 
 
 
 
 export default function MyRequests(props) {
+
+  const [loading, setLoading] = useState(true)
+  const [register, setRegister] = useState(false)
+
+  setTimeout(() => {
+    setLoading(false)
+    setRegister(true)
+  }, 700)
+
+
   if (props.user.id) {
     return (
       <div className="requests">
@@ -19,7 +30,17 @@ export default function MyRequests(props) {
       </div>
     )
   } else {
-    return (<Register show="true" onHide={() => window.location.pathname = "/"} />)
+    return (
+      <Fragment>
 
+        <SavingModal
+          show={loading}
+          onHide={() => window.location.pathname = "/"}
+          line="loading"
+        />
+        <Register show={register} onHide={() => window.location.pathname = "/"} />
+
+      </Fragment>
+    )
   }
 }
