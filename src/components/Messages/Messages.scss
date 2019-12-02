@@ -146,6 +146,13 @@
 .hidden {
   display: none;
 }
+div.message-list {
+  display: flex;
+  justify-content: center;
+  div.custom-height-spinner.spinner-border {
+    margin: auto;
+  }
+}
 
 .search-input {
   display: flex;

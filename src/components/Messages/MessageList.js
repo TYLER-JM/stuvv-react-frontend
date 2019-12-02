@@ -1,8 +1,11 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import MessageListItem from './MessageListItem';
 import axios from 'axios';
-import classNames from 'classnames';
 import Button from 'react-bootstrap/Button'
+import classNames from 'classnames';
+import Icon from '@material-ui/core/Icon';
+import MessageListItem from './MessageListItem';
+import React, { useState, useEffect, Fragment } from 'react'
+import Spinner from 'react-bootstrap/Spinner'
+
 import './Messages.scss'
 
 
@@ -12,7 +15,8 @@ export default function MessageList(props) {
 
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
   const [message, setMessage] = useState("");
-  // const [confirmation, setConfirmation] = useState("this is validate state");
+  const [confirmation, setConfirmation] = useState("");
+  const [status, setStatus] = useState("Interested in booking for ");
 
   const reset = (e) => {
     setMessage("")
@@ -29,33 +33,54 @@ export default function MessageList(props) {
   }
 
   const handleAccept = function (status) {
-    // console.log(confirmation)
-    // console.log(setConfirmation("does setValidade works?"))
-    // console.log(confirmation)
+
+    setConfirmation(
+      <Spinner animation="border" className="custom-height-spinner" />
+    )
+
+
+    console.log(confirmation)
     return axios.put(`http://localhost:3000/requests/${props.conversationObject.request.id}`, { request: status }, { withCredentials: true })
       .then(resp => {
         console.log("Patch was done and this is now approved: ", resp.data);
 
         setTimeout(() => {
+          setConfirmation(
+            <Icon className={classNames("fa", {
+              "fa-check-circle": status > 0,
+              "fa-times-circle": status < 0
+            })} />
+          )
+        }, 500)
+        setTimeout(() => {
           setAcceptButtons(null)
+          setConfirmation(null)
+          setStatus(status > 0 ? "Booked for " : "Declined for ")
         }, 1000)
       })
       .catch(error => console.log(error))
   }
   const [acceptButtons, setAcceptButtons] = useState((
     <Fragment>
-      {/* {confirmation} */}
       <div className="buttons-message">
         <Button
           variant="outline-success"
           onClick={() => {
-            // setConfirmation("This request has been validated");
+            setConfirmation("This request has been validated");
             handleAccept(1);
           }}
         >
           Accept
         </Button>
-        <Button variant="outline-secondary" onClick={() => handleAccept(-1)}>Decline</Button>
+        <Button
+          variant="outline-secondary"
+          onClick={() =>
+            handleAccept(-1)
+          }
+        >
+          Decline
+        </Button>
+        {/* {confirmation} */}
       </div>
     </Fragment>
   ));
@@ -83,10 +108,11 @@ export default function MessageList(props) {
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
 
-      interested in book for {startDate.slice(0, 16)} until {endDate.slice(0, 16)}
+      {status}{startDate.slice(0, 16)} until {endDate.slice(0, 16)}
 
       {bubbles}
 
+      {confirmation}
       {props.tabSelected === "My stuvv" ? props.conversationObject.request.approved === 0 ? acceptButtons : null : null}
 
       <div className="search-input">
