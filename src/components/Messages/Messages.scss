@@ -139,8 +139,9 @@
   border: 5px solid #84aacc;
   position: relative;
   overflow: scroll;
-  min-height: 430px;
-  max-height: 100px;
+  // min-height: 430px;
+  // max-height: 100px;
+  height: 430px;
 }
 .single-conversation {
   position: relative;
@@ -163,6 +164,7 @@ div.processing {
   // margin: 1.5rem;
   //////////////////////////////// change these to fix search bar to bottom of message list...not sure how
   bottom: 0px;
+  // top: 380px;
   position: sticky;
   background-color: white;
 }
