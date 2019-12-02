@@ -82,9 +82,9 @@ export default function Messages(props) {
     )
   })
 
-  // useEffect(() => {
-  //   fetchMessages("outbound")
-  // }, [props]);
+  useEffect(() => {
+    fetchMessages("outbound")
+  }, [props]);
 
   //if there's a user logged in show the page, otherwise show login modal
   if (props.user.id) {

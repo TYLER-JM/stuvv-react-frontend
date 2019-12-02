@@ -123,7 +123,6 @@ export default function MessageList(props) {
   const endDate = new Date(props.conversationObject.request.end_date).toUTCString()
 
   return (
-
     <li className={classNames("single-conversation", { "hidden": props.uniqueid !== props.convo })}>
 
 
