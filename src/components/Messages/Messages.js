@@ -10,9 +10,11 @@ import SavingModal from '../SavingModal'
 export default function Messages(props) {
   const [messages, setMessages] = useState([]);
   const [convo, setConvo] = useState(0);
-  const [cssStyle, setCssStyle] = useState();
+  const [cssStyle, setCssStyle] = useState("");
   const [loading, setLoading] = useState(true)
   const [register, setRegister] = useState(false)
+
+  const [inOrOut, setInOrOut] = useState("o");
 
   //to show login if user tries to access this page without being logged in
   setTimeout(() => {
@@ -32,6 +34,7 @@ export default function Messages(props) {
         .then(resp => {
           console.log("GOT INBOUND MESSAGES: ", resp.data);
           setMessages(resp.data)
+          setInOrOut(message)
         })
         .catch(error => console.log(error))
 
@@ -41,6 +44,7 @@ export default function Messages(props) {
         .then(resp => {
           console.log("GOT OUTBOUND MESSAGES: ", resp.data);
           setMessages(resp.data)
+          setInOrOut(message)
         })
         .catch(error => console.log(error))
     }
@@ -55,7 +59,7 @@ export default function Messages(props) {
         sentBy={conversation.from_user}
         convo={convo}
         user={props.user}
-        uniqueid={`convo${i}`}
+        uniqueid={`convo${i}${inOrOut}`}
         tabSelected={cssStyle}
       />
     )
@@ -71,14 +75,14 @@ export default function Messages(props) {
         listingObject={conversation.listing}
         user={props.user}
         toUser={conversation.to_user}
-        uniqueid={`convo${i}`}
+        uniqueid={`convo${i}${inOrOut}`}
       />
     )
   })
 
-  useEffect(() => {
-    fetchMessages("outbound")
-  }, [props]);
+  // useEffect(() => {
+  //   fetchMessages("outbound")
+  // }, [props]);
 
   //if there's a user logged in show the page, otherwise show login modal
   if (props.user.id) {

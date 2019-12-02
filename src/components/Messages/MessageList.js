@@ -11,8 +11,13 @@ export default function MessageList(props) {
   console.log("the unique identifier: ", props.uniqueid)
 
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
+  // const [conversation, setConversation] = useState([]);
   const [message, setMessage] = useState("");
   // const [confirmation, setConfirmation] = useState("this is validate state");
+
+  useEffect(() => {
+    setConversation(JSON.parse(props.conversationObject.conversation))
+  },[props.conversationObject.conversation])
 
   const reset = (e) => {
     setMessage("")
@@ -82,12 +87,13 @@ export default function MessageList(props) {
 
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
+      <div>
+        interested in book for {startDate.slice(0, 16)} until {endDate.slice(0, 16)}
 
-      interested in book for {startDate.slice(0, 16)} until {endDate.slice(0, 16)}
+        {bubbles}
+        {props.tabSelected === "My stuvv" ? props.conversationObject.request.approved === 0 ? acceptButtons : null : null}
+      </div>
 
-      {bubbles}
-
-      {props.tabSelected === "My stuvv" ? props.conversationObject.request.approved === 0 ? acceptButtons : null : null}
 
       <div className="search-input">
         <input className="input-field" type="text" value={message} onChange={e => setMessage(e.target.value)} />
