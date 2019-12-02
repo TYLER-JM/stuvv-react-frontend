@@ -147,7 +147,7 @@ export default function CardListItem(props) {
             </IconButton>
           }
           title={props.title}
-          subheader={`$ ${props.price} per day`}
+          subheader={`$${props.price} per day`}
         />
         <CardListItemCarousel
           urls={props.urls}
