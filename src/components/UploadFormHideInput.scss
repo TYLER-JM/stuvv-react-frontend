@@ -34,11 +34,20 @@ input#outlined-button-file {
   margin-bottom: 2rem;
 }
 
+// .submit button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
 .submit button {
   margin-left: 2rem;
+  margin-right: 2rem;
   background-color: rgb(81, 171, 151);
   color: white;
   border: none;
+}
+
+.submit button.nevermind {
+  background-color: rgb(172, 173, 172);
+  &:hover {
+    background-color: rgb(225, 226, 225);
+  }
 }
 
 .MuiButton-label {
@@ -53,11 +62,7 @@ input#outlined-button-file {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url(build.jpg);
   background-position: 25% 75%;
   width: 100%;

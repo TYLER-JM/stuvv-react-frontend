@@ -15,8 +15,13 @@ export default function MessageList(props) {
 
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
   const [message, setMessage] = useState("");
+
   const [confirmation, setConfirmation] = useState("");
-  const [status, setStatus] = useState("Interested in booking for ");
+  const [title, setTitle] = useState(props.conversationObject.request.approved !== 0 ? props.conversationObject.request.approved === 1 ? "Booked for " : "Declined for " : "Interested in booking for ");
+
+  useEffect(() => {
+    setConversation(JSON.parse(props.conversationObject.conversation))
+  }, [props.conversationObject.conversation])
 
   const reset = (e) => {
     setMessage("")
@@ -59,7 +64,7 @@ export default function MessageList(props) {
         setTimeout(() => {
           setAcceptButtons(null)
           setConfirmation(null)
-          setStatus(status > 0 ? "Booked for " : "Declined for ")
+          setTitle(status > 0 ? "Booked for " : "Declined for ")
         }, 1000)
       })
       .catch(error => console.log(error))
@@ -113,7 +118,7 @@ export default function MessageList(props) {
   return (
     <li className={classNames({ "hidden": props.uniqueid !== props.convo })}>
 
-      {status}{startDate.slice(0, 16)} until {endDate.slice(0, 16)}
+      {title}{startDate.slice(0, 16)} until {endDate.slice(0, 16)}
 
       {bubbles}
 
