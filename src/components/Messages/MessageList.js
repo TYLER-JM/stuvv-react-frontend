@@ -35,7 +35,9 @@ export default function MessageList(props) {
   const handleAccept = function (status) {
 
     setConfirmation(
-      <Spinner animation="border" className="custom-height-spinner" />
+      <div className="processing">
+        <Spinner animation="border" className="custom-height-spinner" />
+      </div>
     )
 
 
@@ -46,10 +48,12 @@ export default function MessageList(props) {
 
         setTimeout(() => {
           setConfirmation(
-            <Icon className={classNames("fa", {
-              "fa-check-circle": status > 0,
-              "fa-times-circle": status < 0
-            })} />
+            <div className="processing">
+              <Icon className={classNames("fa", {
+                "fa-check-circle": status > 0,
+                "fa-times-circle": status < 0
+              })} />
+            </div>
           )
         }, 500)
         setTimeout(() => {
@@ -60,6 +64,7 @@ export default function MessageList(props) {
       })
       .catch(error => console.log(error))
   }
+
   const [acceptButtons, setAcceptButtons] = useState((
     <Fragment>
       <div className="buttons-message">
