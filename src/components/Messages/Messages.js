@@ -18,7 +18,7 @@ export default function Messages(props) {
   setTimeout(() => {
     setLoading(false)
     setRegister(true)
-  }, 500)
+  }, 700)
 
   //sets the css based on the tab clicked
   const handleClick = function (event) {
