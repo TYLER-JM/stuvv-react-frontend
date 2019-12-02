@@ -111,6 +111,11 @@ export default function CardListItem(props) {
           >
             <DeleteIcon />
           </IconButton>
+          
+          {/* <IconButton onClick>
+            <DeleteIcon />
+          </IconButton> */}
+
         </Fragment>)
     } else if (window.location.pathname === "/") {
       return (<IconButton
