@@ -31,6 +31,7 @@ export default function WelcomeVideo(props) {
               placeholder="Search"
               aria-label="Search"
               onChange={e => setSearch(e.target.value)}
+
             >
             </input>
             <button className="btn btn-light my-2 my-sm-0" type="submit" onClick={() => props.sendRequest(search)}>Search</button>

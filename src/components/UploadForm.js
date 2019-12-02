@@ -14,6 +14,7 @@ import Slider from '@material-ui/core/Slider';
 
 import SavingModal from './SavingModal'
 import Register from './Login/RegisterModal';
+import { validate } from '@babel/types';
 
 
 const useStyles = makeStyles(theme => ({
@@ -94,6 +95,9 @@ export default function Form(props) {
     setAmount(event.target.value);
   };
 
+  // const validate = () => {
+  //   amount.includes()
+  // }
 
   // state for the Amount input
   // const [amount, setAmount] = useState(0)
@@ -197,9 +201,12 @@ export default function Form(props) {
                 id="outlined-adornment-amount"
                 inputProps={{ step: 1, type: "number" }}
                 value={amount}
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                 onChange={handleAmount}
                 startAdornment={<InputAdornment position="start">$</InputAdornment>}
                 labelWidth={60}
+                // type="number"
+                required
               />
             </FormControl>
 
@@ -240,6 +247,7 @@ export default function Form(props) {
               <Button
                 variant="outlined"
                 onClick={() => {
+                  // validate()
                   sendRequest()
                   setModalShow(true)
                 }}>
@@ -247,7 +255,8 @@ export default function Form(props) {
               </Button>
               {props.buildState.id ?
                 <Button
-                  // variant="secondary"
+                  className="nevermind"
+                  variant="secondary"
                   onClick={() => {
                     window.location.pathname = "/my_stuvv"
                   }}>
