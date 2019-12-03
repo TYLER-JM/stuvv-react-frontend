@@ -55,7 +55,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+  const { classes, order, orderBy, onRequestSort } = props;
   const createSortHandler = property => event => {
     onRequestSort(event, property);
   };
@@ -92,12 +92,9 @@ function EnhancedTableHead(props) {
 
 EnhancedTableHead.propTypes = {
   classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
-  rowCount: PropTypes.number.isRequired,
 };
 
 const useToolbarStyles = makeStyles(theme => ({
@@ -122,24 +119,18 @@ const useToolbarStyles = makeStyles(theme => ({
 
 const EnhancedTableToolbar = props => {
   const classes = useToolbarStyles();
-  const { numSelected } = props;
 
   return (
     <Toolbar
-      className={clsx(classes.root, {
-        [classes.highlight]: numSelected > 0,
-      })}
+      className={clsx(classes.root)}
     >
       <Typography className={classes.title} variant="h6" id="tableTitle">
         Requests
-        </Typography>
+      </Typography>
     </Toolbar>
   );
 };
 
-EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -172,15 +163,10 @@ const useStyles = makeStyles(theme => ({
 export default function EnhancedTable(props) {
 
   console.log("the users REQUESTS", props.requests)
-  // let rows = getRequestListItems(props.requests)
-
 
   function deleteRequest(id, index) {
-    console.log("trash requestid: ", id)
-
     axios.delete(`http://localhost:3000/requests/${id}`, { withCredentials: true })
       .then(resp => {
-        console.log("we got a good response: ", resp);
         let copyRows = [...rows];
         copyRows.splice(index, 1);
         setRows(copyRows)
@@ -194,7 +180,6 @@ export default function EnhancedTable(props) {
   const [orderBy, setOrderBy] = useState('startDate');
   const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
-  // const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -208,15 +193,6 @@ export default function EnhancedTable(props) {
     setOrder(isDesc ? 'asc' : 'desc');
     setOrderBy(property);
   };
-
-  // const handleSelectAllClick = event => {
-  //   if (event.target.checked) {
-  //     const newSelecteds = rows.map(n => n.title);
-  //     setSelected(newSelecteds);
-  //     return;
-  //   }
-  //   setSelected([]);
-  // };
 
   const handleClick = (event, title) => {
     const selectedIndex = selected.indexOf(title);
@@ -256,22 +232,18 @@ export default function EnhancedTable(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar />
         <div className={classes.tableWrapper}>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
-            // size={dense ? 'small' : 'medium'}
             aria-label="enhanced table"
           >
             <EnhancedTableHead
               classes={classes}
-              numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              // onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
             />
             <TableBody>
               {stableSort(rows, getSorting(order, orderBy))
@@ -280,8 +252,6 @@ export default function EnhancedTable(props) {
                   const isItemSelected = isSelected(row.title);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
-                  console.log("can we see the value of rows.status...", row.status)
-                  console.log("can we see the value of rows.rowIndex...", index)
                   const showStatus = () => {
                     return (
                       <Icon className={classNames("fa", {
@@ -296,7 +266,6 @@ export default function EnhancedTable(props) {
                   return (
                     <TableRow
                       hover
-                      // onClick={event => handleClick(event, row.title)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -305,24 +274,17 @@ export default function EnhancedTable(props) {
 
                     >
                       <TableCell padding="checkbox">
-                        {/* <Checkbox
-                          checked={isItemSelected}
-                          inputProps={{ 'aria-labelledby': labelId }}
-                        /> */}
                         <Tooltip title="Delete">
                           <IconButton aria-label="delete">
                             {/* <DeleteIcon requestid={row.requestId} onClick={() => console.log("you clicked the trash")}/> */}
                             {/* <DeleteIcon onClick={() => setModalShow(true)} /> */}
                             <DeleteIcon value={row.requestId} onClick={() => deleteRequest(row.requestId, row.rowIndex)} />
-
-                            {/* <DeleteIcon value={row.requestId} onClick={() => deleteRequest(row.requestId, row.rowIndex)} /> */}
                           </IconButton>
                         </Tooltip>
                       </TableCell>
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.title}
                       </TableCell>
-                      {/* <TableCell align="right">{row.status}</TableCell> */}
                       <TableCell align="right"><Link to="/messages">{showStatus()}</Link></TableCell>
                       <TableCell align="right">{row.owner}</TableCell>
                       <TableCell align="right">{row.startDate}</TableCell>
