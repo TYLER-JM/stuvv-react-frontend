@@ -1,19 +1,12 @@
 import React, { useState } from "react";
-// import Video from './video.mp4'
-// import Sample from './sample.MOV'
 import Sample from './stuvvWelcomeVideo.mov';
 import "./Welcome.scss"
-// import axios from "axios";
 import CachedIcon from '@material-ui/icons/Cached';
-
-
-
 
 
 export default function WelcomeVideo(props) {
 
   const [search, setSearch] = useState("");
-  console.log("THIS IS SEARCH===", search)
 
   return (
     <div>
@@ -36,20 +29,17 @@ export default function WelcomeVideo(props) {
             >
             </input>
             <button className="btn btn-light my-2 my-sm-0" type="submit" onClick={() => props.sendRequest(search)}>Search</button>
-            {/* <button className="btn btn-light my-2 my-sm-0" type="submit" onClick={() => window.location.reload(false)}>Refresh</button> */}
-            <button 
-              className="btn btn-light my-2 my-sm-0" 
-              type="submit" 
+            <button
+              className="btn btn-light my-2 my-sm-0"
+              type="submit"
               onClick={() => {
                 props.sendRequest()
                 setSearch("")
               }}>
-                <CachedIcon className="refresh"/>
+              <CachedIcon className="refresh" />
             </button>
           </form>
         </div>
-
-
       </header>
     </div>
   )
