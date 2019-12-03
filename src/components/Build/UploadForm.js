@@ -12,8 +12,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 
 import Slider from '@material-ui/core/Slider';
 
-import SavingModal from './SavingModal'
-import Register from './Login/RegisterModal';
+import SavingModal from '../SavingModal'
+import Register from '../Login/RegisterModal';
 // import { validate } from '@babel/types';
 
 
