@@ -52,6 +52,8 @@ const headCells = [
   { id: 'startDate', numeric: true, disablePadding: false, label: 'Start Date' },
   { id: 'endDate', numeric: true, disablePadding: false, label: 'End Date' },
   { id: 'cost', numeric: true, disablePadding: false, label: 'Total Cost' },
+  { id: 'pickup', numeric: true, disablePadding: false, label: 'Days until pick-up' },
+  { id: 'dropoff', numeric: true, disablePadding: false, label: 'Return in' },
 ];
 
 function EnhancedTableHead(props) {
@@ -225,6 +227,7 @@ export default function EnhancedTable(props) {
               {stableSort(rows, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
+                  // console.log(typeof row.pickup[0])
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   const showStatus = () => {
@@ -259,6 +262,11 @@ export default function EnhancedTable(props) {
                       <TableCell align="right">{row.startDate}</TableCell>
                       <TableCell align="right">{row.endDate}</TableCell>
                       <TableCell align="right">{row.cost}</TableCell>
+                      {/* <TableCell align="right">{row.pickup}</TableCell> */}
+                      {row.pickup[0] === "-" ? <TableCell align="right">0 Days</TableCell> : <TableCell align="right">{row.pickup}</TableCell>}
+                      {/* <TableCell align="right">{row.dropoff}</TableCell> */}
+                      {row.dropoff[0] === "-" ? <TableCell align="right">0 Days</TableCell> : <TableCell align="right">{row.dropoff}</TableCell>}
+                      {/* {new Date(row.startDate) < new Date() ? <TableCell align="right">{row.dropoff}</TableCell> : null} */}
                     </TableRow>
                   );
                 })}

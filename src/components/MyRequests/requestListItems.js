@@ -1,7 +1,7 @@
 export default function getRequestListItems(requests) {
 
-  function createData(title, status, owner, startDate, endDate, cost, requestId, rowIndex) {
-    return { title, status, owner, startDate, endDate, cost, requestId, rowIndex };
+  function createData(title, status, owner, startDate, endDate, cost, pickup, dropoff, requestId, rowIndex) {
+    return { title, status, owner, startDate, endDate, cost, pickup, dropoff, requestId, rowIndex };
   }
   let requestObjects = [];
   let indexOfRow = 0
@@ -12,16 +12,22 @@ export default function getRequestListItems(requests) {
     const oneDay = 24 * 60 * 60 * 1000;
     const totalCost = Math.round((readableEndDate - readableStartDate) / oneDay) * Math.round(request.listing.price_per_day / 100)
 
+    const daysToPickUp = Math.floor((readableStartDate.getTime() - (new Date()).getTime()) / (1000 * 3600 * 24))
+    // const daysToReturn = Math.floor((readableEndDate.getTime() - readableStartDate.getTime()) / (1000 * 3600 * 24))
+    const daysToReturn = Math.floor((readableEndDate.getTime() - (new Date()).getTime()) / (1000 * 3600 * 24))
+
     requestObjects.push(createData(
-        request.listing.title,
-        request.approved,
-        request.listing_owner.first_name,
-        readableStartDate.toDateString(),
-        readableEndDate.toDateString(),
-        `$${totalCost}`,
-        request.id,
-        indexOfRow
-      )
+      request.listing.title,
+      request.approved,
+      request.listing_owner.first_name,
+      readableStartDate.toDateString(),
+      readableEndDate.toDateString(),
+      `$${totalCost}`,
+      `${daysToPickUp} days`,
+      `${daysToReturn} days`,
+      request.id,
+      indexOfRow
+    )
     )
     indexOfRow++;
   })
