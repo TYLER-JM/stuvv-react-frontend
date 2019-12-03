@@ -4,9 +4,9 @@ import Home from './components/Home';
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Messages from './components/Messages/Messages'
-import MyStuvv from './components/SideBar/MyStuvv'
+import MyStuvv from './components/MyStuvv/MyStuvv'
 import './App.scss';
-import './components/SideBar/MyStuvv.scss'
+import './components/MyStuvv/MyStuvv.scss'
 import BuildForm from './components/Build/BuildForm';
 import axios from 'axios'
 import MyRequests from './components/MyRequests/MyRequests'
