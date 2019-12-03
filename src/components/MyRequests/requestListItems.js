@@ -14,12 +14,10 @@ export default function getRequestListItems(requests) {
 
     requestObjects.push(createData(
         request.listing.title,
-        // request.listing.description,
         request.approved,
         request.listing_owner.first_name,
         readableStartDate.toDateString(),
         readableEndDate.toDateString(),
-        // `$${Math.round(request.listing.price_per_day / 100)}`,
         `$${totalCost}`,
         request.id,
         indexOfRow

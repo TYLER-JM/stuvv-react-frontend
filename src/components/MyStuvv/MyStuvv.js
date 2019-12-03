@@ -1,11 +1,8 @@
 import React, { Fragment, useState } from 'react'
-// import CardList from "../CardList.js"
 import CardList from "../Listing/CardList"
 import './MyStuvv.scss'
 import Register from '../Login/RegisterModal';
 import SavingModal from '../SavingModal'
-
-
 
 
 export default function MyStuvv(props) {
@@ -31,14 +28,12 @@ export default function MyStuvv(props) {
   } else {
     return (
       <Fragment>
-
         <SavingModal
           show={loading}
           onHide={() => window.location.pathname = "/"}
           line="loading"
         />
         <Register show={register} onHide={() => window.location.pathname = "/"} />
-
       </Fragment>
     )
   }
