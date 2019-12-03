@@ -6,7 +6,7 @@ export default function CardList(props) {
   // console.log("from cardlist.js", props.user)
 
   const cards = props.cardsData.map((card, i) => {
-    // console.log("CardList cardsData: ", cardsData)
+    console.log("CardList cardsData: ", card)
     if (card.availability && window.location.pathname === "/") {
 
       return (

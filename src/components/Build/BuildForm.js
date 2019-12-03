@@ -6,6 +6,8 @@ import SavingModal from '../SavingModal'
 
 
 export default function BuildForm(props) {
+
+
   const [loading, setLoading] = useState(true)
   const [register, setRegister] = useState(false)
 
@@ -15,13 +17,12 @@ export default function BuildForm(props) {
   }, 700)
 
   if (props.user.id) {
+    window.scrollTo(0, 0)
     return (
       <div>
         <div className="build-form-banner">
           Build your listing
       </div>
-        {/* <UploadForm userId={props.userId} buildState={props.buildState}/> */}
-
         <UploadForm user={props.user} buildState={props.buildState} />
       </div>
     );

@@ -12,18 +12,21 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
+// import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Icon from '@material-ui/core/Icon';
 import Spinner from 'react-bootstrap/Spinner'
-import FilterListIcon from '@material-ui/icons/FilterList';
+// import FilterListIcon from '@material-ui/icons/FilterList';
 import getRequestListItems from './requestListItems'
 import classNames from 'classnames';
 import axios from 'axios';
-import MyRequests from './MyRequests'
+// import MyRequests from './MyRequests'
 import { Link } from 'react-router-dom';
+// import DeleteButtonModal from './DeleteButtonModal';
+import Button from 'react-bootstrap/Button'
+
 
 
 // function createData(name, calories, fat, carbs, protein) {
@@ -210,6 +213,7 @@ const useStyles = makeStyles(theme => ({
 // ];
 
 export default function EnhancedTable(props) {
+
   console.log("the users REQUESTS", props.requests)
   // let rows = getRequestListItems(props.requests)
 
@@ -235,6 +239,8 @@ export default function EnhancedTable(props) {
   const [page, setPage] = useState(0);
   // const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [modalShow, setModalShow] = React.useState(false);
+
 
   useEffect(() => {
     setRows(getRequestListItems(props.requests))
@@ -349,7 +355,10 @@ export default function EnhancedTable(props) {
                         <Tooltip title="Delete">
                           <IconButton aria-label="delete">
                             {/* <DeleteIcon requestid={row.requestId} onClick={() => console.log("you clicked the trash")}/> */}
+                            {/* <DeleteIcon onClick={() => setModalShow(true)} /> */}
                             <DeleteIcon value={row.requestId} onClick={() => deleteRequest(row.requestId, row.rowIndex)} />
+
+                            {/* <DeleteIcon value={row.requestId} onClick={() => deleteRequest(row.requestId, row.rowIndex)} /> */}
                           </IconButton>
                         </Tooltip>
                       </TableCell>

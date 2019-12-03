@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -19,6 +19,7 @@ import ListingModal from './Request/ListingModal';
 import { Link } from "react-router-dom";
 import axios from "axios"
 import "./CardListItem.scss"
+import DeleteButtonModal from './DeleteButtonModal'
 
 
 const useStyles = makeStyles(theme => ({
@@ -50,7 +51,7 @@ export default function CardListItem(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [modalShow, setModalShow] = React.useState(false);
-
+  const [smShow, setSmShow] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -64,6 +65,7 @@ export default function CardListItem(props) {
       price: props.price,
       title: props.title,
       id: props.listingid,
+      availability: props.availability
     })
     // console.log("from cardListItem", props.price, props.listingid)
   };
@@ -101,7 +103,7 @@ export default function CardListItem(props) {
               <EditIcon />
             </IconButton  >
           </Link>
-          <IconButton
+          {/* <IconButton
             aria-label="add to favorites"
             onClick={() => {
               if (window.confirm('Are you sure you wish to delete this item?'))
@@ -110,7 +112,15 @@ export default function CardListItem(props) {
             }
           >
             <DeleteIcon />
-          </IconButton>
+          </IconButton> */}
+          
+          <DeleteButtonModal 
+            handleDeleteListing={handleDeleteListing}
+            onClick={() => setSmShow(true)}
+            setSmShow={setSmShow}>
+            <DeleteIcon />
+          </DeleteButtonModal>
+
         </Fragment>)
     } else if (window.location.pathname === "/") {
       return (<IconButton
