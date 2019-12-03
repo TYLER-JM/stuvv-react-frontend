@@ -25,7 +25,7 @@ export default function Messages(props) {
     setCssStyle(event.target.innerHTML);
   }
 
-  //get the messaged information depending on the tab clicked
+  //get the messages information depending on the tab clicked
   function fetchMessages(message) {
     if (message === "inbound") {
       return axios.get(`http://localhost:3000/messages/inbound/${props.user.id}`, { withCredentials: true })
@@ -109,9 +109,7 @@ export default function Messages(props) {
             </div>
           </div>
           <div className="message-list-body">
-            {/* <ul className="message-list"> */}
             <ul className={cssStyle === "My stuvv" ? "message-list-inbound" : "message-list-outbound"}>
-
               {conversations}
             </ul>
           </div>
@@ -121,14 +119,12 @@ export default function Messages(props) {
   } else {
     return (
       <Fragment>
-
         <SavingModal
           show={loading}
           onHide={() => window.location.pathname = "/"}
           line="loading"
         />
         <Register show={register} onHide={() => window.location.pathname = "/"} />
-
       </Fragment>
     )
   }

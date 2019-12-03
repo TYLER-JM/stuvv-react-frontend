@@ -11,7 +11,6 @@ import './Messages.scss'
 
 export default function MessageList(props) {
 
-  console.log("the unique identifier: ", props.uniqueid)
 
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
   const [message, setMessage] = useState("");
