@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%',
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -46,20 +46,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CardListItem(props) {
-  // props.listingid
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [modalShow, setModalShow] = React.useState(false);
-  const [smShow, setSmShow] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-    // console.log("inside CLI props.userID: ", props.user.id)
   };
 
   const handlePageChange = () => {
-    // window.location.pathname = "/build"
     props.setBuildState({
       description: props.description,
       price: props.price,
@@ -67,7 +63,6 @@ export default function CardListItem(props) {
       id: props.listingid,
       availability: props.availability
     })
-    // console.log("from cardListItem", props.price, props.listingid)
   };
 
   const handleDeleteListing = () => {
@@ -78,18 +73,15 @@ export default function CardListItem(props) {
           axios.get(`http://localhost:3000/userslistings/${props.user.id}`, { withCredentials: true })
             .then((resp) => {
               props.setList(resp.data)
-              // return window.location = window.location.href
             })
         }
         if (window.location.pathname === "/") {
           axios.get("http://localhost:3000/listings", { withCredentials: true })
             .then((resp) => {
               props.setList(resp.data)
-              // return window.location = window.location.href
             })
         }
       })
-
   };
 
   const buttons = () => {
@@ -103,21 +95,9 @@ export default function CardListItem(props) {
               <EditIcon />
             </IconButton  >
           </Link>
-          {/* <IconButton
-            aria-label="add to favorites"
-            onClick={() => {
-              if (window.confirm('Are you sure you wish to delete this item?'))
-                handleDeleteListing()
-            }
-            }
-          >
-            <DeleteIcon />
-          </IconButton> */}
-          
-          <DeleteButtonModal 
+          <DeleteButtonModal
             handleDeleteListing={handleDeleteListing}
-            onClick={() => setSmShow(true)}
-            setSmShow={setSmShow}>
+          >
             <DeleteIcon />
           </DeleteButtonModal>
 

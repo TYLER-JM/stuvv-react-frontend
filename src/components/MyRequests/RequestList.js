@@ -12,36 +12,15 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-// import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Icon from '@material-ui/core/Icon';
-import Spinner from 'react-bootstrap/Spinner'
-// import FilterListIcon from '@material-ui/icons/FilterList';
 import getRequestListItems from './requestListItems'
 import classNames from 'classnames';
 import axios from 'axios';
-// import MyRequests from './MyRequests'
 import { Link } from 'react-router-dom';
-// import DeleteButtonModal from './DeleteButtonModal';
-import Button from 'react-bootstrap/Button'
 
-
-
-// function createData(name, calories, fat, carbs, protein) {
-//   return { name, calories, fat, carbs, protein };
-// }
-
-function deleteRequest(id) {
-  console.log("trash requestid: ", id)
-
-  axios.delete(`http://localhost:3000/requests/${id}`, { withCredentials: true })
-    .then(resp => {
-      console.log("we got a good response: ", resp)
-    })
-    .catch(err => console.log("thats a no-go: ", err))
-}
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -84,12 +63,6 @@ function EnhancedTableHead(props) {
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
-          {/* <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'select all desserts' }}
-          /> */}
         </TableCell>
         {headCells.map(headCell => (
           <TableCell
@@ -195,22 +168,6 @@ const useStyles = makeStyles(theme => ({
     width: 1,
   },
 }));
-
-// const rows = [
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Donut', 452, 25.0, 51, 4.9),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-//   createData('Honeycomb', 408, 3.2, 87, 6.5),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Jelly Bean', 375, 0.0, 94, 0.0),
-//   createData('KitKat', 518, 26.0, 65, 7.0),
-//   createData('Lollipop', 392, 0.2, 98, 0.0),
-//   createData('Marshmallow', 318, 0, 81, 2.0),
-//   createData('Nougat', 360, 19.0, 9, 37.0),
-//   createData('Oreo', 437, 18.0, 63, 4.0),
-// ];
 
 export default function EnhancedTable(props) {
 

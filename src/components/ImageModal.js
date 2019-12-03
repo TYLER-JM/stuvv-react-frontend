@@ -25,9 +25,6 @@ export default function ImageModal(props) {
           src={img.url}
           alt={`listing ${i + 1}`}
         />
-        {/* <Carousel.Caption>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption> */}
       </Carousel.Item>
     )
   })
@@ -41,10 +38,8 @@ export default function ImageModal(props) {
       dialogClassName="zooming"
     >
       <Carousel activeIndex={index} direction={direction} onSelect={handleSelect} interval={null} className="images">
-        {/* <Carousel> */}
         {images}
       </Carousel>
-      {/* {props.description} */}
 
     </Modal>
   );

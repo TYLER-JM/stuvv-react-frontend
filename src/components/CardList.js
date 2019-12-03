@@ -3,10 +3,9 @@ import CardListItem from "./CardListItem";
 import CardBlank from "./CardBlank";
 
 export default function CardList(props) {
-  // console.log("from cardlist.js", props.user)
 
   const cards = props.cardsData.map((card, i) => {
-    console.log("CardList cardsData: ", card)
+
     if (card.availability && window.location.pathname === "/") {
 
       return (
@@ -18,7 +17,6 @@ export default function CardList(props) {
             availability={card.availability}
             urls={card.image_urls}
             price={Math.round(card.price_per_day / 100)}
-            // owner={card.user_id}
             owner={card.user}
             user={props.user}
             setBuildState={props.setBuildState}
@@ -36,7 +34,6 @@ export default function CardList(props) {
             availability={card.availability}
             urls={card.image_urls}
             price={Math.round(card.price_per_day / 100)}
-            // owner={card.user_id}
             owner={card.user}
             user={props.user}
             setBuildState={props.setBuildState}
@@ -48,7 +45,6 @@ export default function CardList(props) {
   })
 
   return (
-    // <div className="my-stuvv-container">
     <div className="card-container">
       {window.location.pathname === "/my_stuvv" ? <CardBlank /> : null}
       {cards}

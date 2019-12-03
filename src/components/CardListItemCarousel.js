@@ -4,11 +4,9 @@ import ImageModal from './ImageModal'
 import './CarouselOverride.scss'
 
 export default function CardListItemCarousel(props) {
-  // console.log("CLIC props: ", props)
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(null);
   const [modalShow, setModalShow] = useState(false);
-  const [img, setImg] = useState(props.urls);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -16,14 +14,11 @@ export default function CardListItemCarousel(props) {
   };
 
   const images = props.urls.map((img, i) => {
-    // console.log(`Carousel loop: ${i}, url: ${img.url}`)
     return (
-      // <div>
       <Carousel.Item
         key={i}
         onClick={(e) => {
           setModalShow(true)
-          // setImg(e.target.src)
         }}
       >
         <img
@@ -33,7 +28,6 @@ export default function CardListItemCarousel(props) {
         />
 
       </Carousel.Item>
-      // </div> 
     )
   })
 
@@ -46,7 +40,7 @@ export default function CardListItemCarousel(props) {
       <ImageModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        urls={img}
+        urls={props.urls}
         description={props.description}
       />
     </Fragment>
