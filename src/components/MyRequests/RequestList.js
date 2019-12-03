@@ -178,10 +178,11 @@ export default function EnhancedTable(props) {
   const [rows, setRows] = useState([])
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('startDate');
-  const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [modalShow, setModalShow] = React.useState(false);
+
+  // for implementing a warning on delete
+  // const [modalShow, setModalShow] = React.useState(false);
 
 
   useEffect(() => {
@@ -194,26 +195,6 @@ export default function EnhancedTable(props) {
     setOrderBy(property);
   };
 
-  const handleClick = (event, title) => {
-    const selectedIndex = selected.indexOf(title);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, title);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-
-    setSelected(newSelected);
-  };
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -223,9 +204,6 @@ export default function EnhancedTable(props) {
     setPage(0);
   };
 
-
-
-  const isSelected = title => selected.indexOf(title) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -249,7 +227,6 @@ export default function EnhancedTable(props) {
               {stableSort(rows, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.title);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   const showStatus = () => {
@@ -260,18 +237,14 @@ export default function EnhancedTable(props) {
                         "fa-times-circle": row.status < 0
                       })} />
                     )
-
                   }
 
                   return (
                     <TableRow
                       hover
                       role="checkbox"
-                      aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.title}
-                      selected={isItemSelected}
-
                     >
                       <TableCell padding="checkbox">
                         <Tooltip title="Delete">
