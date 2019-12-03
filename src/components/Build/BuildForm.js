@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react'
-import UploadForm from '../UploadForm'
-import '../UploadFormHideInput.scss'
+import UploadForm from './UploadForm'
+import './UploadFormHideInput.scss'
 import Register from '../Login/RegisterModal';
 import SavingModal from '../SavingModal'
 
