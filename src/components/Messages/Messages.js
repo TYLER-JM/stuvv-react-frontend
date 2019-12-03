@@ -48,8 +48,8 @@ export default function Messages(props) {
 
   //loops over all messages for this user and builds each conversation separately
   const conversations = messages.map((conversation, i) => {
-    console.log("from inside conversations array Message state is", messages)
-    console.log(conversation)
+    // console.log("from inside conversations array Message state is", messages)
+    console.log("Conversation prop being passed", conversation)
     return (
       <MessageList
         key={i}

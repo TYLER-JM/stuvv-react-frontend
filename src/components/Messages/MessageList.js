@@ -14,12 +14,14 @@ export default function MessageList(props) {
 
   const [conversation, setConversation] = useState(JSON.parse(props.conversationObject.conversation));
   const [message, setMessage] = useState("");
+  const [request, setRequest] = useState(props.conversationObject.request);
 
   const [confirmation, setConfirmation] = useState("");
   const [title, setTitle] = useState(props.conversationObject.request.approved !== 0 ? props.conversationObject.request.approved === 1 ? "Booked for " : "Declined for " : "Interested in booking for ");
 
   useEffect(() => {
     setConversation(JSON.parse(props.conversationObject.conversation))
+    setRequest(props.conversationObject.request)
   }, [props.conversationObject.conversation])
 
   const reset = (e) => {
@@ -44,11 +46,9 @@ export default function MessageList(props) {
       </div>
     )
 
-
-    console.log(confirmation)
-    return axios.put(`http://localhost:3000/requests/${props.conversationObject.request.id}`, { request: status }, { withCredentials: true })
+    setRequest(props.conversationObject.request)
+    return axios.put(`http://localhost:3000/requests/${request.id}`, { request: status }, { withCredentials: true })
       .then(resp => {
-        console.log("Patch was done and this is now approved: ", resp.data);
 
         setTimeout(() => {
           setConfirmation(
@@ -97,7 +97,6 @@ export default function MessageList(props) {
   useEffect(() => {
     axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(conversation) }, { withCredential: true })
       .then(resp => {
-        console.log("got a response after updating the conversation");
       })
       .catch(err => {
         console.log("error is: ", err);
@@ -130,7 +129,7 @@ export default function MessageList(props) {
       <div className="search-input">
         <input className="input-field" type="text" value={message} onChange={e => setMessage(e.target.value)} />
         <button className="send" onClick={(e) => sendMessage(e)}>SEND!</button>
-        <div className="booking-info">{title}{startDate.slice(0, 16)} until {endDate.slice(0, 16)}</div> 
+        <div className="booking-info">{title}{startDate.slice(0, 16)} until {endDate.slice(0, 16)}</div>
       </div>
     </li>
   );
