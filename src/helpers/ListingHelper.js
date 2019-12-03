@@ -4,10 +4,6 @@ import axios from 'axios'
 export default function ListingHelper(term = false) {
   const [listings, setListings] = useState([])
 
-  // let listings;
-
-  
-
     useEffect(() => {
 
       if (!term) {
@@ -15,7 +11,6 @@ export default function ListingHelper(term = false) {
           .then(resp => {
             console.log("resp in HELPER: ", resp)
             setListings(resp.data)
-            // listings = resp.data
           })
           .catch(error => console.log(error))
       } else {
@@ -23,11 +18,10 @@ export default function ListingHelper(term = false) {
           .then(resp => {
             console.log("the resp of the search:", resp);
             setListings(resp)
-            // listings = resp;
           })
           .catch(error => console.error())
       }
-  
+      
         return function cleanup() {
           console.log("all done");
         }

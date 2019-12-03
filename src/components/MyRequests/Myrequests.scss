@@ -31,3 +31,13 @@
 .fa-check-circle {
   color: green;
 }
+
+.requests > .requests-banner + div {
+  width: 100%;
+  .MuiPaper-root.MuiPaper-elevation1 {
+    margin: auto;
+    width: 90%;
+  }
+}
+
+

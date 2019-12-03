@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import CardList from "./CardList"
+import CardList from "./Listing/CardList"
 import WelcomeVideo from './Welcome/WelcomeVideo'
 import axios from 'axios';
 import "./Home.scss"
-
 
 
 export default function Home(props) {
   const [list, setList] = useState([])
 
   useEffect(() => {
-    // setList(ListingHelper());
-
-    console.log("in the use effect")
 
     axios.get("http://localhost:3000/listings", { withCredentials: true })
       .then(resp => {
         setList(resp.data)
-        // listings = resp.data
       })
       .catch(error => console.log(error))
 
@@ -40,32 +35,9 @@ export default function Home(props) {
   return (
     <div>
       <WelcomeVideo sendRequest={sendRequest} />
-      {/* <div id="search-results"> */}
       <CardList cardsData={list} user={props.user} setBuildState={props.setBuildState} setList={setList} />
-      {/* </div> */}
     </div>
   );
 }
-
-{/* <Jumbotron  style={{  
-        backgroundImage: `url(${Handshake})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        opacity: .7,
-        color: "white",
-      }}> 
-        <video autoPlay loop muted style={{width: "100%",
-          height: "90%"}}>
-          <source src={Video} type='video/mp4' />
-        </video>
-       <h1>Hello, world!</h1>
-       <p>
-        Stuvv allows you to rent your things while you're not using them!
-       </p>
-       <p>
-         <Button variant="primary">Create A Listing</Button>
-       </p>
-      </Jumbotron>  */}
 
 

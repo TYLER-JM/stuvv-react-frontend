@@ -9,13 +9,6 @@ import Spinner from 'react-bootstrap/Spinner'
 import './ListingModal.scss'
 
 
-
-
-
-
-
-
-// used by the textfield
 const useStyles = makeStyles(theme => ({
   root: {
     textField: {
@@ -26,53 +19,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-// used by the calender component
-// const initialState = {
-//   startDate: null,
-//   endDate: null,
-//   focusedInput: null
-// };
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case "focusChange":
-//       return { ...state, focusedInput: action.payload };
-//     case "dateChange":
-//       return action.payload;
-//     default:
-//       throw new Error();
-//   }
-// }
 
 export default function RequestForm(props) {
-  const [modalShow, setModalShow] = useState(false);
+  // const [modalShow, setModalShow] = useState(false);
 
   const classes = useStyles();
   const [message, setMessage] = useState("")
-  const [selectedStartDate, setSelectedStartDate] = useState(new Date);
-  // const [selectedStartDate, setSelectedStartDate] = useState(new Date('2019-11-18T00:00:00'));
-  const [selectedEndDate, setSelectedEndDate] = useState(new Date);
-  // const [state, dispatch] = useReducer(reducer, initialState);
-
-  // const sendRequest = () => {
-  //   const data = {
-  //     listing_id: props.listingid,
-  //     user_id: props.user.id,
-  //     start_date: selectedStartDate,
-  //     end_date: selectedEndDate
-  //   }
-
-  //   axios.post("http://localhost:3000/requests", data, { withCredentials: true })
-  //     .then(resp => {
-  //       console.log("RESPONSE IS: ", resp)
-  //       sendQuestion();
-
-  //       setTimeout(() => {
-  //         window.location.pathname = "/"
-  //       }, 500)
-  //     })
-  //     .catch(error => console.log("error is: ", error))
-  //   console.log("DATA TO SEND ALONG: ", data)
-  // };
+  const [selectedStartDate, setSelectedStartDate] = useState(new Date());
+  const [selectedEndDate, setSelectedEndDate] = useState(new Date());
 
   const sendQuestionAndRequest = () => {
     const toBeStringified = [
@@ -98,22 +52,15 @@ export default function RequestForm(props) {
     axios.post("http://localhost:3000/messages", { message: fullMessage }, { withCredentials: true })
       .then(resp => {
         request.message_id = resp.data.id
-        console.log("RESPONSE FROM Send QUESTION: ", resp.data)
         axios.post("http://localhost:3000/requests", request, { withCredentials: true })
           .then(resp => {
-            console.log("request that was sent: ", request)
-            console.log("saved request after message...", resp)
-
             setTimeout(() => {
               window.location.pathname = "/"
             }, 500)
           })
           .catch(err => console.log("error: ", err))
-
       })
       .catch(err => console.log("error: ", err))
-    // console.log("message is: ", message)
-    // console.log("listingowner: ", props.listingowner)
   }
 
   //handles the value of the multiline textarea (description)
@@ -145,7 +92,6 @@ export default function RequestForm(props) {
           label="Message"
           multiline
           rows="4"
-          // defaultValue="Default Value"
           className={classes.textField}
           margin="normal"
           variant="outlined"
@@ -155,20 +101,15 @@ export default function RequestForm(props) {
         />
       </div>
       <div className="request-button-div">
-        {/* <button onClick={() => sendQuestion()}>Send a message</button> */}
         <OverlayTrigger trigger="click" placement="right" overlay={popover} className="popover-body">
           <button onClick={() => {
-            // sendRequest()
             setTimeout(() => {
               sendQuestionAndRequest()
             }, 500)
-            setModalShow(true)
+            // setModalShow(true)
           }}>Request to book</button>
         </OverlayTrigger>
       </div>
-
-
-
     </div>
   );
 };

@@ -1,0 +1,34 @@
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  min-height: 85vh;
+  margin-top: 50px;
+}
+
+.card-container > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 2%;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(junk.jpg);
+  background-position: 25% 75%;
+  width: 100%;
+  height: 20rem;
+  color: white;
+  font-weight: 800;
+  font-size: 3rem;
+  background-size: 100%;
+  background-position: bottom;
+  // opacity: .70;
+}

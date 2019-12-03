@@ -7,7 +7,6 @@ const style = {
   height: "70px",
   width: "100%",
   fontAlign: "center",
-  // position: "absolute",
   margin: 0,
   marginTop: "50px",
   paddingTop: "25px",

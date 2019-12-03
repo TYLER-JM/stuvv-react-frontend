@@ -1,0 +1,88 @@
+//this only hides the 'browse' button and the
+//title of the files that get uploaded
+
+.MuiOutlinedInput-multiline {
+  padding: 18.5px 14px;
+}
+
+input#outlined-button-file {
+  display: none;
+}
+
+.img {
+  max-width: 10rem;
+  margin: 1rem;
+  border: 3px solid #e5a74f;
+}
+
+.form-container {
+  background-image: url(./build.jpg);
+  // height: 10rem;
+  text-align: center;
+  padding-top: 2rem;
+  color: white;
+  background-position: bottom;
+}
+
+.form-control {
+  background-color: white;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+// .submit button.MuiButtonBase-root.MuiButton-root.MuiButton-outlined {
+.submit button {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  background-color: rgb(81, 171, 151);
+  color: white;
+  border: none;
+}
+
+.submit button.nevermind {
+  background-color: rgb(172, 173, 172);
+  &:hover {
+    background-color: rgb(225, 226, 225);
+  }
+}
+
+.MuiButton-label {
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  // background-color: #E5A74F;
+}
+
+.build-form-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(build.jpg);
+  background-position: 25% 75%;
+  width: 100%;
+  height: 20rem;
+  color: white;
+  font-weight: 800;
+  font-size: 3rem;
+  background-size: 100%;
+  background-position: bottom;
+  // opacity: .70;
+}
+
+.MuiButton-outlined {
+  background-color: #e5a74f;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  padding: 5px 15px;
+}
+
+.test {
+  // background-color: blue;
+  height: 700px;
+  padding-top: 1rem;
+}
