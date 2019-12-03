@@ -48,8 +48,8 @@ const useStyles = makeStyles(theme => ({
 export default function CardListItem(props) {
 
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-  const [modalShow, setModalShow] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
