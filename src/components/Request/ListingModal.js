@@ -12,7 +12,6 @@ export default function ListingModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       dialogClassName="listing-modal"
-
     >
       <Modal.Title id="contained-modal-title-vcenter">
         {`Submit a request for ${props.title}`}

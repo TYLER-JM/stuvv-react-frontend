@@ -25,8 +25,8 @@ export default function RequestForm(props) {
 
   const classes = useStyles();
   const [message, setMessage] = useState("")
-  const [selectedStartDate, setSelectedStartDate] = useState(new Date);
-  const [selectedEndDate, setSelectedEndDate] = useState(new Date);
+  const [selectedStartDate, setSelectedStartDate] = useState(new Date());
+  const [selectedEndDate, setSelectedEndDate] = useState(new Date());
 
   const sendQuestionAndRequest = () => {
     const toBeStringified = [
@@ -52,18 +52,13 @@ export default function RequestForm(props) {
     axios.post("http://localhost:3000/messages", { message: fullMessage }, { withCredentials: true })
       .then(resp => {
         request.message_id = resp.data.id
-        console.log("RESPONSE FROM Send QUESTION: ", resp.data)
         axios.post("http://localhost:3000/requests", request, { withCredentials: true })
           .then(resp => {
-            console.log("request that was sent: ", request)
-            console.log("saved request after message...", resp)
-
             setTimeout(() => {
               window.location.pathname = "/"
             }, 500)
           })
           .catch(err => console.log("error: ", err))
-
       })
       .catch(err => console.log("error: ", err))
   }
@@ -85,7 +80,6 @@ export default function RequestForm(props) {
   return (
     <div className="request-box">
       <DatePicker
-      //  className="calendar-button"
         listingid={props.listingid}
         selectedStartDate={selectedStartDate}
         setSelectedStartDate={setSelectedStartDate}
