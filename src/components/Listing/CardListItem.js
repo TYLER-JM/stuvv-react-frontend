@@ -20,6 +20,8 @@ import { Link } from "react-router-dom";
 import axios from "axios"
 import "./CardListItem.scss"
 import DeleteButtonModal from './DeleteButtonModal'
+import Register from '../Login/RegisterModal';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -50,6 +52,7 @@ export default function CardListItem(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
   const [modalShow, setModalShow] = useState(false);
+  const [register, setRegister] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -108,13 +111,14 @@ export default function CardListItem(props) {
         onClick={() => {
           if (props.user.id) {
             setModalShow(true)
+          } 
+          if(!props.user.id){
+            setRegister(true)
           }
-          // } else {
-          //   return (<Register show="true" onHide={() => window.location.pathname = "/"} />)
-          // }
         }
         }>
         <PostAddIcon />
+        <Register show={register} onHide={() => window.location.pathname = "/"}  />
       </IconButton>)
     } else {
       return null
