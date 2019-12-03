@@ -32,11 +32,9 @@
   color: green;
 }
 
-.requests > .makeStyles-root-46 {
-  // margin: 2rem;
+.requests > .requests-banner + div {
   width: 100%;
-
-  .makeStyles-paper-47 {
+  .MuiPaper-root.MuiPaper-elevation1 {
     margin: auto;
     width: 90%;
   }
