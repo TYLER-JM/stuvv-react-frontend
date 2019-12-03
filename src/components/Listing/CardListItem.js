@@ -159,13 +159,13 @@ export default function CardListItem(props) {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Description:</Typography>
+            <Typography paragraph><strong>Description:</strong></Typography>
             <Typography paragraph>
-              {props.description}
+              <div className="info">{props.description}</div>
             </Typography>
-            <Typography paragraph>Owned By:</Typography>
+            <Typography paragraph><strong>Owned by:</strong></Typography>
             <Typography paragraph>
-              {props.owner.first_name}
+              <div className="info">{props.owner.first_name}</div>
             </Typography>
           </CardContent>
         </Collapse>
