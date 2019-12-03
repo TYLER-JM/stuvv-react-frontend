@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react'
-import CardList from "../CardList.js"
+// import CardList from "../CardList.js"
+import CardList from "../Listing/CardList"
 import './MyStuvv.scss'
 import Register from '../Login/RegisterModal';
 import SavingModal from '../SavingModal'

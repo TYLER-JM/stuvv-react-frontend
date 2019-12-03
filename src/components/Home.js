@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import CardList from "./CardList"
+import CardList from "./Listing/CardList"
 import WelcomeVideo from './Welcome/WelcomeVideo'
 import axios from 'axios';
 import "./Home.scss"
