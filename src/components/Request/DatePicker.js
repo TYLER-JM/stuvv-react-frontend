@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import RequestFormHelper from '../../helpers/RequestFormHelper';
+import "./ListingModal.scss"
 
 // export default function DatePicker(props) {
 export default function DatePicker({ listingid, selectedStartDate, setSelectedStartDate, selectedEndDate, setSelectedEndDate }) {
@@ -77,6 +78,7 @@ export default function DatePicker({ listingid, selectedStartDate, setSelectedSt
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-around">
         <KeyboardDatePicker
+          className="calendar-button"
           shouldDisableDate={disableDates}
           autoOk={true}
           disableToolbar
@@ -92,6 +94,7 @@ export default function DatePicker({ listingid, selectedStartDate, setSelectedSt
           }}
         />
         <KeyboardDatePicker
+        className="calendar-button"
           shouldDisableDate={disableEndDates}
           autoOk={true}
           disableToolbar
