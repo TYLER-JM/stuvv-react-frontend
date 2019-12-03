@@ -5,7 +5,6 @@ export default function RequestFormHelper(listingId) {
   const [requests, setRequests] = useState([])
 
   useEffect(() => {
-    console.log("in the Request form use effect...")
     axios.get(`http://localhost:3000/requests/approved/${listingId}`, { withCredentials: true })
       .then(resp => {
         setRequests(resp.data)

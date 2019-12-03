@@ -162,8 +162,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnhancedTable(props) {
 
-  console.log("the users REQUESTS", props.requests)
-
   function deleteRequest(id, index) {
     axios.delete(`http://localhost:3000/requests/${id}`, { withCredentials: true })
       .then(resp => {
@@ -249,8 +247,6 @@ export default function EnhancedTable(props) {
                       <TableCell padding="checkbox">
                         <Tooltip title="Delete">
                           <IconButton aria-label="delete">
-                            {/* <DeleteIcon requestid={row.requestId} onClick={() => console.log("you clicked the trash")}/> */}
-                            {/* <DeleteIcon onClick={() => setModalShow(true)} /> */}
                             <DeleteIcon value={row.requestId} onClick={() => deleteRequest(row.requestId, row.rowIndex)} />
                           </IconButton>
                         </Tooltip>

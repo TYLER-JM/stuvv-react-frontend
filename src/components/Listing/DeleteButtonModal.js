@@ -22,11 +22,10 @@ export default function DeleteButtonModal(props) {
         <div className='body'>
           <div className="title">Permanently delete listing?</div>
           <div className="buttons">
-            <div className="button" 
+            <div className="button"
               onClick={() => {
-                  console.log("button clicked")
-                  props.handleDeleteListing()
-                  setSmShow(false)
+                props.handleDeleteListing()
+                setSmShow(false)
               }
               }
             >yes</div>
