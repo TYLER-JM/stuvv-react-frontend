@@ -122,7 +122,6 @@ export default function MessageList(props) {
   return (
     <li className={classNames("single-conversation", { "hidden": props.uniqueid !== props.convo })}>
 
-
       {bubbles}
 
       {confirmation}
