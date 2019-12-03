@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import Carousel from 'react-bootstrap/Carousel'
-import ImageModal from '../ImageModal'
+import ImageModal from './ImageModal'
 import './CarouselOverride.scss'
 
 export default function CardListItemCarousel(props) {
