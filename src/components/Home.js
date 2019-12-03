@@ -5,13 +5,10 @@ import axios from 'axios';
 import "./Home.scss"
 
 
-
 export default function Home(props) {
   const [list, setList] = useState([])
 
   useEffect(() => {
-
-    console.log("in the use effect")
 
     axios.get("http://localhost:3000/listings", { withCredentials: true })
       .then(resp => {

@@ -6,7 +6,6 @@ import Register from './Login/RegisterModal';
 export default function Navbar(props) {
   const [modalShow, setModalShow] = React.useState(false);
 
-  // console.log("PROPS USER ISSSSSSS", props.user)
   if (props.user.id) {
 
     return (
@@ -25,7 +24,6 @@ export default function Navbar(props) {
           <div onClick={() => setModalShow(true)}>SignIn</div>
           <div onClick={() => setModalShow(true)}>Register</div>
         </div>
-
 
         <Register show={modalShow} onHide={() => setModalShow(false)} />
         <i className="fab fa-stumbleupon-circle" onClick={() => window.location.pathname = "/"}></i>
