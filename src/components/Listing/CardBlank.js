@@ -39,7 +39,7 @@ export default function CardBlank(props) {
 
   const classes = useStyles();
   const handlePageChange = () => {
-    window.location.pathname = "/build"
+    window.location.href = "/build"
   };
 
   return (

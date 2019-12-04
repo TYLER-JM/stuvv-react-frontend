@@ -6,7 +6,7 @@ export default function CardList(props) {
 
   const cards = props.cardsData.map((card, i) => {
 
-    if (card.availability && window.location.pathname === "/") {
+    if (card.availability && window.location.href === "/") {
 
       return (
         <div key={i}>
@@ -24,7 +24,7 @@ export default function CardList(props) {
           />
         </div>
       )
-    } else if (window.location.pathname === "/my_stuvv") {
+    } else if (window.location.href === "/my_stuvv") {
       return (
         <div key={i}>
           <CardListItem
@@ -46,7 +46,7 @@ export default function CardList(props) {
 
   return (
     <div className="card-container">
-      {window.location.pathname === "/my_stuvv" ? <CardBlank /> : null}
+      {window.location.href === "/my_stuvv" ? <CardBlank /> : null}
       {cards}
     </div>
   )

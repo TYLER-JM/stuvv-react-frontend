@@ -38,7 +38,7 @@ export default function SideBar(props) {
   const removeSession = () => {
     return axios.get(`${process.env.REACT_APP_DB_HOST}/sessions`, { withCredentials: true })
       .then(resp => {
-        window.location.pathname = "/"
+        window.location.href = "/"
         console.log("deleted session")
       })
       .catch(error => {

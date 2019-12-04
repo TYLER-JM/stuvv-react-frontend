@@ -72,13 +72,13 @@ export default function CardListItem(props) {
     axios.delete(`${process.env.REACT_APP_DB_HOST}/listings/${props.listingid}`, { withCredentials: true })
       .then((resp) => {
         console.log("After delete action: ", resp.data)
-        if (window.location.pathname === "/my_stuvv") {
+        if (window.location.href === "/my_stuvv") {
           axios.get(`${process.env.REACT_APP_DB_HOST}/userslistings/${props.user.id}`, { withCredentials: true })
             .then((resp) => {
               props.setList(resp.data)
             })
         }
-        if (window.location.pathname === "/") {
+        if (window.location.href === "/") {
           axios.get(`${process.env.REACT_APP_DB_HOST}/listings`, { withCredentials: true })
             .then((resp) => {
               props.setList(resp.data)
@@ -105,7 +105,7 @@ export default function CardListItem(props) {
           </DeleteButtonModal>
 
         </Fragment>)
-    } else if (window.location.pathname === "/") {
+    } else if (window.location.href === "/") {
       return (<IconButton
         aria-label="share"
         onClick={() => {
@@ -118,7 +118,7 @@ export default function CardListItem(props) {
         }
         }>
         <PostAddIcon />
-        <Register show={register} onHide={() => window.location.pathname = "/"} />
+        <Register show={register} onHide={() => window.location.href = "/"} />
       </IconButton>)
     } else {
       return null
