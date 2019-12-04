@@ -55,7 +55,7 @@ export default function RequestForm(props) {
         axios.post(`${process.env.REACT_APP_DB_HOST}/requests`, request, { withCredentials: true })
           .then(resp => {
             setTimeout(() => {
-              window.location.href = "/"
+              window.location.pathname = "/"
             }, 500)
           })
           .catch(err => console.log("error: ", err))

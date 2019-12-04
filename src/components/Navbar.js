@@ -13,7 +13,7 @@ export default function Navbar(props) {
         <div>
           < SideBar user={props.user.first_name} />
         </div>
-        <i className="fab fa-stumbleupon-circle" onClick={() => window.location.href = "/"}></i>
+        <i className="fab fa-stumbleupon-circle" onClick={() => window.location.pathname = "/"}></i>
       </nav>)
 
   } else {
@@ -26,7 +26,7 @@ export default function Navbar(props) {
         </div>
 
         <Register show={modalShow} onHide={() => setModalShow(false)} />
-        <i className="fab fa-stumbleupon-circle" onClick={() => window.location.href = "/"}></i>
+        <i className="fab fa-stumbleupon-circle" onClick={() => window.location.pathname = "/"}></i>
       </nav>
     )
   }

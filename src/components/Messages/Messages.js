@@ -121,10 +121,10 @@ export default function Messages(props) {
       <Fragment>
         <SavingModal
           show={loading}
-          onHide={() => window.location.href = "/"}
+          onHide={() => window.location.pathname = "/"}
           line="loading"
         />
-        <Register show={register} onHide={() => window.location.href = "/"} />
+        <Register show={register} onHide={() => window.location.pathname = "/"} />
       </Fragment>
     )
   }

@@ -144,7 +144,7 @@ export default function Form(props) {
       return axios.post(`${process.env.REACT_APP_DB_HOST}/listings`, data, { withCredentials: true })
         .then(resp => {
           setTimeout(() => {
-            window.location.href = "/my_stuvv"
+            window.location.pathname = "/my_stuvv"
           }, 1000)
         })
         .catch(error => console.error())
@@ -152,7 +152,7 @@ export default function Form(props) {
       return axios.put(`${process.env.REACT_APP_DB_HOST}/listings/${props.buildState.id}`, data, { withCredentials: true })
         .then(resp => {
           setTimeout(() => {
-            window.location.href = "/my_stuvv"
+            window.location.pathname = "/my_stuvv"
           }, 1000)
         })
         .catch(error => console.error())
@@ -249,7 +249,7 @@ export default function Form(props) {
                   className="nevermind"
                   variant="secondary"
                   onClick={() => {
-                    window.location.href = "/my_stuvv"
+                    window.location.pathname = "/my_stuvv"
                   }}>
                   Nevermind
                 </Button> : null}
@@ -271,7 +271,7 @@ export default function Form(props) {
       </div>
     );
   } else {
-    return (<Register show="true" onHide={() => window.location.href = "/"} />)
+    return (<Register show="true" onHide={() => window.location.pathname = "/"} />)
 
   }
 }
