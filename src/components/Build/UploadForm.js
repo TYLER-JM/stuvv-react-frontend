@@ -141,7 +141,7 @@ export default function Form(props) {
     data.append("price_per_day", amount)
 
     if (!props.buildState.id) {
-      return axios.post(`http://localhost:3000/listings`, data, { withCredentials: true })
+      return axios.post(`${process.env.REACT_APP_DB_HOST}/listings`, data, { withCredentials: true })
         .then(resp => {
           setTimeout(() => {
             window.location.pathname = "/my_stuvv"
@@ -149,7 +149,7 @@ export default function Form(props) {
         })
         .catch(error => console.error())
     } else {
-      return axios.put(`http://localhost:3000/listings/${props.buildState.id}`, data, { withCredentials: true })
+      return axios.put(`${process.env.REACT_APP_DB_HOST}/listings/${props.buildState.id}`, data, { withCredentials: true })
         .then(resp => {
           setTimeout(() => {
             window.location.pathname = "/my_stuvv"

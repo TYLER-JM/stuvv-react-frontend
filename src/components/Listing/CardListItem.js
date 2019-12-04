@@ -69,17 +69,17 @@ export default function CardListItem(props) {
   };
 
   const handleDeleteListing = () => {
-    axios.delete(`http://localhost:3000/listings/${props.listingid}`, { withCredentials: true })
+    axios.delete(`${process.env.REACT_APP_DB_HOST}/listings/${props.listingid}`, { withCredentials: true })
       .then((resp) => {
         console.log("After delete action: ", resp.data)
         if (window.location.pathname === "/my_stuvv") {
-          axios.get(`http://localhost:3000/userslistings/${props.user.id}`, { withCredentials: true })
+          axios.get(`${process.env.REACT_APP_DB_HOST}/userslistings/${props.user.id}`, { withCredentials: true })
             .then((resp) => {
               props.setList(resp.data)
             })
         }
         if (window.location.pathname === "/") {
-          axios.get("http://localhost:3000/listings", { withCredentials: true })
+          axios.get(`${process.env.REACT_APP_DB_HOST}/listings`, { withCredentials: true })
             .then((resp) => {
               props.setList(resp.data)
             })
@@ -111,14 +111,14 @@ export default function CardListItem(props) {
         onClick={() => {
           if (props.user.id) {
             setModalShow(true)
-          } 
-          if(!props.user.id){
+          }
+          if (!props.user.id) {
             setRegister(true)
           }
         }
         }>
         <PostAddIcon />
-        <Register show={register} onHide={() => window.location.pathname = "/"}  />
+        <Register show={register} onHide={() => window.location.pathname = "/"} />
       </IconButton>)
     } else {
       return null

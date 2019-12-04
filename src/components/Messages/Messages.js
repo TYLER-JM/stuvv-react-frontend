@@ -28,7 +28,7 @@ export default function Messages(props) {
   //get the messages information depending on the tab clicked
   function fetchMessages(message) {
     if (message === "inbound") {
-      return axios.get(`http://localhost:3000/messages/inbound/${props.user.id}`, { withCredentials: true })
+      return axios.get(`${process.env.REACT_APP_DB_HOST}/messages/inbound/${props.user.id}`, { withCredentials: true })
         .then(resp => {
           console.log("GOT INBOUND MESSAGES: ", resp.data);
           setMessages(resp.data)
@@ -37,7 +37,7 @@ export default function Messages(props) {
 
     }
     if (message === "outbound") {
-      return axios.get(`http://localhost:3000/messages/outbound/${props.user.id}`, { withCredentials: true })
+      return axios.get(`${process.env.REACT_APP_DB_HOST}/messages/outbound/${props.user.id}`, { withCredentials: true })
         .then(resp => {
           console.log("GOT OUTBOUND MESSAGES: ", resp.data);
           setMessages(resp.data)
