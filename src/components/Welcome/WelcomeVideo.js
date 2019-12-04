@@ -17,7 +17,7 @@ export default function WelcomeVideo(props) {
         <div className="header-overlay"></div>
         <div className="header-content">
           <h1><b>Stuvv</b></h1>
-          <p>Stuvv allows you to rent your personal belonings</p>
+          <p>Stuvv allows you to rent your personal belongings</p>
           <form className="form-inline my-2 my-lg-0" onSubmit={event => event.preventDefault()}>
             <input
               className="form-control mr-sm-2"
