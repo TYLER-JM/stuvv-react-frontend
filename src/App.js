@@ -41,7 +41,7 @@ function App() {
         console.log('GOT TO THE PROFILES/ME CATCH', err)
       })
   }, []);
-
+  console.log(React.version);
   if (!currentUser && !list && !request) { return (<h1>Loading...</h1>); } else {
     return (
 
