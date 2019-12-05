@@ -3,10 +3,10 @@
 
 ### The Final Product
 
-![Stuvv home page](https://github.com/TYLER-JM/stuvv-react-frontend/blob/jordan/demoDay/docs/homePage.gif?raw=true)
-![Build page](https://github.com/TYLER-JM/stuvv-react-frontend/blob/jordan/demoDay/docs/buildPageImage.png?raw=true)
-![Login and Register](https://github.com/TYLER-JM/stuvv-react-frontend/blob/jordan/demoDay/docs/loginRegisterimage.png?raw=true)
-![My Requests page](https://github.com/TYLER-JM/stuvv-react-frontend/blob/jordan/demoDay/docs/myRequestsImage.png?raw=true)
+!["Stuvv home page"](https://github.com/TYLER-JM/stuvv-react-frontend/blob/jordan/demoDay/docs/homePage.gif?raw=true)
+!["Build page"](https://github.com/TYLER-JM/stuvv-react-frontend/blob/jordan/demoDay/docs/buildPageImage.png?raw=true)
+!["Login and Register"](https://github.com/TYLER-JM/stuvv-react-frontend/blob/jordan/demoDay/docs/loginRegisterimage.png?raw=true)
+!["My Requests page"](https://github.com/TYLER-JM/stuvv-react-frontend/blob/jordan/demoDay/docs/myRequestsImage.png?raw=true)
 ### Set-Up
 * after cloning the repo be sure to run `npm install` to download the dependencies.
 * You'll also need to run the [backend server](https://github.com/TYLER-JM/stuvv-api) in order to use the app.
