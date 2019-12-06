@@ -46,7 +46,7 @@ export default function RegisterForm(props) {
           <br />
           <input
             type="text"
-            placeholder="Fisrt Name"
+            placeholder="First Name"
             onChange={e => setUser({ first_name: e.target.value })}
           />
           <input
