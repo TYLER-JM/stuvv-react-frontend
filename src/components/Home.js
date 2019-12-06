@@ -9,8 +9,9 @@ export default function Home(props) {
   const [list, setList] = useState([])
 
   useEffect(() => {
-
-    axios.get("http://localhost:3000/listings", { withCredentials: true })
+    console.log(process.env)
+    console.log(process.env.REACT_APP_DB_HOST)
+    axios.get(`${process.env.REACT_APP_DB_HOST}/listings`, { withCredentials: true })
       .then(resp => {
         setList(resp.data)
       })
@@ -23,7 +24,7 @@ export default function Home(props) {
   }, [])
 
   const sendRequest = (search) => {
-    return axios.post(`http://localhost:3000/search`, { search }, { withCredentials: true })
+    return axios.post(`${process.env.REACT_APP_DB_HOST}/search`, { search }, { withCredentials: true })
       .then(resp => {
         console.log("RESP in SEARCH: ", resp)
         setList(resp.data)

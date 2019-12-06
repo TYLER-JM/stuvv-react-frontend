@@ -47,7 +47,7 @@ export default function MessageList(props) {
     )
 
     setRequest(props.conversationObject.request)
-    return axios.put(`http://localhost:3000/requests/${request.id}`, { request: status }, { withCredentials: true })
+    return axios.put(`${process.env.REACT_APP_DB_HOST}/requests/${request.id}`, { request: status }, { withCredentials: true })
       .then(resp => {
 
         setTimeout(() => {
@@ -95,7 +95,7 @@ export default function MessageList(props) {
   ));
 
   useEffect(() => {
-    axios.put(`http://localhost:3000/messages/${props.conversationObject.id}`, { message: JSON.stringify(conversation) }, { withCredential: true })
+    axios.put(`${process.env.REACT_APP_DB_HOST}/messages/${props.conversationObject.id}`, { message: JSON.stringify(conversation) }, { withCredential: true })
       .then(resp => {
       })
       .catch(err => {

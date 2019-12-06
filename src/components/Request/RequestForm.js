@@ -49,10 +49,10 @@ export default function RequestForm(props) {
       message_id: null
     }
 
-    axios.post("http://localhost:3000/messages", { message: fullMessage }, { withCredentials: true })
+    axios.post(`${process.env.REACT_APP_DB_HOST}/messages`, { message: fullMessage }, { withCredentials: true })
       .then(resp => {
         request.message_id = resp.data.id
-        axios.post("http://localhost:3000/requests", request, { withCredentials: true })
+        axios.post(`${process.env.REACT_APP_DB_HOST}/requests`, request, { withCredentials: true })
           .then(resp => {
             setTimeout(() => {
               window.location.pathname = "/"

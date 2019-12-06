@@ -12,7 +12,7 @@ export default function RegisterForm(props) {
 
 
   const sendRequestRegister = () => {
-    return axios.post(`http://localhost:3000/users`, { user }, { withCredentials: true })
+    return axios.post(`${process.env.REACT_APP_DB_HOST}/users`, { user }, { withCredentials: true })
       .then(resp => {
         console.log("got to the register")
         window.location.pathname = "/"
@@ -25,7 +25,7 @@ export default function RegisterForm(props) {
 
   const sendRequestLogin = () => {
 
-    return axios.post(`http://localhost:3000/sessions`, { session }, { withCredentials: true }
+    return axios.post(`${process.env.REACT_APP_DB_HOST}/sessions`, { session }, { withCredentials: true }
     )
       .then(resp => {
         console.log("got to the login");

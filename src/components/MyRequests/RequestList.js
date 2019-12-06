@@ -165,7 +165,7 @@ export default function EnhancedTable(props) {
   console.log("the users REQUESTS", props.requests)
 
   function deleteRequest(id, index) {
-    axios.delete(`http://localhost:3000/requests/${id}`, { withCredentials: true })
+    axios.delete(`${process.env.REACT_APP_DB_HOST}/requests/${id}`, { withCredentials: true })
       .then(resp => {
         let copyRows = [...rows];
         copyRows.splice(index, 1);

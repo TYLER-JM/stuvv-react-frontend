@@ -19,17 +19,17 @@ function App() {
 
   useEffect(() => {
 
-    axios.get('http://localhost:3000/profiles/me', { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_DB_HOST}/profiles/me`, { withCredentials: true })
       .then((resp) => {
         setCurrentUser(resp.data)
 
 
-        axios.get(`http://localhost:3000/userslistings/${resp.data.id}`, { withCredentials: true })
+        axios.get(`${process.env.REACT_APP_DB_HOST}/userslistings/${resp.data.id}`, { withCredentials: true })
           .then((resp) => {
             setList(resp.data)
           })
 
-        axios.get(`http://localhost:3000/usersrequests/${resp.data.id}`, { withCredentials: true })
+        axios.get(`${process.env.REACT_APP_DB_HOST}/usersrequests/${resp.data.id}`, { withCredentials: true })
           .then((resp) => {
             setRequest(resp.data)
           })
@@ -41,7 +41,7 @@ function App() {
         console.log('GOT TO THE PROFILES/ME CATCH', err)
       })
   }, []);
-
+  console.log(React.version);
   if (!currentUser && !list && !request) { return (<h1>Loading...</h1>); } else {
     return (
 
