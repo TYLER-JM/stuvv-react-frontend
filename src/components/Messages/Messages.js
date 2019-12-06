@@ -1,5 +1,6 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect, Fragment } from 'react';
+import axios from 'axios';
+import classNames from 'classnames';
 import MessageList from './MessageList';
 import MessagesSideBar from './MessagesSideBar';
 import './Messages.scss';
@@ -104,7 +105,11 @@ export default function Messages(props) {
                 fetchMessages("outbound")
               }}>My requests</div>
             </div>
-            <div className={cssStyle === "My stuvv" ? "side-bar-body-inbound" : "side-bar-body-outbound"}>
+            {/* <div className={cssStyle === "My stuvv" ? "side-bar-body-inbound" : "side-bar-body-outbound"}> */}
+            <div className={classNames("side-bar-body", {
+              "side-bar-inbound": cssStyle === "My stuvv",
+              "side-bar-outbound": cssStyle === "My requests"
+            })}>
               {names}
             </div>
           </div>
